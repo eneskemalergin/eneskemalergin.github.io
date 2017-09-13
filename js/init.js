@@ -55,7 +55,7 @@
 			active_link.parent().addClass("current");
 
 		},
-		offset: '35%'
+		offset: '38%'
 
 	});
 
@@ -83,7 +83,7 @@
 		var y = $(window).scrollTop();
       var nav = $('#nav-wrap');
 
-	   if ( (y > h*.20) && (y < h) && ($(window).outerWidth() > 768 ) ) {
+	   if ( (y > h*.20) && (y < h) && ($(window).outerWidth() > 768) ) {
 	      nav.fadeOut('fast');
 	   }
       else {
@@ -136,7 +136,7 @@
 /*----------------------------------------------------*/
 /*	contact form
 ------------------------------------------------------*/
-
+jQuery.support.cors = true;
    $('form#contactForm button.submit').click(function() {
 
       $('#image-loader').fadeIn();

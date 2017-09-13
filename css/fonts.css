@@ -138,6 +138,39 @@
     font-style: normal;
 }
 
+/* old fonts */
+/*
+ * Museo
+================================================================================ */
+@font-face {
+    font-family: 'MuseoSlab500';
+    src: url('fonts/old_fonts/MuseoSlab500.eot');
+    src: url('fonts/old_fonts/MuseoSlab500.eot?#iefix') format('embedded-opentype'),
+         url('fonts/old_fonts/MuseoSlab500.woff') format('woff'),
+         url('fonts/old_fonts/MuseoSlab500.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal
+} 
+
+@font-face {
+    font-family: 'Museo300';
+    src: url('fonts/old_fonts/Museo300.eot');
+    src: url('fonts/old_fonts/Museo300.eot?#iefix') format('embedded-opentype'),
+         url('fonts/old_fonts/Museo300.woff') format('woff'),
+         url('fonts/old_fonts/Museo300.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal
+} 
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('fonts/old_fonts/OpenSans.eot');
+    src: url('fonts/old_fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+         url('fonts/old_fonts/OpenSans.woff') format('woff'),
+         url('fonts/old_fonts/OpenSans.ttf') format('truetype');
+    font-weight: normal;
+   
+
 
 /*
  * FIXED for Font-Face Chrome Rendering

@@ -290,10 +290,10 @@ a, a:visited {
    outline: 0;
    color: #11ABB0;
 
-   -webkit-transition: color .3s ease-in-out;
-   -moz-transition: color .3s ease-in-out;
-   -o-transition: color .3s ease-in-out;
-   transition: color .3s ease-in-out;
+   -webkit-transition: color .08s ease-in-out;
+   -moz-transition: color .08s ease-in-out;
+   -o-transition: color .08s ease-in-out;
+   transition: color .08s ease-in-out;
 }
 a:hover, a:focus { color: #313131; }
 p a, p a:visited { line-height: inherit; }
@@ -602,7 +602,11 @@ input[type="checkbox"] { display: inline; }
 
 .narrow .row { max-width: 980px; }
 
-.row .row { width: auto; max-width: none; margin: 0 -20px; }
+.row .row { 
+   width: auto; 
+   max-width: none; 
+   margin: 0 -20px 20px; 
+}
 
 /* row clearing */
 .row:before,
