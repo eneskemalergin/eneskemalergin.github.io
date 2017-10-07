@@ -22,7 +22,7 @@
 /* a. General Styles
 /* ------------------------------------------------------------------ */
 
-body { background: #B2B9C6; }
+body { background: #5a7eb8; }
 
 /* ------------------------------------------------------------------ */
 /* b. Header Styles
@@ -33,7 +33,7 @@ header {
     height: 800px;
     min-height: 500px;
     width: 100%;
-    background: #B2B9C6 url(../images/header_background.jpg) no-repeat top center;
+    background: #5a7eb8 url(../images/header_background.jpg) no-repeat top center;
     background-size: cover !important;
     -webkit-background-size: cover !important;
     text-align: center;
@@ -60,7 +60,7 @@ header .banner {
 header .banner-text { width: 100%; }
 header .banner-text h1 {
     font: 90px/1.1em 'opensans-bold', sans-serif;
-    color: #FFF9E2;
+    color: #e4eeff;
     letter-spacing: -2px;
     margin: 0 auto 18px auto;
     text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
@@ -100,8 +100,8 @@ header .social li {
     margin: 0 15px;
     padding: 0;
 }
-header .social li a { color: #FFF9E2; }
-header .social li a:hover { color: #5374AD; }
+header .social li a { color: #e4eeff; }
+header .social li a:hover { color: #5a7eb8; }
 
 /* scrolldown link */
 header .scrolldown a {
@@ -115,7 +115,7 @@ header .scrolldown a {
     width: 42px;
     font-size: 42px;
     line-height: 42px;
-    color: #FFF9E2;
+    color: #e4eeff;
     border-radius: 100%;
 
     -webkit-transition: all .3s ease-in-out;
@@ -180,7 +180,7 @@ ul#nav li a {
     line-height: 32px;
     text-decoration: none;
     text-align: left;
-    color: #FFF9E2;
+    color: #e4eeff;
 
     -webkit-transition: color .2s ease-in-out;
     -moz-transition: color .2s ease-in-out;
@@ -190,7 +190,7 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #B2B9C6; }
+ul#nav li.current a { color: #5a7eb8; }
 
 
 /* ------------------------------------------------------------------ */
@@ -198,22 +198,22 @@ ul#nav li.current a { color: #B2B9C6; }
 /* ------------------------------------------------------------------ */
 
 #about {
-    background: #5374AD;
+    background: #5475ab;
     padding-top: 96px;
     padding-bottom: 60px; /* 66px */
     overflow: hidden;
     /* Do Not adjust Height here! */
     font-family: 'MuseoSlab500', sans-serif;
-    color: #FFCB6C;
+    color: #b0c1de;
 }
 
 #about .emp {
-    color:  #DBAF00;
+    color:  #253b5e;
     font: normal;
 }
 
 #about a, #about a:visited  {
-    color: #DBAF00;
+    color: #253b5e;
     border-bottom: 1px dashed #fff;
 }
 
@@ -223,8 +223,8 @@ ul#nav li.current a { color: #B2B9C6; }
 }
 
 #about h2 {
-    color: #DB8B00;
-    font: 22px/30px 'opensans-bold', sans-serif;
+    color: #253b5e;
+    font: 30px/35px 'opensans', sans-serif;
     margin-bottom: 12px;
 }
 #about p {
@@ -236,6 +236,7 @@ ul#nav li.current a { color: #B2B9C6; }
     width: 220px;
     height: 220px;
     border-radius: 50%;
+    border:6px solid #5a7eb8;
 }
 #about .latest-news {
     width: 65%;
@@ -262,13 +263,13 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #about .download .button {
     margin-top: 6px;
-    color: #FFCB6C;
-    background: #685AB4;
+    color: #b0c1de;
+    background: #253b5e;
     border-bottom: none;
 }
 #about .download .button:hover {
-    background: #5374AD;
-    color: #BAB7CB;
+    background: #103b5e;
+    color: #b0c1de;
 }
 #about .download .button i {
     margin-right: 10px;
@@ -281,24 +282,16 @@ ul#nav li.current a { color: #B2B9C6; }
 /* ------------------------------------------------------------------ */
 
 #experience {
-    background: #B2B9C6;
+    background: #253b5e;
     padding-top: 70px;
     padding-bottom: 60px; /* changed from 72px */
     overflow: hidden;
 
 }
 
-#experience a, #experience a:visited  {
-    color: #0D4BB5;
-}
-
-#experience a:hover, #experience a:focus {
-    color: #003691;
-}
-
 #experience h1 {
-    color: #170097;
-    font: 28px/24px 'opensans-bold', sans-serif;
+    color: #b0c1de;
+    font: 36px/30px 'opensans-bold', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -308,13 +301,14 @@ ul#nav li.current a { color: #B2B9C6; }
 }
 
 #experience h3 {
-    color: #170097;
+    color: #e4eeff;
     font: 25px/30px 'opensans-bold', sans-serif;
     margin-bottom: 0px;
 
 }
 
 #experience .cs-pic {
+    background-color: #e4eeff;
     width: 165px;
     height: 40px;
     padding-top: 5px;
@@ -367,7 +361,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #experience .info {
     font: 18px/24px 'opensans-semibold-italic', serif;
-    color: #5374AD;
+    color: #5a7eb8;
     margin-bottom: 7px;
     margin-top: 3px;
 }
@@ -379,7 +373,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #experience ul {
     list-style-type: disc;
-    color: #34495e;
+    color: #b0c1de;
     padding-left: 20px;
     margin-bottom: 0px;
     margin-top: 7px;
@@ -387,6 +381,14 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #experience ul li {
     margin-bottom: 5px;
+}
+
+#experience a, #experience a:visited  {
+    color: #e4eeff;
+}
+
+#experience a:hover, #experience a:focus {
+    color: #003691;
 }
 
 #experience .date {
@@ -401,23 +403,15 @@ ul#nav li.current a { color: #B2B9C6; }
 /* ------------------------------------------------------------------ */
 
 #education {
-    background: #5374AD;
+    background: #5475ab;
     padding-top: 70px;
     padding-bottom: 72px;
     overflow: hidden;
 }
 
-#education a, #education a:visited  {
-    color: #FFE16D;
-}
-
-#education a:hover, #education a:focus {
-    color: #FFCB6D;
-}
-
 #education h1 {
-    color: #FFA400;
-    font: 28px/24px 'opensans-bold', sans-serif;
+    color: #253b5e;
+    font: 36px/30px 'opensans-bold', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
 
@@ -429,7 +423,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #education h3 {
     font: 23px/30px 'opensans-bold', sans-serif;
-    color: #FFA400;
+    color: #e4eeff;
     margin-bottom: 5px;
 }
 
@@ -463,7 +457,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #education .info {
     font: 16px/24px 'librebaskerville-italic', serif;
-    color: #FFCB00;
+    color: #253b5e;
     margin-bottom: 5px;
     margin-top: 5px;
 
@@ -476,7 +470,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #education ul {
     list-style-type: disc;
-    color: #FFE16D;
+    color: #b0c1de;
     padding-left: 18px;
     margin-bottom: 0px;
     margin-top: 7px;
@@ -484,7 +478,7 @@ ul#nav li.current a { color: #B2B9C6; }
 
 #education ul li {
     margin-bottom: 5px;
-    color: #fff;
+    color: ##b0c1de;
 }
 
 
@@ -493,6 +487,13 @@ ul#nav li.current a { color: #B2B9C6; }
     font-weight: bold;
 }
 
+#education a, #education a:visited  {
+    color: #FFE16D;
+}
+
+#education a:hover, #education a:focus {
+    color: #FFCB6D;
+}
 
 
 #education .date {
@@ -506,7 +507,7 @@ ul#nav li.current a { color: #B2B9C6; }
 /* ------------------------------------------------------------------ */
 
 #portfolio {
-    background: #B2B9C6;
+    background: #253b5e;
     padding-top: 70px;
     padding-bottom: 60px;
     overflow: hidden
@@ -514,12 +515,12 @@ ul#nav li.current a { color: #B2B9C6; }
 
 
 #portfolio h1 {
-    font: 28px/24px 'opensans-semibold', sans-serif;
+    color: #b0c1de;
+    font: 36px/30px 'opensans-bold', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
     margin-bottom: 48px;
-    color: #170097;
 }
 
 #portfolio h1 span {
@@ -662,11 +663,10 @@ ul#nav li.current a { color: #B2B9C6; }
 /* ------------------------------------------------------------------ */
 
 #photos {
-    background: #5374AD;
+    background: #5475ab;
     background-size: cover !important;
     -webkit-background-size: cover !important;
     background-attachment: fixed;
-
     position: relative;
     min-height: 200px;
     width: 100%;
@@ -695,64 +695,23 @@ ul#nav li.current a { color: #B2B9C6; }
     text-align: center;
 }
 
+#photos .button{
+    margin-top: 6px;
+    color: #e4eeff;
+    background: #253b5e;
+    border-bottom: none;
+}
+#photos .download .button:hover {
+    background: #103b5e;
+    color: #b0c1de;
+}
+#photos .download .button i {
+    margin-right: 10px;
+    font-size: 20px;
+}
 
 #photos a:hover, #education a:focus {
     color: #f1c40f;
-}
-
-/* ------------------------------------------------------------------ */
-/* h. Blog Section
-/* ------------------------------------------------------------------ */
-
-#blog {
-    background: #B2B9C6 no-repeat center center;
-    background-size: cover !important;
-    -webkit-background-size: cover !important;
-    background-attachment: fixed;
-
-    position: relative;
-    min-height: 200px;
-    width: 100%;
-    overflow: hidden;
-}
-
-#blog .text-container {
-    padding-top: 70px;
-    padding-bottom: 66px;
-}
-
-#blog h1 {
-    font: 28px/24px 'opensans-bold', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #170097;
-}
-#blog h1 span {
-    border-bottom: 3px solid #5374AD;
-    padding-bottom: 6px;
-}
-
-#blog .header-col {
-    padding-top: 9px;
-    padding-bottom: 45px;
-    text-align: center;
-}
-
-#blog .button .btn {
-  margin-top: 6px;
-  color: #fff;
-  background: #444;
-  border-bottom: none;
-}
-
-#blog .button .btn:hover {
-background: #34495E;
-color: #F1C40F; /* # #2B2B2B*/
-}
-
-
-#blog a:hover, #blog a:focus {
-    color: #f1c40f; /* #9b59b6; */ /* #fff; */ /* #313131 */
 }
 
 /* ------------------------------------------------------------------ */
@@ -760,17 +719,17 @@ color: #F1C40F; /* # #2B2B2B*/
 /* ------------------------------------------------------------------ */
 
 footer {
-    background: #5374AD;
+    background: #253b5e;
     padding-top: 48px;
     margin-bottom: 48px;
-    color: #FFCB00;
+    color: #b0c1de;
     font-size: 14px;
     text-align: center;
     position: relative;
 }
 
 footer h3 {
-    color: #FFA400;
+    color: #e4eeff;
 }
 
 footer a, footer a:visited { color: #525252; }
@@ -829,7 +788,7 @@ footer .social-links li:first-child { margin-left: 0; }
     display: block;
     width: 60px;
     height: 60px;
-    background-color: #525252;
+    background-color: #253b5e;
 
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
@@ -837,9 +796,9 @@ footer .social-links li:first-child { margin-left: 0; }
     -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 
-    color: #fff;
+    color: #e4eeff;
     font-size: 21px;
     line-height: 60px;
     border-radius: 100%;
 }
-#go-top a:hover { background-color: #0F9095; }
+#go-top a:hover { background-color: #5475ab; }
