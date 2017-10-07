@@ -13,8 +13,7 @@
    e. Education Section
    f. Portfolio Section
    g. Photos Section
-   h. Blog Section
-   i. Footer
+   h. Footer
 
 ===================================================================== */
 
@@ -307,40 +306,45 @@ ul#nav li.current a { color: #5a7eb8; }
 
 }
 
-#experience .cs-pic {
+#experience .bv-pic {
     background-color: #e4eeff;
-    width: 165px;
-    height: 40px;
+    width: 160px;
     padding-top: 5px;
 }
 
-#experience .nau-pic {
-    width: 110px;
-    height: 110px;
+#experience .cs-pic {
+    background-color: #e4eeff;
+    width: 160px;
+    padding-top: 5px;
+}
+
+#experience .logo-pic {
+    background-color: #e4eeff;
+    width: 160px;
     padding-top: 5px;
 }
 
 #experience .hms-pic {
-    width: 150px;
-    height: 40px;
+    background-color: #e4eeff;
+    width: 160px;
     padding-top: 5px;
 }
 
 #experience .bio-pic {
-    width: 110px;
-    height: 110px;
+    background-color: #e4eeff;
+    width: 160px;
     padding-top: 5px;
 }
 
 #experience .yu-pic {
+    background-color: #e4eeff;
     width: 160px;
-    height: 90px;
     padding-top: 5px;
 }
 
 #experience .hps-pic {
+    background-color: #e4eeff;
     width: 160px;
-    height: 90px;
     padding-top: 5px;
 }
 
