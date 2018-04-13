@@ -12,7 +12,7 @@
    d. Experience Section
    e. Education Section
    f. Portfolio Section
-   g. Photos Section
+   g. more Section
    h. Footer
 
 ===================================================================== */
@@ -505,10 +505,10 @@ ul#nav li.current a { color: #5a7eb8; }
 }
 
 /* ------------------------------------------------------------------
-/* g. Photos
+/* g. more
 /* ------------------------------------------------------------------ */
 
-#photos {
+#more {
     background: #5475ab;
     background-size: cover !important;
     -webkit-background-size: cover !important;
@@ -519,44 +519,44 @@ ul#nav li.current a { color: #5a7eb8; }
     overflow: hidden;
 }
 
-#photos .text-container {
+#more .text-container {
     padding-top: 70px;
     padding-bottom: 66px;
 }
 
-#photos h1 {
+#more h1 {
     font: 28px/24px 'opensans-bold', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #FFA400;
 }
-#photos h1 span {
+#more h1 span {
     border-bottom: 3px solid #FFCB00;
     padding-bottom: 6px;
 }
 
-#photos .header-col {
+#more .header-col {
     padding-top: 9px;
     padding-bottom: 45px;
     text-align: center;
 }
 
-#photos .button{
+#more .button{
     margin-top: 6px;
     color: #e4eeff;
     background: #253b5e;
     border-bottom: none;
 }
-#photos .download .button:hover {
+#more .download .button:hover {
     background: #103b5e;
     color: #b0c1de;
 }
-#photos .download .button i {
+#more .download .button i {
     margin-right: 10px;
     font-size: 20px;
 }
 
-#photos a:hover, #education a:focus {
+#more a:hover, #education a:focus {
     color: #f1c40f;
 }
 
