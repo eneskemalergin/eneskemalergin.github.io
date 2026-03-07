@@ -131,8 +131,6 @@ table {
 *,
 *:before,
 *:after {
-   -moz-box-sizing: border-box;
-   -webkit-box-sizing: border-box;
    box-sizing: border-box;
 }
 
@@ -290,9 +288,6 @@ a, a:visited {
    outline: 0;
    color: #11ABB0;
 
-   -webkit-transition: color .08s ease-in-out;
-   -moz-transition: color .08s ease-in-out;
-   -o-transition: color .08s ease-in-out;
    transition: color .08s ease-in-out;
 }
 a:hover, a:focus { color: #313131; }
@@ -419,14 +414,8 @@ dd { margin: 0 0 0 20px; }
 	color: #6E757C;
 	background-color: #E6E8EB;
 
-	-webkit-transition: all 200ms ease-in-out;
-	-moz-transition: all 200ms ease-in-out;
-	-o-transition: all 200ms ease-in-out;
-	-ms-transition: all 200ms ease-in-out;
 	transition: all 200ms ease-in-out;
 
-   -moz-border-radius: 3px;
-   -webkit-border-radius: 3px;
    -khtml-border-radius: 3px;
 	border-radius: 3px;
 }
@@ -475,14 +464,8 @@ input[type="button"] {
    cursor: pointer;
    height: auto;
 
-   -webkit-transition: all .2s ease-in-out;
-	-moz-transition: all .2s ease-in-out;
-	-o-transition: all .2s ease-in-out;
-	-ms-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 
-   -moz-border-radius: 3px;
-   -webkit-border-radius: 3px;
    -khtml-border-radius: 3px;
    border-radius: 3px;
 }

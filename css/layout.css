@@ -34,7 +34,6 @@ header {
     width: 100%;
     background: #5a7eb8 url(../images/header_background.jpg) no-repeat top center;
     background-size: cover !important;
-    -webkit-background-size: cover !important;
     text-align: center;
     overflow: hidden;
 }
@@ -117,9 +116,6 @@ header .scrolldown a {
     color: #e4eeff;
     border-radius: 100%;
 
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 header .scrolldown a:hover {
@@ -181,10 +177,6 @@ ul#nav li a {
     text-align: left;
     color: #e4eeff;
 
-    -webkit-transition: color .2s ease-in-out;
-    -moz-transition: color .2s ease-in-out;
-    -o-transition: color .2s ease-in-out;
-    -ms-transition: color .2s ease-in-out;
     transition: color .2s ease-in-out;
 }
 
@@ -511,7 +503,6 @@ ul#nav li.current a { color: #5a7eb8; }
 #more {
     background: #5475ab;
     background-size: cover !important;
-    -webkit-background-size: cover !important;
     background-attachment: fixed;
     position: relative;
     min-height: 200px;
@@ -636,10 +627,6 @@ footer .social-links li:first-child { margin-left: 0; }
     height: 60px;
     background-color: #253b5e;
 
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 
     color: #e4eeff;
