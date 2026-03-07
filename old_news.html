@@ -37,7 +37,7 @@
         .page-header h1 {
             color: #e4eeff;
             font-family: 'opensans-regular', sans-serif;
-            font-size: 2.2rem;
+            font-size: 26px;
             letter-spacing: 3px;
             margin: 0 0 8px;
             text-transform: uppercase;
@@ -45,7 +45,7 @@
         .page-header p {
             color: #b0c1de;
             font-family: 'opensans-regular', sans-serif;
-            font-size: 0.95rem;
+            font-size: 14px;
             margin: 0;
         }
 
@@ -62,7 +62,7 @@
         }
         .year-label {
             font-family: 'opensans-bold', sans-serif;
-            font-size: 0.8rem;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -82,10 +82,16 @@
             position: relative;
             padding: 9px 0 9px 20px;
             font-family: 'opensans-regular', sans-serif;
-            font-size: 0.95rem;
+            font-size: 15px;
             color: #333;
-            line-height: 1.7;
+            line-height: 26px;
             border-bottom: 1px solid #ccd8ee;
+        }
+        /* Prevent default.css em rule (15px/30px) from inflating inline notes */
+        .news-list em {
+            font-size: inherit;
+            line-height: inherit;
+            font-style: italic;
         }
         .news-list li:last-child {
             border-bottom: none;
@@ -103,7 +109,7 @@
         .news-list .date-badge {
             font-family: 'opensans-bold', sans-serif;
             color: #253b5e;
-            font-size: 0.85rem;
+            font-size: 13px;
             margin-right: 5px;
         }
 
@@ -140,7 +146,7 @@
             background: #5a7eb8;
             color: #fff;
             font-family: 'opensans-bold', sans-serif;
-            font-size: 0.88rem;
+            font-size: 13px;
             letter-spacing: 1.5px;
             text-decoration: none;
             border-radius: 3px;
@@ -161,15 +167,23 @@
 
     <div class="news-wrapper">
 
+        <!-- 2026 -->
+        <div class="year-section">
+            <h2 class="year-label">2026</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Feb 2026]</span> Open-sourced <a href="https://github.com/eneskemalergin/z-fasta" target="_blank">z-fasta</a>, an ultra-fast FASTA indexer written in Zig.</li>
+            </ul>
+        </div>
+
         <!-- 2025 -->
         <div class="year-section">
             <h2 class="year-label">2025</h2>
             <ul class="news-list">
                 <li><span class="date-badge">[Dec 2025]</span> Submitted third paper, ProteoForge, to bioRxiv; currently under revision for the Journal of Proteome Research. <a href="https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" target="_blank">bioRxiv preprint</a></li>
-                <li><span class="date-badge">[Jun 2025]</span> Joined the Lange Lab as a Staff Bioinformatician to continue proteomics research and ongoing projects.</li>
-                <li><span class="date-badge">[May 2025]</span> PhD thesis indexed on Google Scholar. <a href="#" class="tbd" title="Fill in Scholar link">[link TBD]</a></li>
-                <li><span class="date-badge">[Apr 2025]</span> Fifth co-authored paper (PROFYLE) by Barnabas et al. published in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" target="_blank">EMBO Molecular Medicine</a>.</li>
-                <li><span class="date-badge">[Apr 2025]</span> Successfully defended PhD dissertation without revisions; thesis deposited to <a href="#" class="tbd" title="Fill in cIRcle link">cIRcle at UBC [link TBD]</a>.</li>
+                <li><span class="date-badge">[Jun 2025]</span> Stayed at the Lange Lab as a Staff Bioinformatician to continue proteomics research and ongoing projects.</li>
+                <li><span class="date-badge">[May 2025]</span> PhD thesis indexed on Google Scholar</li>
+                <li><span class="date-badge">[Apr 2025]</span> Fifth co-authored paper (for PROFYLE) by Barnabas et al. published in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" target="_blank">EMBO Molecular Medicine</a>.</li>
+                <li><span class="date-badge">[Apr 2025]</span> Successfully defended PhD dissertation without revisions; thesis deposited to <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334" target="_blank">UBC Library</a>.</li>
             </ul>
         </div>
 
@@ -188,7 +202,7 @@
         <div class="year-section">
             <h2 class="year-label">2023</h2>
             <ul class="news-list">
-                <li><span class="date-badge">[Nov 2023]</span> Fourth co-authored paper, led by Dr. Amanda Lorentzian, published in <a href="#" class="tbd" title="Fill in Nature Communications link">Nature Communications [link TBD]</a>.</li>
+                <li><span class="date-badge">[Nov 2023]</span> Fourth co-authored paper, led by Dr. Amanda Lorentzian, published in <a href="https://www.nature.com/articles/s41467-023-42701-9" target="_blank">Nature Communications </a>.</li>
                 <li><span class="date-badge">[Jul 2023]</span> Led a workshop on common downstream proteomics analysis pipelines using R for the Trainee Omics Group (TOG) at BCCHR.</li>
                 <li><span class="date-badge">[Jun 2023]</span> Gave a talk on QuEStVar and stable proteomes in cancer cell lines at BCCHR's Trainee Omics Group (TOG).</li>
                 <li><span class="date-badge">[May 2023]</span> Received a student travel award at CNPN 2023 in Regina, SK.</li>
