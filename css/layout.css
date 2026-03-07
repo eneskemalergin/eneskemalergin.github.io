@@ -194,7 +194,7 @@ ul#nav li.current a { color: #5a7eb8; }
     padding-bottom: 60px; /* 66px */
     overflow: hidden;
     /* Do Not adjust Height here! */
-    font-family: 'MuseoSlab500', sans-serif;
+    font-family: 'opensans-regular', sans-serif;
     color: #b0c1de;
 }
 
