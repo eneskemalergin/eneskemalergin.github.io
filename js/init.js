@@ -136,7 +136,6 @@
 /*----------------------------------------------------*/
 /*	contact form
 ------------------------------------------------------*/
-jQuery.support.cors = true;
    $('form#contactForm button.submit').click(function() {
 
       $('#image-loader').fadeIn();
