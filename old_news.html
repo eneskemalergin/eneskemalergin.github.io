@@ -4,8 +4,8 @@
     <!--- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Old News - Enes Kemal Ergin</title>
-    <meta name="description" content="News archive of Enes Kemal Ergin" />
+    <title>News Archive - Enes Kemal Ergin</title>
+    <meta name="description" content="Full news archive of Enes Kemal Ergin" />
 
     <!-- Mobile Specific Metas
     ================================================== -->
@@ -20,38 +20,247 @@
     <!-- Favicons
     ================================================== -->
     <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+
+    <style>
+        body {
+            background: #d9e1f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Page header */
+        .page-header {
+            background: #253b5e;
+            padding: 44px 24px 36px;
+            text-align: center;
+        }
+        .page-header h1 {
+            color: #e4eeff;
+            font-family: 'opensans-regular', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+        }
+        .page-header p {
+            color: #b0c1de;
+            font-family: 'opensans-regular', sans-serif;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Main content wrapper */
+        .news-wrapper {
+            max-width: 800px;
+            margin: 44px auto;
+            padding: 0 24px 64px;
+        }
+
+        /* Year section */
+        .year-section {
+            margin-bottom: 40px;
+        }
+        .year-label {
+            font-family: 'opensans-bold', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #5a7eb8;
+            border-bottom: 2px solid #b0c1de;
+            padding-bottom: 6px;
+            margin: 0 0 12px;
+        }
+
+        /* News list */
+        .news-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .news-list li {
+            position: relative;
+            padding: 9px 0 9px 20px;
+            font-family: 'opensans-regular', sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.7;
+            border-bottom: 1px solid #ccd8ee;
+        }
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+        .news-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #5a7eb8;
+        }
+        .news-list .date-badge {
+            font-family: 'opensans-bold', sans-serif;
+            color: #253b5e;
+            font-size: 0.85rem;
+            margin-right: 5px;
+        }
+
+        /* Links */
+        .news-list a {
+            color: #5a7eb8;
+            text-decoration: none;
+            border-bottom: 1px solid #b0c1de;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .news-list a:hover {
+            color: #253b5e;
+            border-color: #5a7eb8;
+        }
+        /* Placeholder links (TBD) */
+        .news-list a.tbd {
+            color: #8899bb;
+            border-bottom: 1px dashed #aabbd4;
+            font-style: italic;
+        }
+        .news-list a.tbd:hover {
+            color: #5a7eb8;
+            border-color: #5a7eb8;
+        }
+
+        /* Back button */
+        .back-link-wrap {
+            text-align: center;
+            margin-top: 52px;
+        }
+        .back-link-wrap a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #5a7eb8;
+            color: #fff;
+            font-family: 'opensans-bold', sans-serif;
+            font-size: 0.88rem;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border-radius: 3px;
+            border: none;
+            transition: background 0.2s;
+        }
+        .back-link-wrap a:hover {
+            background: #253b5e;
+        }
+    </style>
 </head>
 
-<body style="background:#5475ab; padding: 48px 0;">
-    <div class="row">
-        <div class="columns latest-news">
-            <h2 style="color:#253b5e; margin-bottom:16px;">Old News</h2>
-            <ul>
-                <li>[May 2017] Accepted into the <a href="https://www.bioinformatics.ubc.ca/">Bioinformatics</a> Masters program at the University of British Columbia (UBC)</li>
-                <li>[May 2017] Graduated with Distinction from the <a href="https://www.facebook.com/ComputerScienceNAU/?ref=bookmarks">Computer Science Department</a> at <a href="https://www.na.edu/">NAU</a></li>
-                <li>[Jun 2017] Moved to Canada from the U.S.</li>
-                <li>[Sep 2017] Started working as a Graduate Student in the <a href="https://langelab.med.ubc.ca/">Lange Lab</a> at the <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a></li>
-                <li>[Sep 2017] Started classes with Special Topics in Bioinformatics at <a href="https://www.bioinformatics.ubc.ca/">UBC</a></li>
-                <li>[Apr 2018] Presented a class project poster at STAT Day 2018 in the UBC.</li>
-                <li>[May 2018] Attended my first proteomics conference CNPN 2018 in Vancouver</li>
-                <li>[May 2018] Received the <a href="https://www.bcchr.ca/childhoodcancer">Michael Cuccione Childhood Cancer Foundation Graduate Studentship</a> for a year</li>
-                <li>[Apr 2019] Transferred from Masters's to Ph.D. in the <a href="https://www.bioinformatics.ubc.ca/">UBC Bioinformatics Graduate Program</a></li>
-                <li>[May 2019] Received the <a href="https://www.grad.ubc.ca/awards/four-year-doctoral-fellowship-4yf">4YF Fellowship</a> for funding my Ph.D. for four years</li>
-                <li>[Nov 2019] Co-authored my first proteomics paper, which was published in <a href="https://www.mcponline.org/content/18/11/2335.abstract">Molecular &amp; Cellular Proteomics</a></li>
-                <li>[May 2020] Presented on normalization techniques for proteomics data to the <a href="https://www.bcchr.ca/tog">Trainee Omics Group (TOG)</a> at <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a></li>
-                <li>[Aug 2020] Took a leave of absence from my Ph.D.</li>
-                <li>[Sep 2021] Passed my comprehensive exam and became a Ph.D. candidate</li>
-                <li>[Dec 2021] Co-authored my second proteomics paper, which was published in the <a href="https://link.springer.com/article/10.1186/s13046-021-01835-8">Journal of Experimental and Clinical Cancer Research</a></li>
-                <li>[May 2022] Supervised my first co-op student for the next eight months</li>
-                <li>[Sep 2022] Published my first full-authored manuscript about <a href="https://squapp.langelab.org/">SQuAPP</a> in the <a href="https://academic.oup.com/bioinformatics/article/38/21/4956/6697884">Oxford Bioinformatics</a> journal</li>
-                <li>[Jan 2023] Co-authored my fourth proteomics paper, led by Dr. Amanda Lorentzian, which was published in the <a href="https://www.medrxiv.org/content/10.1101/2022.03.04.22271927v2">MedRxiv</a> journal</li>
-                <li>[Mar 2023] Presented my work as a poster at BIG 2023 Research Day</li>
-                <li>[May 2023] Attended CNPN 2023 Conference with two posters</li>
-                <li>[May 2023] Selected to present one of my poster abstracts during trainee presentations at CNPN 2023</li>
-                <li>[May 2023] Received a student travel award from CNPN 2023 Conference in Regina, SK.</li>
-                <li><a href="index.html">&larr; Back to main page</a></li>
+<body>
+    <div class="page-header">
+        <h1>News Archive</h1>
+        <p>All updates &mdash; newest first</p>
+    </div>
+
+    <div class="news-wrapper">
+
+        <!-- 2025 -->
+        <div class="year-section">
+            <h2 class="year-label">2025</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Dec 2025]</span> Submitted third paper, ProteoForge, to bioRxiv; currently under revision for the Journal of Proteome Research. <a href="https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" target="_blank">bioRxiv preprint</a></li>
+                <li><span class="date-badge">[Jun 2025]</span> Joined the Lange Lab as a Staff Bioinformatician to continue proteomics research and ongoing projects.</li>
+                <li><span class="date-badge">[May 2025]</span> PhD thesis indexed on Google Scholar. <a href="#" class="tbd" title="Fill in Scholar link">[link TBD]</a></li>
+                <li><span class="date-badge">[Apr 2025]</span> Fifth co-authored paper (PROFYLE) by Barnabas et al. published in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" target="_blank">EMBO Molecular Medicine</a>.</li>
+                <li><span class="date-badge">[Apr 2025]</span> Successfully defended PhD dissertation without revisions; thesis deposited to <a href="#" class="tbd" title="Fill in cIRcle link">cIRcle at UBC [link TBD]</a>.</li>
             </ul>
         </div>
+
+        <!-- 2024 -->
+        <div class="year-section">
+            <h2 class="year-label">2024</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Nov 2024]</span> Attended CNPN 2024 in Whistler, BC.</li>
+                <li><span class="date-badge">[Jul 2024]</span> Fifth co-authored paper by Barnabas and Bhat (PROFYLE) submitted to bioRxiv. <em>(Published Apr 2025 in EMBO Molecular Medicine.)</em></li>
+                <li><span class="date-badge">[Jun 2024]</span> Received approval to write and defend PhD thesis.</li>
+                <li><span class="date-badge">[May 2024]</span> Published second first-authored paper on QuEStVar in the <a href="https://doi.org/10.1021/acs.jproteome.4c00131" target="_blank">Journal of Proteome Research</a>.</li>
+            </ul>
+        </div>
+
+        <!-- 2023 -->
+        <div class="year-section">
+            <h2 class="year-label">2023</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Nov 2023]</span> Fourth co-authored paper, led by Dr. Amanda Lorentzian, published in <a href="#" class="tbd" title="Fill in Nature Communications link">Nature Communications [link TBD]</a>.</li>
+                <li><span class="date-badge">[Jul 2023]</span> Led a workshop on common downstream proteomics analysis pipelines using R for the Trainee Omics Group (TOG) at BCCHR.</li>
+                <li><span class="date-badge">[Jun 2023]</span> Gave a talk on QuEStVar and stable proteomes in cancer cell lines at BCCHR's Trainee Omics Group (TOG).</li>
+                <li><span class="date-badge">[May 2023]</span> Received a student travel award at CNPN 2023 in Regina, SK.</li>
+                <li><span class="date-badge">[May 2023]</span> Gave a trainee talk on InPACCT and presented two posters at CNPN 2023 in Regina, SK.</li>
+                <li><span class="date-badge">[Mar 2023]</span> Presented a poster at BIG 2023 Research Day.</li>
+                <li><span class="date-badge">[Jan 2023]</span> Fourth co-authored paper, led by Dr. Amanda Lorentzian, posted to <a href="https://www.medrxiv.org/content/10.1101/2022.03.04.22271927v2" target="_blank">MedRxiv</a> as a preprint. <em>(Published in Nature Communications, Nov 2023.)</em></li>
+            </ul>
+        </div>
+
+        <!-- 2022 -->
+        <div class="year-section">
+            <h2 class="year-label">2022</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Sep 2022]</span> Published first full-authored manuscript, <a href="https://squapp.langelab.org/" target="_blank">SQuAPP</a>, in <a href="https://academic.oup.com/bioinformatics/article/38/21/4956/6697884" target="_blank">Oxford Bioinformatics</a>.</li>
+                <li><span class="date-badge">[May 2022]</span> Supervised first co-op student over the following eight months.</li>
+            </ul>
+        </div>
+
+        <!-- 2021 -->
+        <div class="year-section">
+            <h2 class="year-label">2021</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Dec 2021]</span> Co-authored second proteomics paper, published in the <a href="https://link.springer.com/article/10.1186/s13046-021-01835-8" target="_blank">Journal of Experimental and Clinical Cancer Research</a>.</li>
+                <li><span class="date-badge">[Sep 2021]</span> Passed comprehensive exam and advanced to PhD candidacy.</li>
+            </ul>
+        </div>
+
+        <!-- 2020 -->
+        <div class="year-section">
+            <h2 class="year-label">2020</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Aug 2020]</span> Took a leave of absence from PhD.</li>
+                <li><span class="date-badge">[May 2020]</span> Presented on normalization techniques for proteomics data to the <a href="https://www.bcchr.ca/tog" target="_blank">Trainee Omics Group (TOG)</a> at BCCHR.</li>
+            </ul>
+        </div>
+
+        <!-- 2019 -->
+        <div class="year-section">
+            <h2 class="year-label">2019</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Nov 2019]</span> Co-authored first proteomics paper, published in <a href="https://www.mcponline.org/content/18/11/2335.abstract" target="_blank">Molecular &amp; Cellular Proteomics</a>.</li>
+                <li><span class="date-badge">[May 2019]</span> Received the <a href="https://www.grad.ubc.ca/awards/four-year-doctoral-fellowship-4yf" target="_blank">Four Year Doctoral Fellowship (4YF)</a> for PhD funding.</li>
+                <li><span class="date-badge">[Apr 2019]</span> Transferred from Masters to PhD in the <a href="https://www.bioinformatics.ubc.ca/" target="_blank">UBC Bioinformatics Graduate Program</a>.</li>
+            </ul>
+        </div>
+
+        <!-- 2018 -->
+        <div class="year-section">
+            <h2 class="year-label">2018</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[May 2018]</span> Attended first proteomics conference, CNPN 2018, in Vancouver, BC.</li>
+                <li><span class="date-badge">[May 2018]</span> Received the <a href="https://www.bcchr.ca/childhoodcancer" target="_blank">Michael Cuccione Childhood Cancer Foundation Graduate Studentship</a>.</li>
+                <li><span class="date-badge">[Apr 2018]</span> Presented a class project poster at STAT Day 2018 at UBC.</li>
+            </ul>
+        </div>
+
+        <!-- 2017 -->
+        <div class="year-section">
+            <h2 class="year-label">2017</h2>
+            <ul class="news-list">
+                <li><span class="date-badge">[Sep 2017]</span> Began graduate studies in the <a href="https://langelab.med.ubc.ca/" target="_blank">Lange Lab</a> at <a href="https://bcchr.ca/" target="_blank">BC Children's Hospital Research Institute</a>.</li>
+                <li><span class="date-badge">[Sep 2017]</span> Enrolled in Special Topics in Bioinformatics at <a href="https://www.bioinformatics.ubc.ca/" target="_blank">UBC</a>.</li>
+                <li><span class="date-badge">[Jun 2017]</span> Relocated from the U.S. to Canada.</li>
+                <li><span class="date-badge">[May 2017]</span> Graduated with Distinction from the <a href="https://www.facebook.com/ComputerScienceNAU/?ref=bookmarks" target="_blank">Computer Science Department</a> at <a href="https://www.na.edu/" target="_blank">NAU</a>.</li>
+                <li><span class="date-badge">[May 2017]</span> Accepted into the <a href="https://www.bioinformatics.ubc.ca/" target="_blank">Bioinformatics</a> Masters program at UBC.</li>
+            </ul>
+        </div>
+
+        <div class="back-link-wrap">
+            <a href="index.html">&larr; Back to main page</a>
+        </div>
+
     </div>
 </body>
 
