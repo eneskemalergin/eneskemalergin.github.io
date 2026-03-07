@@ -2,9 +2,7 @@
 
 > Add README Details about page
 
-
-
-Develop using CEEVEEE theme:
+Develop using CEEVEEE theme
 ==================================================================================================
 
 CEEVEE is a clean, modern, fully responsive site template for your
