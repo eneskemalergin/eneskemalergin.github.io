@@ -64,11 +64,15 @@ header .banner-text h1 {
     text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
 }
 header .banner-text h3 {
-    font: 18px/1.9em 'librebaskerville-regular', serif;
+    font: 20px/1.9em 'librebaskerville-regular', serif;
     color: #FFCB6C;
     margin: 0 auto;
     width: 70%;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 6px;
+    padding: 6px 24px;
+    display: inline-block;
 }
 header .banner-text h3 span,
 header .banner-text h3 a {
@@ -229,8 +233,29 @@ ul#nav li.current a { color: #5a7eb8; }
     border-radius: 50%;
     border:6px solid #5a7eb8;
 }
+#about .profile-col {
+    text-align: center;
+}
+#about .profile-col .button {
+    display: inline-block;
+    margin-top: 20px;
+    color: #b0c1de;
+    background: #253b5e;
+    border-bottom: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+#about .profile-col .button:hover {
+    background: #103b5e;
+    color: #b0c1de;
+}
+#about .profile-col .button i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
 #about .latest-news {
-    width: 65%;
+    width: 100%;
     font-size: 16px;
 }
 
@@ -386,6 +411,32 @@ ul#nav li.current a { color: #5a7eb8; }
     color: #003691;
 }
 
+/* Lab subtitle under institution h3 */
+#experience .lab-label {
+    font: 15px/22px 'opensans-semibold-italic', serif;
+    color: #5a7eb8;
+    margin: 2px 0 10px;
+}
+#experience .lab-label a,
+#experience .lab-label a:visited {
+    color: #7aaad4;
+}
+#experience .lab-label a:hover {
+    color: #b0c1de;
+}
+
+/* Role divider block within a shared employer card */
+#experience .role-block {
+    border-top: 1px solid rgba(90, 126, 184, 0.3);
+    padding-top: 8px;
+    margin-top: 10px;
+}
+#experience .role-block:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
 #experience .date {
     font: 18px/24px 'opensans-semibold-regular', sans-serif;
     /* margin-top: 6px; */
@@ -394,7 +445,149 @@ ul#nav li.current a { color: #5a7eb8; }
 
 
 /* ------------------------------------------------------------------ */
-/* e. Education Section
+/* d2. Projects Section (experimental)
+/* ------------------------------------------------------------------ */
+
+#projects {
+    background: #1e3050;
+    padding-top: 70px;
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+
+#projects h1 {
+    color: #b0c1de;
+    font: 36px/30px 'opensans-bold', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#projects h1 span {
+    border-bottom: 3px solid #5374AD;
+    padding-bottom: 6px;
+}
+#projects .header-col {
+    padding-top: 9px;
+    padding-bottom: 36px;
+    text-align: center;
+}
+#projects .main-col {
+    padding-top: 9px;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+#projects .projects-intro {
+    color: #b0c1de;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+/* Card grid */
+#projects .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+#projects .project-card {
+    background: rgba(90, 126, 184, 0.12);
+    border: 1px solid rgba(90, 126, 184, 0.3);
+    border-radius: 6px;
+    padding: 22px 24px 18px;
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+#projects .project-card:hover {
+    background: rgba(90, 126, 184, 0.22);
+    border-color: rgba(90, 126, 184, 0.6);
+}
+
+/* Card image strip */
+#projects .project-card-image {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+    margin: -22px -24px 14px;
+    width: calc(100% + 48px);
+    background: rgba(0,0,0,0.2);
+}
+#projects .project-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+/* Card header row: tag + date + github icon */
+#projects .project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+#projects .project-tag {
+    font: 11px/1 'opensans-bold', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #5a7eb8;
+    flex: 1;
+}
+#projects .project-date {
+    font: 11px/1 'opensans-bold', sans-serif;
+    letter-spacing: 1px;
+    color: #5a7eb8;
+    margin-right: 8px;
+}
+#projects .project-link {
+    color: #5a7eb8;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    transition: color 0.2s;
+}
+#projects .project-link:hover {
+    color: #e4eeff;
+}
+
+/* Card body */
+#projects .project-card h3 {
+    color: #e4eeff;
+    font: 18px/24px 'opensans-bold', sans-serif;
+    margin: 0 0 8px;
+}
+#projects .project-card h3 a {
+    color: #e4eeff;
+    text-decoration: none;
+    border: none;
+}
+#projects .project-card h3 a:hover {
+    color: #b0c1de;
+}
+#projects .project-card p {
+    color: #b0c1de;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0 12px;
+}
+#projects .project-pub {
+    font: 12px/1 'opensans-semibold-italic', serif;
+    color: #5a7eb8;
+}
+#projects .project-pub a {
+    color: #7aaad4;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 126, 184, 0.4);
+}
+#projects .project-pub a:hover {
+    color: #e4eeff;
+    border-color: #5a7eb8;
+}
+
+/* ------------------------------------------------------------------ */
+/* e. Experience Section
 /* ------------------------------------------------------------------ */
 
 #education {
@@ -473,7 +666,7 @@ ul#nav li.current a { color: #5a7eb8; }
 
 #education ul li {
     margin-bottom: 5px;
-    color: ##b0c1de;
+    color: #b0c1de;
 }
 
 
