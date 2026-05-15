@@ -28,6 +28,10 @@
     "count": 2
   },
   {
+    "name": "proteoforms",
+    "count": 1
+  },
+  {
     "name": "statistics",
     "count": 1
   },
@@ -36,15 +40,19 @@
     "count": 1
   },
   {
-    "name": "proteoforms",
+    "name": "fasta",
+    "count": 1
+  },
+  {
+    "name": "calibration",
+    "count": 1
+  },
+  {
+    "name": "lod/loq",
     "count": 1
   },
   {
     "name": "fair",
-    "count": 1
-  },
-  {
-    "name": "fasta",
     "count": 1
   },
   {
@@ -89,14 +97,6 @@
   },
   {
     "name": "codec",
-    "count": 1
-  },
-  {
-    "name": "calibration",
-    "count": 1
-  },
-  {
-    "name": "lod/loq",
     "count": 1
   }
 ]

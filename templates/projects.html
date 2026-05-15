@@ -19,7 +19,7 @@
                     {% if p.image %}
                     <img src="{{ get_url(path=p.image) }}" alt="{{ p.title }} screenshot" loading="lazy" />
                     {% else %}
-                    <div class="project-thumb-placeholder">&#9679;</div>
+                    <div class="project-thumb-placeholder">{{ p.title | truncate(length=1, end="") }}</div>
                     {% endif %}
                 </div>
                 <div class="project-meta">

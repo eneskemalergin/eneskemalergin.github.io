@@ -59,9 +59,10 @@
 # ─── Left Column (under thumbnail) ─────────────────────────────────────────
 #
 #   .project-domain    – Uppercase muted label ("DATA-ANALYSIS", "METADATA",
-#                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS")
+#                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS", 
+#                        "OTHER")
 #   .project-source    – Uppercase muted label ("LANGELAB", "ZENTEOMICS",
-#                        "PERSONAL")
+#                        "PERSONAL", "COMMUNITY")
 #
 # ─── Dark Mode ─────────────────────────────────────────────────────────────
 #   All coloured badges have brighter/saturated dark-mode variants (see CSS).
@@ -73,6 +74,8 @@
 #   - Star badge uses data-stars attribute; CSS handles 1/2/4/5/10 stops.
 #   - Thumbnail is square 130 px (80 px on mobile).
 #   - tag = "NA" means blog tag slug not yet assigned (fill later).
+#   - Tag frequency cloud is auto-generated into data/tag_frequencies.json.
+#     Run ./build.sh instead of bare zola build/serve to regenerate it.
 #   - The full badge rendering lives in sass/style.scss under "Project stats"
 #     and templates/projects.html.
 
@@ -96,7 +99,24 @@ app = "http://squapp.langelab.org"
 paper = "https://doi.org/10.1093/bioinformatics/btac628"
 
 [[projects]]
-title = "QuEStVar Analysis"
+title = "ProteoForge"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 4
+version = "0.1.0"
+language = "Python"
+pub = "preprint"
+access = "public"
+image = "projects/proteoforge.jpg"
+tag = "NA"
+tags = ["proteomics", "proteoforms"]
+desc = "Reproducible analysis snapshot for the ProteoForge manuscript. Under revision at J. Proteome Res."
+github = "https://github.com/LangeLab/ProteoForge_Analysis"
+preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
+
+[[projects]]
+title = "QuEStVar"
 domain = "data-analysis"
 source = "langelab"
 status = "stable"
@@ -105,27 +125,42 @@ version = "0.1.0"
 language = "Python"
 pub = "published"
 access = "public"
-tag = "NA"
+image = "projects/questvar.jpg"
+tag = "questvar"
 tags = ["proteomics", "statistics", "equivalence-testing"]
 desc = "Reproducible analysis for statistical testing of protein equivalence across cancer cell lines. Published in J. Proteome Res. (2024)."
 github = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript"
 paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
 
 [[projects]]
-title = "ProteoForge Analysis"
+title = "z-fasta"
+domain = "core-tooling"
+source = "personal"
+status = "active"
+stars = 5
+version = "0.2.7"
+language = "Zig"
+pub = "planned"
+access = "public"
+tag = "z-fasta"
+tags = ["bioinformatics", "fasta", "cli"]
+desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
+github = "https://github.com/eneskemalergin/z-fasta"
+
+[[projects]]
+title = "loqculate"
 domain = "data-analysis"
-source = "langelab"
+source = "personal"
 status = "active"
 stars = 4
-version = "0.1.0"
+version = "0.3.0"
 language = "Python"
-pub = "preprint"
+pub = "planned"
 access = "public"
 tag = "NA"
-tags = ["proteomics", "proteoforms"]
-desc = "Reproducible analysis snapshot for the ProteoForge manuscript. Under revision at J. Proteome Res."
-github = "https://github.com/LangeLab/ProteoForge_Analysis"
-preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
+tags = ["proteomics", "calibration", "lod/loq", "cli", "library"]
+desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
+github = "https://github.com/eneskemalergin/loqculate"
 
 [[projects]]
 title = "pxseek"
@@ -156,21 +191,6 @@ tag = "NA"
 tags = ["proteomics", "metadata", "fair", "cli"]
 desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
 github = "https://github.com/LangeLab/PXAudit"
-
-[[projects]]
-title = "z-fasta"
-domain = "core-tooling"
-source = "personal"
-status = "active"
-stars = 5
-version = "0.2.7"
-language = "Zig"
-pub = "na"
-access = "public"
-tag = "z-fasta"
-tags = ["bioinformatics", "fasta", "cli"]
-desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
-github = "https://github.com/eneskemalergin/z-fasta"
 
 [[projects]]
 title = "z-toml"
@@ -242,22 +262,8 @@ version = "0.1.0"
 language = "Zig"
 pub = "na"
 access = "public"
+image = "projects/mzarc.jpg"
 tag = "NA"
 tags = ["MS", "mzml", "compression", "codec"]
 desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
 github = "https://github.com/eneskemalergin/mzarc"
-
-[[projects]]
-title = "loqculate"
-domain = "data-analysis"
-source = "zenteomics"
-status = "active"
-stars = 4
-version = "0.3.0"
-language = "Python"
-pub = "na"
-access = "public"
-tag = "NA"
-tags = ["proteomics", "calibration", "lod/loq", "cli", "library"]
-desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
-github = "https://github.com/eneskemalergin/loqculate"
