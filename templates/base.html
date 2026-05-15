@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title %}{{ page.title }} &mdash; {{ config.title }}{% elif section.title %}{{ section.title }} &mdash; {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} &mdash; {{ config.title }}{% elif section.title %}{{ section.title }}
+        &mdash; {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}" sizes="32x32" />
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css"
+        crossorigin="anonymous" />
 </head>
+
 <body>
     <nav>
         <button class="hamburger" aria-label="Toggle menu">
@@ -25,42 +30,82 @@
             {% else %}
             {% set rel = "" %}
             {% if current_url is defined %}{% set rel = current_url | replace(from=config.base_url, to="") %}{% endif %}
-            <li><a href="{{ get_url(path=item.url) }}"{% if rel %}{% if item.url == "/" %}{% if rel == "/" or rel == "" %} class="active"{% endif %}{% else %}{% if rel is starting_with(item.url) %} class="active"{% endif %}{% endif %}{% endif %}>{{ item.name }}</a></li>
+            <li><a href="{{ get_url(path=item.url) }}" {% if rel %}{% if item.url=="/" %}{% if rel=="/" or rel=="" %}
+                    class="active" {% endif %}{% else %}{% if rel is starting_with(item.url) %} class="active" {% endif
+                    %}{% endif %}{% endif %}>{{ item.name }}</a></li>
             {% endif %}
             {% endfor %}
+            <li class="nav-toggle">
+                <button class="theme-toggle" aria-label="Switch to dark mode">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb"><span class="toggle-icon">☀</span></span>
+                    </span>
+                </button>
+            </li>
         </ul>
     </nav>
 
     <section id="content">
         {% block content %}{% endblock %}
         <footer>
-            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}. All rights reserved.</p>
+            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}. All rights
+                reserved.</p>
         </footer>
     </section>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var hamburger = document.querySelector('.hamburger');
-        var navbar = document.querySelector('.navbar');
-        if (!hamburger || !navbar) return;
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            hamburger.classList.toggle('active');
-            navbar.classList.toggle('active');
-        });
-        document.querySelectorAll('.navbar a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navbar.classList.remove('active');
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburger = document.querySelector('.hamburger');
+            var navbar = document.querySelector('.navbar');
+            if (!hamburger || !navbar) return;
+            hamburger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navbar.classList.toggle('active');
+            });
+            document.querySelectorAll('.navbar a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('active');
+                    navbar.classList.remove('active');
+                });
+            });
+            document.addEventListener('click', function (event) {
+                if (!navbar.contains(event.target) && !hamburger.contains(event.target) && navbar.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navbar.classList.remove('active');
+                }
             });
         });
-        document.addEventListener('click', function(event) {
-            if (!navbar.contains(event.target) && !hamburger.contains(event.target) && navbar.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navbar.classList.remove('active');
+    </script>
+    <script>
+    (function() {
+        try {
+            var html = document.documentElement;
+            var toggle = document.querySelector('.theme-toggle');
+            if (!toggle) return;
+            var icon = toggle.querySelector('.toggle-icon');
+            function apply(theme) {
+                var isDark = theme === 'dark';
+                html.classList.toggle('dark', isDark);
+                try { localStorage.setItem('theme', theme); } catch(e) {}
+                if (icon) icon.textContent = isDark ? '\u{1F319}' : '\u2600';
+                toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             }
-        });
-    });
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch(e) {}
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            apply(saved || (prefersDark ? 'dark' : 'light'));
+            toggle.addEventListener('click', function() {
+                apply(html.classList.contains('dark') ? 'light' : 'dark');
+            });
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch(e) {}
+                if (!saved) apply(e.matches ? 'dark' : 'light');
+            });
+        } catch(e) { /* silent fallback */ }
+    })();
     </script>
 </body>
+
 </html>

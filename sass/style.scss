@@ -1,6 +1,406 @@
 @import "_main";
 @import "_blog";
 
+// ─── Light theme CSS variables ──────────────────────────
+
+:root {
+    --c-link: #3560a5;
+    --c-link-hover-bg: #6490d7;
+}
+
+:root.dark {
+    --c-link: #6fa8dc;
+    --c-link-hover-bg: #4a8ac4;
+}
+
+// ─── Dark mode overrides ────────────────────────────────
+
+html.dark body {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+html.dark nav {
+    background: #1a1a1a;
+}
+
+html.dark .navbar {
+    background: #1a1a1a;
+}
+
+html.dark .navbar a {
+    color: #ccc;
+}
+
+html.dark .navbar a:hover {
+    color: white;
+    background: var(--c-link-hover-bg);
+}
+
+html.dark .navbar a.active {
+    color: var(--c-link);
+    border-bottom-color: var(--c-link-hover-bg);
+    background: none;
+}
+
+html.dark .hamburger span {
+    background: #ccc;
+}
+
+html.dark a {
+    color: var(--c-link);
+}
+
+html.dark a:hover {
+    color: white;
+    background-color: var(--c-link-hover-bg);
+}
+
+html.dark #content p,
+html.dark #content,
+html.dark .paper-authors,
+html.dark .paper-venue,
+html.dark .tldr,
+html.dark .talk-meta,
+html.dark .talk-title,
+html.dark .blog-title a,
+html.dark .talk-date,
+html.dark .blog-date,
+html.dark .news-date,
+html.dark .exp-sub,
+html.dark .exp-date,
+html.dark .tools-desc,
+html.dark .tools-meta,
+html.dark .research-desc,
+html.dark .page-meta,
+html.dark .page-body code,
+html.dark .page-body blockquote,
+html.dark .service-content,
+html.dark .service-note,
+html.dark .section-desc,
+html.dark .list-meta,
+html.dark .list-desc {
+    color: #b0b0b0;
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4,
+html.dark .hero-text h2,
+html.dark .page-header h1,
+html.dark .section-header h1,
+html.dark .paper-title,
+html.dark .research-topic,
+html.dark .research-venue,
+html.dark .research-sublabel,
+html.dark .exp-header,
+html.dark .tools-header,
+html.dark .tools-header a,
+html.dark .blog-title a,
+html.dark .project-name a,
+html.dark .news-content,
+html.dark .service-label {
+    color: #e0e0e0;
+}
+
+html.dark .icons a {
+    color: #e0e0e0;
+}
+
+html.dark .icons a:hover {
+    color: var(--c-link-hover-bg);
+}
+
+html.dark footer,
+html.dark .footer {
+    color: #666;
+}
+
+html.dark hr {
+    border-top-color: #2a2a2a;
+}
+
+html.dark .paper-card,
+html.dark .talk-item,
+html.dark .blog-item,
+html.dark .list-item,
+html.dark .project-item,
+html.dark .service-item {
+    border-color: #2a2a2a;
+}
+
+html.dark .paper-card {
+    background: #222;
+}
+
+html.dark .toc img {
+    background-color: transparent;
+}
+
+html.dark .language-toggle {
+    background: #1a1a1a;
+}
+
+html.dark .navbar.active {
+    background: #1a1a1a;
+}
+
+html.dark table th,
+html.dark table td {
+    border-color: #2a2a2a;
+}
+
+html.dark tbody tr:hover {
+    background: #1e1e1e;
+}
+
+html.dark .timeline-papers {
+    border-left-color: #2a2a2a;
+}
+
+html.dark mark,
+html.dark highlight {
+    color: var(--c-link);
+}
+
+html.dark .tag {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .tag:hover {
+    background: var(--c-link-hover-bg);
+    color: white;
+}
+
+html.dark .paper-link {
+    color: var(--c-link);
+    border-color: #3a5a8a;
+}
+
+html.dark .paper-link:hover {
+    background: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+html.dark .empty {
+    color: #666;
+}
+
+html.dark .page-body code {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+html.dark .page-body pre {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+html.dark .page-body pre code {
+    border: none;
+    background: none;
+}
+
+html.dark .page-body blockquote {
+    border-left-color: #333;
+    color: #999;
+}
+
+html.dark .page-body img {
+    opacity: 0.85;
+}
+
+// ─── Tag overrides ──────────────────────────────────────
+
+html.dark .blog-tag--study-notes {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .blog-tag--wild-thoughts {
+    background: #101e18;
+    color: #4a9a7a;
+}
+
+html.dark .blog-tag--paper-reading {
+    background: #1e1825;
+    color: #9b7fc0;
+}
+
+html.dark .blog-tag--project {
+    background: #2a1e10;
+    color: #d48520;
+}
+
+html.dark .talk-type--oral {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .talk-type--poster {
+    background: #2a2a2a;
+    color: #999;
+}
+
+// ─── Research tabs overrides ────────────────────────────
+
+html.dark .research-tab {
+    color: #888;
+}
+
+html.dark .research-tab:hover {
+    color: var(--c-link);
+}
+
+html.dark .research-tab.active {
+    color: var(--c-link);
+    border-bottom-color: var(--c-link-hover-bg);
+}
+
+html.dark .project-tabs {
+    border-bottom-color: #2a2a2a;
+}
+
+html.dark .project-tab {
+    color: #666;
+}
+
+html.dark .project-tab:hover {
+    color: var(--c-link);
+}
+
+html.dark .project-tab.active {
+    color: var(--c-link);
+    border-bottom-color: var(--c-link-hover-bg);
+}
+
+html.dark .stat-star {
+    background: #2a1e10;
+    color: #d48520;
+}
+
+html.dark .stat-version {
+    background: #2a2a2a;
+    color: #999;
+}
+
+html.dark .stat-lang {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .stat-published {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .stat-active {
+    background: #101e18;
+    color: #4a9a7a;
+}
+
+html.dark .stat-wip {
+    background: #2a1e10;
+    color: #d48520;
+}
+
+html.dark .stat-private {
+    background: #2a2a2a;
+    color: #888;
+}
+
+html.dark .project-tag {
+    background: #1a2a3a;
+    color: var(--c-link);
+}
+
+html.dark .project-link {
+    color: var(--c-link);
+    border-color: #3a5a8a;
+}
+
+html.dark .project-link:hover {
+    background: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+// ─── Theme toggle switch ────────────────────────────────
+
+.navbar li.nav-toggle {
+    margin-left: auto;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.toggle-track {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 22px;
+    border-radius: 11px;
+    background: #c8c8c8;
+    transition: background 0.25s;
+    box-sizing: border-box;
+}
+
+html.dark .toggle-track {
+    background: #505050;
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+html.dark .toggle-thumb {
+    transform: translateX(22px);
+}
+
+.toggle-icon {
+    font-size: 16px;
+    line-height: 1;
+    color: #e89520;
+    transition: color 0.25s;
+}
+
+html.dark .toggle-icon {
+    color: #ffee88;
+    text-shadow: 0 0 8px rgba(255, 238, 136, 0.7);
+}
+
+.theme-toggle:hover .toggle-thumb {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+}
+
+.theme-toggle:active .toggle-thumb {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transform: scale(0.92);
+}
+
+html.dark .theme-toggle:active .toggle-thumb {
+    transform: translateX(22px) scale(0.92);
+}
+
 // ─── Experience (home page) ─────────────────────────────
 
 .exp-list {
@@ -67,6 +467,105 @@
     font-size: 10pt;
     color: #555;
     margin-top: 2px;
+}
+
+// ─── Projects page tabs ─────────────────────────────────
+
+.project-tabs {
+    display: flex;
+    gap: 0;
+    margin: 1em 0 2em 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.project-tab {
+    font-size: 10.5pt;
+    font-weight: 500;
+    padding: 6px 16px;
+    cursor: pointer;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.project-tab:hover {
+    color: #3560a5;
+}
+
+.project-tab.active {
+    color: #3560a5;
+    border-bottom: 3px solid #6490d7;
+    font-weight: 600;
+}
+
+.project-panel {
+    display: none;
+}
+
+.project-panel.active {
+    display: block;
+}
+
+// ─── Project stats ──────────────────────────────────────
+
+.project-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.project-stats {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.stat-star {
+    color: #b45309;
+    background: #fef3e2;
+}
+
+.stat-version {
+    color: #555;
+    background: #f0f0f0;
+}
+
+.stat-lang {
+    color: #3560a5;
+    background: #e8eef8;
+}
+
+.stat-published {
+    color: #3560a5;
+    background: #e8eef8;
+}
+
+.stat-active {
+    color: #2a7a5a;
+    background: #e8f4ee;
+}
+
+.stat-wip {
+    color: #b45309;
+    background: #fef3e2;
+}
+
+.stat-private {
+    color: #888;
+    background: #f0f0f0;
 }
 
 // ─── Projects page ──────────────────────────────────────
@@ -156,6 +655,51 @@
     background-color: #6490d7;
     border-color: #6490d7;
     color: white;
+}
+
+// ─── Research tabs ──────────────────────────────────────
+
+.research-desc {
+    font-size: 9.5pt;
+    color: #555;
+    margin: 0 0 6px 0;
+    line-height: 1.5;
+}
+
+.research-tabs {
+    display: flex;
+    gap: 0;
+    margin: 1em 0 2em 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.research-tab {
+    font-size: 10.5pt;
+    font-weight: 500;
+    padding: 6px 16px;
+    cursor: pointer;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.research-tab:hover {
+    color: #3560a5;
+}
+
+.research-tab.active {
+    color: #3560a5;
+    border-bottom: 3px solid #6490d7;
+    font-weight: 600;
+}
+
+.research-panel {
+    display: none;
+}
+
+.research-panel.active {
+    display: block;
 }
 
 // ─── Generic page / post ────────────────────────────────
@@ -290,51 +834,6 @@
     color: #888;
     font-style: italic;
     font-size: 10pt;
-}
-
-// ─── Research tabs ─────────────────────────────────────
-
-.research-desc {
-    font-size: 9.5pt;
-    color: #555;
-    margin: 0 0 6px 0;
-    line-height: 1.5;
-}
-
-.research-tabs {
-    display: flex;
-    gap: 0;
-    margin: 1em 0 2em 0;
-    border-bottom: 1px solid #e8e8e8;
-}
-
-.research-tab {
-    font-size: 10.5pt;
-    font-weight: 500;
-    padding: 6px 16px;
-    cursor: pointer;
-    color: #888;
-    border-bottom: 3px solid transparent;
-    user-select: none;
-    transition: color 0.15s;
-}
-
-.research-tab:hover {
-    color: #3560a5;
-}
-
-.research-tab.active {
-    color: #3560a5;
-    border-bottom: 3px solid #6490d7;
-    font-weight: 600;
-}
-
-.research-panel {
-    display: none;
-}
-
-.research-panel.active {
-    display: block;
 }
 
 // ─── 404 ────────────────────────────────────────────────
