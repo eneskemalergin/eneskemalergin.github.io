@@ -8,7 +8,7 @@ tags = ["questvar"]
 
 [[categories]]
 name = "Pediatric Cancer Multi-Omics"
-tags = ["proteoforge", "protyle"]
+tags = ["proteoforge", "profyle"]
 
 [[categories]]
 name = "Mass Spectrometry Data Infrastructure"

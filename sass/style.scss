@@ -128,7 +128,7 @@ html.dark .service-item {
 }
 
 html.dark .paper-card {
-    background: #222;
+    background: none;
 }
 
 html.dark .toc img {
@@ -232,7 +232,8 @@ html.dark .blog-tag--project {
     color: #d48520;
 }
 
-html.dark .talk-type--oral {
+html.dark .talk-type--oral,
+html.dark .talk-type--workshop {
     background: #1a2a3a;
     color: var(--c-link);
 }

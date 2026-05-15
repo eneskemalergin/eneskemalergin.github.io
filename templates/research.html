@@ -54,7 +54,7 @@
             <div class="paper-card">
                 <p class="paper-title">{{ item.title }}</p>
                 <div class="talk-header">
-                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--oral{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
+                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
                 <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}{% if item.tag %}<a href="{{ get_url(path="/tags/" ~ item.tag ~ "/") }}" class="talk-link">Blog</a>{% endif %}</div>

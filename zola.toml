@@ -35,7 +35,7 @@ icon = "fab fa-linkedin"
 
 [[extra.social]]
 name = "Google Scholar"
-url = "#"
+url = "https://scholar.google.com/citations?user=6iZzHecAAAAJ"
 icon = "ai ai-google-scholar"
 
 [[extra.social]]
