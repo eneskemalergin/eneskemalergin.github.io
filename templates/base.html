@@ -20,9 +20,13 @@
         </button>
         <ul class="navbar">
             {% for item in config.extra.menu %}
+            {% if item.url is starting_with("http") %}
+            <li><a href="{{ item.url }}" target="_blank">{{ item.name }}</a></li>
+            {% else %}
             {% set rel = "" %}
             {% if current_url is defined %}{% set rel = current_url | replace(from=config.base_url, to="") %}{% endif %}
             <li><a href="{{ get_url(path=item.url) }}"{% if rel %}{% if item.url == "/" %}{% if rel == "/" or rel == "" %} class="active"{% endif %}{% else %}{% if rel is starting_with(item.url) %} class="active"{% endif %}{% endif %}{% endif %}>{{ item.name }}</a></li>
+            {% endif %}
             {% endfor %}
         </ul>
     </nav>

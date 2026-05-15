@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set pubs = load_data(path="data/publications.toml") %}
+{% set talks = load_data(path="data/talks.toml") %}
+{% set posters = load_data(path="data/posters.toml") %}
+
+<h2>Research</h2>
+
+<div class="research-tabs">
+    <span class="research-tab active" data-tab="publications">Publications</span>
+    <span class="research-tab" data-tab="talks">Talks</span>
+    <span class="research-tab" data-tab="posters">Posters</span>
+</div>
+
+<div id="publications" class="research-panel active">
+    {% for year in pubs.years %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ year.year }}</div>
+        <div class="timeline-papers">
+            {% for paper in year.papers %}
+            <div class="paper-card">
+                <p class="paper-title">{{ paper.title | safe }}</p>
+                <p class="paper-authors">{{ paper.authors | safe }}</p>
+                <p class="paper-venue"><i>{{ paper.venue }}</i>{% if paper.extra %} {{ paper.extra | safe }}{% endif %}</p>
+                {% if paper.links %}
+                <div class="paper-links">
+                    {% for link in paper.links %}
+                    <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if paper.tldr %}
+                <p class="tldr">{{ paper.tldr }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="talks" class="research-panel">
+    {% for year in talks.years %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ year.year }}</div>
+        <div class="timeline-papers">
+            {% for item in year.items %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--oral{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
+                    <span class="talk-date">{{ item.date }}</span>
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="posters" class="research-panel">
+    {% for year in posters.years %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ year.year }}</div>
+        <div class="timeline-papers">
+            {% for item in year.items %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
+                    <span class="talk-date">{{ item.date }}</span>
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+(function() {
+    var tabs = document.querySelectorAll('.research-tab');
+    var panels = document.querySelectorAll('.research-panel');
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var name = this.getAttribute('data-tab');
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            this.classList.add('active');
+            document.getElementById(name).classList.add('active');
+        });
+    });
+})();
+</script>
+{% endblock %}

@@ -34,6 +34,9 @@
     {% for topic in home.research %}
     <li>
         <div class="research-topic">{{ topic.topic }}</div>
+        {% if topic.desc %}
+        <p class="research-desc">{{ topic.desc }}</p>
+        {% endif %}
         {% if topic.items %}
         <div class="research-papers">
             {% for item in topic.items %}
@@ -46,34 +49,6 @@
         {% endif %}
     </li>
     {% endfor %}
-</ul>
-{% endif %}
-
-{% if home.experience %}
-<hr>
-<h2>Experience</h2>
-<ul class="exp-list">
-    {% for exp in home.experience %}
-    <li>
-        <div class="exp-header">{{ exp.role }}{% if exp.org %} &mdash; {{ exp.org }}{% endif %}</div>
-        <div class="exp-sub">{{ exp.desc }}</div>
-        <div class="exp-date">{{ exp.date }}</div>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% if home.tools %}
-<hr>
-<h2>Tools &amp; Open Source</h2>
-<ul class="tools-list">
-    {% for tool in home.tools %}
-    <li>
-        <div class="tools-header"><a href="{{ tool.url }}" target="_blank">{{ tool.name }}</a> <span class="tools-meta">{{ tool.lang }}</span></div>
-        <div class="tools-desc">{{ tool.desc }}</div>
-    </li>
-    {% endfor %}
-    <li style="text-align:right;padding-top:8px"><a href="{{ get_url(path="/projects/") }}">All projects &rarr;</a></li>
 </ul>
 {% endif %}
 

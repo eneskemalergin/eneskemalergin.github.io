@@ -292,6 +292,51 @@
     font-size: 10pt;
 }
 
+// ─── Research tabs ─────────────────────────────────────
+
+.research-desc {
+    font-size: 9.5pt;
+    color: #555;
+    margin: 0 0 6px 0;
+    line-height: 1.5;
+}
+
+.research-tabs {
+    display: flex;
+    gap: 0;
+    margin: 1em 0 2em 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.research-tab {
+    font-size: 10.5pt;
+    font-weight: 500;
+    padding: 6px 16px;
+    cursor: pointer;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.research-tab:hover {
+    color: #3560a5;
+}
+
+.research-tab.active {
+    color: #3560a5;
+    border-bottom: 3px solid #6490d7;
+    font-weight: 600;
+}
+
+.research-panel {
+    display: none;
+}
+
+.research-panel.active {
+    display: block;
+}
+
 // ─── 404 ────────────────────────────────────────────────
 
 .error {

@@ -1,13 +1,14 @@
 avatar = "portrait.jpg"
 
 titles = [
-    """Founder at <a href="https://zenteomics.com/">Zenteomics</a> (April 2026). <a href="https://github.com/Zenteomics">Zenteomics on GitHub</a>""",
+    """Bioinformatician &amp; Systems Engineer""",
+    """Founder at <a href="https://zenteomics.com/">Zenteomics</a> (April 2026). <a href="https://github.com/Zenteomics">GitHub</a>""",
     """Bioinformatician at the <a href="https://langelab.med.ubc.ca/">Lange Lab</a>, <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a>""",
     """PhD, Bioinformatics &mdash; <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
 ]
 
 bio = [
-    "I am a computational biologist and bioinformatician working on quantitative proteomics, proteoform analysis, multi-omics integration, and machine learning for pediatric cancer research. I build software and reproducible analysis workflows when existing tools do not match the biological question. I am the founder of Zenteomics, focused on proteomics data infrastructure and open-source tooling for mass spectrometry.",
+    "I work on quantitative proteomics, proteoform analysis, multi-omics integration, and machine learning for pediatric cancer research. I build software and reproducible analysis workflows when existing tools do not match the biological question. I am the founder of Zenteomics, focused on proteomics data infrastructure and open-source tooling for mass spectrometry.",
 ]
 
 [[experience]]
@@ -65,15 +66,26 @@ lang = "Zig"
 desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
 
 [[research]]
-topic = "Quantitative proteomics and proteoform biology"
+topic = "Quantitative proteomics & proteoform biology"
+desc = "Developing methods for differential proteoform discovery, protein equivalence testing, and PTM-aware quantitative analysis. My work here includes ProteoForge, QuEStVar, and SQuAPP."
 items = [
     { venue = "ProteoForge", label = "bioRxiv, 2025", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
     { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
     { venue = "SQuAPP", label = "Bioinformatics, 2022", url = "https://doi.org/10.1093/bioinformatics/btac628" },
+    { venue = "N-termini proteoforms (Weng et al.)", label = "Mol. Cell. Proteomics, 2019", url = "https://www.mcponline.org/content/18/11/2335.abstract" },
 ]
 
 [[research]]
-topic = "Pediatric cancer proteomics"
+topic = "Statistical methods & equivalence testing"
+desc = "Designing statistical frameworks for proteomics that go beyond differential expression. QuEStVar introduced equivalence-based testing for identifying conserved functional modules across biological systems."
+items = [
+    { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
+    { venue = "QuEStVar Analysis", label = "GitHub", url = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript" },
+]
+
+[[research]]
+topic = "Pediatric cancer multi-omics"
+desc = "Applying proteomics, phosphoproteomics, and integrative analysis to pediatric acute lymphoblastic leukemia and other childhood cancers. Translational work through the PROFYLE initiative and PDX model characterization."
 items = [
     { venue = "PROFYLE (Barnabas et al.)", label = "EMBO Mol. Med., 2025", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
     { venue = "ALL proteomics (Lorentzian et al.)", label = "Nature Comms., 2023", url = "https://www.nature.com/articles/s41467-023-42701-9" },
@@ -81,11 +93,15 @@ items = [
 ]
 
 [[research]]
-topic = "Computational tooling and data infrastructure"
+topic = "Mass spectrometry data infrastructure"
+desc = "Building fast, dependency-free tools in Zig and Python for spectral compression, format validation, dataset discovery, calibration curves, and FAIR metadata auditing."
 items = [
-    { venue = "pxseek", label = "CLI tool, 2026", url = "https://github.com/LangeLab/pxseek" },
-    { venue = "z-fasta", label = "Zig library, 2026", url = "https://github.com/eneskemalergin/z-fasta" },
-    { venue = "mzarc", label = "Research codec, 2026", url = "https://github.com/eneskemalergin/mzarc" },
+    { venue = "pxseek", label = "ProteomeXchange querying, 2026", url = "https://github.com/LangeLab/pxseek" },
+    { venue = "z-fasta", label = "SIMD indexer, 2026", url = "https://github.com/eneskemalergin/z-fasta" },
+    { venue = "mzarc", label = "Spectral compression, 2026", url = "https://github.com/eneskemalergin/mzarc" },
+    { venue = "loqculate", label = "LOD/LOQ estimation, 2026", url = "https://github.com/eneskemalergin/loqculate" },
+    { venue = "PXAudit", label = "FAIR metadata audit, 2026", url = "https://github.com/LangeLab/PXAudit" },
+    { venue = "mzValidate", label = "mzML validator, 2026", url = "https://github.com/eneskemalergin/mzValidate" },
 ]
 
 [[news]]
