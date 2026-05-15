@@ -3,6 +3,10 @@ default_language = "en"
 title = "Enes Kemal Ergin"
 compile_sass = true
 
+[[taxonomies]]
+name = "tags"
+paginate_by = 10
+
 [extra]
 name = "Enes Kemal Ergin"
 

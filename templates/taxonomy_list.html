@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="section-header">
+    <h1>{{ taxonomy.name }}</h1>
+</header>
+<div class="tag-list">
+    {% for term in terms %}
+    <a href="{{ term.permalink }}" class="tag">{{ term.name }}</a>
+    {% endfor %}
+</div>
+{% endblock %}

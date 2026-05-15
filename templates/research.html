@@ -28,6 +28,11 @@
                     {% for link in paper.links %}
                     <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
                     {% endfor %}
+                    {% if paper.tag %}<a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>{% endif %}
+                </div>
+                {% elif paper.tag %}
+                <div class="paper-links">
+                    <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
                 </div>
                 {% endif %}
                 {% if paper.tldr %}
@@ -52,7 +57,7 @@
                     <span class="talk-type {% if item.type == "Workshop" %}talk-type--oral{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}</div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}{% if item.tag %}<a href="{{ get_url(path="/tags/" ~ item.tag ~ "/") }}" class="talk-link">Blog</a>{% endif %}</div>
             </div>
             {% endfor %}
         </div>
@@ -72,7 +77,7 @@
                     <span class="talk-type talk-type--poster">{{ item.type }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}</div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}{% if item.tag %}<a href="{{ get_url(path="/tags/" ~ item.tag ~ "/") }}" class="talk-link">Blog</a>{% endif %}</div>
             </div>
             {% endfor %}
         </div>

@@ -45,6 +45,7 @@
                 {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
                 {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
                 {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                {% if p.tag %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
             </div>
         </li>
         {% endfor %}
@@ -83,6 +84,7 @@
                 {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
                 {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
                 {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                {% if p.tag %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
             </div>
         </li>
         {% endfor %}

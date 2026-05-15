@@ -59,6 +59,7 @@ year = "2022"
 title = "SQuAPP: Simple Quantitative Analysis of Proteins and PTMs"
 authors = "<u>Ergin, E. K.</u>, Uzozie, A. C., Chen, S., Su, Y., Lange, P. F."
 venue = "Bioinformatics"
+tag = "squapp"
 links = [
     { label = "Paper", url = "https://doi.org/10.1093/bioinformatics/btac628" },
     { label = "Code", url = "https://github.com/LangeLab/SQuAPP" },

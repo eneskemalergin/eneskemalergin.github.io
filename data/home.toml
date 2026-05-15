@@ -4,7 +4,7 @@ titles = [
     """Bioinformatician &amp; Systems Engineer""",
     """Founder at <a href="https://zenteomics.com/">Zenteomics</a> (April 2026). <a href="https://github.com/Zenteomics">GitHub</a>""",
     """Bioinformatician at the <a href="https://langelab.med.ubc.ca/">Lange Lab</a>, <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a>""",
-    """PhD, Bioinformatics &mdash; <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
+    """PhD, Bioinformatics. <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
 ]
 
 bio = [
@@ -114,7 +114,7 @@ content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fa
 
 [[news]]
 date = "12/2025"
-content = """Submitted ProteoForge to bioRxiv; now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
+content = """Submitted ProteoForge to bioRxiv. Now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
 
 [[news]]
 date = "04/2025"

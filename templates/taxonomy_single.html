@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="section-header">
+    <h1>{{ term.name }}</h1>
+</header>
+
+{% for page in term.pages %}
+<article class="list-item">
+    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+    <div class="list-meta">
+        {% if page.date %}{{ page.date | date(format="%B %d, %Y") }}{% endif %}
+    </div>
+    {% if page.description %}
+    <p class="list-desc">{{ page.description }}</p>
+    {% endif %}
+</article>
+{% endfor %}
+{% endblock %}

@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title %}{{ page.title }} &mdash; {{ config.title }}{% elif section.title %}{{ section.title }}
-        &mdash; {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }}
+        | {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}" sizes="32x32" />
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
