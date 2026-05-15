@@ -1,7 +1,7 @@
 [[projects]]
 title = "SQuAPP"
 group = "research"
-status = "published"
+status = "stable"
 stars = 10
 version = ""
 language = "R"
@@ -16,7 +16,7 @@ paper = "https://doi.org/10.1093/bioinformatics/btac628"
 [[projects]]
 title = "QuEStVar Analysis"
 group = "research"
-status = "published"
+status = "stable"
 stars = 2
 version = ""
 language = "Jupyter Notebook"

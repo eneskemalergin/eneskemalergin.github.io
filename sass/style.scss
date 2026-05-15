@@ -909,6 +909,65 @@ html.dark .tag:hover {
     margin: 0;
 }
 
+// ─── Project publication badge ──────────────────────────
+
+.project-publication {
+    font-size: 8pt;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    white-space: nowrap;
+}
+
+.project-publication i {
+    margin-right: 2px;
+    font-size: 7pt;
+}
+
+.project-publication:has(.fa-file) {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+html.dark .project-publication {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .project-publication:has(.fa-file) {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+// ─── Project group label ────────────────────────────────
+
+.project-group {
+    font-size: 7.5pt;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+// ─── Timeline project item border overrides ────────────
+
+.timeline-papers .project-item {
+    border-bottom: 1px solid var(--border-color);
+    border-top: none;
+    padding: 16px 0;
+}
+
+.timeline-papers .project-item:last-child {
+    border-bottom: none;
+}
+
 // ─── Pagination ──────────────────────────────────────────
 
 .pagination {

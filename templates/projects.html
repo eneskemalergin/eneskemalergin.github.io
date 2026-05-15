@@ -1,73 +1,60 @@
 {% extends "base.html" %}
 
-{% macro render_project(p) %}
-<li class="project-item">
-    <div class="project-head">
-        <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
-        <div class="project-stats">
-            {% if p.stars and p.stars > 0 %}
-            <span class="stat stat-star">&#9733; {{ p.stars }}</span>
-            {% endif %}
-            {% if p.version %}
-            <span class="stat stat-version">v{{ p.version }}</span>
-            {% endif %}
-            {% if p.language %}
-            <span class="stat stat-lang">{{ p.language }}</span>
-            {% endif %}
-            {% if p.status %}
-            <span class="stat stat-{{ p.status }}">{{ p.status }}</span>
-            {% endif %}
-        </div>
-    </div>
-    {% if p.tags %}
-    <div class="project-tags">
-        {% for tag in p.tags %}
-        <span class="project-tag">{{ tag }}</span>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <div class="project-desc">{{ p.desc }}</div>
-    <div class="project-links">
-        <a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>
-        {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
-        {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
-        {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
-        {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
-        {% if p.tag %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
-    </div>
-</li>
-{% endmacro %}
-
 {% block content %}
 {% set data = load_data(path="data/projects.toml") %}
+{% set order = ["stable", "active", "wip", "early", "private", "archived"] %}
 
 <h2>Projects</h2>
 
-<div class="project-tabs">
-    <span class="project-tab active" data-group="all">All</span>
-    <span class="project-tab" data-group="research">Research</span>
-    <span class="project-tab" data-group="lab">Lab Tools</span>
-    <span class="project-tab" data-group="personal">Personal</span>
-</div>
-
-{% for group_key in ["research", "lab", "personal"] %}
-{% set items = data.projects | filter(attribute="group", value=group_key) %}
-<div id="projects-{{ group_key }}" class="project-panel">
-    <ul class="projects-list">
+{% for stage in order %}
+{% set items = data.projects | filter(attribute="status", value=stage) %}
+{% if items %}
+<div class="timeline-group">
+    <div class="timeline-stage">{{ stage }}</div>
+    <div class="timeline-papers">
         {% for p in items %}
-        {{ self::render_project(p=p) }}
+        <div class="project-item">
+            <div class="project-head">
+                <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
+                <div class="project-stats">
+                    {% if p.stars and p.stars > 0 %}
+                    <span class="stat stat-star">&#9733; {{ p.stars }}</span>
+                    {% endif %}
+                    {% if p.version %}
+                    <span class="stat stat-version">v{{ p.version }}</span>
+                    {% endif %}
+                    <span class="stat stat-lang">{{ p.language }}</span>
+                    {% if p.group %}
+                    <span class="project-group">{{ p.group }}</span>
+                    {% endif %}
+                    {% if p.paper or p.preprint %}
+                    <span class="project-publication">{% if p.paper %}<i class="fas fa-book"></i> Published{% else %}<i class="fas fa-file"></i> Preprint{% endif %}</span>
+                    {% endif %}
+                    <span class="stat stat-{{ p.status }}">{{ p.status }}</span>
+                </div>
+            </div>
+            {% if p.tags %}
+            <div class="project-tags">
+                {% for tag in p.tags %}
+                <span class="project-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="project-desc">{{ p.desc }}</div>
+            <div class="project-links">
+                <a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>
+                {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
+                {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
+                {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
+                {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                {% if p.tag %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
+{% endif %}
 {% endfor %}
-
-<div id="projects-all" class="project-panel active">
-    <ul class="projects-list">
-        {% for p in data.projects %}
-        {{ self::render_project(p=p) }}
-        {% endfor %}
-    </ul>
-</div>
 
 {% set tagdefs = load_data(path="data/tags.toml") %}
 <hr>
@@ -84,24 +71,4 @@
     {% endif %}
     {% endfor %}
 </div>
-
-<script>
-(function() {
-    var tabs = document.querySelectorAll('.project-tab');
-    var panels = document.querySelectorAll('.project-panel');
-    tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-            var g = this.getAttribute('data-group');
-            tabs.forEach(function(t) { t.classList.remove('active'); });
-            panels.forEach(function(p) { p.classList.remove('active'); });
-            this.classList.add('active');
-            if (g === 'all') {
-                panels.forEach(function(p) { p.classList.add('active'); });
-            } else {
-                document.getElementById('projects-' + g).classList.add('active');
-            }
-        });
-    });
-})();
-</script>
 {% endblock %}

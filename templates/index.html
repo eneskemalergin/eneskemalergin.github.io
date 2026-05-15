@@ -8,7 +8,6 @@
         {% if home.avatar %}
         <img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" />
         {% endif %}
-        <p class="hero-contact">Please feel free to get in touch!</p>
         <ul class="icons">
             {% for item in config.extra.social %}
             <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener"><i class="{{ item.icon }}"></i></a></li>

@@ -642,6 +642,17 @@ h3 + p {
     text-align: right;
 }
 
+.timeline-stage {
+    width: 105px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--c-link);
+    font-size: 10pt;
+    padding-top: 14px;
+    text-align: right;
+    text-transform: capitalize;
+}
+
 .timeline-papers {
     flex: 1;
     border-left: 2px solid var(--border-color);
@@ -715,6 +726,15 @@ h3 + p {
         width: auto;
         text-align: left;
         padding-top: 12px;
+        padding-bottom: 2px;
+        padding-left: 12px;
+        border-left: 2px solid var(--border-color);
+    }
+
+    .timeline-stage {
+        width: auto;
+        text-align: left;
+        padding-top: 14px;
         padding-bottom: 2px;
         padding-left: 12px;
         border-left: 2px solid var(--border-color);
