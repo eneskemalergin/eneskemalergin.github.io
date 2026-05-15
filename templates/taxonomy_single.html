@@ -5,7 +5,8 @@
     <h1>{{ term.name }}</h1>
 </header>
 
-{% for page in term.pages %}
+{% set pages = paginator.pages | default(value=term.pages) %}
+{% for page in pages %}
 <article class="list-item">
     <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
     <div class="list-meta">
@@ -16,4 +17,16 @@
     {% endif %}
 </article>
 {% endfor %}
+
+{% if paginator %}
+<div class="pagination">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous }}">&larr; Previous</a>
+    {% endif %}
+    <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+    <a href="{{ paginator.next }}">Next &rarr;</a>
+    {% endif %}
+</div>
+{% endif %}
 {% endblock %}

@@ -38,7 +38,7 @@
             <li class="nav-toggle">
                 <button class="theme-toggle" aria-label="Switch to dark mode">
                     <span class="toggle-track">
-                        <span class="toggle-thumb"><span class="toggle-icon">☀</span></span>
+                        <span class="toggle-thumb"><span class="toggle-icon"><i class="fas fa-sun"></i></span></span>
                     </span>
                 </button>
             </li>
@@ -88,7 +88,7 @@
                 var isDark = theme === 'dark';
                 html.classList.toggle('dark', isDark);
                 try { localStorage.setItem('theme', theme); } catch(e) {}
-                if (icon) icon.textContent = isDark ? '\u{1F319}' : '\u2600';
+                if (icon) icon.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
                 toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             }
             var saved = null;

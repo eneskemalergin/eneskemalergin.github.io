@@ -25,11 +25,11 @@
 </ul>
 
 {% if paginator %}
-<div style="display:flex;justify-content:center;gap:1em;margin-top:2em;font-size:10pt">
+<div class="pagination">
     {% if paginator.previous %}
     <a href="{{ paginator.previous }}">&larr; Previous</a>
     {% endif %}
-    <span style="color:#888">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+    <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
     {% if paginator.next %}
     <a href="{{ paginator.next }}">Next &rarr;</a>
     {% endif %}

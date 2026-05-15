@@ -262,7 +262,7 @@ table {
 
 th, td {
     border: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
     padding: 8px 12px;
     text-align: left;
 }
@@ -282,36 +282,21 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-    background-color: #f5f8ff;
+    background-color: var(--border-color);
 }
 
 @media (max-width: 600px) {
     table {
         width: 100%;
         border-collapse: collapse;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     th, td {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    thead {
-        display: none;
-    }
-
-    tbody tr {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: inline-block;
-        width: 40%;
-        text-align: left;
+        padding: 6px 8px;
+        font-size: 9pt;
     }
 }
 
@@ -881,19 +866,19 @@ h3 + p {
 
 .blog-tag--wild-thoughts {
     background-color: transparent;
-    color: #2a7a5a;
+    color: var(--c-blog-wild);
     border: 1px solid rgba(42, 122, 90, 0.3);
 }
 
 .blog-tag--paper-reading {
     background-color: transparent;
-    color: #7d3c98;
+    color: var(--c-blog-paper);
     border: 1px solid rgba(125, 60, 152, 0.3);
 }
 
 .blog-tag--project {
     background-color: transparent;
-    color: #b45309;
+    color: var(--c-blog-project);
     border: 1px solid rgba(180, 83, 9, 0.3);
 }
 

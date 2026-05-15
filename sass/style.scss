@@ -10,6 +10,17 @@
     --text-main: #333333;
     --text-muted: #666666;
     --border-color: #e2e8f0;
+    --c-star: #d97706;
+    --c-planning: #8b5cf6;
+    --c-data-collection: #3b82f6;
+    --c-writing: #f59e0b;
+    --c-editing: #10b981;
+    --c-under-review: #ef4444;
+    --c-active: #2a7a5a;
+    --c-wip: #b45309;
+    --c-blog-wild: #2a7a5a;
+    --c-blog-paper: #7d3c98;
+    --c-blog-project: #b45309;
 }
 
 :root.dark {
@@ -20,6 +31,17 @@
     --text-main: #e2e8f0;
     --text-muted: #94a3b8;
     --border-color: #334155;
+    --c-star: #fbbf24;
+    --c-planning: #a78bfa;
+    --c-data-collection: #60a5fa;
+    --c-writing: #fbbf24;
+    --c-editing: #34d399;
+    --c-under-review: #f87171;
+    --c-active: #34d399;
+    --c-wip: #fbbf24;
+    --c-blog-wild: #6ee7b7;
+    --c-blog-paper: #c4b5fd;
+    --c-blog-project: #fbbf24;
 }
 
 // ─── Base backgrounds ───────────────────────────────────
@@ -217,17 +239,17 @@ html.dark .blog-tag--study-notes {
 
 html.dark .blog-tag--wild-thoughts {
     background: var(--bg-surface);
-    color: #4a9a7a;
+    color: var(--c-blog-wild);
 }
 
 html.dark .blog-tag--paper-reading {
     background: var(--bg-surface);
-    color: #9b7fc0;
+    color: var(--c-blog-paper);
 }
 
 html.dark .blog-tag--project {
     background: var(--bg-surface);
-    color: #d48520;
+    color: var(--c-blog-project);
 }
 
 html.dark .talk-type--oral,
@@ -279,7 +301,7 @@ html.dark .tag-legend-cat-label {
 
 html.dark .stat-star {
     background: transparent;
-    color: #d97706;
+    color: var(--c-star);
 }
 
 html.dark .stat-version {
@@ -294,17 +316,17 @@ html.dark .stat-lang {
 
 html.dark .stat-published {
     background: transparent;
-    color: var(--text-muted);
+    color: var(--c-link);
 }
 
 html.dark .stat-active {
     background: transparent;
-    color: #4a9a7a;
+    color: var(--c-active);
 }
 
 html.dark .stat-wip {
     background: transparent;
-    color: #d97706;
+    color: var(--c-wip);
 }
 
 html.dark .stat-private {
@@ -530,12 +552,12 @@ html.dark .theme-toggle:active .toggle-thumb {
     background: transparent !important;
 }
 
-.stat-star { color: #d97706; }
+.stat-star { color: var(--c-star); }
 .stat-version { color: var(--text-muted); }
 .stat-lang { color: var(--c-link); }
-.stat-published,
-.stat-active,
-.stat-wip,
+.stat-published { color: var(--c-link); }
+.stat-active { color: var(--c-active); }
+.stat-wip { color: var(--c-wip); }
 .stat-private { color: var(--text-muted); }
 
 // ─── Projects page ──────────────────────────────────────
@@ -656,52 +678,32 @@ html.dark .tag:hover {
 
 .state-planning {
     background: transparent;
-    color: #8b5cf6;
+    color: var(--c-planning);
     border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .state-data_collection {
     background: transparent;
-    color: #3b82f6;
+    color: var(--c-data-collection);
     border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .state-writing {
     background: transparent;
-    color: #f59e0b;
+    color: var(--c-writing);
     border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .state-editing {
     background: transparent;
-    color: #10b981;
+    color: var(--c-editing);
     border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .state-under_review {
     background: transparent;
-    color: #ef4444;
+    color: var(--c-under-review);
     border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-html.dark .state-planning {
-    border-color: rgba(139, 92, 246, 0.4);
-}
-
-html.dark .state-data_collection {
-    border-color: rgba(59, 130, 246, 0.4);
-}
-
-html.dark .state-writing {
-    border-color: rgba(245, 158, 11, 0.4);
-}
-
-html.dark .state-editing {
-    border-color: rgba(16, 185, 129, 0.4);
-}
-
-html.dark .state-under_review {
-    border-color: rgba(239, 68, 68, 0.4);
 }
 
 .project-link {
@@ -905,6 +907,21 @@ html.dark .state-under_review {
     font-size: 9.5pt;
     color: var(--text-muted);
     margin: 0;
+}
+
+// ─── Pagination ──────────────────────────────────────────
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+    font-size: 10pt;
+}
+
+.pagination-current {
+    color: var(--text-muted);
 }
 
 .empty {
