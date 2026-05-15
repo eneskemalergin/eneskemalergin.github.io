@@ -1,6 +1,6 @@
 base_url = "https://eneskemalergin.github.io"
 default_language = "en"
-title = "Enes Kemal Ergin"
+title = "Enes K. Ergin"
 compile_sass = true
 
 [[taxonomies]]
@@ -8,7 +8,7 @@ name = "tags"
 paginate_by = 10
 
 [extra]
-name = "Enes Kemal Ergin"
+name = "Enes K. Ergin, PhD"
 
 menu = [
     { name = "Home", url = "/" },

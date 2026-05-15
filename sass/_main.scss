@@ -716,6 +716,13 @@ h3 + p {
     color: var(--text-muted);
 }
 
+.tag-legend .tag sup {
+    font-size: 7pt;
+    margin-left: 1px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
 @media (max-width: 600px) {
     .timeline-group {
         flex-direction: column;

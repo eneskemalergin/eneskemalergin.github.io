@@ -11,60 +11,6 @@ bio = [
     "I work on quantitative proteomics, proteoform analysis, multi-omics integration, and machine learning for pediatric cancer research. I build software and reproducible analysis workflows when existing tools do not match the biological question. I am the founder of Zenteomics, focused on proteomics data infrastructure and open-source tooling for mass spectrometry.",
 ]
 
-[[experience]]
-role = "Founder"
-org = "Zenteomics"
-desc = "Building proteomics data infrastructure and open-source tooling for mass spectrometry data processing, format validation, and spectral compression."
-date = "Apr 2026 - Present"
-
-[[experience]]
-role = "Bioinformatician"
-org = "Lange Lab, BC Children's Hospital Research Institute"
-desc = "Develop computational infrastructure for large-scale proteomics analysis across childhood cancer cohorts. Implement statistical methods and machine learning workflows for translational pediatric oncology research. Build reusable tooling for dataset discovery, metadata auditing, proteomics validation, and analysis reproducibility."
-date = "Jun 2025 - Present"
-
-[[experience]]
-role = "Graduate Research Assistant"
-org = "BC Children's Hospital Research Institute"
-desc = "Developed QuEStVar for statistical equivalence testing, built SQuAPP (R/Shiny, published in Bioinformatics), created ProteoForge for differential proteoform discovery, and worked on pediatric cancer proteomics with PDX models."
-date = "Sep 2017 - Apr 2025"
-
-[[experience]]
-role = "Visiting Researcher"
-org = "Harvard Medical School"
-desc = "Built deep learning models for alternative mRNA splicing and transcription factor binding-site prediction, using histone modification datasets and ENCODE-DREAM challenge tasks."
-date = "Nov 2015 - Sep 2016"
-
-[[tools]]
-name = "SQuAPP"
-url = "https://github.com/LangeLab/SQuAPP"
-lang = "R"
-desc = "R/Shiny web app for start-to-end quantitative proteomics analysis across protein, peptide, and PTM levels. Published in Bioinformatics (2022)."
-
-[[tools]]
-name = "z-fasta"
-url = "https://github.com/eneskemalergin/z-fasta"
-lang = "Zig"
-desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
-
-[[tools]]
-name = "z-toml"
-url = "https://github.com/eneskemalergin/z-toml"
-lang = "Zig"
-desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
-
-[[tools]]
-name = "pxseek"
-url = "https://github.com/LangeLab/pxseek"
-lang = "Python"
-desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata."
-
-[[tools]]
-name = "mzarc"
-url = "https://github.com/eneskemalergin/mzarc"
-lang = "Zig"
-desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
-
 [[research]]
 topic = "Quantitative proteomics & proteoform biology"
 desc = "Developing methods for differential proteoform discovery, protein equivalence testing, and PTM-aware quantitative analysis. My work here includes ProteoForge, QuEStVar, and SQuAPP."

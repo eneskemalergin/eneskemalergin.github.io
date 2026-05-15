@@ -13,41 +13,69 @@
     <div class="timeline-stage">{{ stage }}</div>
     <div class="timeline-papers">
         {% for p in items %}
-        <div class="project-item">
-            <div class="project-head">
-                <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
-                <div class="project-stats">
-                    {% if p.stars and p.stars > 0 %}
-                    <span class="stat stat-star">&#9733; {{ p.stars }}</span>
+        <div class="project-item project-item-timeline">
+            <div class="project-left">
+                <div class="project-thumbnail">
+                    {% if p.image %}
+                    <img src="{{ get_url(path=p.image) }}" alt="{{ p.title }} screenshot" loading="lazy" />
+                    {% else %}
+                    <div class="project-thumb-placeholder">&#9679;</div>
                     {% endif %}
-                    {% if p.version %}
-                    <span class="stat stat-version">v{{ p.version }}</span>
+                </div>
+                <div class="project-meta">
+                    {% if p.domain %}
+                    <span class="project-domain">{{ p.domain }}</span>
                     {% endif %}
-                    <span class="stat stat-lang">{{ p.language }}</span>
-                    {% if p.group %}
-                    <span class="project-group">{{ p.group }}</span>
+                    {% if p.source %}
+                    <span class="project-source">{{ p.source }}</span>
                     {% endif %}
-                    {% if p.paper or p.preprint %}
-                    <span class="project-publication">{% if p.paper %}<i class="fas fa-book"></i> Published{% else %}<i class="fas fa-file"></i> Preprint{% endif %}</span>
-                    {% endif %}
-                    <span class="stat stat-{{ p.status }}">{{ p.status }}</span>
                 </div>
             </div>
-            {% if p.tags %}
-            <div class="project-tags">
-                {% for tag in p.tags %}
-                <span class="project-tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-            {% endif %}
-            <div class="project-desc">{{ p.desc }}</div>
-            <div class="project-links">
-                <a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>
-                {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
-                {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
-                {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
-                {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
-                {% if p.tag %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
+            <div class="project-body">
+                <div class="project-head">
+                    <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
+                    <div class="project-head-badges">
+                        <span class="lang-badge lang-{{ p.language }}">
+                            {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
+                            {% elif p.language == "R" %}<i class="fa-brands fa-r-project"></i>
+                            {% elif p.language == "Rust" %}<i class="fa-brands fa-rust"></i>
+                            {% elif p.language == "Go" %}<i class="fa-brands fa-golang"></i>
+                            {% elif p.language == "LaTeX" %}<i class="fas fa-file-lines"></i>
+                            {% else %}<i class="fas fa-code"></i>{% endif %}
+                            {{ p.language }}
+                        </span>
+                        {% if p.stars and p.stars > 0 %}
+                        <span class="star-badge" data-stars="{{ p.stars }}">&#9733; {{ p.stars }}</span>
+                        {% endif %}
+                        {% if p.version %}
+                        <span class="version-badge">v{{ p.version }}</span>
+                        {% endif %}
+                        <span class="access-badge access-{{ p.access }}">
+                            {% if p.access == "public" %}<i class="fas fa-lock-open"></i>{% else %}<i class="fas fa-lock"></i>{% endif %}
+                            {{ p.access }}
+                        </span>
+                        <span class="pub-badge pub-{{ p.pub }}">
+                            {% if p.pub == "published" %}<i class="fas fa-book"></i>{% elif p.pub == "preprint" %}<i class="fas fa-file-lines"></i>{% elif p.pub == "upcoming" %}<i class="fas fa-pen-fancy"></i>{% elif p.pub == "planned" %}<i class="fas fa-calendar"></i>{% else %}<i class="fas fa-minus"></i>{% endif %}
+                            {{ p.pub }}
+                        </span>
+                    </div>
+                </div>
+                {% if p.tags %}
+                <div class="project-tags">
+                    {% for tag in p.tags %}
+                    <span class="project-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="project-desc">{{ p.desc }}</div>
+                <div class="project-links">
+                    <a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>
+                    {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
+                    {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
+                    {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
+                    {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                    {% if p.tag and p.tag != "NA" %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -56,19 +84,13 @@
 {% endif %}
 {% endfor %}
 
-{% set tagdefs = load_data(path="data/tags.toml") %}
+{% set tag_freq = load_data(path="data/tag_frequencies.json") %}
+
 <hr>
 <div class="tag-legend">
-    <span class="tag-legend-label">Tags by topic:</span>
-    {% for cat in tagdefs.categories %}
-    {% if cat.tags %}
-    <div class="tag-legend-cat">
-        <span class="tag-legend-cat-label">{{ cat.name }}:</span>
-        {% for tag_name in cat.tags %}
-        <a href="{{ get_url(path="/tags/" ~ tag_name ~ "/") }}" class="tag">{{ tag_name }}</a>
-        {% endfor %}
-    </div>
-    {% endif %}
+    <span class="tag-legend-label">Tags by appearance:</span>
+    {% for entry in tag_freq %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
     {% endfor %}
 </div>
 {% endblock %}
