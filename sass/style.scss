@@ -604,10 +604,15 @@ html.dark .theme-toggle:active .toggle-thumb {
     border: 1px solid rgba(0, 107, 123, 0.3);
 }
 
-.project-tag:hover,
-.tag:hover {
+.project-tag:hover {
     background-color: rgba(0, 107, 123, 0.05);
     border-color: var(--c-link);
+}
+
+.tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
 }
 
 html.dark .project-tag {
@@ -618,11 +623,79 @@ html.dark .tag {
     border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
-html.dark .project-tag:hover,
-html.dark .tag:hover {
+html.dark .project-tag:hover {
     background-color: rgba(45, 212, 191, 0.1);
     border-color: var(--c-link);
     color: var(--c-link);
+}
+
+html.dark .tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+// ─── Upcoming state badges ──────────────────────────
+
+.state-badge {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    margin-bottom: 4px;
+}
+
+.state-planning {
+    background: transparent;
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.state-data_collection {
+    background: transparent;
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.state-writing {
+    background: transparent;
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.state-editing {
+    background: transparent;
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.state-under_review {
+    background: transparent;
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+html.dark .state-planning {
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+html.dark .state-data_collection {
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+html.dark .state-writing {
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+html.dark .state-editing {
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+html.dark .state-under_review {
+    border-color: rgba(239, 68, 68, 0.4);
 }
 
 .project-link {

@@ -14,6 +14,54 @@
 </div>
 
 <div id="publications" class="research-panel active">
+    {% if pubs.preprints %}
+    <div class="timeline-group">
+        <div class="timeline-year">Preprint</div>
+        <div class="timeline-papers">
+            {% for paper in pubs.preprints %}
+            <div class="paper-card">
+                <p class="paper-title">{{ paper.title | safe }}</p>
+                <p class="paper-authors">{{ paper.authors | safe }}</p>
+                <p class="paper-venue"><i>{{ paper.venue | safe }}</i></p>
+                {% if paper.links %}
+                <div class="paper-links">
+                    {% for link in paper.links %}
+                    <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
+                    {% endfor %}
+                    {% if paper.tag %}<a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>{% endif %}
+                </div>
+                {% elif paper.tag %}
+                <div class="paper-links">
+                    <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
+                </div>
+                {% endif %}
+                {% if paper.tldr %}
+                <p class="tldr">{{ paper.tldr }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if pubs.upcoming %}
+    <div class="timeline-group">
+        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-papers">
+            {% for paper in pubs.upcoming %}
+            <div class="paper-card">
+                <p class="paper-title">{{ paper.title | safe }}</p>
+                {% if paper.state %}<span class="state-badge state-{{ paper.state }}">{{ paper.state | replace(from="_", to=" ") }}</span>{% endif %}
+                <p class="paper-authors">{{ paper.authors | safe }}</p>
+                {% if paper.tldr %}
+                <p class="tldr">{{ paper.tldr }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     {% for year in pubs.years %}
     <div class="timeline-group">
         <div class="timeline-year">{{ year.year }}</div>
@@ -46,6 +94,42 @@
 </div>
 
 <div id="talks" class="research-panel">
+    {% if talks.upcoming %}
+    <div class="timeline-group">
+        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-papers">
+            {% for item in talks.upcoming %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
+                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if talks.preprints %}
+    <div class="timeline-group">
+        <div class="timeline-year">Preprint</div>
+        <div class="timeline-papers">
+            {% for item in talks.preprints %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
+                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     {% for year in talks.years %}
     <div class="timeline-group">
         <div class="timeline-year">{{ year.year }}</div>
@@ -66,6 +150,42 @@
 </div>
 
 <div id="posters" class="research-panel">
+    {% if posters.upcoming %}
+    <div class="timeline-group">
+        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-papers">
+            {% for item in posters.upcoming %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
+                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if posters.preprints %}
+    <div class="timeline-group">
+        <div class="timeline-year">Preprint</div>
+        <div class="timeline-papers">
+            {% for item in posters.preprints %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
+                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
+                </div>
+                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     {% for year in posters.years %}
     <div class="timeline-group">
         <div class="timeline-year">{{ year.year }}</div>

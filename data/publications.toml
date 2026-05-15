@@ -1,15 +1,14 @@
-[[years]]
-year = "2025"
-
-[[years.papers]]
+[[preprints]]
 title = "ProteoForge: An Imputation-Aware Framework for Differential Proteoform Discovery in Bottom-Up Proteomics"
 authors = "<u>Ergin, E. K.</u>, Conrrero, A., Ferguson, K. M., Lange, P. F."
-venue = "bioRxiv"
-extra = "(under review at <i>Journal of Proteome Research</i>)"
+venue = "bioRxiv (under review at <i>Journal of Proteome Research</i>)"
 links = [
     { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
 ]
 tldr = "An imputation-aware framework for differential proteoform discovery from bottom-up proteomics data."
+
+[[years]]
+year = "2025"
 
 [[years.papers]]
 title = "Proteomics and personalized PDX models identify treatment for a progressive malignancy within an actionable timeframe"
