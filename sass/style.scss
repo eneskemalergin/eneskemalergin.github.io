@@ -62,8 +62,9 @@ html.dark a {
 }
 
 html.dark a:hover {
-    color: white;
-    background-color: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 8px rgba(45, 212, 191, 0.35);
 }
 
 html.dark #content p,
@@ -107,16 +108,21 @@ html.dark .tools-header a,
 html.dark .blog-title a,
 html.dark .project-name a,
 html.dark .news-content,
-html.dark .service-label {
+html.dark .service-label,
+html.dark .hero-text h2 + p,
+html.dark .hero-bio {
     color: var(--text-main);
 }
 
 html.dark .icons a {
     color: var(--text-main);
+    transition: color 0.2s, text-shadow 0.2s;
 }
 
 html.dark .icons a:hover {
-    color: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 8px rgba(45, 212, 191, 0.4);
 }
 
 html.dark footer,

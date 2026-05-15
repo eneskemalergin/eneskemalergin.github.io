@@ -48,8 +48,8 @@
     <section id="content">
         {% block content %}{% endblock %}
         <footer>
-            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}. All rights
-                reserved.</p>
+            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}.</p>
+            <p class="footer-built">Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener">Zola</a></p>
         </footer>
     </section>
 

@@ -24,14 +24,14 @@ url = "mailto:eneskemalergin@gmail.com"
 icon = "fas fa-envelope"
 
 [[extra.social]]
-name = "GitHub"
-url = "https://github.com/eneskemalergin"
-icon = "fab fa-github"
-
-[[extra.social]]
 name = "LinkedIn"
 url = "https://linkedin.com/in/eneskemalergin"
 icon = "fab fa-linkedin"
+
+[[extra.social]]
+name = "GitHub"
+url = "https://github.com/eneskemalergin"
+icon = "fab fa-github"
 
 [[extra.social]]
 name = "Google Scholar"
@@ -40,5 +40,5 @@ icon = "ai ai-google-scholar"
 
 [[extra.social]]
 name = "ORCID"
-url = "#"
+url = "https://orcid.org/0000-0001-9810-7399"
 icon = "ai ai-orcid"

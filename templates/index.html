@@ -4,28 +4,30 @@
 {% set home = load_data(path="data/home.toml") %}
 
 <div class="hero">
-    {% if home.avatar %}
-    <img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" />
-    {% endif %}
-    <div class="hero-text">
-        <h2>{{ config.extra.name }}</h2>
-        {% for line in home.titles %}
-        <p>{{ line | safe }}</p>
+    <div class="hero-left">
+        {% if home.avatar %}
+        <img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" />
+        {% endif %}
+        <p class="hero-contact">Please feel free to get in touch!</p>
+        <ul class="icons">
+            {% for item in config.extra.social %}
+            <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener"><i class="{{ item.icon }}"></i></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="hero-body">
+        <div class="hero-text">
+            <h2>{{ config.extra.name }}</h2>
+            {% for line in home.titles %}
+            <p>{{ line | safe }}</p>
+            {% endfor %}
+        </div>
+
+        {% for paragraph in home.bio %}
+        <p class="hero-bio">{{ paragraph }}</p>
         {% endfor %}
     </div>
 </div>
-
-{% for paragraph in home.bio %}
-<p>{{ paragraph }}</p>
-{% endfor %}
-
-<p>Please feel free to get in touch!</p>
-
-<ul class="icons">
-    {% for item in config.extra.social %}
-    <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener"><i class="{{ item.icon }}"></i></a></li>
-    {% endfor %}
-</ul>
 
 {% if home.research %}
 <hr>
