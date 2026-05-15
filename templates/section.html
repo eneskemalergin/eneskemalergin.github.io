@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ section.title }}</h2>
+{% if section.description %}
+<p>{{ section.description }}</p>
+{% endif %}
+
+{% set pages = paginator.pages | default(value=section.pages) %}
+{% if pages %}
+<ul class="blog-list">
+    {% for page in pages %}
+    <li class="blog-item">
+        <div class="blog-header">
+            {% if page.extra.tag %}
+            <span class="blog-tag blog-tag--{{ page.extra.tag }}">{{ page.extra.tag_label | default(value=page.extra.tag) }}</span>
+            {% endif %}
+            {% if page.date %}
+            <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+            {% endif %}
+        </div>
+        <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if paginator %}
+<div style="display:flex;justify-content:center;gap:1em;margin-top:2em;font-size:10pt">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous }}">&larr; Previous</a>
+    {% endif %}
+    <span style="color:#888">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+    <a href="{{ paginator.next }}">Next &rarr;</a>
+    {% endif %}
+</div>
+{% endif %}
+
+{% else %}
+<p class="empty">Nothing here yet.</p>
+{% endif %}
+{% endblock %}

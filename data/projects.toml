@@ -1,0 +1,74 @@
+[[featured]]
+title = "SQuAPP"
+language = "R"
+tags = ["proteomics", "shiny", "bioinformatics-tool", "interactive-app"]
+desc = "R/Shiny web app for start-to-end quantitative proteomics analysis across protein, peptide, and PTM levels."
+github = "https://github.com/LangeLab/SQuAPP"
+docs = "https://github.com/LangeLab/SQuAPP/wiki"
+app = "http://squapp.langelab.org"
+paper = "https://doi.org/10.1093/bioinformatics/btac628"
+
+[[featured]]
+title = "QuEStVar Analysis"
+language = "Jupyter Notebook"
+tags = ["proteomics", "equivalence-testing", "statistics", "reproducible-analysis"]
+desc = "Reproducible analysis for statistical testing of protein equivalence across cancer cell lines."
+github = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript"
+paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
+
+[[featured]]
+title = "ProteoForge Analysis"
+language = "Jupyter Notebook"
+tags = ["proteomics", "proteoforms", "imputation", "reproducible-analysis"]
+desc = "Reproducible analysis snapshot for the ProteoForge manuscript, covering benchmarks, simulations, and a hypoxia application."
+github = "https://github.com/LangeLab/ProteoForge_Analysis"
+preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
+
+[[featured]]
+title = "pxseek"
+language = "Python"
+tags = ["proteomics", "proteomexchange", "metadata", "cli"]
+desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata."
+github = "https://github.com/LangeLab/pxseek"
+
+[[featured]]
+title = "z-fasta"
+language = "Zig"
+tags = ["zig", "bioinformatics", "fasta", "simd", "cli"]
+desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
+github = "https://github.com/eneskemalergin/z-fasta"
+
+[[featured]]
+title = "z-toml"
+language = "Zig"
+tags = ["zig", "toml", "parser", "serializer", "zig-package"]
+desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
+github = "https://github.com/eneskemalergin/z-toml"
+
+[[featured]]
+title = "z-oci"
+language = "Zig"
+tags = ["zig", "oci", "docker", "registry", "library"]
+desc = "Pure Zig OCI and Docker Registry API v2 toolkit for reference parsing, OCI types, and registry authentication."
+github = "https://github.com/eneskemalergin/z-oci"
+
+[[featured]]
+title = "mzarc"
+language = "Zig"
+tags = ["zig", "mass-spectrometry", "mzml", "compression", "codec"]
+desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
+github = "https://github.com/eneskemalergin/mzarc"
+
+[[featured]]
+title = "loqculate"
+language = "Python"
+tags = ["python", "proteomics", "calibration", "lod", "loq"]
+desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
+github = "https://github.com/eneskemalergin/loqculate"
+
+[[featured]]
+title = "PXAudit"
+language = "Python"
+tags = ["proteomics", "pride", "metadata", "fair-data", "cli"]
+desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
+github = "https://github.com/LangeLab/PXAudit"

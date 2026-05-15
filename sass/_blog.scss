@@ -1,0 +1,106 @@
+/* =============================================================
+   LANGUAGE SWITCHER
+   ============================================================= */
+.language-toggle {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 10pt;
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 12px;
+}
+
+.language-toggle span {
+    padding: 0 8px;
+}
+
+.language-toggle span.separator {
+    color: #888;
+}
+
+.language-toggle .active {
+    font-weight: bold;
+    color: #6490d7;
+}
+
+.language-toggle .inactive {
+    color: #666;
+    cursor: pointer;
+}
+
+/* =============================================================
+   REFERENCES
+   ============================================================= */
+ol.custom-counter {
+    list-style-type: none;
+    counter-reset: list-counter;
+}
+
+ol.custom-counter li {
+    counter-increment: list-counter;
+}
+
+ol.custom-counter li::before {
+    content: "[" counter(list-counter) "] ";
+}
+
+/* =============================================================
+   IMAGES & FIGURES
+   ============================================================= */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+figcaption {
+    color: gray;
+    font-style: italic;
+    font-size: 9.5pt;
+    margin-top: 0.5em;
+}
+
+/* =============================================================
+   CODE BLOCKS
+   ============================================================= */
+code {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.7em;
+}
+
+pre {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0px 15px;
+    overflow-x: auto;
+}
+
+pre code {
+    border: none;
+    padding: 0;
+}
+
+/* =============================================================
+   GITHUB GIST EMBEDS
+   ============================================================= */
+.gist-file .blob-num {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.gist-file {
+    border: 1px solid #ddd !important;
+    border-radius: 3px !important;
+}
+
+.gist-data {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+.gist {
+    margin-top: 15px !important;
+}

@@ -1,0 +1,117 @@
+avatar = "portrait.jpg"
+
+titles = [
+    """Founder at <a href="https://zenteomics.com/">Zenteomics</a> (April 2026). <a href="https://github.com/Zenteomics">Zenteomics on GitHub</a>""",
+    """Bioinformatician at the <a href="https://langelab.med.ubc.ca/">Lange Lab</a>, <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a>""",
+    """PhD, Bioinformatics &mdash; <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
+]
+
+bio = [
+    "I am a computational biologist and bioinformatician working on quantitative proteomics, proteoform analysis, multi-omics integration, and machine learning for pediatric cancer research. I build software and reproducible analysis workflows when existing tools do not match the biological question. I am the founder of Zenteomics, focused on proteomics data infrastructure and open-source tooling for mass spectrometry.",
+]
+
+[[experience]]
+role = "Founder"
+org = "Zenteomics"
+desc = "Building proteomics data infrastructure and open-source tooling for mass spectrometry data processing, format validation, and spectral compression."
+date = "Apr 2026 - Present"
+
+[[experience]]
+role = "Bioinformatician"
+org = "Lange Lab, BC Children's Hospital Research Institute"
+desc = "Develop computational infrastructure for large-scale proteomics analysis across childhood cancer cohorts. Implement statistical methods and machine learning workflows for translational pediatric oncology research. Build reusable tooling for dataset discovery, metadata auditing, proteomics validation, and analysis reproducibility."
+date = "Jun 2025 - Present"
+
+[[experience]]
+role = "Graduate Research Assistant"
+org = "BC Children's Hospital Research Institute"
+desc = "Developed QuEStVar for statistical equivalence testing, built SQuAPP (R/Shiny, published in Bioinformatics), created ProteoForge for differential proteoform discovery, and worked on pediatric cancer proteomics with PDX models."
+date = "Sep 2017 - Apr 2025"
+
+[[experience]]
+role = "Visiting Researcher"
+org = "Harvard Medical School"
+desc = "Built deep learning models for alternative mRNA splicing and transcription factor binding-site prediction, using histone modification datasets and ENCODE-DREAM challenge tasks."
+date = "Nov 2015 - Sep 2016"
+
+[[tools]]
+name = "SQuAPP"
+url = "https://github.com/LangeLab/SQuAPP"
+lang = "R"
+desc = "R/Shiny web app for start-to-end quantitative proteomics analysis across protein, peptide, and PTM levels. Published in Bioinformatics (2022)."
+
+[[tools]]
+name = "z-fasta"
+url = "https://github.com/eneskemalergin/z-fasta"
+lang = "Zig"
+desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
+
+[[tools]]
+name = "z-toml"
+url = "https://github.com/eneskemalergin/z-toml"
+lang = "Zig"
+desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
+
+[[tools]]
+name = "pxseek"
+url = "https://github.com/LangeLab/pxseek"
+lang = "Python"
+desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata."
+
+[[tools]]
+name = "mzarc"
+url = "https://github.com/eneskemalergin/mzarc"
+lang = "Zig"
+desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
+
+[[research]]
+topic = "Quantitative proteomics and proteoform biology"
+items = [
+    { venue = "ProteoForge", label = "bioRxiv, 2025", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
+    { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
+    { venue = "SQuAPP", label = "Bioinformatics, 2022", url = "https://doi.org/10.1093/bioinformatics/btac628" },
+]
+
+[[research]]
+topic = "Pediatric cancer proteomics"
+items = [
+    { venue = "PROFYLE (Barnabas et al.)", label = "EMBO Mol. Med., 2025", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
+    { venue = "ALL proteomics (Lorentzian et al.)", label = "Nature Comms., 2023", url = "https://www.nature.com/articles/s41467-023-42701-9" },
+    { venue = "PDX models (Uzozie et al.)", label = "J. Exp. Clin. Cancer Res., 2021", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
+]
+
+[[research]]
+topic = "Computational tooling and data infrastructure"
+items = [
+    { venue = "pxseek", label = "CLI tool, 2026", url = "https://github.com/LangeLab/pxseek" },
+    { venue = "z-fasta", label = "Zig library, 2026", url = "https://github.com/eneskemalergin/z-fasta" },
+    { venue = "mzarc", label = "Research codec, 2026", url = "https://github.com/eneskemalergin/mzarc" },
+]
+
+[[news]]
+date = "04/2026"
+content = """Founded <a href='https://zenteomics.com/'>Zenteomics</a>, building proteomics data infrastructure and open-source tooling for mass spectrometry. <a href='https://github.com/Zenteomics'>GitHub</a>."""
+
+[[news]]
+date = "02/2026"
+content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a>, an ultra-fast FASTA indexer written in Zig."
+
+[[news]]
+date = "12/2025"
+content = """Submitted ProteoForge to bioRxiv; now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
+
+[[news]]
+date = "04/2025"
+content = "Successfully defended PhD dissertation without revisions. Thesis deposited to <a href='https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334'>UBC Library</a>."
+
+[[news]]
+date = "05/2024"
+content = """Published QuEStVar in the <a href='https://doi.org/10.1021/acs.jproteome.4c00131'>Journal of Proteome Research</a>."""
+
+[[news]]
+date = "11/2023"
+content = """Co-authored paper on pediatric ALL proteomics published in <a href='https://www.nature.com/articles/s41467-023-42701-9'>Nature Communications</a>."""
+
+[[news]]
+date = "09/2022"
+content = """Published SQuAPP in <a href='https://academic.oup.com/bioinformatics/article/38/21/4956/6697884'>Bioinformatics</a>."""

@@ -1,0 +1,39 @@
+base_url = "https://eneskemalergin.github.io"
+default_language = "en"
+title = "Enes Kemal Ergin"
+compile_sass = true
+
+[extra]
+name = "Enes Kemal Ergin"
+
+menu = [
+    { name = "Home", url = "/" },
+    { name = "Projects", url = "/projects/" },
+    { name = "Research", url = "/research/" },
+    { name = "Blog", url = "/blog/" },
+]
+
+[[extra.social]]
+name = "E-Mail"
+url = "mailto:eneskemalergin@gmail.com"
+icon = "fas fa-envelope"
+
+[[extra.social]]
+name = "GitHub"
+url = "https://github.com/eneskemalergin"
+icon = "fab fa-github"
+
+[[extra.social]]
+name = "LinkedIn"
+url = "https://linkedin.com/in/eneskemalergin"
+icon = "fab fa-linkedin"
+
+[[extra.social]]
+name = "Google Scholar"
+url = "#"
+icon = "ai ai-google-scholar"
+
+[[extra.social]]
+name = "ORCID"
+url = "#"
+icon = "ai ai-orcid"

@@ -1,0 +1,312 @@
+@import "_main";
+@import "_blog";
+
+// ─── Experience (home page) ─────────────────────────────
+
+.exp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.exp-list li {
+    padding: 10px 0;
+}
+
+.exp-header {
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.exp-sub {
+    font-size: 9.5pt;
+    color: #555;
+}
+
+.exp-date {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 9pt;
+    color: #888;
+}
+
+// ─── Tools (home page) ──────────────────────────────────
+
+.tools-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tools-list li {
+    padding: 10px 0;
+}
+
+.tools-header {
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.tools-header a {
+    color: black;
+}
+
+.tools-header a:hover {
+    color: white;
+    background-color: #6490d7;
+}
+
+.tools-meta {
+    font-size: 9pt;
+    color: #888;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.tools-desc {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 2px;
+}
+
+// ─── Projects page ──────────────────────────────────────
+
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.project-name {
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+.project-name a {
+    color: black;
+}
+
+.project-name a:hover {
+    color: white;
+    background-color: #6490d7;
+}
+
+.project-meta {
+    font-size: 9pt;
+    color: #888;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 6px;
+}
+
+.project-tag {
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    background-color: #e8eef8;
+    color: #3560a5;
+}
+
+.project-desc {
+    font-size: 10pt;
+    color: #555;
+    line-height: 1.5;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.project-link {
+    font-size: 9.5pt;
+    color: #3560a5;
+    border: 1px solid #b0c4e8;
+    border-radius: 3px;
+    padding: 1px 6px;
+}
+
+.project-link:hover {
+    background-color: #6490d7;
+    border-color: #6490d7;
+    color: white;
+}
+
+// ─── Generic page / post ────────────────────────────────
+
+.page-header {
+    margin-bottom: 2em;
+}
+
+.page-header h1 {
+    font-size: 20pt;
+    font-weight: 500;
+    margin: 0;
+}
+
+.page-meta {
+    font-size: 9.5pt;
+    color: #888;
+    margin-top: .5em;
+}
+
+.page-body {
+    font-size: 10pt;
+    line-height: 1.6;
+}
+
+.page-body h2 {
+    font-size: 14pt;
+    margin-top: 1.5em;
+}
+
+.page-body h3 {
+    font-size: 12pt;
+    margin-top: 1.25em;
+}
+
+.page-body p {
+    margin: .75em 0;
+}
+
+.page-body ul,
+.page-body ol {
+    margin: .75em 0 .75em 2em;
+}
+
+.page-body li {
+    margin-bottom: .25em;
+}
+
+.page-body blockquote {
+    border-left: 3px solid #e0e0e0;
+    margin: 1em 0;
+    padding: .5em 1em;
+    color: #555;
+}
+
+.page-body hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 1.5em 0;
+}
+
+// ─── Section listing ────────────────────────────────────
+
+.section-header {
+    margin-bottom: 2em;
+}
+
+.section-header h1 {
+    font-size: 20pt;
+    font-weight: 500;
+    margin: 0;
+}
+
+.section-desc {
+    font-size: 10pt;
+    color: #888;
+    margin-top: .5em;
+}
+
+.list-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item h2 {
+    font-size: 11pt;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+}
+
+.list-item h2 a {
+    color: black;
+}
+
+.list-item h2 a:hover {
+    color: white;
+    background-color: #6490d7;
+}
+
+.list-meta {
+    font-size: 9pt;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.list-desc {
+    font-size: 9.5pt;
+    color: #555;
+    margin: 0;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 3px;
+    background: #e8eef8;
+    color: #3560a5;
+}
+
+.tag:hover {
+    background: #6490d7;
+    color: white;
+}
+
+.empty {
+    color: #888;
+    font-style: italic;
+    font-size: 10pt;
+}
+
+// ─── 404 ────────────────────────────────────────────────
+
+.error {
+    text-align: center;
+    padding: 4em 0;
+}
+
+.error h1 {
+    font-size: 3em;
+    color: #ccc;
+    font-weight: 100;
+}
+
+.error p {
+    font-size: 11pt;
+    color: #888;
+    margin: 1em 0;
+}

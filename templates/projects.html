@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set projects = load_data(path="data/projects.toml") %}
+
+<h2>Projects</h2>
+
+{% if projects.featured %}
+<ul class="projects-list">
+    {% for p in projects.featured %}
+    <li class="project-item">
+        <div class="project-header">
+            <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
+            <span class="project-meta">{{ p.language }}</span>
+        </div>
+        {% if p.tags %}
+        <div class="project-tags">
+            {% for tag in p.tags %}
+            <span class="project-tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="project-desc">{{ p.desc }}</div>
+        <div class="project-links">
+            {% if p.github %}<a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>{% endif %}
+            {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
+            {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
+            {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
+            {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
