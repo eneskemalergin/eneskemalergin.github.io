@@ -85,6 +85,22 @@
     {% endfor %}
 </div>
 
+{% set tagdefs = load_data(path="data/tags.toml") %}
+<hr>
+<div class="tag-legend">
+    <span class="tag-legend-label">Tags by topic:</span>
+    {% for cat in tagdefs.categories %}
+    {% if cat.tags %}
+    <div class="tag-legend-cat">
+        <span class="tag-legend-cat-label">{{ cat.name }}:</span>
+        {% for tag_name in cat.tags %}
+        <a href="{{ get_url(path="/tags/" ~ tag_name ~ "/") }}" class="tag">{{ tag_name }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
 <script>
 (function() {
     var tabs = document.querySelectorAll('.research-tab');

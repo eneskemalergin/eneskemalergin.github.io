@@ -274,6 +274,10 @@ html.dark .project-tab.active {
     border-bottom-color: var(--c-link-hover-bg);
 }
 
+html.dark .tag-legend-cat-label {
+    color: #999;
+}
+
 html.dark .stat-star {
     background: #2a1e10;
     color: #d48520;
@@ -655,6 +659,24 @@ html.dark .theme-toggle:active .toggle-thumb {
     background-color: #6490d7;
     border-color: #6490d7;
     color: white;
+}
+
+// ─── Tag legend categories ──────────────────────────────
+
+.tag-legend-cat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    margin: 4px 0;
+    width: 100%;
+}
+
+.tag-legend-cat-label {
+    font-size: 9pt;
+    color: #888;
+    font-weight: 500;
+    margin-right: 4px;
 }
 
 // ─── Research tabs ──────────────────────────────────────
