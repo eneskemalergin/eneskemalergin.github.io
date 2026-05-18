@@ -49,31 +49,3 @@ items = [
     { venue = "PXAudit", label = "FAIR metadata audit, 2026", url = "https://github.com/LangeLab/PXAudit" },
     { venue = "mzValidate", label = "mzML validator, 2026", url = "https://github.com/eneskemalergin/mzValidate" },
 ]
-
-[[news]]
-date = "04/2026"
-content = """Founded <a href='https://zenteomics.com/'>Zenteomics</a>, building proteomics data infrastructure and open-source tooling for mass spectrometry. <a href='https://github.com/Zenteomics'>GitHub</a>."""
-
-[[news]]
-date = "02/2026"
-content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a>, an ultra-fast FASTA indexer written in Zig."
-
-[[news]]
-date = "12/2025"
-content = """Submitted ProteoForge to bioRxiv. Now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
-
-[[news]]
-date = "04/2025"
-content = "Successfully defended PhD dissertation without revisions. Thesis deposited to <a href='https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334'>UBC Library</a>."
-
-[[news]]
-date = "05/2024"
-content = """Published QuEStVar in the <a href='https://doi.org/10.1021/acs.jproteome.4c00131'>Journal of Proteome Research</a>."""
-
-[[news]]
-date = "11/2023"
-content = """Co-authored paper on pediatric ALL proteomics published in <a href='https://www.nature.com/articles/s41467-023-42701-9'>Nature Communications</a>."""
-
-[[news]]
-date = "09/2022"
-content = """Published SQuAPP in <a href='https://academic.oup.com/bioinformatics/article/38/21/4956/6697884'>Bioinformatics</a>."""

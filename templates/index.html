@@ -53,16 +53,21 @@
 </ul>
 {% endif %}
 
-{% if home.news %}
+{% set all_news = load_data(path="data/news.toml") %}
+{% if all_news.news %}
 <hr>
 <h2>News</h2>
-<ul class="news-list">
-    {% for item in home.news %}
-    <li>
+<div class="news-list">
+    {% for item in all_news.news %}
+      {% if item["main-page"] == "1" or item["main-page"] == 1 %}
+    <div class="news-item">
         <span class="news-date">{{ item.date }}</span>
+        <span class="news-type news-type-{{ item.type }}">{{ item.type }}</span>
         <span class="news-content">{{ item.content | safe }}</span>
-    </li>
+    </div>
+      {% endif %}
     {% endfor %}
-</ul>
+</div>
+<p class="news-footer"><a href="{{ get_url(path="/news/") }}">View all news</a></p>
 {% endif %}
 {% endblock %}
