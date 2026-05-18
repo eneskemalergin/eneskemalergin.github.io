@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 {% set pubs = load_data(path="data/publications.toml") %}
@@ -14,83 +15,43 @@
 </div>
 
 <div id="publications" class="research-panel active">
-    {% if pubs.preprints %}
+
+    <div class="pub-legend">
+        <span class="pub-legend-item"><i class="fas fa-book-open"></i> journal</span>
+        <span class="pub-legend-item"><i class="fas fa-file-lines"></i> preprint</span>
+        <span class="pub-legend-item"><i class="fas fa-graduation-cap"></i> thesis</span>
+        <span class="pub-legend-item"><i class="fas fa-check-circle"></i> published</span>
+        <span class="pub-legend-sep">|</span>
+        <span class="pub-legend-item">&#42; corresponding author</span>
+    </div>
+
+    {% for paper in pubs.publications | filter(attribute="status", value="preprint") %}
     <div class="timeline-group">
         <div class="timeline-year">Preprint</div>
         <div class="timeline-papers">
-            {% for paper in pubs.preprints %}
-            <div class="paper-card">
-                <p class="paper-title">{{ paper.title | safe }}</p>
-                <p class="paper-authors">{{ paper.authors | safe }}</p>
-                <p class="paper-venue"><i>{{ paper.venue | safe }}</i></p>
-                {% if paper.links %}
-                <div class="paper-links">
-                    {% for link in paper.links %}
-                    <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
-                    {% endfor %}
-                    {% if paper.tag %}<a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>{% endif %}
-                </div>
-                {% elif paper.tag %}
-                <div class="paper-links">
-                    <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
-                </div>
-                {% endif %}
-                {% if paper.tldr %}
-                <p class="tldr">{{ paper.tldr }}</p>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% if pubs.upcoming %}
-    <div class="timeline-group">
-        <div class="timeline-year">Upcoming</div>
-        <div class="timeline-papers">
-            {% for paper in pubs.upcoming %}
-            <div class="paper-card">
-                <p class="paper-title">{{ paper.title | safe }}</p>
-                {% if paper.state %}<span class="state-badge state-{{ paper.state }}">{{ paper.state | replace(from="_", to=" ") }}</span>{% endif %}
-                <p class="paper-authors">{{ paper.authors | safe }}</p>
-                {% if paper.tldr %}
-                <p class="tldr">{{ paper.tldr }}</p>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% for year in pubs.years %}
-    <div class="timeline-group">
-        <div class="timeline-year">{{ year.year }}</div>
-        <div class="timeline-papers">
-            {% for paper in year.papers %}
-            <div class="paper-card">
-                <p class="paper-title">{{ paper.title | safe }}</p>
-                <p class="paper-authors">{{ paper.authors | safe }}</p>
-                <p class="paper-venue"><i>{{ paper.venue }}</i>{% if paper.extra %} {{ paper.extra | safe }}{% endif %}</p>
-                {% if paper.links %}
-                <div class="paper-links">
-                    {% for link in paper.links %}
-                    <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
-                    {% endfor %}
-                    {% if paper.tag %}<a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>{% endif %}
-                </div>
-                {% elif paper.tag %}
-                <div class="paper-links">
-                    <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
-                </div>
-                {% endif %}
-                {% if paper.tldr %}
-                <p class="tldr">{{ paper.tldr }}</p>
-                {% endif %}
-            </div>
-            {% endfor %}
+            {{ macros::render_paper(paper=paper) }}
         </div>
     </div>
     {% endfor %}
+
+    {% set published = pubs.publications | filter(attribute="status", value="published") %}
+    {% set_global pub_years = [] %}
+    {% for paper in published %}
+      {% if paper.year not in pub_years %}
+        {% set_global pub_years = pub_years | concat(with=paper.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in pub_years | sort | reverse %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ y }}</div>
+        <div class="timeline-papers">
+        {% for paper in published | filter(attribute="year", value=y) %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
 </div>
 
 <div id="talks" class="research-panel">

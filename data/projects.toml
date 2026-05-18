@@ -2,28 +2,28 @@
 #
 # Each [[projects]] entry supports these fields:
 #
-#   title     – Project display name
-#   domain    – Functional area: "data-analysis" | "metadata" | "core-tooling" |
+#   title     - Project display name
+#   domain    - Functional area: "data-analysis" | "metadata" | "core-tooling" |
 #               "language-dev" | "standards"
-#   source    – Project origin: "langelab" | "zenteomics" | "personal"
-#   status    – "stable" | "active" | "wip" | "early" | "private" | "archived"
+#   source    - Project origin: "langelab" | "zenteomics" | "personal"
+#   status    - "stable" | "active" | "wip" | "early" | "private" | "archived"
 #               (also determines timeline stage grouping order)
-#   stars     – GitHub star count (integer, 0 to hide)
-#   version   – Semver string, e.g. "0.3.0".  Default "0.1.0" if omitted.
-#   language  – "Python" | "R" | "Zig" | "Rust" | "C" | "C++" | "C#" |
+#   stars     - GitHub star count (integer, 0 to hide)
+#   version   - Semver string, e.g. "0.3.0".  Default "0.1.0" if omitted.
+#   language  - "Python" | "R" | "Zig" | "Rust" | "C" | "C++" | "C#" |
 #               "LaTeX" | "Go".  Jupyter Notebook is normalized to Python.
-#   pub       – Publication status: "published" | "preprint" | "upcoming" |
+#   pub       - Publication status: "published" | "preprint" | "upcoming" |
 #               "planned" | "na"
-#   access    – Repository visibility: "public" | "private"
-#   image     – Thumbnail path relative to static/  (optional)
-#   tag       – Blog tag slug for cross-linking; "NA" means not yet assigned
-#   tags      – Array of category tag strings        (optional)
-#   desc      – Markdown description string          (optional)
-#   github    – GitHub URL
-#   docs      – Documentation URL                    (optional)
-#   app       – Live application URL                 (optional)
-#   paper     – Published paper DOI / URL            (optional)
-#   preprint  – Preprint URL                         (optional)
+#   access    - Repository visibility: "public" | "private"
+#   image     - Thumbnail path relative to static/  (optional)
+#   tag       - Blog tag slug for cross-linking; "NA" means not yet assigned
+#   tags      - Array of category tag strings        (optional)
+#   desc      - Markdown description string          (optional)
+#   github    - GitHub URL
+#   docs      - Documentation URL                    (optional)
+#   app       - Live application URL                 (optional)
+#   paper     - Published paper DOI / URL            (optional)
+#   preprint  - Preprint URL                         (optional)
 #
 # ─── Head Badges (right-aligned, in order) ─────────────────────────────────
 #
@@ -58,10 +58,10 @@
 #
 # ─── Left Column (under thumbnail) ─────────────────────────────────────────
 #
-#   .project-domain    – Uppercase muted label ("DATA-ANALYSIS", "METADATA",
+#   .project-domain    - Uppercase muted label ("DATA-ANALYSIS", "METADATA",
 #                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS", 
 #                        "OTHER")
-#   .project-source    – Uppercase muted label ("LANGELAB", "ZENTEOMICS",
+#   .project-source    - Uppercase muted label ("LANGELAB", "ZENTEOMICS",
 #                        "PERSONAL", "COMMUNITY")
 #
 # ─── Dark Mode ─────────────────────────────────────────────────────────────

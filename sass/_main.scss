@@ -703,6 +703,325 @@ h3 + p {
     border: 1px solid rgba(184, 110, 0, 0.3);
 }
 
+// ─── Publication card layout ─────────────────────────────
+
+// ─── Publication card layout ─────────────────────────────
+
+.paper-card-detailed {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.paper-card-detailed:last-child {
+    border-bottom: none;
+}
+
+.paper-main {
+    display: flex;
+    gap: 14px;
+}
+
+.paper-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    width: 130px;
+}
+
+.paper-thumbnail {
+    width: 130px;
+    height: 130px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+}
+
+.paper-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pub-domain {
+    font-size: 7pt;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.pub-tag-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+}
+
+.pub-tag {
+    font-size: 7pt;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--border-color);
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.paper-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.paper-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.paper-venue-inline {
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.venue-journal {
+    background: rgba(37, 99, 235, 0.08);
+    color: #2563eb;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.venue-preprint {
+    background: rgba(217, 119, 6, 0.08);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.2);
+}
+
+.venue-thesis {
+    background: rgba(5, 150, 105, 0.08);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.2);
+}
+
+.venue-conference {
+    background: rgba(139, 92, 246, 0.08);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+html.dark .venue-journal {
+    background: rgba(96, 165, 250, 0.12);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.25);
+}
+
+html.dark .venue-preprint {
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+html.dark .venue-thesis {
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .venue-conference {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+.paper-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.paper-badge-group .pub-badge {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+.paper-badge-group i {
+    margin-right: 2px;
+    font-size: 7pt;
+}
+
+.pub-badge.pub-type-journal {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    border-color: rgba(37, 99, 235, 0.25);
+}
+
+.pub-badge.pub-type-conference {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+.pub-badge.pub-type-thesis {
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.25);
+}
+
+.pub-badge.pub-type-preprint {
+    background: rgba(217, 119, 6, 0.1);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.25);
+}
+
+.pub-badge.pub-status-published {
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.25);
+}
+
+.pub-badge.pub-status-preprint {
+    background: rgba(217, 119, 6, 0.1);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.25);
+}
+
+html.dark .pub-badge.pub-status-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.paper-body .paper-title {
+    display: block;
+    font-size: 11pt;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    line-height: 1.4;
+}
+
+.paper-authors {
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    margin: 0 0 2px 0;
+    line-height: 1.5;
+}
+
+.paper-authors u {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--c-link);
+}
+
+.pub-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: 8pt;
+    color: var(--text-muted);
+}
+
+.pub-legend-item {
+    white-space: nowrap;
+}
+
+.pub-legend-item i {
+    margin-right: 2px;
+    font-size: 7.5pt;
+}
+
+.pub-legend-sep {
+    color: var(--border-color);
+}
+
+.paper-body .paper-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.paper-body .tldr {
+    font-size: 7pt;
+    line-height: 1.5;
+    margin: 12px 0 8px 0;
+    color: var(--text-muted);
+    padding: 10px 12px 8px;
+    border-radius: 6px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.paper-body .tldr::before {
+    content: "TLDR";
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 7pt;
+    letter-spacing: 0.06em;
+    color: var(--c-link);
+    text-transform: uppercase;
+    background: var(--bg-color);
+    padding: 0 6px;
+    line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+    .paper-main {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .paper-left {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .paper-thumbnail {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+    .pub-domain {
+        font-size: 6.5pt;
+    }
+    .pub-tag-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .pub-tag {
+        width: auto;
+    }
+}
+
 .tag-legend {
     display: flex;
     align-items: center;
