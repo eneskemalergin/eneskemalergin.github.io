@@ -1131,6 +1131,17 @@ html.dark .pub-badge.pub-status-under-review {
     border: 1px solid var(--border-color);
 }
 
+.talk-type--ta {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+html.dark .talk-type--ta {
+    color: #94a3b8;
+    border-color: rgba(148, 163, 184, 0.3);
+}
+
 .talk-date {
     font-size: 9.5pt;
     color: var(--text-muted);

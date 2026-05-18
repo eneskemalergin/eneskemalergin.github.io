@@ -1,0 +1,100 @@
+# -- Teaching / Mentoring Schema Reference ---------------------------------------
+#
+# Each [[experiences]] entry supports these fields:
+#
+#   role        - "TA" | "Instructor" | "Tutor" | "Guest Lecturer" |
+#                 "Workshop Leader" | "Mentor" | "Supervisor"
+#   course      - Course name, number, or program title
+#   institution - University or organization
+#   department  - Department or faculty                         (optional)
+#   date        - Date range string, e.g. "Sep 2022 - Apr 2022"
+#   year        - Year (integer), used for sorting
+#   format      - "In-person" | "Online" | "Hybrid"             (optional)
+#   level       - "Undergraduate" | "Graduate" | "Professional" (optional)
+#   description - Short summary of responsibilities             (optional)
+#   highlights  - Array of key achievements or duties           (optional)
+#   supervisor  - Faculty supervisor name                       (optional)
+#   students    - Number of students (integer)                  (optional)
+#   image       - Photo or logo path relative to static/        (optional)
+#   tags        - Array of topic tags                           (optional)
+#   featured    - Boolean, true to highlight this entry         (optional)
+#   url         - Course or department URL                      (optional)
+#   tag         - Blog tag slug for cross-linking; "NA" unassigned
+#
+# Card layout:  role badge, course name, institution, date, description
+#   Left:       optional thumbnail / initial letter
+#   Body:       role badge, course, institution, date, description
+
+[[experiences]]
+role = "TA"
+course = "COMP 3317: Algorithms"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Sep 2016 - May 2017"
+year = 2016
+level = "Undergraduate"
+format = "In-person"
+highlights = [
+    "Co-taught lectures and lab sessions",
+    "Designed homework assignments and exams",
+    "Held weekly office hours and supplementary review sessions"
+]
+tag = "NA"
+
+[[experiences]]
+role = "TA"
+course = "COMP 3320: Programming Languages"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Sep 2016 - May 2017"
+year = 2016
+level = "Undergraduate"
+format = "In-person"
+tag = "NA"
+
+[[experiences]]
+role = "TA"
+course = "COMP 3322: Software Engineering"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Sep 2015 - May 2016"
+year = 2015
+level = "Undergraduate"
+format = "In-person"
+tag = "NA"
+
+[[experiences]]
+role = "TA"
+course = "COMP 2415: Systems Programming"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Sep 2015 - May 2016"
+year = 2015
+level = "Undergraduate"
+format = "In-person"
+tag = "NA"
+
+[[experiences]]
+role = "Tutor"
+course = "Mathematics and Computer Science"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Jan 2017 - May 2017"
+year = 2017
+level = "Undergraduate"
+format = "In-person"
+description = "Tutored college algebra, differential equations, CS1, and Data Mining."
+tag = "NA"
+
+[[experiences]]
+role = "Instructor"
+course = "Introductory Python Programming"
+institution = "North American University"
+department = "Department of Computer Science"
+date = "Feb 2015 - Apr 2015"
+year = 2015
+level = "Professional"
+format = "In-person"
+students = 35
+description = "First course taught solely by a student at NAU."
+tag = "NA"

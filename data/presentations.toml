@@ -1,0 +1,127 @@
+# -- Presentation Schema Reference ------------------------------------------------
+#
+# Each [[presentations]] entry supports these fields:
+#
+#   title       - Presentation title
+#   type        - "Oral" | "Poster" | "Workshop" | "Invited Talk" | "Lecture" |
+#                 "Keynote" | "Panel"
+#   role        - "Presenter" | "First Author" | "Speaker"         (optional)
+#   date        - Month + year string, e.g. "Jun 2023"
+#   year        - Year (integer), used for timeline grouping
+#   venue       - Conference, event, or institution name
+#   event       - Broader event / conference name                  (optional)
+#   location    - City, Province/State, Country
+#   coauthors   - Array of co-author names                         (optional)
+#   doi         - DOI if the presentation has a published abstract (optional)
+#   award       - Award won for the presentation                   (optional)
+#   links       - Array of { label, url } for slides, recording    (optional)
+#   description - Short abstract or summary                        (optional)
+#   image       - Photo or figure path relative to static/         (optional)
+#   tags        - Array of topic tags                              (optional)
+#   featured    - Boolean, true to highlight this entry            (optional)
+#   url         - External page for more details                   (optional)
+#   tag         - Blog tag slug for cross-linking; "NA" unassigned
+#
+# Card layout:  title, type badge, date, venue, location, links
+#   Left column:    initial letter placeholder
+#   Body:           title, type + date badges inline, venue, location, links
+
+[[presentations]]
+title = "Proteomics Workshop: Common Downstream Analysis Pipeline"
+type = "Workshop"
+role = "Presenter"
+date = "Jul 2023"
+venue = "Trainee Omics Group (TOG)"
+location = "BC Children's Hospital Research Institute, Vancouver, BC"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "Exploring Stable Proteome in Cancer Cell Line Atlas with QuEStVar"
+type = "Oral"
+role = "First Author"
+date = "Jun 2023"
+venue = "Trainee Omics Group (TOG)"
+location = "BC Children's Hospital Research Institute, Vancouver, BC"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "InPACCT: Integrated Proteomics Analysis of Curated Childhood Tumours"
+type = "Invited Talk"
+role = "Co-author"
+date = "May 2023"
+venue = "Canadian National Proteomics Network (CNPN)"
+location = "Regina, SK"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "Characterization of a New Type of Neoantigen in T-Cell Acute Lymphoblastic Leukemia (T-ALL) by Cell Surface Terminomics"
+type = "Poster"
+role = "Co-author"
+date = "Mar 2024"
+venue = "US HUPO 2024"
+location = "Portland, OR, USA"
+year = 2024
+tag = "NA"
+
+[[presentations]]
+title = "InPACCT: Integrated proteomics analyses of curated childhood tumours"
+type = "Poster"
+role = "Co-author"
+date = "May 2023"
+venue = "Canadian National Proteomics Network (CNPN)"
+location = "Regina, SK"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "Stable Proteome in Cancer Cell Lines with Combined Testing"
+type = "Poster"
+role = "First Author"
+date = "May 2023"
+venue = "Canadian National Proteomics Network (CNPN)"
+location = "Regina, SK"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "Insightful, Integrated Analyses of Public Pediatric Cancer Proteomics with InPACCT"
+type = "Poster"
+role = "Co-author"
+date = "Mar 2023"
+venue = "BIG Research Day"
+location = "BC Children's Hospital Research Institute, Vancouver, BC"
+year = 2023
+tag = "NA"
+
+[[presentations]]
+title = "Normalization in Proteomics: Past, Present, and Future"
+type = "Oral"
+role = "Presenter"
+date = "May 2020"
+venue = "Trainee Omics Group (TOG)"
+location = "BC Children's Hospital Research Institute, Vancouver, BC"
+year = 2020
+tag = "NA"
+
+[[presentations]]
+title = "Sensitive determination of proteolytic proteoforms in limited samples"
+type = "Poster"
+role = "Co-author"
+date = "Apr 2019"
+venue = "Pathology Day"
+location = "University of British Columbia, Vancouver, BC"
+year = 2019
+tag = "NA"
+
+[[presentations]]
+title = "Statistical methods for proteomics data"
+type = "Poster"
+role = "Presenter"
+date = "Apr 2018"
+venue = "STAT Day"
+location = "University of British Columbia, Vancouver, BC"
+year = 2018
+tag = "NA"

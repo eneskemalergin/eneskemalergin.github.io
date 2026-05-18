@@ -3,15 +3,15 @@
 
 {% block content %}
 {% set pubs = load_data(path="data/publications.toml") %}
-{% set talks = load_data(path="data/talks.toml") %}
-{% set posters = load_data(path="data/posters.toml") %}
+{% set presentations = load_data(path="data/presentations.toml") %}
+{% set teaching = load_data(path="data/teaching.toml") %}
 
 <h2>Research</h2>
 
 <div class="research-tabs">
     <span class="research-tab active" data-tab="publications">Publications</span>
-    <span class="research-tab" data-tab="talks">Talks</span>
-    <span class="research-tab" data-tab="posters">Posters</span>
+    <span class="research-tab" data-tab="presentations">Presentations</span>
+    <span class="research-tab" data-tab="teaching">Teaching</span>
 </div>
 
 <div id="publications" class="research-panel active">
@@ -69,113 +69,56 @@
 
 </div>
 
-<div id="talks" class="research-panel">
-    {% if talks.upcoming %}
+<div id="presentations" class="research-panel">
+    {% set_global pres_years = [] %}
+    {% for item in presentations.presentations %}
+      {% if item.year not in pres_years %}
+        {% set_global pres_years = pres_years | concat(with=item.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in pres_years | sort | reverse %}
     <div class="timeline-group">
-        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-year">{{ y }}</div>
         <div class="timeline-papers">
-            {% for item in talks.upcoming %}
+        {% for item in presentations.presentations | filter(attribute="year", value=y) %}
             <div class="paper-card">
                 <p class="paper-title">{{ item.title }}</p>
                 <div class="talk-header">
-                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
-                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
-                </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% if talks.preprints %}
-    <div class="timeline-group">
-        <div class="timeline-year">Preprint</div>
-        <div class="timeline-papers">
-            {% for item in talks.preprints %}
-            <div class="paper-card">
-                <p class="paper-title">{{ item.title }}</p>
-                <div class="talk-header">
-                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
-                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
-                </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% for year in talks.years %}
-    <div class="timeline-group">
-        <div class="timeline-year">{{ year.year }}</div>
-        <div class="timeline-papers">
-            {% for item in year.items %}
-            <div class="paper-card">
-                <p class="paper-title">{{ item.title }}</p>
-                <div class="talk-header">
-                    <span class="talk-type {% if item.type == "Workshop" %}talk-type--workshop{% else %}talk-type--oral{% endif %}">{{ item.type }}</span>
+                    <span class="talk-type
+                      {%- if item.type == "Workshop" %} talk-type--workshop
+                      {%- elif item.type == "Poster" %} talk-type--poster
+                      {%- else %} talk-type--oral{% endif %}">{{ item.type }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}{% if item.tag %}<a href="{{ get_url(path="/tags/" ~ item.tag ~ "/") }}" class="talk-link">Blog</a>{% endif %}</div>
+                <div class="talk-meta">{{ item.venue }}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
             </div>
-            {% endfor %}
+        {% endfor %}
         </div>
     </div>
     {% endfor %}
 </div>
 
-<div id="posters" class="research-panel">
-    {% if posters.upcoming %}
+<div id="teaching" class="research-panel">
+    {% set_global teach_years = [] %}
+    {% for item in teaching.experiences %}
+      {% if item.year not in teach_years %}
+        {% set_global teach_years = teach_years | concat(with=item.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in teach_years | sort | reverse %}
     <div class="timeline-group">
-        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-year">{{ y }}</div>
         <div class="timeline-papers">
-            {% for item in posters.upcoming %}
+        {% for item in teaching.experiences | filter(attribute="year", value=y) %}
             <div class="paper-card">
-                <p class="paper-title">{{ item.title }}</p>
+                <p class="paper-title">{{ item.course }}</p>
                 <div class="talk-header">
-                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
-                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
-                </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% if posters.preprints %}
-    <div class="timeline-group">
-        <div class="timeline-year">Preprint</div>
-        <div class="timeline-papers">
-            {% for item in posters.preprints %}
-            <div class="paper-card">
-                <p class="paper-title">{{ item.title }}</p>
-                <div class="talk-header">
-                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
-                    {% if item.date %}<span class="talk-date">{{ item.date }}</span>{% endif %}
-                </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    {% for year in posters.years %}
-    <div class="timeline-group">
-        <div class="timeline-year">{{ year.year }}</div>
-        <div class="timeline-papers">
-            {% for item in year.items %}
-            <div class="paper-card">
-                <p class="paper-title">{{ item.title }}</p>
-                <div class="talk-header">
-                    <span class="talk-type talk-type--poster">{{ item.type }}</span>
+                    <span class="talk-type talk-type--ta">{{ item.role }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
-                <div class="talk-meta">{% if item.venue %}{{ item.venue }}{% endif %}{% if item.location %} &middot; {{ item.location }}{% endif %}{% if item.link %}<a href="{{ item.link_url }}" class="talk-link" target="_blank">{{ item.link }}</a>{% endif %}{% if item.tag %}<a href="{{ get_url(path="/tags/" ~ item.tag ~ "/") }}" class="talk-link">Blog</a>{% endif %}</div>
+                <div class="talk-meta">{{ item.institution }}</div>
             </div>
-            {% endfor %}
+        {% endfor %}
         </div>
     </div>
     {% endfor %}
