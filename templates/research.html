@@ -166,6 +166,16 @@
     {% endfor %}
 </div>
 
+{% set pub_tag_freq = load_data(path="data/pub_tag_frequencies.json") %}
+
+<hr>
+<div class="tag-legend">
+    <span class="tag-legend-label">Tags by appearance:</span>
+    {% for entry in pub_tag_freq %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endfor %}
+</div>
+
 <script>
 (function() {
     var tabs = document.querySelectorAll('.research-tab');

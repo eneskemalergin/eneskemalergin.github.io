@@ -765,16 +765,28 @@ h3 + p {
 }
 
 .pub-tag {
-    font-size: 7pt;
+    font-size: 7.5pt;
     font-weight: 500;
-    padding: 2px 8px;
+    padding: 1px 8px;
     border-radius: 999px;
-    background: var(--border-color);
-    color: var(--text-muted);
+    background-color: transparent;
+    color: var(--c-link);
+    border: 1px solid rgba(0, 107, 123, 0.3);
     white-space: nowrap;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.pub-tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+html.dark .pub-tag {
+    border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
 .paper-body {
@@ -939,6 +951,7 @@ html.dark .pub-badge.pub-status-preprint {
 .pub-legend {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 6px;
     flex-wrap: wrap;
     margin-bottom: 12px;

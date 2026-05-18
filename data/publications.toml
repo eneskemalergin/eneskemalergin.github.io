@@ -47,8 +47,9 @@ type = "preprint"
 status = "preprint"
 access = "open-access"
 doi = "10.64898/2025.12.12.694008"
+image = "publications/Ergin_2026_proteoforge.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "imputation"]
+tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry"]
 links = [
     { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
 ]
@@ -64,8 +65,9 @@ year = 2025
 type = "journal"
 status = "published"
 access = "open-access"
+image = "publications/barnabas_2025_profyle.jpg"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pdx-models"]
+tags = ["proteomics", "cancer-biology", "pdx-models", "precision-oncology", "drug-response"]
 links = [
     { label = "Paper", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
 ]
@@ -81,8 +83,9 @@ year = 2025
 type = "thesis"
 status = "published"
 access = "open-access"
+image = "publications/thesis-ergin-ubc.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "computational-biology"]
+tags = ["proteomics", "proteoforms", "computational-biology", "pediatric-cancer", "mass-spectrometry"]
 links = [
     { label = "Thesis", url = "https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334" },
 ]
@@ -99,8 +102,9 @@ type = "journal"
 status = "published"
 access = "closed"
 doi = "10.1021/acs.jproteome.4c00131"
+image = "publications/Ergin_2024_questvar.gif"
 tag = "NA"
-tags = ["proteomics", "statistics", "equivalence-testing"]
+tags = ["proteomics", "statistics", "equivalence-testing", "cell-lines", "functional-modules", "bioinformatics"]
 links = [
     { label = "Paper", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
 ]
@@ -117,8 +121,9 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.1038/s41467-023-42701-9"
+image = "publications/Lorentzian_2022.png"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pediatric-all"]
+tags = ["proteomics", "cancer-biology", "pediatric-all", "genomics", "drug-response", "relapse"]
 links = [
     { label = "Paper", url = "https://www.nature.com/articles/s41467-023-42701-9" },
 ]
@@ -135,8 +140,9 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.1093/bioinformatics/btac628"
+image = "publications/squapp_ergin.jpg"
 tag = "squapp"
-tags = ["proteomics", "bioinformatics", "shiny"]
+tags = ["proteomics", "bioinformatics", "shiny", "visualization", "ptm", "web-app"]
 links = [
     { label = "Paper", url = "https://doi.org/10.1093/bioinformatics/btac628" },
     { label = "Code", url = "https://github.com/LangeLab/SQuAPP" },
@@ -155,8 +161,9 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.1186/s13046-021-01835-8"
+image = "publications/Uzozie_2021.png"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pdx-models"]
+tags = ["proteomics", "cancer-biology", "pdx-models", "phosphoproteomics", "genomics"]
 links = [
     { label = "Paper", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
 ]
@@ -173,8 +180,9 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.1074/mcp.RA119.001678"
+image = "publications/Weng-2019.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "mass-spectrometry"]
+tags = ["proteomics", "proteoforms", "mass-spectrometry", "n-termini", "enrichment", "microscale"]
 links = [
     { label = "Paper", url = "https://www.mcponline.org/article/S1535-9476(20)31769-2/fulltext" },
 ]
@@ -191,8 +199,9 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.3906/biy-1501-56"
+image = "publications/barnabas_2025_profyle.jpg"
 tag = "NA"
-tags = ["virology", "drug-discovery", "docking"]
+tags = ["virology", "drug-discovery", "docking", "cchfv", "protease", "antivirals"]
 links = [
     { label = "Paper", url = "https://doi.org/10.3906/biy-1501-56" },
 ]
