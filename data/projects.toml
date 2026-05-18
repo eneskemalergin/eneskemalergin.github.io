@@ -1,4 +1,4 @@
-# ─── Project Schema Reference ──────────────────────────────────────────────
+# -- Project Schema Reference --------------------------------------------------
 #
 # Each [[projects]] entry supports these fields:
 #
@@ -25,7 +25,7 @@
 #   paper     - Published paper DOI / URL            (optional)
 #   preprint  - Preprint URL                         (optional)
 #
-# ─── Head Badges (right-aligned, in order) ─────────────────────────────────
+# -- Head Badges (right-aligned, in order) -------------------------------------
 #
 #   1. Language badge     .lang-badge.lang-{Python|R|Zig|Rust|C|C++|C#|LaTeX|Go}
 #        Python: #3776AB blue,         fa-python icon
@@ -42,9 +42,11 @@
 #        public:  #059669 green,       fa-lock-open icon
 #        private: #d97706 amber,       fa-lock icon
 #
-#   3. Stars badge        .star-badge[data-stars=N]
-#        1: #fca5a5  2: #f87171  4: #ef4444  5: #dc2626  10: #b91c1c
-#        (darker red = more stars)
+#   3. Stars badge        .star-badge (log-normalized colour)
+#        Colour computed by tools/star-colors.py using log normalisation
+#        over the actual star-count range in this file.  Values inlined
+#        as CSS custom properties (--clr, --clr-d, --bdr, --bdr-d, --bg, --bg-d).
+#        Lowest count -> lightest red (#fca5a5), highest -> darkest (#b91c1c).
 #
 #   4. Version badge      .version-badge
 #        Muted gray pill, no variant.
@@ -56,28 +58,33 @@
 #        planned:   #7c3aed purple,    fa-calendar icon
 #        na:        #64748b gray,      fa-minus icon
 #
-# ─── Left Column (under thumbnail) ─────────────────────────────────────────
+# -- Left Column (under thumbnail) ---------------------------------------------
 #
 #   .project-domain    - Uppercase muted label ("DATA-ANALYSIS", "METADATA",
-#                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS", 
-#                        "OTHER")
+#                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS")
 #   .project-source    - Uppercase muted label ("LANGELAB", "ZENTEOMICS",
-#                        "PERSONAL", "COMMUNITY")
+#                        "PERSONAL")
 #
-# ─── Dark Mode ─────────────────────────────────────────────────────────────
+# -- Dark Mode -----------------------------------------------------------------
 #   All coloured badges have brighter/saturated dark-mode variants (see CSS).
 #
-# ─── Notes ─────────────────────────────────────────────────────────────────
+# -- Notes ---------------------------------------------------------------------
 #   - Language "Jupyter Notebook" is normalised to "Python" in the data.
 #   - Every project should have version, pub, and access set explicitly.
-#   - Timeline order: stable → active → wip → early → private → archived.
-#   - Star badge uses data-stars attribute; CSS handles 1/2/4/5/10 stops.
-#   - Thumbnail is square 130 px (80 px on mobile).
+#   - Timeline order: stable -> active -> wip -> early -> private -> archived.
+#   - Star badge colour is computed by tools/star-colors.py with log
+#     normalisation over the actual star count range in this file.
+#   - Thumbnail is square 130 px (80 px on mobile), border-radius 6px,
+#     1px border, with initial letter placeholder when no image.
 #   - tag = "NA" means blog tag slug not yet assigned (fill later).
-#   - Tag frequency cloud is auto-generated into data/tag_frequencies.json.
-#     Run ./build.sh instead of bare zola build/serve to regenerate it.
-#   - The full badge rendering lives in sass/style.scss under "Project stats"
-#     and templates/projects.html.
+#   - Tag frequency cloud is generated into data/tag_frequencies.json by
+#     tools/tag-freq.py.  Run ./build.sh instead of bare zola build/serve
+#     to regenerate it.
+#   - Star colours and tag frequencies are pre-processed in build.sh:
+#       tools/tag-freq.py     -> data/tag_frequencies.json
+#       tools/star-colors.py  -> data/project_stars.json
+#   - The full badge rendering lives in sass/style.scss and
+#     templates/projects.html.
 
 [[projects]]
 title = "SQuAPP"

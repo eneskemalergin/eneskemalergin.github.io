@@ -18,7 +18,6 @@
 
     <div class="pub-legend">
         <span class="pub-legend-item"><i class="fas fa-book-open"></i> journal</span>
-        <span class="pub-legend-item"><i class="fas fa-file-lines"></i> preprint</span>
         <span class="pub-legend-item"><i class="fas fa-hourglass-half"></i> under-review</span>
         <span class="pub-legend-item"><i class="fas fa-graduation-cap"></i> thesis</span>
         <span class="pub-legend-item"><i class="fas fa-check-circle"></i> published</span>
@@ -26,9 +25,7 @@
         <span class="pub-legend-item">&#42; corresponding author</span>
     </div>
 
-    {% set preprints = pubs.publications | filter(attribute="status", value="preprint") %}
-    {% set preprints = preprints | concat(with=pubs.publications | filter(attribute="status", value="under-review")) %}
-    {% for paper in preprints %}
+    {% for paper in pubs.publications | filter(attribute="status", value="under-review") %}
     <div class="timeline-group">
         <div class="timeline-year">Preprint</div>
         <div class="timeline-papers">
@@ -36,6 +33,21 @@
         </div>
     </div>
     {% endfor %}
+
+    {% set upcoming_planned = pubs.publications | filter(attribute="status", value="upcoming") %}
+    {% if upcoming_planned %}
+    <div class="timeline-group">
+        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-papers">
+        {% for paper in upcoming_planned %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        {% for paper in pubs.publications | filter(attribute="status", value="planned") %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 
     {% set published = pubs.publications | filter(attribute="status", value="published") %}
     {% set_global pub_years = [] %}

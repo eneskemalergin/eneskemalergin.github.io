@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Count tag frequencies from a Zola projects.toml and write a sorted JSON array.
+"""Count tag frequencies from a TOML data file and write a sorted JSON array.
 
 Usage:
-    python3 tools/tag-freq.py [INPUT] [OUTPUT]
+    python3 tools/tag-freq.py [INPUT] [OUTPUT] [--table TABLE]
 
-    INPUT   - Path to projects.toml   (default: data/projects.toml)
-    OUTPUT  - Path to output JSON     (default: data/tag_frequencies.json)
+    INPUT   - Path to TOML file           (default: data/projects.toml)
+    OUTPUT  - Path to output JSON         (default: data/tag_frequencies.json)
+    --table - TOML array table name       (default: projects)
 
 Output format (sorted descending by count):
     [
@@ -16,17 +17,22 @@ Output format (sorted descending by count):
 """
 
 import json
-import re
 import sys
 from pathlib import Path
 
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
-def parse_tags(path: str) -> list[dict]:
-    """Read projects.toml and return a flat list of all tag strings."""
-    content = Path(path).read_text(encoding="utf-8")
+
+def parse_tags(path: str, table: str) -> list[str]:
+    """Read a TOML file and return a flat list of all tag strings."""
+    with open(path, "rb") as f:
+        data = tomllib.load(f)
     tags = []
-    for m in re.finditer(r'tags = \[(.*?)\]', content, re.DOTALL):
-        tags.extend(re.findall(r'"([^"]+)"', m.group(1)))
+    for entry in data.get(table, []):
+        tags.extend(entry.get("tags", []))
     return tags
 
 
@@ -48,9 +54,22 @@ def write_json(data: list[dict], path: str) -> None:
 
 
 def main() -> None:
-    inp = sys.argv[1] if len(sys.argv) > 1 else "data/projects.toml"
-    out = sys.argv[2] if len(sys.argv) > 2 else "data/tag_frequencies.json"
-    tags = parse_tags(inp)
+    args = sys.argv[1:]
+    inp = "data/projects.toml"
+    out = "data/tag_frequencies.json"
+    table = "projects"
+
+    if len(args) > 0 and not args[0].startswith("--"):
+        inp = args[0]
+        args = args[1:]
+    if len(args) > 0 and not args[0].startswith("--"):
+        out = args[0]
+        args = args[1:]
+    for i, a in enumerate(args):
+        if a == "--table" and i + 1 < len(args):
+            table = args[i + 1]
+
+    tags = parse_tags(inp, table)
     freqs = count_frequencies(tags)
     write_json(freqs, out)
 

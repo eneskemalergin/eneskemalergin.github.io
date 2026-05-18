@@ -32,9 +32,13 @@ Colour scale:
 
 import json
 import math
-import re
 import sys
 from pathlib import Path
+
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 
 # ── Gradient endpoints (RGB tuples) ──────────────────────────────────────
@@ -62,17 +66,13 @@ def _interpolate_rgb(c0: tuple[int, int, int],
 
 def parse_projects(path: str) -> list[dict]:
     """Return [{title, stars}, ...] for every [[projects]] entry."""
-    content = Path(path).read_text(encoding="utf-8")
-    projects = []
-    for section in content.split("[[projects]]")[1:]:
-        title = re.search(r'title = "([^"]+)"', section)
-        stars = re.search(r'stars = (\d+)', section)
-        if title and stars:
-            projects.append({
-                "title": title.group(1),
-                "stars": int(stars.group(1)),
-            })
-    return projects
+    with open(path, "rb") as f:
+        data = tomllib.load(f)
+    return [
+        {"title": p["title"], "stars": p["stars"]}
+        for p in data.get("projects", [])
+        if "title" in p and "stars" in p
+    ]
 
 
 def log_intensity(count: int, min_s: int, max_s: int) -> float:

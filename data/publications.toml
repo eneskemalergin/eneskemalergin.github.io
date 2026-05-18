@@ -1,41 +1,40 @@
-
-# ─── Publication Schema Reference ─────────────────────────────────────────────────
+# --- Publication Schema Reference -------------------------------------------------
 #
 # Each [[publications]] entry supports these fields:
 #
-#   title     – Full paper title (HTML-safe: <i>, <u> etc. pass through)
-#   authors   – Author list.  <u>self</u> highlights your name (cyan, bold).
+#   title     - Full paper title (HTML-safe: <i>, <u> etc. pass through)
+#   authors   - Author list.  <u>self</u> highlights your name (cyan, bold).
 #               Append * to the corresponding author's name (e.g. "Lange, P. F.*").
 #               For papers with >6 authors where you are a middle author,
 #               shorten to: First, ... <u>You</u>, ... Last, Last*  (see rule below).
-#   venue     – Journal, conference, or repository display name
-#   domain    – Topic category: "proteomics" | "cancer-biology" | "thesis" | "virology"
-#   year      – Publication year (integer)
-#   type      – "journal" | "conference" | "thesis" | "preprint"
-#   status    – "published" | "preprint" | "under-review" | "upcoming" | "planned"
+#   venue     - Journal, conference, or repository display name
+#   domain    - Topic category: "proteomics" | "cancer-biology" | "thesis" | "virology"
+#   year      - Publication year (integer)
+#   type      - "journal" | "conference" | "thesis" | "preprint"
+#   status    - "published" | "preprint" | "under-review" | "upcoming" | "planned"
 #                published    → paper is out, peer-reviewed
-#                preprint     → shared as preprint, not submitted
 #                under-review → submitted for peer review (shown in Preprint section)
 #                upcoming     → accepted/forthcoming (not yet out)
 #                planned      → in preparation
-#   access    – "open-access" | "closed"
-#   doi       – DOI string (optional).  Use bare identifier, not full URL.
-#   image     – Thumbnail path relative to static/  (optional, e.g. "papers/fig1.jpg")
-#   tag       – Blog tag slug for cross-linking.  "NA" means unassigned.
-#   tags      – Array of 5-6 topic tag strings describing the paper's domain,
+#   access    - "open-access" | "closed"
+#   doi       - DOI string (optional).  Use bare identifier, not full URL.
+#   image     - Thumbnail path relative to static/  (optional, e.g. "papers/fig1.jpg")
+#   tag       - Blog tag slug for cross-linking.  "NA" means unassigned.
+#   tags      - Array of up to 8 topic tag strings describing the paper's domain,
 #               methods, and biological context.  First tag used as domain fallback.
-#   links     – Array of { label, url } objects for Paper, Code, Preprint, etc.
-#   tldr      – Full-paragraph summary.  3-5 sentences explaining the problem,
+#               Use the harmonized vocabulary below for consistency across papers.
+#   links     - Array of { label, url } objects for Paper, Code, Preprint, etc.
+#   tldr      - Full-paragraph summary.  3-5 sentences explaining the problem,
 #               approach, key finding, and significance.
 #
-# ─── Domain categories ──────────────────────────────────────────────────────────
+# --- Domain categories ----------------------------------------------------------
 #
 #   proteomics        General proteomics, mass-spec workflows, quantification
 #   cancer-biology    Pediatric cancer, leukemia, PDX models, precision oncology
 #   thesis            PhD dissertation / graduate thesis
 #   virology          Viral proteases, pathogen biology, antiviral discovery
 #
-# ─── Card badge colours ─────────────────────────────────────────────────────────
+# --- Card badge colours ---------------------------------------------------------
 #
 #   Type badges  (.pub-badge.pub-type-*)
 #     journal:    #2563eb blue      bg: rgba(37,99,235,0.10)     icon: fa-book-open
@@ -45,10 +44,11 @@
 #
 #   Status badges  (.pub-badge.pub-status-*)
 #     published:     #059669 green  bg: rgba(5,150,105,0.10)     icon: fa-check-circle
-#     preprint:      #d97706 amber  bg: rgba(217,119,6,0.10)     icon: fa-file-lines
 #     under-review:  #d97706 amber  bg: rgba(245,158,11,0.10)    icon: fa-hourglass-half
+#     upcoming:      #2563eb blue   bg: rgba(37,99,235,0.10)     icon: fa-clock
+#     planned:       #8b5cf6 purple bg: rgba(139,92,246,0.10)    icon: fa-calendar-plus
 #
-#   Venue badges  (.venue-*  — color-coded by paper type)
+#   Venue badges  (.venue-*  - color-coded by paper type)
 #     journal:    #2563eb blue      bg: rgba(37,99,235,0.08)
 #     conference: #7c3aed purple    bg: rgba(139,92,246,0.08)
 #     thesis:     #059669 green     bg: rgba(5,150,105,0.08)
@@ -56,41 +56,55 @@
 #
 #   Dark mode: all colours shift to more saturated/bright variants (see CSS).
 #
-# ─── Card layout ────────────────────────────────────────────────────────────────
+# --- Card layout ----------------------------------------------------------------
 #
-#   ┌──────────────────────────────────────────────────────────────────┐
-#   │ ┌──────────┐  [venue badge]  [type badge]  [status badge]        │
-#   │ │  thumb   │  Title of the paper                                 │
-#   │ │  or init │  Authors with <u>self</u> and corresponding*        │
-#   │ │  letter  │  [Paper] [Code] [Blog]                              │
-#   │ │───────── │  ┌────────────────────────────────────────────────┐ │
-#   │ │ PRO-     │  │ TLDR: paragraph summary here...                │ │
-#   │ │ TEOMICS  │  └────────────────────────────────────────────────┘ │
-#   │ │          │                                                     │
-#   │ │ [tag]    │                                                     │
-#   │ │ [tag]    │                                                     │
-#   │ └──────────┘                                                     │
-#   └──────────────────────────────────────────────────────────────────┘
+#   |------------------------------------------------------------------|
+#   | |----------|  [venue badge]  [type badge]  [status badge]        |
+#   | |  thumb   |  Title of the paper                                 |
+#   | |  or init |  Authors with <u>self</u> and corresponding*        |
+#   | |  letter  |  [Paper] [Code] [Blog]                              |
+#   | |--------- |  |------------------------------------------------| |
+#   | | PRO-     |  | TLDR: paragraph summary here...                | |
+#   | | TEOMICS  |  |------------------------------------------------| |
+#   | |          |                                                     |
+#   | | [tag]    |                                                     |
+#   | | [tag]    |                                                     |
+#   | |----------|                                                     |
+#   |------------------------------------------------------------------|
 #
 #   Left column:    thumbnail (130x130, or initial letter + border-radius 6px),
 #                   domain label (uppercase, muted), topic tags (cyan ghost pills)
 #   Badge row:      venue pill (left), type + status pills (right)
 #   Body:           title (bold, 11pt), authors, links, TLDR (stylised box)
 #
-# ─── Author shortening rule ─────────────────────────────────────────────────────
+# --- Author shortening rule -----------------------------------------------------
 #   If the paper has more than 6 authors AND the self-author is a middle author,
 #   show:  First Author, ... <u>Self</u>, ... Last Author*.
 #   If the self-author is first or last, or the list has ≤6 authors, show all.
 #
-# ─── Tag frequency ──────────────────────────────────────────────────────────────
+# --- Harmonized tag vocabulary --------------------------------------------------
+#
+#   Domain:     proteomics, bioinformatics, computational-biology, cancer-biology,
+#               virology
+#   Disease:    pediatric-cancer, leukemia
+#   Model:      pdx-models, cell-lines
+#   Methods:    mass-spectrometry, statistics, equivalence-testing, imputation,
+#               enrichment, docking, virtual-screening, genomics,
+#               phosphoproteomics, quantification
+#   Topics:     proteoforms, ptm, n-termini, drug-response, precision-oncology,
+#               data-analysis, peptide-analysis
+#   Tech:       shiny, web-app, visualization
+#   Specific:   cchfv, protease, antivirals, microscale
+#
+# --- Tag frequency --------------------------------------------------------------
 #   Tags are tallied across all publications by build.sh into
 #   data/pub_tag_frequencies.json, which is loaded by research.html to render
 #   a "Tags by appearance" frequency cloud below the publication list.
 #
-# ─── Rendering ──────────────────────────────────────────────────────────────────
-#   templates/research.html   – publications tab, legend, year grouping, tag cloud
-#   templates/macros.html     – render_paper() macro shared across templates
-#   sass/_main.scss           – publication card layout (".paper-card-detailed" etc.)
+# --- Rendering ------------------------------------------------------------------
+#   templates/research.html   - publications tab, legend, year grouping, tag cloud
+#   templates/macros.html     - render_paper() macro shared across templates
+#   sass/_main.scss           - publication card layout (".paper-card-detailed" etc.)
 
 
 [[publications]]
@@ -105,7 +119,7 @@ access = "open-access"
 doi = "10.64898/2025.12.12.694008"
 image = "publications/Ergin_2026_proteoforge.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry"]
+tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry", "quantification", "peptide-analysis"]
 links = [
     { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
 ]
@@ -123,7 +137,7 @@ status = "published"
 access = "open-access"
 image = "publications/barnabas_2025_profyle.jpg"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pdx-models", "precision-oncology", "drug-response"]
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "pdx-models", "precision-oncology", "drug-response", "mass-spectrometry", "genomics"]
 links = [
     { label = "Paper", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
 ]
@@ -141,7 +155,7 @@ status = "published"
 access = "open-access"
 image = "publications/thesis-ergin-ubc.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "computational-biology", "pediatric-cancer", "mass-spectrometry"]
+tags = ["proteomics", "proteoforms", "computational-biology", "pediatric-cancer", "mass-spectrometry", "bioinformatics", "statistics", "leukemia"]
 links = [
     { label = "Thesis", url = "https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334" },
 ]
@@ -160,7 +174,7 @@ access = "closed"
 doi = "10.1021/acs.jproteome.4c00131"
 image = "publications/Ergin_2024_questvar.gif"
 tag = "NA"
-tags = ["proteomics", "statistics", "equivalence-testing", "cell-lines", "functional-modules", "bioinformatics"]
+tags = ["proteomics", "statistics", "equivalence-testing", "bioinformatics", "cell-lines", "cancer-biology", "quantification", "data-analysis"]
 links = [
     { label = "Paper", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
 ]
@@ -179,7 +193,7 @@ access = "open-access"
 doi = "10.1038/s41467-023-42701-9"
 image = "publications/Lorentzian_2022.png"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pediatric-all", "genomics", "drug-response", "relapse"]
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "leukemia", "genomics", "drug-response", "precision-oncology", "mass-spectrometry"]
 links = [
     { label = "Paper", url = "https://www.nature.com/articles/s41467-023-42701-9" },
 ]
@@ -198,7 +212,7 @@ access = "open-access"
 doi = "10.1093/bioinformatics/btac628"
 image = "publications/squapp_ergin.jpg"
 tag = "squapp"
-tags = ["proteomics", "bioinformatics", "shiny", "visualization", "ptm", "web-app"]
+tags = ["proteomics", "bioinformatics", "ptm", "data-analysis", "visualization", "web-app", "quantification", "shiny"]
 links = [
     { label = "Paper", url = "https://doi.org/10.1093/bioinformatics/btac628" },
     { label = "Code", url = "https://github.com/LangeLab/SQuAPP" },
@@ -219,7 +233,7 @@ access = "open-access"
 doi = "10.1186/s13046-021-01835-8"
 image = "publications/Uzozie_2021.png"
 tag = "NA"
-tags = ["proteomics", "cancer-biology", "pdx-models", "phosphoproteomics", "genomics"]
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "pdx-models", "leukemia", "phosphoproteomics", "genomics", "mass-spectrometry"]
 links = [
     { label = "Paper", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
 ]
@@ -238,7 +252,7 @@ access = "open-access"
 doi = "10.1074/mcp.RA119.001678"
 image = "publications/Weng-2019.jpg"
 tag = "NA"
-tags = ["proteomics", "proteoforms", "mass-spectrometry", "n-termini", "enrichment", "microscale"]
+tags = ["proteomics", "proteoforms", "mass-spectrometry", "n-termini", "enrichment", "bioinformatics", "peptide-analysis", "microscale"]
 links = [
     { label = "Paper", url = "https://www.mcponline.org/article/S1535-9476(20)31769-2/fulltext" },
 ]
@@ -257,7 +271,7 @@ access = "open-access"
 doi = "10.3906/biy-1501-56"
 image = "publications/kocabas_2016.png"
 tag = "NA"
-tags = ["virology", "drug-discovery", "docking", "cchfv", "protease", "antivirals"]
+tags = ["virology", "drug-discovery", "docking", "cchfv", "protease", "antivirals", "computational-biology", "virtual-screening"]
 links = [
     { label = "Paper", url = "https://doi.org/10.3906/biy-1501-56" },
 ]

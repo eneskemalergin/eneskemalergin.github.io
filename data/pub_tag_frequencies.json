@@ -4,23 +4,43 @@
     "count": 8
   },
   {
+    "name": "mass-spectrometry",
+    "count": 6
+  },
+  {
+    "name": "bioinformatics",
+    "count": 5
+  },
+  {
+    "name": "cancer-biology",
+    "count": 4
+  },
+  {
+    "name": "pediatric-cancer",
+    "count": 4
+  },
+  {
     "name": "proteoforms",
     "count": 3
   },
   {
-    "name": "bioinformatics",
-    "count": 3
-  },
-  {
-    "name": "mass-spectrometry",
-    "count": 3
-  },
-  {
-    "name": "cancer-biology",
-    "count": 3
-  },
-  {
     "name": "statistics",
+    "count": 3
+  },
+  {
+    "name": "quantification",
+    "count": 3
+  },
+  {
+    "name": "genomics",
+    "count": 3
+  },
+  {
+    "name": "leukemia",
+    "count": 3
+  },
+  {
+    "name": "peptide-analysis",
     "count": 2
   },
   {
@@ -28,27 +48,23 @@
     "count": 2
   },
   {
+    "name": "precision-oncology",
+    "count": 2
+  },
+  {
     "name": "drug-response",
     "count": 2
   },
   {
-    "name": "genomics",
+    "name": "computational-biology",
+    "count": 2
+  },
+  {
+    "name": "data-analysis",
     "count": 2
   },
   {
     "name": "imputation",
-    "count": 1
-  },
-  {
-    "name": "precision-oncology",
-    "count": 1
-  },
-  {
-    "name": "computational-biology",
-    "count": 1
-  },
-  {
-    "name": "pediatric-cancer",
     "count": 1
   },
   {
@@ -60,19 +76,7 @@
     "count": 1
   },
   {
-    "name": "functional-modules",
-    "count": 1
-  },
-  {
-    "name": "pediatric-all",
-    "count": 1
-  },
-  {
-    "name": "relapse",
-    "count": 1
-  },
-  {
-    "name": "shiny",
+    "name": "ptm",
     "count": 1
   },
   {
@@ -80,11 +84,11 @@
     "count": 1
   },
   {
-    "name": "ptm",
+    "name": "web-app",
     "count": 1
   },
   {
-    "name": "web-app",
+    "name": "shiny",
     "count": 1
   },
   {
@@ -125,6 +129,10 @@
   },
   {
     "name": "antivirals",
+    "count": 1
+  },
+  {
+    "name": "virtual-screening",
     "count": 1
   }
 ]
