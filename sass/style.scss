@@ -65,8 +65,9 @@ html.dark .navbar a {
 }
 
 html.dark .navbar a:hover {
-    color: white;
-    background: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
 }
 
 html.dark .navbar a.active {
@@ -900,8 +901,21 @@ html.dark .tag:hover {
 }
 
 .list-item h2 a:hover {
-    color: white;
-    background-color: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+html.dark .list-item h2 a:hover {
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 .list-meta {

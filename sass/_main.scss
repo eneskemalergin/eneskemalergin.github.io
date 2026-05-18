@@ -92,6 +92,8 @@ footer p {
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
     text-decoration-color: var(--border-color);
+    font-weight: 500;
+    opacity: 0.85;
 }
 
 .footer-built a:hover {
@@ -167,11 +169,13 @@ nav {
     padding: 14px 20px;
     display: block;
     text-align: left;
+    transition: color 0.2s, text-shadow 0.2s;
 }
 
 .navbar a:hover {
-    color: white;
-    background-color: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
 }
 
 .navbar a.active {
@@ -1175,6 +1179,18 @@ html.dark .pub-badge.pub-status-under-review {
     margin-left: 1px;
     color: var(--text-muted);
     font-weight: 400;
+}
+
+.tag-legend .tag:hover sup {
+    color: white;
+}
+
+html.dark .tag-legend .tag sup {
+    color: #94a3b8;
+}
+
+html.dark .tag-legend .tag:hover sup {
+    color: white;
 }
 
 @media (max-width: 600px) {
