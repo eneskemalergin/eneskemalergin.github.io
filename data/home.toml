@@ -2,7 +2,7 @@ avatar = "portrait.jpg"
 
 titles = [
     """Bioinformatician &amp; Systems Engineer""",
-    """Founder at <a href="https://zenteomics.com/">Zenteomics</a> (April 2026). <a href="https://github.com/Zenteomics">GitHub</a>""",
+    """Founder at <a href="https://zenteomics.com/">Zenteomics</a> - <a href="https://github.com/Zenteomics">GitHub</a>""",
     """Bioinformatician at the <a href="https://langelab.med.ubc.ca/">Lange Lab</a>, <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a>""",
     """PhD, Bioinformatics. <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
 ]

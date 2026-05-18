@@ -790,6 +790,65 @@ html.dark .post-tags .tag {
     font-size: 6.5pt;
 }
 
+/* -- Code block wrapper (styled like TLDR box) ----------- */
+
+.code-block-wrapper {
+    margin: 1em 0;
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-surface);
+}
+
+.code-block-header {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1px 10px;
+    line-height: 1.8;
+    border-radius: 4px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    z-index: 1;
+}
+
+/* Language-specific colors */
+.code-block-header[data-lang="python"] { color: #3776AB; border-color: rgba(55, 118, 171, 0.3); }
+.code-block-header[data-lang="r"] { color: #276DC2; border-color: rgba(39, 109, 194, 0.3); }
+.code-block-header[data-lang="zig"] { color: #d98e0d; border-color: rgba(217, 142, 13, 0.3); }
+.code-block-header[data-lang="bash"] { color: #64748b; border-color: rgba(100, 116, 139, 0.3); }
+.code-block-header[data-lang="rust"] { color: #c67a4e; border-color: rgba(198, 122, 78, 0.3); }
+.code-block-header[data-lang="javascript"] { color: #d97706; border-color: rgba(217, 119, 6, 0.3); }
+.code-block-header[data-lang="go"] { color: #0096b8; border-color: rgba(0, 150, 184, 0.3); }
+
+.code-block-wrapper pre {
+    margin: 0;
+    border: none;
+    border-radius: 6px;
+    padding: 16px 18px 14px;
+    background: transparent;
+}
+
+.code-block-wrapper pre code {
+    font-size: 0.82em;
+    line-height: 1.55;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.code-block-caption {
+    padding: 6px 14px;
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    font-style: italic;
+}
+
 /* -- Zola syntax highlighting overrides -------------------- */
 
 .page-body pre .z-link { color: var(--c-link); }
