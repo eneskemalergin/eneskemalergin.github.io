@@ -86,7 +86,13 @@ html.dark a {
 html.dark a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 8px rgba(45, 212, 191, 0.35);
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
+}
+
+html.dark #content a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 html.dark #content p,
@@ -507,8 +513,15 @@ html.dark .theme-toggle:active .toggle-thumb {
 }
 
 .project-head .project-name a:hover {
-    color: white;
-    background-color: var(--c-link-hover-bg);
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
+}
+
+html.dark .project-head .project-name a:hover {
+    color: var(--c-link);
+    background: none;
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
 }
 
 .project-head-badges {
