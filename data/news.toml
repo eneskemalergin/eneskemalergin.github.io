@@ -36,6 +36,12 @@ main-page = "1"
 content = "Started as Staff Bioinformatician at BC Children's Hospital Research Institute, continuing proteomics research in the Lange Lab."
 
 [[news]]
+date = "05/2025"
+type = "milestone"
+main-page = "0"
+content = "PhD thesis indexed on Google Scholar."
+
+[[news]]
 date = "04/2025"
 type = "publication"
 main-page = "1"
@@ -190,6 +196,12 @@ date = "09/2017"
 type = "career"
 main-page = "0"
 content = "Began graduate studies in the Lange Lab at BC Children's Hospital Research Institute."
+
+[[news]]
+date = "06/2017"
+type = "career"
+main-page = "0"
+content = "Relocated from the U.S. to Canada."
 
 [[news]]
 date = "05/2017"
