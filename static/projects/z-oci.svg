@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173 160" role="img" aria-label="z-oci logo">
+  <title>z-oci</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="173" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0F4FF"/>
+      <stop offset="100%" stop-color="#D4DAFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- card background: always light, works on both GitHub themes -->
+  <rect x="0" y="0" width="173" height="160" rx="20" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="170" height="157" rx="18.5" fill="none" stroke="#3A3A8C" stroke-width="1.8" opacity="0.45"/>
+
+  <!-- icon content, padded 10px inset -->
+  <g transform="translate(10, 10)">
+
+    <!-- left Z bracket -->
+    <polygon points="46,22 28,44 19,30"                                          fill="#262261"/>
+    <polygon points="22,44 22,95 31,95 20,100 12,117 0,117 0,22 46,22 33,33 28,44"
+             shape-rendering="crispEdges"                                         fill="#262261"/>
+    <polygon points="31,95 12,117 4,106"                                          fill="#262261"/>
+
+    <!-- Z cross strokes and diagonal (Zig orange) -->
+    <polygon points="56,22 62,36 37,44"                                           fill="#F7A41D"/>
+    <polygon points="37,44 56,32 56,22 111,22 111,44"
+             shape-rendering="crispEdges"                                         fill="#F7A41D"/>
+    <polygon points="116,95 97,117 90,104"                                        fill="#F7A41D"/>
+    <polygon points="42,117 42,95 116,95 100,104 97,117"
+             shape-rendering="crispEdges"                                         fill="#F7A41D"/>
+    <polygon points="101,22 150,0 52,117 3,140"                                   fill="#F7A41D"/>
+
+    <!-- right Z bracket -->
+    <polygon points="141,22 140,40 122,45"                                        fill="#262261"/>
+    <polygon points="120,105 125,95 131,95 131,45 122,45 132,36 141,22 153,22 153,117 106,117"
+             shape-rendering="crispEdges"                                         fill="#262261"/>
+    <polygon points="125,95 130,110 106,117"                                      fill="#262261"/>
+
+    <!-- OCI logo (net translate from original: 10.27338, 0.15464875) -->
+    <g transform="translate(10.27338, 0.15464875)">
+      <!-- C shape -->
+      <polygon
+        points="332.5,214.3 332.5,134.4 134.6,134.4 134.6,446.3 332.5,446.3 332.5,366.4 214.6,366.4 214.6,214.3"
+        transform="matrix(0.16179197,0,0,0.16179197,15.739368,22.720189)"
+        fill="#808184"/>
+      <!-- I dots -->
+      <g transform="matrix(0.16139169,0,0,0.16139169,21.923072,23.196561)">
+        <rect x="372.5" y="134.4"  width="79.9" height="79.9"  fill="#262261"/>
+        <rect x="372.5" y="254.3"  width="79.9" height="192"   fill="#262261"/>
+      </g>
+    </g>
+
+  </g>
+</svg>

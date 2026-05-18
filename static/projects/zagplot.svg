@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 81.150002 83.225449"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="zagplot.svg"
+   width="81.150002"
+   height="83.225449"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="9.54"
+     inkscape:cx="2.3060797"
+     inkscape:cy="63.731656"
+     inkscape:window-width="3840"
+     inkscape:window-height="2089"
+     inkscape:window-x="2160"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="areaGrad"
+       x1="23.821173"
+       y1="18.470963"
+       x2="23.821173"
+       y2="81.27224"
+       gradientTransform="scale(0.92354815,1.0827806)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#f7a41d"
+         stop-opacity="0.28"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#f7a41d"
+         stop-opacity="0.03"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     id="g6"
+     transform="translate(-11.424999,-7.3872757)">
+    <line
+       x1="14"
+       y1="88"
+       x2="90"
+       y2="88"
+       stroke="#1e293b"
+       stroke-width="2.2"
+       stroke-linecap="round"
+       id="line2" />
+    <line
+       x1="14"
+       y1="10"
+       x2="14"
+       y2="88"
+       stroke="#1e293b"
+       stroke-width="2.2"
+       stroke-linecap="round"
+       id="line3" />
+    <polygon
+       points="42,36 58,52 80,20 80,88 22,88 22,74 "
+       fill="url(#areaGrad)"
+       id="polygon3"
+       style="fill:url(#areaGrad)" />
+    <polyline
+       points="22,74 42,36 58,52 80,20"
+       fill="none"
+       stroke="#f7a41d"
+       stroke-width="2.8"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       id="polyline3" />
+    <circle
+       cx="22"
+       cy="74"
+       r="4.5"
+       fill="#f7a41d"
+       stroke="#ffffff"
+       stroke-width="1.8"
+       id="circle3" />
+    <circle
+       cx="42"
+       cy="36"
+       r="4.5"
+       fill="#f7a41d"
+       stroke="#ffffff"
+       stroke-width="1.8"
+       id="circle4" />
+    <circle
+       cx="58"
+       cy="52"
+       r="4.5"
+       fill="#f7a41d"
+       stroke="#ffffff"
+       stroke-width="1.8"
+       id="circle5" />
+    <circle
+       cx="80"
+       cy="20"
+       r="4.5"
+       fill="#f7a41d"
+       stroke="#ffffff"
+       stroke-width="1.8"
+       id="circle6" />
+  </g>
+</svg>

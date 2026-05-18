@@ -1,0 +1,67 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Fix B: Pure navy background — no teal bleed -->
+    <linearGradient id="bg" x1="512" y1="0" x2="512" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2132"/>
+      <stop offset="1" stop-color="#132B3D"/>
+    </linearGradient>
+    <!-- Fix E: Visible cool-to-warm panel gradient -->
+    <linearGradient id="panel" x1="512" y1="148" x2="512" y2="876" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFF1F5"/>
+    </linearGradient>
+    <!-- Fix A+C: Brighter blue top, unified vertical light -->
+    <linearGradient id="blue" x1="338" y1="268" x2="338" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DB4E0"/>
+      <stop offset="1" stop-color="#356FA3"/>
+    </linearGradient>
+    <!-- Fix A+C: Richer amber gold, unified vertical light -->
+    <linearGradient id="gold" x1="686" y1="268" x2="686" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8B830"/>
+      <stop offset="1" stop-color="#B8891A"/>
+    </linearGradient>
+    <!-- Fix C+D: Wider teal range, vertical light direction -->
+    <linearGradient id="teal" x1="512" y1="464" x2="512" y2="756" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#0A7A6F"/>
+    </linearGradient>
+    <!-- Soft panel shadow -->
+    <filter id="ps" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#091A2A" flood-opacity="0.22"/>
+    </filter>
+    <!-- Pillar clip paths -->
+    <clipPath id="lp"><rect x="282" y="268" width="112" height="488" rx="56"/></clipPath>
+    <clipPath id="rp"><rect x="630" y="268" width="112" height="488" rx="56"/></clipPath>
+  </defs>
+
+  <!-- Dark outer rounded square — pure navy -->
+  <rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
+
+  <!-- White inner panel with subtle depth -->
+  <g filter="url(#ps)">
+    <rect x="148" y="148" width="728" height="728" rx="168" fill="url(#panel)"/>
+  </g>
+
+  <!-- Left pillar: blue top → teal bottom -->
+  <g clip-path="url(#lp)">
+    <rect x="282" y="268" width="112" height="244" fill="url(#blue)"/>
+    <rect x="282" y="512" width="112" height="244" fill="url(#teal)"/>
+  </g>
+
+  <!-- Right pillar: gold top → teal bottom -->
+  <g clip-path="url(#rp)">
+    <rect x="630" y="268" width="112" height="244" fill="url(#gold)"/>
+    <rect x="630" y="512" width="112" height="244" fill="url(#teal)"/>
+  </g>
+
+  <!-- Crossbar: teal harmonization bridge -->
+  <rect x="338" y="464" width="348" height="96" rx="48" fill="url(#teal)"/>
+
+  <!-- Batch-effect indicator: offset dots above crossbar (misaligned input) -->
+  <circle cx="460" cy="380" r="18" fill="#356FA3"/>
+  <circle cx="564" cy="414" r="18" fill="#B8891A"/>
+
+  <!-- Harmonized indicator: aligned dots below crossbar (corrected output) -->
+  <circle cx="460" cy="620" r="18" fill="#0A7A6F"/>
+  <circle cx="564" cy="620" r="18" fill="#0A7A6F"/>
+</svg>

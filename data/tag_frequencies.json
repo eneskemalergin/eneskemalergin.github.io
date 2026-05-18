@@ -1,11 +1,11 @@
 [
   {
-    "name": "cli",
-    "count": 7
+    "name": "proteomics",
+    "count": 9
   },
   {
-    "name": "proteomics",
-    "count": 6
+    "name": "cli",
+    "count": 7
   },
   {
     "name": "library",
@@ -25,6 +25,14 @@
   },
   {
     "name": "MS",
+    "count": 2
+  },
+  {
+    "name": "mzml",
+    "count": 2
+  },
+  {
+    "name": "plotting",
     "count": 2
   },
   {
@@ -88,15 +96,79 @@
     "count": 1
   },
   {
-    "name": "mzml",
-    "count": 1
-  },
-  {
     "name": "compression",
     "count": 1
   },
   {
     "name": "codec",
+    "count": 1
+  },
+  {
+    "name": "batch-effect-correction",
+    "count": 1
+  },
+  {
+    "name": "harmonization",
+    "count": 1
+  },
+  {
+    "name": "multi-omics",
+    "count": 1
+  },
+  {
+    "name": "biostatistics",
+    "count": 1
+  },
+  {
+    "name": "digestion-simulation",
+    "count": 1
+  },
+  {
+    "name": "peptides",
+    "count": 1
+  },
+  {
+    "name": "enzyme-selection",
+    "count": 1
+  },
+  {
+    "name": "bottom-up",
+    "count": 1
+  },
+  {
+    "name": "svg",
+    "count": 1
+  },
+  {
+    "name": "visualization",
+    "count": 1
+  },
+  {
+    "name": "graphics",
+    "count": 1
+  },
+  {
+    "name": "xic",
+    "count": 1
+  },
+  {
+    "name": "quality-control",
+    "count": 1
+  },
+  {
+    "name": "validation",
+    "count": 1
+  },
+  {
+    "name": "raw-data",
+    "count": 1
+  },
+  {
+    "name": "conversion",
+    "count": 1
+  },
+  {
+    "name": "reverse-engineering",
     "count": 1
   }
 ]

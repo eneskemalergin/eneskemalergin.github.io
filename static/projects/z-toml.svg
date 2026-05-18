@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173 160" role="img" aria-label="z-toml logo">
+  <title>z-toml</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="173" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF9F0"/>
+      <stop offset="100%" stop-color="#FFE0A0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- card background: always light, works on both GitHub themes -->
+  <rect x="0" y="0" width="173" height="160" rx="20" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="170" height="157" rx="18.5" fill="none" stroke="#C8853A" stroke-width="1.8" opacity="0.45"/>
+
+  <!-- icon content, padded 10px inset -->
+  <g transform="translate(10, 10)">
+
+    <!-- left Z bracket -->
+    <polygon points="19,30 46,22 28,44"            fill="#7b341e"/>
+    <polygon points="28,44 22,44 22,95 31,95 20,100 12,117 0,117 0,22 46,22 33,33"
+             shape-rendering="crispEdges"           fill="#7b341e"/>
+    <polygon points="4,106 31,95 12,117"            fill="#7b341e"/>
+
+    <!-- Z cross strokes and diagonal (Zig orange) -->
+    <polygon points="37,44 56,22 62,36"             fill="#F7A41D"/>
+    <polygon points="111,44 37,44 56,32 56,22 111,22"
+             shape-rendering="crispEdges"           fill="#F7A41D"/>
+    <polygon points="90,104 116,95 97,117"          fill="#F7A41D"/>
+    <polygon points="97,117 42,117 42,95 116,95 100,104"
+             shape-rendering="crispEdges"           fill="#F7A41D"/>
+    <polygon points="3,140 101,22 150,0 52,117"     fill="#F7A41D"/>
+
+    <!-- right Z bracket -->
+    <polygon points="122,45 141,22 140,40"          fill="#7b341e"/>
+    <polygon points="106,117 120,105 125,95 131,95 131,45 122,45 132,36 141,22 153,22 153,117"
+             shape-rendering="crispEdges"           fill="#7b341e"/>
+    <polygon points="106,117 125,95 130,110"        fill="#7b341e"/>
+
+    <!-- T letter (TOML) -->
+    <path d="M52.93,41.44 H100.07 V53.44 H81.78 V98.56 H71.22 V53.44 H52.93 Z" fill="#1a1a1a"/>
+
+  </g>
+</svg>
