@@ -3,6 +3,9 @@ default_language = "en"
 title = "Enes K. Ergin"
 compile_sass = true
 
+[markdown]
+bottom_footnotes = true
+
 [[taxonomies]]
 name = "tags"
 paginate_by = 10

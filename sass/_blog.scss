@@ -1,8 +1,137 @@
+/* -- Page body: typography ---------------------------------- */
+
+.page-body {
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+.page-body p {
+    margin: 0.6em 0;
+}
+
+/* -- Headings ---------------------------------------------- */
+
+.page-body h1 { font-size: 18pt; font-weight: 700; margin: 1.2em 0 0.4em; padding-bottom: 0.2em; border-bottom: 1px solid var(--border-color); }
+.page-body h2 { font-size: 15pt; font-weight: 650; margin: 1.1em 0 0.35em; }
+.page-body h3 { font-size: 12.5pt; font-weight: 600; margin: 1em 0 0.3em; }
+.page-body h4 { font-size: 11pt; font-weight: 600; margin: 0.8em 0 0.25em; color: var(--text-main); }
+.page-body h5 { font-size: 10.5pt; font-weight: 600; margin: 0.7em 0 0.2em; color: var(--text-muted); }
+.page-body h6 { font-size: 10pt; font-weight: 500; margin: 0.6em 0 0.2em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* -- Links ------------------------------------------------- */
+
+.page-body a {
+    color: var(--c-link);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 2px;
+}
+
+.page-body a:hover {
+    text-shadow: 0 0 10px rgba(0, 107, 123, 0.35);
+}
+
+html.dark .page-body a:hover {
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
+}
+
+/* -- Lists ------------------------------------------------- */
+
+.page-body ul,
+.page-body ol {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+.page-body li {
+    margin: 0.25em 0;
+}
+
+.page-body ul > li {
+    list-style-type: disc;
+}
+
+.page-body ul > li > ul > li {
+    list-style-type: circle;
+}
+
+.page-body ul > li > ul > li > ul > li {
+    list-style-type: square;
+}
+
+.page-body ol > li {
+    list-style-type: decimal;
+}
+
+/* -- Task lists (checkboxes) ------------------------------- */
+
+.page-body ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.page-body .task-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.page-body .task-list-item::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    border: 1.5px solid var(--text-muted);
+    border-radius: 3px;
+    background: transparent;
+}
+
+.page-body .task-list-item input[type="checkbox"]:checked + .task-list-item::before,
+.page-body .task-list-item.checked::before {
+    background: var(--c-link);
+    border-color: var(--c-link);
+}
+
+/* -- Horizontal rule --------------------------------------- */
+
+.page-body hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5em 0;
+}
+
+/* -- Blockquotes ------------------------------------------- */
+
+.page-body blockquote {
+    margin: 1em 0;
+    padding: 10px 16px;
+    border-left: 3px solid var(--c-link);
+    background: rgba(0, 107, 123, 0.04);
+    border-radius: 0 6px 6px 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.page-body blockquote p {
+    margin: 0.3em 0;
+}
+
+.page-body blockquote strong {
+    color: var(--text-main);
+    font-style: normal;
+}
+
+html.dark .page-body blockquote {
+    background: rgba(45, 212, 191, 0.04);
+}
+
 /* -- Code & pre -------------------------------------------- */
 
-code {
+.page-body code {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.75em;
+    font-size: 0.78em;
     padding: 1px 5px;
     border-radius: 4px;
     background: rgba(100, 116, 139, 0.08);
@@ -10,80 +139,47 @@ code {
     border: 1px solid var(--border-color);
 }
 
-pre {
+.page-body pre {
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 12px 16px;
+    padding: 14px 18px;
     overflow-x: auto;
     background: var(--bg-surface);
-    line-height: 1.5;
+    line-height: 1.55;
+    margin: 0.8em 0;
+    position: relative;
 }
 
-pre code {
+.page-body pre code {
     border: none;
     padding: 0;
     background: none;
-    font-size: 0.8em;
+    font-size: 0.82em;
+    line-height: 1.55;
 }
 
-html.dark code {
-    background: rgba(148, 163, 184, 0.1);
+html.dark .page-body code {
+    background: rgba(148, 163, 184, 0.08);
     border-color: rgba(148, 163, 184, 0.2);
 }
 
-html.dark pre {
-    background: rgba(30, 41, 59, 0.5);
+html.dark .page-body pre {
+    background: rgba(30, 41, 59, 0.6);
 }
 
-/* -- Blockquotes ------------------------------------------- */
+/* -- Code language label (pseudo-element) ------------------- */
 
-blockquote {
-    margin: 1em 0;
-    padding: 8px 16px;
-    border-left: 3px solid var(--c-link);
-    background: rgba(0, 107, 123, 0.04);
-    border-radius: 0 4px 4px 0;
+.page-body pre::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 6.5pt;
+    font-weight: 500;
     color: var(--text-muted);
-}
-
-html.dark blockquote {
-    background: rgba(45, 212, 191, 0.04);
-}
-
-/* -- Images & figures -------------------------------------- */
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 6px;
-}
-
-figcaption {
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: 9pt;
-    margin-top: 0.5em;
-    text-align: center;
-}
-
-/* -- References / footnotes -------------------------------- */
-
-.footnotes {
-    margin-top: 2em;
-    padding-top: 1em;
-    border-top: 1px solid var(--border-color);
-    font-size: 9pt;
-}
-
-.footnotes ol {
-    padding-left: 1.5em;
-}
-
-.footnotes li {
-    margin-bottom: 0.3em;
-    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
 }
 
 /* -- Tables ------------------------------------------------ */
@@ -93,11 +189,13 @@ figcaption {
     width: 100%;
     margin: 1em 0;
     font-size: 9.5pt;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .page-body th,
 .page-body td {
-    padding: 6px 10px;
+    padding: 8px 12px;
     border: 1px solid var(--border-color);
     text-align: left;
 }
@@ -105,4 +203,600 @@ figcaption {
 .page-body th {
     background: var(--bg-surface);
     font-weight: 600;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
 }
+
+.page-body tr:nth-child(even) {
+    background: rgba(100, 116, 139, 0.03);
+}
+
+.page-body tr:hover {
+    background: rgba(0, 107, 123, 0.03);
+}
+
+html.dark .page-body tr:nth-child(even) {
+    background: rgba(148, 163, 184, 0.03);
+}
+
+html.dark .page-body tr:hover {
+    background: rgba(45, 212, 191, 0.03);
+}
+
+/* -- Images & figures -------------------------------------- */
+
+.page-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.page-body figure {
+    margin: 1.5em 0;
+    text-align: center;
+}
+
+.page-body figcaption {
+    color: var(--text-muted);
+    font-size: 9pt;
+    margin-top: 0.5em;
+    font-style: normal;
+}
+
+.page-body figcaption strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* -- Footnotes --------------------------------------------- */
+
+.footnotes {
+    margin-top: 2.5em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border-color);
+    font-size: 9pt;
+}
+
+.footnotes ol {
+    padding-left: 1.2em;
+}
+
+.footnotes li {
+    margin-bottom: 0.4em;
+    color: var(--text-muted);
+}
+
+.footnotes li:target {
+    color: var(--text-main);
+    background: rgba(0, 107, 123, 0.04);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* -- Footnote reference links ------------------------------ */
+
+.page-body sup a,
+.page-body a.footnote-ref {
+    color: var(--c-link);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.78em;
+}
+
+.page-body sup a:hover,
+.page-body a.footnote-ref:hover {
+    text-decoration: underline;
+}
+
+/* -- Callout shortcode ------------------------------------- */
+
+.callout {
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px;
+    margin: 1em 0;
+    border-radius: 6px;
+    border: 1px solid;
+    font-size: 9.5pt;
+    line-height: 1.5;
+}
+
+.callout-icon {
+    flex-shrink: 0;
+    font-size: 14pt;
+    line-height: 1.3;
+}
+
+.callout-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.callout-content p {
+    margin: 0.2em 0;
+}
+
+.callout-note {
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.2);
+    color: var(--text-main);
+}
+
+.callout-tip {
+    background: rgba(5, 150, 105, 0.06);
+    border-color: rgba(5, 150, 105, 0.2);
+    color: var(--text-main);
+}
+
+.callout-warning {
+    background: rgba(217, 119, 6, 0.06);
+    border-color: rgba(217, 119, 6, 0.2);
+    color: var(--text-main);
+}
+
+.callout-danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+    color: var(--text-main);
+}
+
+html.dark .callout-note {
+    background: rgba(96, 165, 250, 0.06);
+    border-color: rgba(96, 165, 250, 0.15);
+}
+
+html.dark .callout-tip {
+    background: rgba(52, 211, 153, 0.06);
+    border-color: rgba(52, 211, 153, 0.15);
+}
+
+html.dark .callout-warning {
+    background: rgba(251, 191, 36, 0.06);
+    border-color: rgba(251, 191, 36, 0.15);
+}
+
+html.dark .callout-danger {
+    background: rgba(248, 113, 113, 0.06);
+    border-color: rgba(248, 113, 113, 0.15);
+}
+
+/* -- Details / toggle shortcode ---------------------------- */
+
+.blog-details {
+    margin: 0.8em 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.blog-details summary {
+    padding: 10px 14px;
+    font-weight: 500;
+    font-size: 10pt;
+    cursor: pointer;
+    background: var(--bg-surface);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.blog-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.blog-details summary::before {
+    content: "\25B6";
+    font-size: 8pt;
+    color: var(--text-muted);
+    transition: transform 0.15s ease;
+}
+
+.blog-details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.blog-details summary:hover {
+    background: rgba(0, 107, 123, 0.03);
+}
+
+html.dark .blog-details summary:hover {
+    background: rgba(45, 212, 191, 0.03);
+}
+
+.blog-details-content {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.blog-details-content p {
+    margin: 0.3em 0;
+}
+
+/* -- KaTeX math -------------------------------------------- */
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.3em 0;
+    margin: 0.5em 0 !important;
+}
+
+.katex {
+    font-size: 1.05em !important;
+}
+
+/* -- Image + caption wrapper -------------------------------- */
+
+.img-wrapper {
+    margin: 1.5em 0;
+    text-align: center;
+}
+
+.img-wrapper img {
+    margin: 0 auto 0.3em;
+}
+
+.img-wrapper .img-caption {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+}
+
+/* -- Code block with filename header ----------------------- */
+
+.code-block {
+    margin: 0.8em 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.code-block-header {
+    padding: 4px 12px;
+    font-size: 7.5pt;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.code-block pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+/* -- Inline highlights ------------------------------------- */
+
+.page-body mark {
+    background: rgba(217, 119, 6, 0.15);
+    color: var(--text-main);
+    padding: 0 3px;
+    border-radius: 2px;
+}
+
+html.dark .page-body mark {
+    background: rgba(251, 191, 36, 0.15);
+}
+
+.page-body s,
+.page-body del {
+    color: var(--text-muted);
+}
+
+/* -- Definition lists -------------------------------------- */
+
+.page-body dl {
+    margin: 0.5em 0;
+}
+
+.page-body dt {
+    font-weight: 600;
+    margin-top: 0.5em;
+}
+
+.page-body dd {
+    margin-left: 1.5em;
+    color: var(--text-muted);
+}
+
+/* -- Sidenotes (Tufte-style float) ------------------------- */
+
+.blog-post .page-body {
+    max-width: 680px;
+    text-align: left;
+}
+
+.sidenote-ref {
+    color: var(--c-link);
+    font-size: 0.7em;
+    vertical-align: super;
+    line-height: 0;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.sidenote-ref:hover {
+    text-shadow: 0 0 8px rgba(0, 107, 123, 0.35);
+}
+
+.sidenote {
+    float: right;
+    clear: right;
+    width: 220px;
+    margin-right: -240px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 7.5pt;
+    line-height: 1.45;
+    color: var(--text-muted);
+    padding: 2px 0 2px 10px;
+    border-left: 2px solid var(--border-color);
+}
+
+.sidenote a {
+    color: var(--c-link);
+}
+
+/* Mobile: inline toggle */
+@media (max-width: 1100px) {
+    .sidenote {
+        float: none;
+        width: auto;
+        margin: 0.3em 0;
+        padding: 6px 10px;
+        font-size: 8pt;
+        border-left: 2px solid var(--c-link);
+        background: rgba(0, 107, 123, 0.03);
+        border-radius: 4px;
+        display: none;
+    }
+    .sidenote-ref {
+        cursor: pointer;
+        border-bottom: 1px dotted var(--c-link);
+    }
+    .sn-open + .sidenote,
+    .sidenote-ref:hover + .sidenote {
+        display: block;
+    }
+}
+
+/* -- Table of contents (left sidebar) --------------------- */
+
+.blog-post--with-toc .page-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.post-toc {
+    flex-shrink: 0;
+    width: 140px;
+    position: sticky;
+    top: 20px;
+    font-size: 7pt;
+    line-height: 1.5;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.page-main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* -- Post meta bar ---------------------------------------- */
+
+.page-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5em;
+    font-size: 8.5pt;
+    color: var(--text-muted);
+}
+
+.meta-date,
+.meta-reading,
+.meta-words {
+    display: inline-block;
+}
+
+.meta-date::after,
+.meta-reading::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border-color);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* -- Post footer: tags + prev/next ------------------------ */
+
+.post-footer {
+    margin-top: 2.5em;
+    padding-top: 1.5em;
+    border-top: 1px solid var(--border-color);
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.5em;
+}
+
+.post-tags .tag {
+    font-size: 8pt;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 107, 123, 0.3);
+    background-color: transparent;
+    color: var(--c-link);
+    transition: all 0.2s ease;
+}
+
+.post-tags .tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+html.dark .post-tags .tag {
+    border-color: rgba(45, 212, 191, 0.3);
+}
+
+/* -- Prev / next navigation ------------------------------- */
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.post-nav-link {
+    flex: 1;
+    text-decoration: none;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.post-nav-link:hover {
+    border-color: var(--c-link);
+    background: rgba(0, 107, 123, 0.03);
+}
+
+.post-nav-next {
+    text-align: right;
+}
+
+.post-nav-direction {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+}
+
+.post-nav-title {
+    display: block;
+    font-size: 9pt;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+@media (max-width: 1000px) {
+    .blog-post--with-toc .page-layout {
+        flex-direction: column;
+    }
+    .post-toc {
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-bottom: 1em;
+    }
+    .post-nav {
+        flex-direction: column;
+    }
+}
+
+.toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.toc-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 6.5pt;
+    color: var(--text-muted);
+}
+
+.toc-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 7pt;
+    padding: 1px 6px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.toc-toggle:hover {
+    color: var(--c-link);
+    border-color: var(--c-link);
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-item {
+    margin: 0;
+    padding: 1px 0;
+}
+
+.toc-item a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 1px 4px;
+    border-radius: 3px;
+    transition: color 0.15s, background 0.15s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.toc-item a:hover {
+    color: var(--c-link);
+    background: rgba(0, 107, 123, 0.04);
+}
+
+.toc-item.toc-active > a {
+    color: var(--c-link);
+    font-weight: 600;
+    border-left: 2px solid var(--c-link);
+    padding-left: 6px;
+}
+
+.toc-list-h3 {
+    padding-left: 10px;
+}
+
+.toc-item-h3 a {
+    font-size: 6.5pt;
+}
+
+/* -- Zola syntax highlighting overrides -------------------- */
+
+.page-body pre .z-link { color: var(--c-link); }
+.page-body pre .z-string { color: #16a34a; }
+.page-body pre .z-number { color: #2563eb; }
+.page-body pre .z-keyword { color: #7c3aed; font-weight: 500; }
+.page-body pre .z-comment { color: #94a3b8; font-style: italic; }
+.page-body pre .z-function { color: #2563eb; }
+.page-body pre .z-type { color: #059669; }
+.page-body pre .z-attribute { color: #d97706; }

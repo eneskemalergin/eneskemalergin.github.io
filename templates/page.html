@@ -1,15 +1,108 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <header class="page-header">
-        <h1>{{ page.title }}</h1>
-        {% if page.date %}
-        <div class="page-meta">{{ page.date | date(format="%B %d, %Y") }}</div>
+<article class="{% if page.extra.katex %}blog-post blog-post--with-toc{% endif %}">
+    <div class="page-layout">
+        {% if page.toc and page.extra.katex %}
+        <aside class="post-toc" id="postToc">
+            <div class="toc-header">
+                <span class="toc-label">Contents</span>
+                <button class="toc-toggle" id="tocToggle" aria-label="Toggle table of contents">&#9664;</button>
+            </div>
+            <nav class="toc-body" id="tocBody">
+                <ul class="toc-list">
+                {% for h2 in page.toc %}
+                    <li class="toc-item toc-item-h2{% if loop.first %} toc-active{% endif %}">
+                        <a href="#{{ h2.id }}">{{ h2.title }}</a>
+                        {% if h2.children %}
+                        <ul class="toc-list toc-list-h3">
+                        {% for h3 in h2.children %}
+                            <li class="toc-item toc-item-h3"><a href="#{{ h3.id }}">{{ h3.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </nav>
+        </aside>
         {% endif %}
-    </header>
-    <div class="page-body">
-        {{ page.content | safe }}
+        <div class="page-main">
+            <header class="page-header">
+                <h1>{{ page.title }}</h1>
+                <div class="page-meta">
+                    {% if page.date %}<span class="meta-date">{{ page.date | date(format="%b %d, %Y") }}</span>{% endif %}
+                    {% if page.reading_time %}<span class="meta-reading">{{ page.reading_time }} min read</span>{% endif %}
+                    {% if page.word_count %}<span class="meta-words">{{ page.word_count }} words</span>{% endif %}
+                </div>
+            </header>
+            <div class="page-body">
+                {{ page.content | safe }}
+            </div>
+            <footer class="post-footer">
+                {% if page.taxonomies.tags %}
+                <div class="post-tags">
+                    {% for tag in page.taxonomies.tags %}
+                    <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="tag">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if page.lower or page.higher %}
+                <nav class="post-nav">
+                    {% if page.higher %}
+                    <a href="{{ page.higher.permalink }}" class="post-nav-link post-nav-prev">
+                        <span class="post-nav-direction">&larr; Previous</span>
+                        <span class="post-nav-title">{{ page.higher.title }}</span>
+                    </a>
+                    {% endif %}
+                    {% if page.lower %}
+                    <a href="{{ page.lower.permalink }}" class="post-nav-link post-nav-next">
+                        <span class="post-nav-direction">Next &rarr;</span>
+                        <span class="post-nav-title">{{ page.lower.title }}</span>
+                    </a>
+                    {% endif %}
+                </nav>
+                {% endif %}
+            </footer>
+        </div>
     </div>
 </article>
+
+{% if page.toc and page.extra.katex %}
+<script>
+(function() {
+    var toc = document.getElementById('postToc');
+    var body = document.getElementById('tocBody');
+    var toggle = document.getElementById('tocToggle');
+    var links = toc.querySelectorAll('a');
+    var headings = [];
+
+    links.forEach(function(link) {
+        var id = link.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) headings.push({ el: el, link: link });
+    });
+
+    if (headings.length && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    links.forEach(function(l) { l.closest('.toc-item').classList.remove('toc-active'); });
+                    var active = entry.target;
+                    var link = toc.querySelector('a[href="#' + active.id + '"]');
+                    if (link) link.closest('.toc-item').classList.add('toc-active');
+                }
+            });
+        }, { rootMargin: '-80px 0px -60% 0px' });
+        headings.forEach(function(h) { obs.observe(h.el); });
+    }
+
+    toggle.addEventListener('click', function() {
+        var collapsed = toc.classList.toggle('toc-collapsed');
+        body.style.display = collapsed ? 'none' : '';
+        toggle.innerHTML = collapsed ? '&#9654;' : '&#9664;';
+    });
+})();
+</script>
+{% endif %}
 {% endblock %}

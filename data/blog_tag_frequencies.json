@@ -1,15 +1,31 @@
 [
   {
     "name": "bioinformatics",
-    "count": 4
+    "count": 5
   },
   {
     "name": "proteomics",
-    "count": 3
+    "count": 4
   },
   {
     "name": "shiny",
     "count": 2
+  },
+  {
+    "name": "proteoforge",
+    "count": 1
+  },
+  {
+    "name": "proteoforms",
+    "count": 1
+  },
+  {
+    "name": "statistics",
+    "count": 1
+  },
+  {
+    "name": "mass-spectrometry",
+    "count": 1
   },
   {
     "name": "z-fasta",
