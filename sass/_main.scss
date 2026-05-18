@@ -921,7 +921,19 @@ html.dark .venue-conference {
     border-color: rgba(217, 119, 6, 0.25);
 }
 
+.pub-badge.pub-status-under-review {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.25);
+}
+
 html.dark .pub-badge.pub-status-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+html.dark .pub-badge.pub-status-under-review {
     background: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
     border-color: rgba(251, 191, 36, 0.3);

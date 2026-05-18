@@ -19,13 +19,16 @@
     <div class="pub-legend">
         <span class="pub-legend-item"><i class="fas fa-book-open"></i> journal</span>
         <span class="pub-legend-item"><i class="fas fa-file-lines"></i> preprint</span>
+        <span class="pub-legend-item"><i class="fas fa-hourglass-half"></i> under-review</span>
         <span class="pub-legend-item"><i class="fas fa-graduation-cap"></i> thesis</span>
         <span class="pub-legend-item"><i class="fas fa-check-circle"></i> published</span>
         <span class="pub-legend-sep">|</span>
         <span class="pub-legend-item">&#42; corresponding author</span>
     </div>
 
-    {% for paper in pubs.publications | filter(attribute="status", value="preprint") %}
+    {% set preprints = pubs.publications | filter(attribute="status", value="preprint") %}
+    {% set preprints = preprints | concat(with=pubs.publications | filter(attribute="status", value="under-review")) %}
+    {% for paper in preprints %}
     <div class="timeline-group">
         <div class="timeline-year">Preprint</div>
         <div class="timeline-papers">

@@ -1,40 +1,96 @@
 
-# Publication Schema Reference
+# ─── Publication Schema Reference ─────────────────────────────────────────────────
 #
-#   title     - Full paper title (HTML-safe, can include <i> etc.)
-#   authors   - Author list with <u> for self-highlighting
-#   venue     - Journal, conference, or repository name
-#   domain    - Topic category: "proteomics" | "cancer-biology" | "thesis" |
-#               "virology"
-#   year      - Publication year (integer)
-#   type      - "journal" | "conference" | "thesis" | "preprint"
-#   status    - "published" | "preprint" | "upcoming" | "planned"
-#   access    - "open-access" | "closed"
-#   doi       - Digital Object Identifier string           (optional)
-#   image     - Thumbnail path relative to static/         (optional)
-#   tag       - Blog tag slug for cross-linking; "NA" means unassigned
-#   tags      - Array of topic tag strings                 (optional)
-#   links     - Array of { label, url } objects            (optional)
-#   tldr      - Summary paragraph of the paper             (optional)
+# Each [[publications]] entry supports these fields:
 #
-# Card layout
+#   title     – Full paper title (HTML-safe: <i>, <u> etc. pass through)
+#   authors   – Author list.  <u>self</u> highlights your name (cyan, bold).
+#               Append * to the corresponding author's name (e.g. "Lange, P. F.*").
+#               For papers with >6 authors where you are a middle author,
+#               shorten to: First, ... <u>You</u>, ... Last, Last*  (see rule below).
+#   venue     – Journal, conference, or repository display name
+#   domain    – Topic category: "proteomics" | "cancer-biology" | "thesis" | "virology"
+#   year      – Publication year (integer)
+#   type      – "journal" | "conference" | "thesis" | "preprint"
+#   status    – "published" | "preprint" | "under-review" | "upcoming" | "planned"
+#                published    → paper is out, peer-reviewed
+#                preprint     → shared as preprint, not submitted
+#                under-review → submitted for peer review (shown in Preprint section)
+#                upcoming     → accepted/forthcoming (not yet out)
+#                planned      → in preparation
+#   access    – "open-access" | "closed"
+#   doi       – DOI string (optional).  Use bare identifier, not full URL.
+#   image     – Thumbnail path relative to static/  (optional, e.g. "papers/fig1.jpg")
+#   tag       – Blog tag slug for cross-linking.  "NA" means unassigned.
+#   tags      – Array of 5-6 topic tag strings describing the paper's domain,
+#               methods, and biological context.  First tag used as domain fallback.
+#   links     – Array of { label, url } objects for Paper, Code, Preprint, etc.
+#   tldr      – Full-paragraph summary.  3-5 sentences explaining the problem,
+#               approach, key finding, and significance.
 #
-#   Left column:    thumbnail (or initial letter), domain label, topic tags
-#   Badge row:      venue name (left), type + status badges (right)
-#   Body:           title, authors, links, TLDR
-#   Author <u>      styled with theme colour (var(--c-link))
-#   Author *        marks corresponding author (appended to name in data)
+# ─── Domain categories ──────────────────────────────────────────────────────────
 #
-# Notes
-#   - Every publication should have domain, type, status set explicitly.
-#   - The full rendering lives in templates/research.html, macros.html,
-#     and sass/_main.scss under "Publication card layout".
+#   proteomics        General proteomics, mass-spec workflows, quantification
+#   cancer-biology    Pediatric cancer, leukemia, PDX models, precision oncology
+#   thesis            PhD dissertation / graduate thesis
+#   virology          Viral proteases, pathogen biology, antiviral discovery
 #
-# Author shortening rule
-#   If the paper has more than 6 authors and the self-author is a middle
-#   author, show: first author, ... <u>self</u>, ... last author.
-#   If the self-author is first or last, or the list has 6 or fewer, show
-#   all authors normally.
+# ─── Card badge colours ─────────────────────────────────────────────────────────
+#
+#   Type badges  (.pub-badge.pub-type-*)
+#     journal:    #2563eb blue      bg: rgba(37,99,235,0.10)     icon: fa-book-open
+#     conference: #7c3aed purple    bg: rgba(139,92,246,0.10)    icon: fa-microphone
+#     thesis:     #059669 green     bg: rgba(5,150,105,0.10)     icon: fa-graduation-cap
+#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.10)     icon: fa-file-lines
+#
+#   Status badges  (.pub-badge.pub-status-*)
+#     published:     #059669 green  bg: rgba(5,150,105,0.10)     icon: fa-check-circle
+#     preprint:      #d97706 amber  bg: rgba(217,119,6,0.10)     icon: fa-file-lines
+#     under-review:  #d97706 amber  bg: rgba(245,158,11,0.10)    icon: fa-hourglass-half
+#
+#   Venue badges  (.venue-*  — color-coded by paper type)
+#     journal:    #2563eb blue      bg: rgba(37,99,235,0.08)
+#     conference: #7c3aed purple    bg: rgba(139,92,246,0.08)
+#     thesis:     #059669 green     bg: rgba(5,150,105,0.08)
+#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.08)
+#
+#   Dark mode: all colours shift to more saturated/bright variants (see CSS).
+#
+# ─── Card layout ────────────────────────────────────────────────────────────────
+#
+#   ┌──────────────────────────────────────────────────────────────────┐
+#   │ ┌──────────┐  [venue badge]  [type badge]  [status badge]        │
+#   │ │  thumb   │  Title of the paper                                 │
+#   │ │  or init │  Authors with <u>self</u> and corresponding*        │
+#   │ │  letter  │  [Paper] [Code] [Blog]                              │
+#   │ │───────── │  ┌────────────────────────────────────────────────┐ │
+#   │ │ PRO-     │  │ TLDR: paragraph summary here...                │ │
+#   │ │ TEOMICS  │  └────────────────────────────────────────────────┘ │
+#   │ │          │                                                     │
+#   │ │ [tag]    │                                                     │
+#   │ │ [tag]    │                                                     │
+#   │ └──────────┘                                                     │
+#   └──────────────────────────────────────────────────────────────────┘
+#
+#   Left column:    thumbnail (130x130, or initial letter + border-radius 6px),
+#                   domain label (uppercase, muted), topic tags (cyan ghost pills)
+#   Badge row:      venue pill (left), type + status pills (right)
+#   Body:           title (bold, 11pt), authors, links, TLDR (stylised box)
+#
+# ─── Author shortening rule ─────────────────────────────────────────────────────
+#   If the paper has more than 6 authors AND the self-author is a middle author,
+#   show:  First Author, ... <u>Self</u>, ... Last Author*.
+#   If the self-author is first or last, or the list has ≤6 authors, show all.
+#
+# ─── Tag frequency ──────────────────────────────────────────────────────────────
+#   Tags are tallied across all publications by build.sh into
+#   data/pub_tag_frequencies.json, which is loaded by research.html to render
+#   a "Tags by appearance" frequency cloud below the publication list.
+#
+# ─── Rendering ──────────────────────────────────────────────────────────────────
+#   templates/research.html   – publications tab, legend, year grouping, tag cloud
+#   templates/macros.html     – render_paper() macro shared across templates
+#   sass/_main.scss           – publication card layout (".paper-card-detailed" etc.)
 
 
 [[publications]]
@@ -44,7 +100,7 @@ venue = "bioRxiv"
 domain = "proteomics"
 year = 2025
 type = "preprint"
-status = "preprint"
+status = "under-review"
 access = "open-access"
 doi = "10.64898/2025.12.12.694008"
 image = "publications/Ergin_2026_proteoforge.jpg"
@@ -199,7 +255,7 @@ type = "journal"
 status = "published"
 access = "open-access"
 doi = "10.3906/biy-1501-56"
-image = "publications/barnabas_2025_profyle.jpg"
+image = "publications/kocabas_2016.png"
 tag = "NA"
 tags = ["virology", "drug-discovery", "docking", "cchfv", "protease", "antivirals"]
 links = [
