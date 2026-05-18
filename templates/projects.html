@@ -2,6 +2,7 @@
 
 {% block content %}
 {% set data = load_data(path="data/projects.toml") %}
+{% set star_data = load_data(path="data/project_stars.json") %}
 {% set order = ["stable", "active", "wip", "early", "private", "archived"] %}
 
 <h2>Projects</h2>
@@ -45,7 +46,7 @@
                             {{ p.language }}
                         </span>
                         {% if p.stars and p.stars > 0 %}
-                        <span class="star-badge" data-stars="{{ p.stars }}">&#9733; {{ p.stars }}</span>
+                        <span class="star-badge" style="--clr:{{ star_data[p.title].clr }};--bdr:{{ star_data[p.title].bdr }};--bg:{{ star_data[p.title].bg }};--clr-d:{{ star_data[p.title]["clr-d"] }};--bdr-d:{{ star_data[p.title]["bdr-d"] }};--bg-d:{{ star_data[p.title]["bg-d"] }};">&#9733; {{ p.stars }}</span>
                         {% endif %}
                         {% if p.version %}
                         <span class="version-badge">v{{ p.version }}</span>

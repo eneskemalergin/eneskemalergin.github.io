@@ -582,20 +582,16 @@ html.dark .access-private {
     border-radius: 999px;
     border: 1px solid;
     white-space: nowrap;
-    background: rgba(239, 68, 68, 0.08);
+    color: var(--clr);
+    border-color: var(--bdr);
+    background: var(--bg);
 }
 
-.star-badge[data-stars="1"]  { color: #fca5a5; border-color: rgba(252, 165, 165, 0.4); background: rgba(252, 165, 165, 0.08); }
-.star-badge[data-stars="2"]  { color: #f87171; border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
-.star-badge[data-stars="4"]  { color: #ef4444; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08); }
-.star-badge[data-stars="5"]  { color: #dc2626; border-color: rgba(220, 38, 38, 0.4); background: rgba(220, 38, 38, 0.08); }
-.star-badge[data-stars="10"] { color: #b91c1c; border-color: rgba(185, 28, 28, 0.4); background: rgba(185, 28, 28, 0.08); }
-
-html.dark .star-badge[data-stars="1"]  { color: #fecaca; border-color: rgba(254, 202, 202, 0.35); background: rgba(254, 202, 202, 0.08); }
-html.dark .star-badge[data-stars="2"]  { color: #fca5a5; border-color: rgba(252, 165, 165, 0.35); background: rgba(252, 165, 165, 0.08); }
-html.dark .star-badge[data-stars="4"]  { color: #f87171; border-color: rgba(248, 113, 113, 0.35); background: rgba(248, 113, 113, 0.08); }
-html.dark .star-badge[data-stars="5"]  { color: #ef4444; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.08); }
-html.dark .star-badge[data-stars="10"] { color: #dc2626; border-color: rgba(220, 38, 38, 0.35); background: rgba(220, 38, 38, 0.08); }
+html.dark .star-badge {
+    color: var(--clr-d);
+    border-color: var(--bdr-d);
+    background: var(--bg-d);
+}
 
 // ─── Projects page ──────────────────────────────────────
 
