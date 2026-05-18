@@ -539,10 +539,17 @@ html.dark .page-body mark {
     color: var(--text-muted);
     padding: 2px 0 2px 10px;
     border-left: 2px solid var(--border-color);
+    transition: border-left-color 0.2s, border-left-width 0.2s, color 0.2s;
 }
 
 .sidenote a {
     color: var(--c-link);
+}
+
+.sidenote-ref.sn-active + .sidenote {
+    border-left-color: var(--c-link);
+    border-left-width: 3px;
+    color: var(--text-main);
 }
 
 /* Mobile: inline toggle */
@@ -562,7 +569,7 @@ html.dark .page-body mark {
         cursor: pointer;
         border-bottom: 1px dotted var(--c-link);
     }
-    .sn-open + .sidenote,
+    .sidenote-ref.sn-active + .sidenote,
     .sidenote-ref:hover + .sidenote {
         display: block;
     }
@@ -604,9 +611,29 @@ html.dark .page-body mark {
 }
 
 .meta-date,
+.meta-edited,
 .meta-reading,
 .meta-words {
     display: inline-block;
+}
+
+.meta-edited {
+    color: #b45309;
+}
+
+.meta-edited::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border-color);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+html.dark .meta-edited {
+    color: #fbbf24;
 }
 
 .meta-date::after,

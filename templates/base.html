@@ -126,6 +126,21 @@
         } catch(e) { /* silent fallback */ }
     })();
     </script>
+    <script>
+    (function() {
+        document.addEventListener('click', function(e) {
+            var ref = e.target.closest('.sidenote-ref');
+            if (!ref) return;
+            var wasActive = ref.classList.contains('sn-active');
+            document.querySelectorAll('.sidenote-ref.sn-active').forEach(function(el) {
+                el.classList.remove('sn-active');
+            });
+            if (!wasActive) {
+                ref.classList.add('sn-active');
+            }
+        });
+    })();
+    </script>
 </body>
 
 </html>
