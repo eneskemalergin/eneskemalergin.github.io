@@ -1315,8 +1315,80 @@ html.dark .talk-type--ta {
 }
 
 /* =============================================================
-   BLOGS LISTING
-   ============================================================= */
+    BLOGS LISTING
+    ============================================================= */
+
+.blog-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.blog-main {
+    flex: 3;
+    min-width: 0;
+}
+
+.blog-sidebar {
+    flex: 1;
+    min-width: 180px;
+    position: sticky;
+    top: 20px;
+}
+
+.blog-sidebar h3 {
+    font-size: 10pt;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+}
+
+.sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+}
+
+.sidebar-tags .tag {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 107, 123, 0.3);
+    background-color: transparent;
+    color: var(--c-link);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.sidebar-tags .tag sup {
+    font-size: 6.5pt;
+    margin-left: 2px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.sidebar-tags .tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+.sidebar-tags .tag:hover sup {
+    color: white;
+}
+
+html.dark .sidebar-tags .tag {
+    border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+@media (max-width: 800px) {
+    .sidebar-tags {
+        justify-content: flex-start;
+    }
+}
+
 .blog-list {
     list-style: none;
     padding: 0;
@@ -1340,21 +1412,30 @@ html.dark .talk-type--ta {
 }
 
 .blog-tag {
-    font-size: 8.5pt;
-    font-weight: 600;
-    border-radius: 3px;
-    letter-spacing: 0.02em;
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 999px;
     white-space: nowrap;
+    background-color: transparent;
+    border: 1px solid;
+    color: var(--c-link);
+    border-color: rgba(0, 107, 123, 0.3);
+}
+
+html.dark .blog-tag {
+    border-color: rgba(45, 212, 191, 0.3);
 }
 
 .blog-date {
-    font-size: 9.5pt;
+    font-size: 9pt;
     color: var(--text-muted);
     font-family: 'SFMono-Regular', Consolas, monospace;
 }
 
 .blog-title {
-    font-size: 10pt;
+    font-size: 11pt;
+    font-weight: 500;
 }
 
 .blog-title a {

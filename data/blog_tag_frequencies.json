@@ -1,0 +1,50 @@
+[
+  {
+    "name": "bioinformatics",
+    "count": 4
+  },
+  {
+    "name": "proteomics",
+    "count": 3
+  },
+  {
+    "name": "shiny",
+    "count": 2
+  },
+  {
+    "name": "z-fasta",
+    "count": 1
+  },
+  {
+    "name": "squapp",
+    "count": 1
+  },
+  {
+    "name": "fasta",
+    "count": 1
+  },
+  {
+    "name": "cli",
+    "count": 1
+  },
+  {
+    "name": "ptm",
+    "count": 1
+  },
+  {
+    "name": "data-analysis",
+    "count": 1
+  },
+  {
+    "name": "visualization",
+    "count": 1
+  },
+  {
+    "name": "web-app",
+    "count": 1
+  },
+  {
+    "name": "quantification",
+    "count": 1
+  }
+]

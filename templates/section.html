@@ -1,42 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ section.title }}</h2>
-{% if section.description %}
-<p>{{ section.description }}</p>
-{% endif %}
+{% set blog_tag_freq = load_data(path="data/blog_tag_frequencies.json") %}
 
-{% set pages = paginator.pages | default(value=section.pages) %}
-{% if pages %}
-<ul class="blog-list">
-    {% for page in pages %}
-    <li class="blog-item">
-        <div class="blog-header">
-            {% if page.extra.tag %}
-            <span class="blog-tag blog-tag--{{ page.extra.tag }}">{{ page.extra.tag_label | default(value=page.extra.tag) }}</span>
+<div class="blog-layout">
+    <div class="blog-main">
+        <h2>{{ section.title }}</h2>
+        {% if section.description %}
+        <p>{{ section.description }}</p>
+        {% endif %}
+
+        {% set pages = paginator.pages | default(value=section.pages) %}
+        {% if pages %}
+        <ul class="blog-list">
+            {% for page in pages %}
+            <li class="blog-item">
+                <div class="blog-header">
+                    {% if page.extra.tag %}
+                    <span class="blog-tag blog-tag--{{ page.extra.tag }}">{{ page.extra.tag_label | default(value=page.extra.tag) }}</span>
+                    {% endif %}
+                    {% if page.date %}
+                    <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                    {% endif %}
+                </div>
+                <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if paginator %}
+        <div class="pagination">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}">&larr; Previous</a>
             {% endif %}
-            {% if page.date %}
-            <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+            <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}">Next &rarr;</a>
             {% endif %}
         </div>
-        <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
-    </li>
-    {% endfor %}
-</ul>
+        {% endif %}
 
-{% if paginator %}
-<div class="pagination">
-    {% if paginator.previous %}
-    <a href="{{ paginator.previous }}">&larr; Previous</a>
-    {% endif %}
-    <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
-    {% if paginator.next %}
-    <a href="{{ paginator.next }}">Next &rarr;</a>
-    {% endif %}
+        {% else %}
+        <p class="empty">Nothing here yet.</p>
+        {% endif %}
+    </div>
+
+    <aside class="blog-sidebar">
+        <h3>Tags</h3>
+        <div class="sidebar-tags">
+            {% for entry in blog_tag_freq %}
+            <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+            {% endfor %}
+        </div>
+    </aside>
 </div>
-{% endif %}
-
-{% else %}
-<p class="empty">Nothing here yet.</p>
-{% endif %}
 {% endblock %}

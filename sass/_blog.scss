@@ -1,106 +1,108 @@
-/* =============================================================
-   LANGUAGE SWITCHER
-   ============================================================= */
-.language-toggle {
-    display: inline-block;
-    padding: 8px 12px;
-    font-size: 10pt;
-    cursor: pointer;
-    background-color: white;
-    margin-bottom: 12px;
-}
+/* -- Code & pre -------------------------------------------- */
 
-.language-toggle span {
-    padding: 0 8px;
-}
-
-.language-toggle span.separator {
-    color: var(--text-muted);
-}
-
-.language-toggle .active {
-    font-weight: bold;
-    color: var(--c-link);
-}
-
-.language-toggle .inactive {
-    color: #666;
-    cursor: pointer;
-}
-
-/* =============================================================
-   REFERENCES
-   ============================================================= */
-ol.custom-counter {
-    list-style-type: none;
-    counter-reset: list-counter;
-}
-
-ol.custom-counter li {
-    counter-increment: list-counter;
-}
-
-ol.custom-counter li::before {
-    content: "[" counter(list-counter) "] ";
-}
-
-/* =============================================================
-   IMAGES & FIGURES
-   ============================================================= */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-figcaption {
-    color: gray;
-    font-style: italic;
-    font-size: 9.5pt;
-    margin-top: 0.5em;
-}
-
-/* =============================================================
-   CODE BLOCKS
-   ============================================================= */
 code {
-    border: 1px solid #ddd;
-    border-radius: 3px;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.7em;
+    font-size: 0.75em;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(100, 116, 139, 0.08);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
 }
 
 pre {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    padding: 0px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px 16px;
     overflow-x: auto;
+    background: var(--bg-surface);
+    line-height: 1.5;
 }
 
 pre code {
     border: none;
     padding: 0;
+    background: none;
+    font-size: 0.8em;
 }
 
-/* =============================================================
-   GITHUB GIST EMBEDS
-   ============================================================= */
-.gist-file .blob-num {
-    border: none !important;
-    background-color: transparent !important;
+html.dark code {
+    background: rgba(148, 163, 184, 0.1);
+    border-color: rgba(148, 163, 184, 0.2);
 }
 
-.gist-file {
-    border: 1px solid #ddd !important;
-    border-radius: 3px !important;
+html.dark pre {
+    background: rgba(30, 41, 59, 0.5);
 }
 
-.gist-data {
-    background-color: transparent !important;
-    border-bottom: none !important;
+/* -- Blockquotes ------------------------------------------- */
+
+blockquote {
+    margin: 1em 0;
+    padding: 8px 16px;
+    border-left: 3px solid var(--c-link);
+    background: rgba(0, 107, 123, 0.04);
+    border-radius: 0 4px 4px 0;
+    color: var(--text-muted);
 }
 
-.gist {
-    margin-top: 15px !important;
+html.dark blockquote {
+    background: rgba(45, 212, 191, 0.04);
+}
+
+/* -- Images & figures -------------------------------------- */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+figcaption {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 9pt;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+/* -- References / footnotes -------------------------------- */
+
+.footnotes {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border-color);
+    font-size: 9pt;
+}
+
+.footnotes ol {
+    padding-left: 1.5em;
+}
+
+.footnotes li {
+    margin-bottom: 0.3em;
+    color: var(--text-muted);
+}
+
+/* -- Tables ------------------------------------------------ */
+
+.page-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 9.5pt;
+}
+
+.page-body th,
+.page-body td {
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.page-body th {
+    background: var(--bg-surface);
+    font-weight: 600;
 }
