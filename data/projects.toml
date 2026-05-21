@@ -6,7 +6,8 @@
 #   domain    - Functional area: "data-analysis" | "metadata" | "core-tooling" |
 #               "language-dev" | "standards"
 #   source    - Project origin: "langelab" | "zenteomics" | "personal"
-#   status    - "stable" | "active" | "wip" | "early" | "private" | "archived"
+#   status    - "mature" | "stable" | "active" | "wip" | "early" | "private" |
+#               "archived"
 #               (also determines timeline stage grouping order)
 #   stars     - GitHub star count (integer, 0 to hide)
 #   version   - Semver string, e.g. "0.3.0".  Default "0.1.0" if omitted.
@@ -305,7 +306,7 @@ version = "0.1.1"
 language = "R"
 pub = "planned"
 access = "private"
-image = "projects/pepvet.svg"
+image = "projects/pepVet-logo.png"
 tag = "NA"
 tags = ["proteomics", "digestion-simulation", "peptides", "enzyme-selection", "bottom-up"]
 desc = "R package for proteolytic digest simulation, peptide scoring, enzyme comparison, and prep workflow presets for bottom-up proteomics."

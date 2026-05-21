@@ -3,7 +3,6 @@
    ============================================================= */
 body {
     margin: 0;
-    padding: 0;
 }
 
 html {
@@ -26,7 +25,7 @@ h3 {
 
 h3, h4 {
     margin-top: 24px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 a {
@@ -36,7 +35,6 @@ a {
 }
 
 a:hover {
-    color: var(--c-link);
     background: none;
     text-shadow: var(--glow-link);
 }
@@ -53,12 +51,17 @@ a:focus-visible {
     text-underline-offset: 2px;
 }
 
-p.lightweight {
-    font-weight: 100;
-}
-
-highlight {
-    color: var(--c-link);
+// Non-prose <a> elements inside #content: suppress underline from #content a:hover (1,1,1)
+// These selectors use #content prefix to reach specificity >= (1,2,0) to win
+#content .tag:hover,
+#content .icons a:hover,
+#content .toc-item a:hover,
+#content .post-nav-link:hover,
+#content .tools-header a:hover,
+#content .project-head .project-name a:hover,
+#content .paper-link:hover,
+#content .project-link:hover {
+    text-decoration: none;
 }
 
 hr {
@@ -111,7 +114,7 @@ footer p {
     padding: 20px;
     box-sizing: border-box;
     margin: 0 auto;
-    text-align: justify;
+    text-align: left;
     line-height: 1.6;
 }
 
@@ -124,11 +127,7 @@ footer p {
 }
 
 @media (max-width: 900px) {
-    html {
-        font-size: 11pt;
-    }
     #content {
-        padding: 20px;
         max-width: 100%;
     }
 }
@@ -154,7 +153,6 @@ nav {
     background-color: var(--bg-color);
     width: 100%;
     box-sizing: border-box;
-    text-align: center;
     flex-wrap: wrap;
     font-weight: 500;
 }
@@ -165,16 +163,13 @@ nav {
 
 .navbar a {
     color: var(--text-main);
-    text-decoration: none;
     padding: 14px 20px;
     display: block;
     text-align: left;
-    transition: color 0.2s, text-shadow 0.2s;
 }
 
 .navbar a:hover {
     color: var(--c-link);
-    background: none;
     text-shadow: var(--glow-link);
 }
 
@@ -182,7 +177,6 @@ nav {
     font-weight: 700;
     color: var(--c-link);
     border-bottom: 3px solid var(--c-link-hover-bg);
-    background: none;
 }
 
 /* Hamburger button: hidden by default, shown on mobile */
@@ -204,7 +198,7 @@ nav {
     height: 3px;
     background-color: var(--text-main);
     margin: 3px 0;
-    transition: 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
     border-radius: 3px;
 }
 
@@ -253,7 +247,6 @@ nav {
 
     .navbar a {
         padding: 16px 20px;
-        text-align: left;
         width: 100%;
     }
 }
@@ -261,7 +254,7 @@ nav {
 @media (min-width: 601px) and (max-width: 768px) {
     .navbar a {
         padding: 12px 16px;
-        font-size: 14px;
+        font-size: 10.5pt;
     }
 }
 
@@ -290,7 +283,6 @@ th:first-child, td:first-child {
 th {
     font-weight: 600;
     color: var(--text-main);
-    background: none;
 }
 
 tbody tr:last-child td {
@@ -303,8 +295,6 @@ tbody tr:hover {
 
 @media (max-width: 600px) {
     table {
-        width: 100%;
-        border-collapse: collapse;
         display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -350,7 +340,6 @@ tbody tr:hover {
     margin: 0 0 6px 0;
     font-size: 11pt;
     font-weight: 500;
-    color: var(--text-main);
     line-height: 1.3;
 }
 
@@ -412,10 +401,6 @@ tbody tr:hover {
     .avatar {
         width: 100px;
     }
-
-    .hero-text {
-        text-align: left;
-    }
 }
 
 .icons {
@@ -435,25 +420,21 @@ tbody tr:hover {
 
 .icons a {
     color: var(--text-main);
-    transition: color 0.2s, text-shadow 0.2s;
 }
 
 .icons a:hover {
     color: var(--c-link);
-    background: none;
     text-shadow: var(--glow-link);
 }
 
 .news-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
 .news-item {
     display: flex;
     align-items: flex-start;
-    gap: 0;
     padding: 10px 0;
     border-bottom: 1px solid var(--border-color);
     line-height: 1.5;
@@ -535,13 +516,15 @@ html.dark .news-type-publication {
     border-color: rgba(96, 165, 250, 0.25);
 }
 
-html.dark .news-type-release {
+html.dark .news-type-release,
+html.dark .news-type-mentoring {
     background: rgba(52, 211, 153, 0.15);
     color: #34d399;
     border-color: rgba(52, 211, 153, 0.25);
 }
 
-html.dark .news-type-milestone {
+html.dark .news-type-milestone,
+html.dark .news-type-award {
     background: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
     border-color: rgba(251, 191, 36, 0.25);
@@ -553,22 +536,10 @@ html.dark .news-type-career {
     border-color: rgba(167, 139, 250, 0.25);
 }
 
-html.dark .news-type-award {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
-}
-
 html.dark .news-type-event {
     background: rgba(148, 163, 184, 0.15);
     color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
-}
-
-html.dark .news-type-mentoring {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    border-color: rgba(52, 211, 153, 0.25);
 }
 
 .news-content {
@@ -582,13 +553,8 @@ html.dark .news-type-mentoring {
     text-align: right;
 }
 
-.news-footer a {
-    color: var(--c-link);
-}
-
 .sublist {
-    text-align: left;
-    margin: 6pt 0;
+    margin: 8px 0;
     font-size: 10pt;
 }
 
@@ -623,21 +589,15 @@ html.dark .news-type-mentoring {
     gap: 4px;
 }
 
-.research-venue {
-    font-size: 10pt;
-    color: var(--text-main);
-}
-
+.research-venue,
 .research-sublabel {
     font-size: 10pt;
-    color: var(--text-main);
 }
 
 /* =============================================================
    RESEARCH & PUBLICATIONS
    ============================================================= */
 .paper-card {
-    background: none;
     padding-top: 12px;
     padding-bottom: 12px;
     border-top: 1px solid var(--border-color);
@@ -668,7 +628,6 @@ h3 + p {
     height: 200px;
     object-fit: contain;
     background-color: var(--bg-color);
-    padding: 0px;
     display: block;
 }
 
@@ -691,12 +650,6 @@ h3 + p {
     line-height: 1.4;
 }
 
-.paper-authors {
-    font-size: 9.5pt;
-    color: var(--text-muted);
-    margin: 0 0 2px 0;
-}
-
 .paper-venue {
     font-size: 9.5pt;
     color: var(--text-muted);
@@ -705,7 +658,6 @@ h3 + p {
 
 .paper-venue i {
     color: var(--c-link);
-    font-style: italic;
 }
 
 .paper-links {
@@ -715,15 +667,18 @@ h3 + p {
     margin-bottom: 6px;
 }
 
-.paper-link {
+.paper-link,
+.project-link {
     font-size: 9.5pt;
     color: var(--c-link);
     border: 1px solid var(--border-color);
     border-radius: 3px;
     padding: 1px 6px;
+    transition: color 0.15s, background-color 0.15s, border-color 0.15s;
 }
 
-.paper-link:hover {
+.paper-link:hover,
+.project-link:hover {
     background-color: var(--c-link-hover-bg);
     border-color: var(--c-link-hover-bg);
     color: white;
@@ -744,10 +699,6 @@ h3 + p {
     .toc {
         margin-right: 0;
         margin-bottom: 10px;
-    }
-
-    .content {
-        text-align: justify;
     }
 }
 
@@ -853,14 +804,13 @@ h3 + p {
     font-weight: 500;
     padding: 1px 8px;
     border-radius: 999px;
-    background-color: transparent;
     color: var(--c-link);
     border: 1px solid var(--c-link-subtle);
     white-space: nowrap;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .pub-tag:hover {
@@ -951,34 +901,32 @@ html.dark .venue-conference {
     flex-shrink: 0;
 }
 
-.pub-badge.pub-type-journal {
+.pub-badge.pub-type-journal,
+.pub-badge.pub-status-upcoming {
     background: rgba(37, 99, 235, 0.1);
     color: #2563eb;
     border-color: rgba(37, 99, 235, 0.25);
 }
 
-.pub-badge.pub-type-conference {
+.pub-badge.pub-type-conference,
+.pub-badge.pub-status-planned {
     background: rgba(139, 92, 246, 0.1);
     color: #7c3aed;
     border-color: rgba(139, 92, 246, 0.25);
 }
 
-.pub-badge.pub-type-thesis {
-    background: rgba(5, 150, 105, 0.1);
-    color: #059669;
-    border-color: rgba(5, 150, 105, 0.25);
-}
-
-.pub-badge.pub-type-preprint {
-    background: rgba(217, 119, 6, 0.1);
-    color: #d97706;
-    border-color: rgba(217, 119, 6, 0.25);
-}
-
+.pub-badge.pub-type-thesis,
 .pub-badge.pub-status-published {
     background: rgba(5, 150, 105, 0.1);
     color: #059669;
     border-color: rgba(5, 150, 105, 0.25);
+}
+
+.pub-badge.pub-type-preprint,
+.pub-badge.pub-status-preprint {
+    background: rgba(217, 119, 6, 0.1);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.25);
 }
 
 .pub-badge.pub-status-under-review {
@@ -987,76 +935,33 @@ html.dark .venue-conference {
     border-color: rgba(245, 158, 11, 0.25);
 }
 
-.pub-badge.pub-status-preprint {
-    background: rgba(217, 119, 6, 0.1);
-    color: #d97706;
-    border-color: rgba(217, 119, 6, 0.25);
-}
-
-.pub-badge.pub-status-upcoming {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-    border-color: rgba(37, 99, 235, 0.25);
-}
-
-.pub-badge.pub-status-planned {
-    background: rgba(139, 92, 246, 0.1);
-    color: #7c3aed;
-    border-color: rgba(139, 92, 246, 0.25);
-}
-
-html.dark .pub-badge.pub-type-journal {
-    background: rgba(96, 165, 250, 0.15);
-    color: #60a5fa;
-    border-color: rgba(96, 165, 250, 0.25);
-}
-
-html.dark .pub-badge.pub-type-conference {
-    background: rgba(167, 139, 250, 0.15);
-    color: #a78bfa;
-    border-color: rgba(167, 139, 250, 0.25);
-}
-
-html.dark .pub-badge.pub-type-thesis {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    border-color: rgba(52, 211, 153, 0.25);
-}
-
-html.dark .pub-badge.pub-type-preprint {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
-}
-
-html.dark .pub-badge.pub-status-published {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    border-color: rgba(52, 211, 153, 0.25);
-}
-
-html.dark .pub-badge.pub-status-under-review {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
-}
-
-html.dark .pub-badge.pub-status-preprint {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
-}
-
+html.dark .pub-badge.pub-type-journal,
 html.dark .pub-badge.pub-status-upcoming {
     background: rgba(96, 165, 250, 0.15);
     color: #60a5fa;
     border-color: rgba(96, 165, 250, 0.25);
 }
 
+html.dark .pub-badge.pub-type-conference,
 html.dark .pub-badge.pub-status-planned {
     background: rgba(167, 139, 250, 0.15);
     color: #a78bfa;
     border-color: rgba(167, 139, 250, 0.25);
+}
+
+html.dark .pub-badge.pub-type-thesis,
+html.dark .pub-badge.pub-status-published {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .pub-badge.pub-type-preprint,
+html.dark .pub-badge.pub-status-under-review,
+html.dark .pub-badge.pub-status-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
 }
 
 .paper-body .paper-title {
@@ -1102,13 +1007,6 @@ html.dark .pub-badge.pub-status-planned {
 
 .pub-legend-sep {
     color: var(--border-color);
-}
-
-.paper-body .paper-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
 }
 
 .paper-body .tldr {
@@ -1256,19 +1154,12 @@ html.dark .pub-badge.pub-status-planned {
 
 .talk-type--oral,
 .talk-type--workshop {
-    background-color: transparent;
     color: var(--c-link);
     border: 1px solid var(--c-link-subtle);
 }
 
-.talk-type--poster {
-    background-color: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-}
-
+.talk-type--poster,
 .talk-type--ta {
-    background-color: transparent;
     color: var(--text-muted);
     border: 1px solid var(--border-color);
 }
@@ -1291,20 +1182,6 @@ html.dark .pub-badge.pub-status-planned {
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-}
-
-.talk-link {
-    font-size: 9.5pt;
-    color: var(--c-link);
-    border: 1px solid var(--border-color);
-    border-radius: 3px;
-    padding: 1px 6px;
-}
-
-.talk-link:hover {
-    background-color: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
 }
 
 /* =============================================================
@@ -1333,7 +1210,6 @@ html.dark .pub-badge.pub-status-planned {
     font-size: 10pt;
     font-weight: 600;
     margin: 14px 0 10px 0;
-    color: var(--text-main);
 }
 
 .sidebar-tags {
@@ -1345,14 +1221,7 @@ html.dark .pub-badge.pub-status-planned {
 
 .sidebar-tags .tag {
     font-size: 7.5pt;
-    font-weight: 500;
     padding: 1px 8px;
-    border-radius: 999px;
-    border: 1px solid var(--c-link-subtle);
-    background-color: transparent;
-    color: var(--c-link);
-    white-space: nowrap;
-    transition: all 0.2s ease;
 }
 
 .sidebar-tags .tag sup {
@@ -1360,12 +1229,6 @@ html.dark .pub-badge.pub-status-planned {
     margin-left: 2px;
     color: var(--text-muted);
     font-weight: 400;
-}
-
-.sidebar-tags .tag:hover {
-    background-color: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
 }
 
 .sidebar-tags .tag:hover sup {
@@ -1402,11 +1265,7 @@ html.dark .pub-badge.pub-status-planned {
 
 .blog-tag {
     font-size: 7.5pt;
-    font-weight: 500;
     padding: 1px 8px;
-    border-radius: 999px;
-    white-space: nowrap;
-    background-color: transparent;
     border: 1px solid var(--c-link-subtle);
 }
 
@@ -1427,33 +1286,20 @@ html.dark .pub-badge.pub-status-planned {
 
 .blog-title a:hover {
     color: var(--c-link);
-    background: none;
     text-shadow: var(--glow-link);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-}
-
-.blog-tag--study-notes {
-    background-color: transparent;
-    color: var(--c-link);
-    border: 1px solid var(--c-link-subtle);
 }
 
 .blog-tag--wild-thoughts {
-    background-color: transparent;
     color: var(--c-blog-wild);
     border: 1px solid rgba(42, 122, 90, 0.3);
 }
 
 .blog-tag--paper-reading {
-    background-color: transparent;
     color: var(--c-blog-paper);
     border: 1px solid rgba(125, 60, 152, 0.3);
 }
 
 .blog-tag--project {
-    background-color: transparent;
     color: var(--c-blog-project);
     border: 1px solid rgba(180, 83, 9, 0.3);
 }

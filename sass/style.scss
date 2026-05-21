@@ -65,13 +65,9 @@
 
 // ─── Base backgrounds ───────────────────────────────────
 
-html body {
+body {
     background: var(--bg-color);
     color: var(--text-main);
-}
-
-html.dark nav, html.dark .navbar, html.dark .navbar.active {
-    background: var(--bg-color);
 }
 
 html.dark .navbar a {
@@ -80,145 +76,39 @@ html.dark .navbar a {
 
 html.dark .navbar a:hover {
     color: var(--c-link);
-    background: none;
 }
 
 html.dark .navbar a.active {
     color: var(--c-link);
     border-bottom-color: var(--c-link-hover-bg);
-    background: none;
 }
 
 html.dark .hamburger span {
     background: var(--text-muted);
 }
 
-html.dark a {
-    color: var(--c-link);
-}
-
-html.dark a:hover {
-    color: var(--c-link);
-    background: none;
-}
-
 html.dark #content p,
 html.dark #content,
-html.dark .paper-authors,
-html.dark .paper-venue,
-html.dark .tldr,
-html.dark .talk-meta,
 html.dark .talk-title,
-html.dark .blog-title a,
-html.dark .talk-date,
-html.dark .blog-date,
-html.dark .news-date,
-html.dark .exp-sub,
-html.dark .exp-date,
-html.dark .tools-desc,
-html.dark .tools-meta,
-html.dark .research-desc,
-html.dark .page-meta,
-html.dark .service-content,
-html.dark .service-note,
-html.dark .section-desc,
-html.dark .list-meta,
-html.dark .list-desc {
+html.dark .service-content {
     color: var(--text-muted);
 }
 
 html.dark h1, html.dark h2, html.dark h3, html.dark h4,
-html.dark .hero-text h2,
-html.dark .page-header h1,
-html.dark .section-header h1,
 html.dark .paper-title,
 html.dark .research-topic,
-html.dark .research-venue,
-html.dark .research-sublabel,
 html.dark .exp-header,
 html.dark .tools-header,
-html.dark .tools-header a,
-html.dark .blog-title a,
-html.dark .project-name a,
-html.dark .news-content,
-html.dark .service-label,
-html.dark .hero-text h2 + p,
-html.dark .hero-bio {
+html.dark .news-content {
     color: var(--text-main);
 }
 
-html.dark .icons a {
-    color: var(--text-main);
-    transition: color 0.2s, text-shadow 0.2s;
-}
-
-html.dark .icons a:hover {
+html.dark mark {
     color: var(--c-link);
-    background: none;
-}
-
-html.dark footer,
-html.dark .footer {
-    color: var(--text-muted);
-}
-
-html.dark hr {
-    border-top-color: var(--border-color);
-}
-
-html.dark .paper-card,
-html.dark .talk-item,
-html.dark .blog-item,
-html.dark .list-item,
-html.dark .project-item,
-html.dark .service-item {
-    border-color: var(--border-color);
-}
-
-html.dark table th,
-html.dark table td {
-    border-color: var(--border-color);
-}
-
-
-
-html.dark .timeline-papers {
-    border-left-color: var(--border-color);
-}
-
-html.dark mark,
-html.dark highlight {
-    color: var(--c-link);
-}
-
-html.dark .paper-link {
-    color: var(--c-link);
-    border-color: var(--border-color);
-}
-
-html.dark .paper-link:hover {
-    background: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
-}
-
-html.dark .empty {
-    color: var(--text-muted);
 }
 
 html.dark .page-body code {
     background: var(--bg-surface);
-    border-color: var(--border-color);
-}
-
-html.dark .page-body pre {
-    background: var(--bg-surface);
-    border-color: var(--border-color);
-}
-
-html.dark .page-body pre code {
-    border: none;
-    background: none;
 }
 
 html.dark .page-body blockquote {
@@ -233,22 +123,24 @@ html.dark .page-body img {
 
 html.dark .blog-tag--study-notes {
     background: var(--bg-surface);
-    color: var(--c-link);
 }
 
 html.dark .blog-tag--wild-thoughts {
     background: var(--bg-surface);
     color: var(--c-blog-wild);
+    border-color: rgba(110, 231, 183, 0.3);
 }
 
 html.dark .blog-tag--paper-reading {
     background: var(--bg-surface);
     color: var(--c-blog-paper);
+    border-color: rgba(196, 181, 253, 0.3);
 }
 
 html.dark .blog-tag--project {
     background: var(--bg-surface);
     color: var(--c-blog-project);
+    border-color: rgba(251, 191, 36, 0.3);
 }
 
 html.dark .talk-type--oral,
@@ -257,52 +149,10 @@ html.dark .talk-type--workshop {
     color: var(--c-link);
 }
 
-html.dark .talk-type--poster {
+html.dark .talk-type--poster,
+html.dark .talk-type--ta {
     background: var(--bg-surface);
     color: var(--text-muted);
-}
-
-// ─── Research tabs overrides ────────────────────────────
-
-html.dark .research-tab {
-    color: var(--text-muted);
-}
-
-html.dark .research-tab:hover {
-    color: var(--c-link);
-}
-
-html.dark .research-tab.active {
-    color: var(--c-link);
-    border-bottom-color: var(--c-link-hover-bg);
-}
-
-html.dark .project-tabs {
-    border-bottom-color: var(--border-color);
-}
-
-html.dark .project-tab {
-    color: var(--text-muted);
-}
-
-html.dark .project-tab:hover {
-    color: var(--c-link);
-}
-
-html.dark .project-tab.active {
-    color: var(--c-link);
-    border-bottom-color: var(--c-link-hover-bg);
-}
-
-html.dark .project-link {
-    color: var(--c-link);
-    border-color: var(--border-color);
-}
-
-html.dark .project-link:hover {
-    background: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
 }
 
 // ─── Theme toggle switch ────────────────────────────────
@@ -370,6 +220,12 @@ html.dark .toggle-icon {
 
 .theme-toggle:hover .toggle-thumb {
     box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+}
+
+.theme-toggle:focus-visible {
+    outline: 1px solid var(--c-link);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .theme-toggle:active .toggle-thumb {
@@ -449,44 +305,6 @@ html.dark .theme-toggle:active .toggle-thumb {
     margin-top: 2px;
 }
 
-// ─── Projects page tabs ─────────────────────────────────
-
-.project-tabs {
-    display: flex;
-    gap: 0;
-    margin: 1em 0 2em 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.project-tab {
-    font-size: 10.5pt;
-    font-weight: 500;
-    padding: 6px 16px;
-    cursor: pointer;
-    color: var(--text-muted);
-    border-bottom: 3px solid transparent;
-    user-select: none;
-    transition: color 0.15s;
-}
-
-.project-tab:hover {
-    color: var(--c-link);
-}
-
-.project-tab.active {
-    color: var(--c-link);
-    border-bottom: 3px solid var(--c-link-hover-bg);
-    font-weight: 600;
-}
-
-.project-panel {
-    display: none;
-}
-
-.project-panel.active {
-    display: block;
-}
-
 // ─── Project stats ──────────────────────────────────────
 
 .project-head {
@@ -507,7 +325,6 @@ html.dark .theme-toggle:active .toggle-thumb {
 
 .project-head .project-name a:hover {
     color: var(--c-link);
-    background: none;
     text-shadow: var(--glow-link);
 }
 
@@ -631,15 +448,11 @@ html.dark .star-badge {
     border-radius: 999px;
     letter-spacing: 0.03em;
     white-space: nowrap;
-    background-color: transparent;
     color: var(--c-link);
-    transition: all 0.2s ease;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
-.project-tag {
-    border: 1px solid var(--c-link-subtle);
-}
-
+.project-tag,
 .tag {
     border: 1px solid var(--c-link-subtle);
 }
@@ -654,8 +467,6 @@ html.dark .star-badge {
     border-color: var(--c-link-hover-bg);
     color: white;
 }
-
-
 
 html.dark .project-tag:hover {
     background-color: rgba(45, 212, 191, 0.1);
@@ -677,39 +488,28 @@ html.dark .project-tag:hover {
 }
 
 .state-planning {
-    background: transparent;
     color: var(--c-planning);
     border: 1px solid var(--border-c-planning);
 }
 
 .state-data_collection {
-    background: transparent;
     color: var(--c-data-collection);
     border: 1px solid var(--border-c-data-collection);
 }
 
 .state-writing {
-    background: transparent;
     color: var(--c-writing);
     border: 1px solid var(--border-c-writing);
 }
 
 .state-editing {
-    background: transparent;
     color: var(--c-editing);
     border: 1px solid var(--border-c-editing);
 }
 
 .state-under_review {
-    background: transparent;
     color: var(--c-under-review);
     border: 1px solid var(--border-c-under-review);
-}
-
-.project-link {
-    font-size: 10pt;
-    color: var(--text-muted);
-    line-height: 1.5;
 }
 
 .project-links {
@@ -717,20 +517,6 @@ html.dark .project-tag:hover {
     flex-wrap: wrap;
     gap: 6px;
     margin-top: 6px;
-}
-
-.project-link {
-    font-size: 9.5pt;
-    color: var(--c-link);
-    border: 1px solid var(--border-color);
-    border-radius: 3px;
-    padding: 1px 6px;
-}
-
-.project-link:hover {
-    background-color: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
 }
 
 // ─── Research tabs ──────────────────────────────────────
@@ -744,7 +530,6 @@ html.dark .project-tag:hover {
 
 .research-tabs {
     display: flex;
-    gap: 0;
     margin: 1em 0 2em 0;
     border-bottom: 1px solid var(--border-color);
 }
@@ -757,7 +542,7 @@ html.dark .project-tag:hover {
     color: var(--text-muted);
     border-bottom: 3px solid transparent;
     user-select: none;
-    transition: color 0.15s;
+    transition: color 0.15s, border-bottom-color 0.15s;
 }
 
 .research-tab:hover {
@@ -766,7 +551,7 @@ html.dark .project-tag:hover {
 
 .research-tab.active {
     color: var(--c-link);
-    border-bottom: 3px solid var(--c-link-hover-bg);
+    border-bottom-color: var(--c-link-hover-bg);
     font-weight: 600;
 }
 
@@ -797,7 +582,7 @@ html.dark .project-tag:hover {
 .section-desc {
     font-size: 10pt;
     color: var(--text-muted);
-    margin-top: .5em;
+    margin-top: 0.5em;
 }
 
 .list-item {
@@ -821,11 +606,7 @@ html.dark .project-tag:hover {
 
 .list-item h2 a:hover {
     color: var(--c-link);
-    background: none;
     text-shadow: var(--glow-link);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
 }
 
 .list-meta {
@@ -928,7 +709,8 @@ html.dark .project-tag:hover {
 
 // ─── Language badge ─────────────────────────────────────
 
-.lang-badge {
+.lang-badge,
+.pub-badge {
     font-size: 7.5pt;
     font-weight: 500;
     padding: 1px 6px;
@@ -1053,15 +835,6 @@ html.dark .lang-Go {
 
 // ─── Publication badge ──────────────────────────────────
 
-.pub-badge {
-    font-size: 7.5pt;
-    font-weight: 500;
-    padding: 1px 6px;
-    border-radius: 999px;
-    border: 1px solid;
-    white-space: nowrap;
-}
-
 .pub-published {
     background: rgba(16, 185, 129, 0.1);
     color: #059669;
@@ -1088,7 +861,7 @@ html.dark .lang-Go {
 
 .pub-na {
     background: rgba(100, 116, 139, 0.1);
-    color: #64748b;
+    color: var(--text-muted);
     border-color: rgba(100, 116, 139, 0.2);
 }
 
@@ -1118,7 +891,7 @@ html.dark .pub-planned {
 
 html.dark .pub-na {
     background: rgba(148, 163, 184, 0.15);
-    color: #94a3b8;
+    color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
 }
 

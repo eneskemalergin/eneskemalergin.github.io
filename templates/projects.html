@@ -3,7 +3,7 @@
 {% block content %}
 {% set data = load_data(path="data/projects.toml") %}
 {% set star_data = load_data(path="data/project_stars.json") %}
-{% set order = ["stable", "active", "wip", "early", "private", "archived"] %}
+{% set order = ["mature", "stable", "active", "wip", "early", "private", "archived"] %}
 
 <h2>Projects</h2>
 
@@ -55,7 +55,7 @@
                             {% if p.access == "public" %}<i class="fas fa-lock-open"></i>{% else %}<i class="fas fa-lock"></i>{% endif %}
                             {{ p.access }}
                         </span>
-                        <span class="pub-badge pub-{{ p.pub }}">
+                        <span class="pub-badge pub-status-{{ p.pub }}">
                             {% if p.pub == "published" %}<i class="fas fa-book"></i>{% elif p.pub == "preprint" %}<i class="fas fa-file-lines"></i>{% elif p.pub == "upcoming" %}<i class="fas fa-pen-fancy"></i>{% elif p.pub == "planned" %}<i class="fas fa-calendar"></i>{% else %}<i class="fas fa-minus"></i>{% endif %}
                             {{ p.pub }}
                         </span>
