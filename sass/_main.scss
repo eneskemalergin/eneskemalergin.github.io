@@ -38,7 +38,7 @@ a {
 a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
+    text-shadow: var(--glow-link);
 }
 
 a:focus-visible {
@@ -151,7 +151,7 @@ nav {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: white;
+    background-color: var(--bg-color);
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -175,7 +175,7 @@ nav {
 .navbar a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
+    text-shadow: var(--glow-link);
 }
 
 .navbar a.active {
@@ -237,7 +237,7 @@ nav {
         position: absolute;
         top: 50px;
         left: 0;
-        background-color: white;
+        background-color: var(--bg-color);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 999;
     }
@@ -298,7 +298,7 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-    background-color: var(--border-color);
+    background-color: var(--bg-surface);
 }
 
 @media (max-width: 600px) {
@@ -441,7 +441,7 @@ tbody tr:hover {
 .icons a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 8px rgba(0, 107, 123, 0.4);
+    text-shadow: var(--glow-link);
 }
 
 .news-list {
@@ -561,7 +561,7 @@ html.dark .news-type-award {
 
 html.dark .news-type-event {
     background: rgba(148, 163, 184, 0.15);
-    color: #94a3b8;
+    color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
 }
 
@@ -667,7 +667,7 @@ h3 + p {
     width: 300px;
     height: 200px;
     object-fit: contain;
-    background-color: white;
+    background-color: var(--bg-color);
     padding: 0px;
     display: block;
 }
@@ -789,48 +789,6 @@ h3 + p {
     border-top: none;
 }
 
-/* Paper topic tags */
-.paper-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 5px;
-}
-
-.paper-tag {
-    font-size: 8.5pt;
-    font-weight: 600;
-    border-radius: 3px;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-}
-
-.paper-tag--ml-ms {
-    background-color: transparent;
-    color: var(--c-link);
-    border: 1px solid rgba(0, 107, 123, 0.3);
-}
-
-.paper-tag--survey {
-    background-color: transparent;
-    color: #6b3fa0;
-    border: 1px solid rgba(107, 63, 160, 0.3);
-}
-
-.paper-tag--patent {
-    background-color: transparent;
-    color: #6b3fa0;
-    border: 1px solid rgba(107, 63, 160, 0.3);
-}
-
-.paper-tag--reliable-ml {
-    background-color: transparent;
-    color: #b86e00;
-    border: 1px solid rgba(184, 110, 0, 0.3);
-}
-
-// ─── Publication card layout ─────────────────────────────
-
 // ─── Publication card layout ─────────────────────────────
 
 .paper-card-detailed {
@@ -897,7 +855,7 @@ h3 + p {
     border-radius: 999px;
     background-color: transparent;
     color: var(--c-link);
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
     white-space: nowrap;
     text-align: center;
     width: 100%;
@@ -909,10 +867,6 @@ h3 + p {
     background-color: var(--c-link-hover-bg);
     border-color: var(--c-link-hover-bg);
     color: white;
-}
-
-html.dark .pub-tag {
-    border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
 .paper-body {
@@ -997,20 +951,6 @@ html.dark .venue-conference {
     flex-shrink: 0;
 }
 
-.paper-badge-group .pub-badge {
-    font-size: 7.5pt;
-    font-weight: 500;
-    padding: 1px 6px;
-    border-radius: 999px;
-    border: 1px solid;
-    white-space: nowrap;
-}
-
-.paper-badge-group i {
-    margin-right: 2px;
-    font-size: 7pt;
-}
-
 .pub-badge.pub-type-journal {
     background: rgba(37, 99, 235, 0.1);
     color: #2563eb;
@@ -1047,10 +987,76 @@ html.dark .venue-conference {
     border-color: rgba(245, 158, 11, 0.25);
 }
 
+.pub-badge.pub-status-preprint {
+    background: rgba(217, 119, 6, 0.1);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.25);
+}
+
+.pub-badge.pub-status-upcoming {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    border-color: rgba(37, 99, 235, 0.25);
+}
+
+.pub-badge.pub-status-planned {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+html.dark .pub-badge.pub-type-journal {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.25);
+}
+
+html.dark .pub-badge.pub-type-conference {
+    background: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+html.dark .pub-badge.pub-type-thesis {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .pub-badge.pub-type-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+html.dark .pub-badge.pub-status-published {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
 html.dark .pub-badge.pub-status-under-review {
     background: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.3);
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+html.dark .pub-badge.pub-status-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+html.dark .pub-badge.pub-status-upcoming {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.25);
+}
+
+html.dark .pub-badge.pub-status-planned {
+    background: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
 }
 
 .paper-body .paper-title {
@@ -1185,14 +1191,6 @@ html.dark .pub-badge.pub-status-under-review {
     color: white;
 }
 
-html.dark .tag-legend .tag sup {
-    color: #94a3b8;
-}
-
-html.dark .tag-legend .tag:hover sup {
-    color: white;
-}
-
 @media (max-width: 600px) {
     .timeline-group {
         flex-direction: column;
@@ -1260,7 +1258,7 @@ html.dark .tag-legend .tag:hover sup {
 .talk-type--workshop {
     background-color: transparent;
     color: var(--c-link);
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
 }
 
 .talk-type--poster {
@@ -1271,13 +1269,8 @@ html.dark .tag-legend .tag:hover sup {
 
 .talk-type--ta {
     background-color: transparent;
-    color: #64748b;
-    border: 1px solid rgba(100, 116, 139, 0.3);
-}
-
-html.dark .talk-type--ta {
-    color: #94a3b8;
-    border-color: rgba(148, 163, 184, 0.3);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
 }
 
 .talk-date {
@@ -1355,7 +1348,7 @@ html.dark .talk-type--ta {
     font-weight: 500;
     padding: 1px 8px;
     border-radius: 999px;
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
     background-color: transparent;
     color: var(--c-link);
     white-space: nowrap;
@@ -1377,10 +1370,6 @@ html.dark .talk-type--ta {
 
 .sidebar-tags .tag:hover sup {
     color: white;
-}
-
-html.dark .sidebar-tags .tag {
-    border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
 @media (max-width: 800px) {
@@ -1418,13 +1407,7 @@ html.dark .sidebar-tags .tag {
     border-radius: 999px;
     white-space: nowrap;
     background-color: transparent;
-    border: 1px solid;
-    color: var(--c-link);
-    border-color: rgba(0, 107, 123, 0.3);
-}
-
-html.dark .blog-tag {
-    border-color: rgba(45, 212, 191, 0.3);
+    border: 1px solid var(--c-link-subtle);
 }
 
 .blog-date {
@@ -1445,16 +1428,7 @@ html.dark .blog-tag {
 .blog-title a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-}
-
-html.dark .blog-title a:hover {
-    color: var(--c-link);
-    background: none;
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
+    text-shadow: var(--glow-link);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
@@ -1463,7 +1437,7 @@ html.dark .blog-title a:hover {
 .blog-tag--study-notes {
     background-color: transparent;
     color: var(--c-link);
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
 }
 
 .blog-tag--wild-thoughts {

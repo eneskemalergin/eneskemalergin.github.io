@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article class="{% if page.extra.katex %}blog-post blog-post--with-toc{% endif %}">
+<article class="{% if page.toc %}blog-post blog-post--with-toc{% elif page.extra.katex %}blog-post{% endif %}">
     <div class="page-layout">
-        {% if page.toc and page.extra.katex %}
+        {% if page.toc %}
         <aside class="post-toc" id="postToc">
             <div class="toc-header">
                 <span class="toc-label">Contents</span>
@@ -69,7 +69,7 @@
     </div>
 </article>
 
-{% if page.toc and page.extra.katex %}
+{% if page.toc %}
 <script>
 (function() {
     var toc = document.getElementById('postToc');

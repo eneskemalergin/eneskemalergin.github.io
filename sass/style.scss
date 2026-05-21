@@ -21,6 +21,16 @@
     --c-blog-wild: #2a7a5a;
     --c-blog-paper: #7d3c98;
     --c-blog-project: #b45309;
+    // Derived tokens: theme-aware rgba values
+    --bg-surface: #f8fafc;
+    --glow-link: 0 0 10px rgba(0, 107, 123, 0.4);
+    --c-link-subtle: rgba(0, 107, 123, 0.3);
+    --c-link-surface: rgba(0, 107, 123, 0.04);
+    --border-c-planning: rgba(139, 92, 246, 0.3);
+    --border-c-data-collection: rgba(59, 130, 246, 0.3);
+    --border-c-writing: rgba(245, 158, 11, 0.3);
+    --border-c-editing: rgba(16, 185, 129, 0.3);
+    --border-c-under-review: rgba(239, 68, 68, 0.3);
 }
 
 :root.dark {
@@ -42,16 +52,20 @@
     --c-blog-wild: #6ee7b7;
     --c-blog-paper: #c4b5fd;
     --c-blog-project: #fbbf24;
+    // Derived tokens: theme-aware rgba values
+    --glow-link: 0 0 10px rgba(45, 212, 191, 0.45);
+    --c-link-subtle: rgba(45, 212, 191, 0.3);
+    --c-link-surface: rgba(45, 212, 191, 0.04);
+    --border-c-planning: rgba(167, 139, 250, 0.3);
+    --border-c-data-collection: rgba(96, 165, 250, 0.3);
+    --border-c-writing: rgba(251, 191, 36, 0.3);
+    --border-c-editing: rgba(52, 211, 153, 0.3);
+    --border-c-under-review: rgba(248, 113, 113, 0.3);
 }
 
 // ─── Base backgrounds ───────────────────────────────────
 
 html body {
-    background: var(--bg-color);
-    color: var(--text-main);
-}
-
-html.dark body {
     background: var(--bg-color);
     color: var(--text-main);
 }
@@ -67,7 +81,6 @@ html.dark .navbar a {
 html.dark .navbar a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
 }
 
 html.dark .navbar a.active {
@@ -87,13 +100,6 @@ html.dark a {
 html.dark a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
-}
-
-html.dark #content a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
 }
 
 html.dark #content p,
@@ -113,8 +119,6 @@ html.dark .tools-desc,
 html.dark .tools-meta,
 html.dark .research-desc,
 html.dark .page-meta,
-html.dark .page-body code,
-html.dark .page-body blockquote,
 html.dark .service-content,
 html.dark .service-note,
 html.dark .section-desc,
@@ -151,7 +155,6 @@ html.dark .icons a {
 html.dark .icons a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 8px rgba(45, 212, 191, 0.4);
 }
 
 html.dark footer,
@@ -172,22 +175,12 @@ html.dark .service-item {
     border-color: var(--border-color);
 }
 
-html.dark .toc img {
-    background-color: transparent;
-}
-
-html.dark .language-toggle {
-    background: var(--bg-surface);
-}
-
 html.dark table th,
 html.dark table td {
     border-color: var(--border-color);
 }
 
-html.dark tbody tr:hover {
-    background: var(--bg-surface);
-}
+
 
 html.dark .timeline-papers {
     border-left-color: var(--border-color);
@@ -229,8 +222,7 @@ html.dark .page-body pre code {
 }
 
 html.dark .page-body blockquote {
-    border-left-color: var(--border-color);
-    color: var(--text-muted);
+    border-left-color: var(--border-color); // tone down the colored border in dark mode
 }
 
 html.dark .page-body img {
@@ -516,13 +508,7 @@ html.dark .theme-toggle:active .toggle-thumb {
 .project-head .project-name a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
-}
-
-html.dark .project-head .project-name a:hover {
-    color: var(--c-link);
-    background: none;
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
+    text-shadow: var(--glow-link);
 }
 
 .project-head-badges {
@@ -547,7 +533,7 @@ html.dark .project-head .project-name a:hover {
 
 html.dark .version-badge {
     background: rgba(148, 163, 184, 0.12);
-    color: #94a3b8;
+    color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
 }
 
@@ -651,15 +637,15 @@ html.dark .star-badge {
 }
 
 .project-tag {
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
 }
 
 .tag {
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
 }
 
 .project-tag:hover {
-    background-color: rgba(0, 107, 123, 0.05);
+    background-color: var(--c-link-surface);
     border-color: var(--c-link);
 }
 
@@ -669,24 +655,12 @@ html.dark .star-badge {
     color: white;
 }
 
-html.dark .project-tag {
-    border: 1px solid rgba(45, 212, 191, 0.3);
-}
 
-html.dark .tag {
-    border: 1px solid rgba(45, 212, 191, 0.3);
-}
 
 html.dark .project-tag:hover {
     background-color: rgba(45, 212, 191, 0.1);
     border-color: var(--c-link);
     color: var(--c-link);
-}
-
-html.dark .tag:hover {
-    background-color: var(--c-link-hover-bg);
-    border-color: var(--c-link-hover-bg);
-    color: white;
 }
 
 // ─── Upcoming state badges ──────────────────────────
@@ -705,31 +679,31 @@ html.dark .tag:hover {
 .state-planning {
     background: transparent;
     color: var(--c-planning);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid var(--border-c-planning);
 }
 
 .state-data_collection {
     background: transparent;
     color: var(--c-data-collection);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    border: 1px solid var(--border-c-data-collection);
 }
 
 .state-writing {
     background: transparent;
     color: var(--c-writing);
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    border: 1px solid var(--border-c-writing);
 }
 
 .state-editing {
     background: transparent;
     color: var(--c-editing);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    border: 1px solid var(--border-c-editing);
 }
 
 .state-under_review {
     background: transparent;
     color: var(--c-under-review);
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    border: 1px solid var(--border-c-under-review);
 }
 
 .project-link {
@@ -804,76 +778,21 @@ html.dark .tag:hover {
     display: block;
 }
 
-// ─── Generic page / post ────────────────────────────────
+// ─── Generic page / post + section listing ──────────────
 
-.page-header {
-    margin-bottom: 2em;
-}
-
-.page-header h1 {
-    font-size: 20pt;
-    font-weight: 500;
-    margin: 0;
-}
-
-.page-meta {
-    font-size: 9.5pt;
-    color: var(--text-muted);
-    margin-top: .5em;
-}
-
-.page-body {
-    font-size: 10pt;
-    line-height: 1.6;
-}
-
-.page-body h2 {
-    font-size: 14pt;
-    margin-top: 1.5em;
-}
-
-.page-body h3 {
-    font-size: 12pt;
-    margin-top: 1.25em;
-}
-
-.page-body p {
-    margin: .75em 0;
-}
-
-.page-body ul,
-.page-body ol {
-    margin: .75em 0 .75em 2em;
-}
-
-.page-body li {
-    margin-bottom: .25em;
-}
-
-.page-body blockquote {
-    border-left: 3px solid var(--border-color);
-    margin: 1em 0;
-    padding: .5em 1em;
-    color: var(--text-muted);
-}
-
-.page-body hr {
-    border: none;
-    border-top: 1px solid var(--border-color);
-    margin: 1.5em 0;
-}
-
-// ─── Section listing ────────────────────────────────────
-
+.page-header,
 .section-header {
     margin-bottom: 2em;
 }
 
+.page-header h1,
 .section-header h1 {
     font-size: 20pt;
     font-weight: 500;
     margin: 0;
 }
+
+// .page-meta and .page-body are fully defined in _blog.scss — no overrides here
 
 .section-desc {
     font-size: 10pt;
@@ -903,16 +822,7 @@ html.dark .tag:hover {
 .list-item h2 a:hover {
     color: var(--c-link);
     background: none;
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.4);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-}
-
-html.dark .list-item h2 a:hover {
-    color: var(--c-link);
-    background: none;
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
+    text-shadow: var(--glow-link);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
@@ -985,12 +895,6 @@ html.dark .list-item h2 a:hover {
     gap: 3px;
     margin-top: 8px;
     width: 100%;
-}
-
-.project-meta .project-domain,
-.project-meta .project-source {
-    font-size: 7.5pt;
-    line-height: 1.3;
 }
 
 .project-body {
@@ -1223,6 +1127,7 @@ html.dark .pub-na {
 .project-domain,
 .project-source {
     font-size: 7.5pt;
+    line-height: 1.3;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;

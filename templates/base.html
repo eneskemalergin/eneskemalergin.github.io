@@ -16,7 +16,7 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css"
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" crossorigin="anonymous" id="hljs-theme" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github.min.css" crossorigin="anonymous" id="hljs-theme" />
     <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" crossorigin="anonymous" onload="hljs.highlightAll();"></script>
     {% if page.extra.katex %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous" />
@@ -24,9 +24,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"
         onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
     {% endif %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" crossorigin="anonymous" media="(prefers-color-scheme: dark)" />
-    <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" crossorigin="anonymous" onload="hljs.highlightAll();"></script>
     <script>
     (function(){
         var theme = localStorage.getItem('theme');
@@ -110,6 +107,12 @@
                 try { localStorage.setItem('theme', theme); } catch(e) {}
                 if (icon) icon.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
                 toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                var hljsLink = document.getElementById('hljs-theme');
+                if (hljsLink) {
+                    hljsLink.href = isDark
+                        ? 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css'
+                        : 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github.min.css';
+                }
             }
             var saved = null;
             try { saved = localStorage.getItem('theme'); } catch(e) {}

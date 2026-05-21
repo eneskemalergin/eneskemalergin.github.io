@@ -29,11 +29,7 @@
 }
 
 .page-body a:hover {
-    text-shadow: 0 0 10px rgba(0, 107, 123, 0.35);
-}
-
-html.dark .page-body a:hover {
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
+    text-shadow: var(--glow-link);
 }
 
 /* -- Lists ------------------------------------------------- */
@@ -108,7 +104,7 @@ html.dark .page-body a:hover {
     margin: 1em 0;
     padding: 10px 16px;
     border-left: 3px solid var(--c-link);
-    background: rgba(0, 107, 123, 0.04);
+    background: var(--c-link-surface);
     border-radius: 0 6px 6px 0;
     color: var(--text-muted);
     font-style: italic;
@@ -121,10 +117,6 @@ html.dark .page-body a:hover {
 .page-body blockquote strong {
     color: var(--text-main);
     font-style: normal;
-}
-
-html.dark .page-body blockquote {
-    background: rgba(45, 212, 191, 0.04);
 }
 
 /* -- Code & pre -------------------------------------------- */
@@ -156,15 +148,6 @@ html.dark .page-body blockquote {
     background: none;
     font-size: 0.82em;
     line-height: 1.55;
-}
-
-html.dark .page-body code {
-    background: rgba(148, 163, 184, 0.08);
-    border-color: rgba(148, 163, 184, 0.2);
-}
-
-html.dark .page-body pre {
-    background: rgba(30, 41, 59, 0.6);
 }
 
 /* -- Code language label (pseudo-element) ------------------- */
@@ -214,15 +197,11 @@ html.dark .page-body pre {
 }
 
 .page-body tr:hover {
-    background: rgba(0, 107, 123, 0.03);
+    background: var(--c-link-surface);
 }
 
 html.dark .page-body tr:nth-child(even) {
     background: rgba(148, 163, 184, 0.03);
-}
-
-html.dark .page-body tr:hover {
-    background: rgba(45, 212, 191, 0.03);
 }
 
 /* -- Images & figures -------------------------------------- */
@@ -273,7 +252,7 @@ html.dark .page-body tr:hover {
 
 .footnotes li:target {
     color: var(--text-main);
-    background: rgba(0, 107, 123, 0.04);
+    background: var(--c-link-surface);
     padding: 4px 8px;
     border-radius: 4px;
 }
@@ -403,11 +382,7 @@ html.dark .callout-danger {
 }
 
 .blog-details summary:hover {
-    background: rgba(0, 107, 123, 0.03);
-}
-
-html.dark .blog-details summary:hover {
-    background: rgba(45, 212, 191, 0.03);
+    background: var(--c-link-surface);
 }
 
 .blog-details-content {
@@ -524,7 +499,7 @@ html.dark .page-body mark {
 }
 
 .sidenote-ref:hover {
-    text-shadow: 0 0 8px rgba(0, 107, 123, 0.35);
+    text-shadow: var(--glow-link);
 }
 
 .sidenote {
@@ -561,7 +536,7 @@ html.dark .page-body mark {
         padding: 6px 10px;
         font-size: 8pt;
         border-left: 2px solid var(--c-link);
-        background: rgba(0, 107, 123, 0.03);
+        background: var(--c-link-surface);
         border-radius: 4px;
         display: none;
     }
@@ -668,7 +643,7 @@ html.dark .meta-edited {
     font-weight: 500;
     padding: 2px 10px;
     border-radius: 999px;
-    border: 1px solid rgba(0, 107, 123, 0.3);
+    border: 1px solid var(--c-link-subtle);
     background-color: transparent;
     color: var(--c-link);
     transition: all 0.2s ease;
@@ -678,10 +653,6 @@ html.dark .meta-edited {
     background-color: var(--c-link-hover-bg);
     border-color: var(--c-link-hover-bg);
     color: white;
-}
-
-html.dark .post-tags .tag {
-    border-color: rgba(45, 212, 191, 0.3);
 }
 
 /* -- Prev / next navigation ------------------------------- */
@@ -703,7 +674,7 @@ html.dark .post-tags .tag {
 
 .post-nav-link:hover {
     border-color: var(--c-link);
-    background: rgba(0, 107, 123, 0.03);
+    background: var(--c-link-surface);
 }
 
 .post-nav-next {
@@ -799,7 +770,7 @@ html.dark .post-tags .tag {
 
 .toc-item a:hover {
     color: var(--c-link);
-    background: rgba(0, 107, 123, 0.04);
+    background: var(--c-link-surface);
 }
 
 .toc-item.toc-active > a {
