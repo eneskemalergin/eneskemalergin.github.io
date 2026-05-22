@@ -7,7 +7,7 @@
     <div class="blog-main">
         <h2>{{ section.title }}</h2>
         {% if section.description %}
-        <p>{{ section.description }}</p>
+        <p class="section-desc">{{ section.description }}</p>
         {% endif %}
 
         {% set pages = paginator.pages | default(value=section.pages) %}
@@ -21,6 +21,9 @@
                     {% endif %}
                 </div>
                 <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
+                {% if page.description %}
+                <p class="list-desc">{{ page.description }}</p>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

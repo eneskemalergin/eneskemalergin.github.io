@@ -2,11 +2,14 @@
 
 {% block content %}
 <header class="section-header">
-    <h1>{{ taxonomy.name }}</h1>
+    <h1>{{ taxonomy.name | title }}</h1>
+    <p class="section-desc">Browse the topic index for blog posts and jump into individual tag archives.</p>
 </header>
-<div class="tag-list">
-    {% for term in terms %}
-    <a href="{{ term.permalink }}" class="tag">{{ term.name }}</a>
-    {% endfor %}
-</div>
+
+{% for term in terms %}
+<article class="list-item">
+    <h2><a href="{{ term.permalink }}">{{ term.name }}</a></h2>
+    <div class="list-meta">{{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}</div>
+</article>
+{% endfor %}
 {% endblock %}

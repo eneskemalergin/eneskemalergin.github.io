@@ -3,6 +3,7 @@
 {% block content %}
 <header class="section-header">
     <h1>{{ term.name }}</h1>
+    <p class="section-desc">Posts tagged with {{ term.name }}.</p>
 </header>
 
 {% set pages = paginator.pages | default(value=term.pages) %}
