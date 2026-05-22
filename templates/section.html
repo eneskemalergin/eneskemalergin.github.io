@@ -16,9 +16,6 @@
             {% for page in pages %}
             <li class="blog-item">
                 <div class="blog-header">
-                    {% if page.extra.tag %}
-                    <span class="blog-tag blog-tag--{{ page.extra.tag }}">{{ page.extra.tag_label | default(value=page.extra.tag) }}</span>
-                    {% endif %}
                     {% if page.date %}
                     <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
                     {% endif %}

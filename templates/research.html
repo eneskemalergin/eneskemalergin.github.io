@@ -25,24 +25,28 @@
         <span class="pub-legend-item">&#42; corresponding author</span>
     </div>
 
-    {% for paper in pubs.publications | filter(attribute="status", value="under-review") %}
+    {% set under_review = pubs.publications | filter(attribute="status", value="under-review") %}
+    {% if under_review %}
     <div class="timeline-group">
         <div class="timeline-year">Preprint</div>
         <div class="timeline-papers">
+        {% for paper in under_review %}
             {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
         </div>
     </div>
-    {% endfor %}
+    {% endif %}
 
     {% set upcoming_planned = pubs.publications | filter(attribute="status", value="upcoming") %}
-    {% if upcoming_planned %}
+    {% set planned = pubs.publications | filter(attribute="status", value="planned") %}
+    {% if upcoming_planned or planned %}
     <div class="timeline-group">
         <div class="timeline-year">Upcoming</div>
         <div class="timeline-papers">
         {% for paper in upcoming_planned %}
             {{ macros::render_paper(paper=paper) }}
         {% endfor %}
-        {% for paper in pubs.publications | filter(attribute="status", value="planned") %}
+        {% for paper in planned %}
             {{ macros::render_paper(paper=paper) }}
         {% endfor %}
         </div>
@@ -113,7 +117,7 @@
             <div class="paper-card">
                 <p class="paper-title">{{ item.course }}</p>
                 <div class="talk-header">
-                    <span class="talk-type talk-type--ta">{{ item.role }}</span>
+                    <span class="talk-type{% if item.role == "TA" %} talk-type--ta{% else %} talk-type--teaching{% endif %}">{{ item.role }}</span>
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
                 <div class="talk-meta">{{ item.institution }}</div>

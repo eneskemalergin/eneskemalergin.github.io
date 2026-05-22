@@ -6,10 +6,15 @@
 :root {
     --c-link: #006b7b;
     --c-link-hover-bg: #0093a8;
-    --bg-color: #fdfdfd;
-    --text-main: #333333;
+    --bg-color: #fbfbf8;
+    --bg-page-top: #f3efe4;
+    --bg-nav-menu: rgba(244, 242, 235, 0.94);
+    --blur-nav-menu: 12px;
+    --text-main: #1e2833;
     --text-muted: #666666;
-    --border-color: #e2e8f0;
+    --border-color: #e0dcd3;
+    --border-nav: rgba(224, 220, 211, 0.88);
+    --shadow-nav-menu: 0 10px 24px rgba(31, 41, 51, 0.12);
     --c-star: #d97706;
     --c-planning: #8b5cf6;
     --c-data-collection: #3b82f6;
@@ -22,7 +27,7 @@
     --c-blog-paper: #7d3c98;
     --c-blog-project: #b45309;
     // Derived tokens: theme-aware rgba values
-    --bg-surface: #f8fafc;
+    --bg-surface: #f4f2eb;
     --glow-link: 0 0 10px rgba(0, 107, 123, 0.4);
     --c-link-subtle: rgba(0, 107, 123, 0.3);
     --c-link-surface: rgba(0, 107, 123, 0.04);
@@ -37,10 +42,14 @@
     --c-link: #2dd4bf;
     --c-link-hover-bg: #0f766e;
     --bg-color: #0f172a;
-    --bg-surface: #1e293b;
-    --text-main: #e2e8f0;
+    --bg-page-top: #162137;
+    --bg-nav-menu: rgba(23, 32, 51, 0.94);
+    --bg-surface: #172033;
+    --text-main: #e5e7eb;
     --text-muted: #94a3b8;
     --border-color: #334155;
+    --border-nav: rgba(71, 85, 105, 0.82);
+    --shadow-nav-menu: 0 10px 24px rgba(2, 6, 23, 0.34);
     --c-star: #fbbf24;
     --c-planning: #a78bfa;
     --c-data-collection: #60a5fa;
@@ -66,39 +75,21 @@
 // ─── Base backgrounds ───────────────────────────────────
 
 body {
-    background: var(--bg-color);
+    background-color: var(--bg-color);
+    background-image: linear-gradient(180deg, var(--bg-page-top) 0%, var(--bg-color) 260px);
+    background-repeat: no-repeat;
     color: var(--text-main);
-}
-
-html.dark .navbar a {
-    color: var(--text-muted);
-}
-
-html.dark .navbar a:hover {
-    color: var(--c-link);
-}
-
-html.dark .navbar a.active {
-    color: var(--c-link);
-    border-bottom-color: var(--c-link-hover-bg);
-}
-
-html.dark .hamburger span {
-    background: var(--text-muted);
 }
 
 html.dark #content p,
 html.dark #content,
-html.dark .talk-title,
-html.dark .service-content {
+html.dark .talk-title {
     color: var(--text-muted);
 }
 
 html.dark h1, html.dark h2, html.dark h3, html.dark h4,
 html.dark .paper-title,
 html.dark .research-topic,
-html.dark .exp-header,
-html.dark .tools-header,
 html.dark .news-content {
     color: var(--text-main);
 }
@@ -150,6 +141,7 @@ html.dark .talk-type--workshop {
 }
 
 html.dark .talk-type--poster,
+html.dark .talk-type--teaching,
 html.dark .talk-type--ta {
     background: var(--bg-surface);
     color: var(--text-muted);
@@ -165,10 +157,16 @@ html.dark .talk-type--ta {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
     line-height: 1;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--c-link-surface);
 }
 
 .toggle-track {
@@ -235,74 +233,6 @@ html.dark .toggle-icon {
 
 html.dark .theme-toggle:active .toggle-thumb {
     transform: translateX(22px) scale(0.92);
-}
-
-// ─── Experience (home page) ─────────────────────────────
-
-.exp-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.exp-list li {
-    padding: 10px 0;
-}
-
-.exp-header {
-    font-size: 10.5pt;
-    font-weight: 600;
-    margin-bottom: 2px;
-}
-
-.exp-sub {
-    font-size: 9.5pt;
-    color: var(--text-muted);
-}
-
-.exp-date {
-    font-family: 'SFMono-Regular', Consolas, monospace;
-    font-size: 9pt;
-    color: var(--text-muted);
-}
-
-// ─── Tools (home page) ──────────────────────────────────
-
-.tools-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.tools-list li {
-    padding: 10px 0;
-}
-
-.tools-header {
-    font-size: 10.5pt;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.tools-header a {
-    color: var(--text-main);
-}
-
-.tools-header a:hover {
-    color: white;
-    background-color: var(--c-link-hover-bg);
-}
-
-.tools-meta {
-    font-size: 9pt;
-    color: var(--text-muted);
-    font-family: 'SFMono-Regular', Consolas, monospace;
-}
-
-.tools-desc {
-    font-size: 10pt;
-    color: var(--text-muted);
-    margin-top: 2px;
 }
 
 // ─── Project stats ──────────────────────────────────────
@@ -474,44 +404,6 @@ html.dark .project-tag:hover {
     color: var(--c-link);
 }
 
-// ─── Upcoming state badges ──────────────────────────
-
-.state-badge {
-    display: inline-block;
-    font-size: 8pt;
-    font-weight: 500;
-    padding: 1px 8px;
-    border-radius: 999px;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    margin-bottom: 4px;
-}
-
-.state-planning {
-    color: var(--c-planning);
-    border: 1px solid var(--border-c-planning);
-}
-
-.state-data_collection {
-    color: var(--c-data-collection);
-    border: 1px solid var(--border-c-data-collection);
-}
-
-.state-writing {
-    color: var(--c-writing);
-    border: 1px solid var(--border-c-writing);
-}
-
-.state-editing {
-    color: var(--c-editing);
-    border: 1px solid var(--border-c-editing);
-}
-
-.state-under_review {
-    color: var(--c-under-review);
-    border: 1px solid var(--border-c-under-review);
-}
-
 .project-links {
     display: flex;
     flex-wrap: wrap;
@@ -531,28 +423,38 @@ html.dark .project-tag:hover {
 .research-tabs {
     display: flex;
     margin: 1em 0 2em 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-nav);
+}
+
+.navbar a,
+.research-tab {
+    font-size: 10.5pt;
+    color: var(--text-muted);
+    transition: color 0.2s, text-shadow 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.navbar a:hover,
+.research-tab:hover {
+    color: var(--c-link);
+    text-shadow: var(--glow-link);
+    background-color: var(--c-link-surface);
+}
+
+.navbar a.active,
+.research-tab.active {
+    color: var(--c-link);
+    font-weight: 600;
+    background-color: var(--c-link-surface);
+    box-shadow: inset 0 -2px 0 var(--c-link-hover-bg);
 }
 
 .research-tab {
     font-size: 10.5pt;
     font-weight: 500;
-    padding: 6px 16px;
+    padding: 12px 18px 14px;
     cursor: pointer;
-    color: var(--text-muted);
-    border-bottom: 3px solid transparent;
+    border-radius: 8px 8px 0 0;
     user-select: none;
-    transition: color 0.15s, border-bottom-color 0.15s;
-}
-
-.research-tab:hover {
-    color: var(--c-link);
-}
-
-.research-tab.active {
-    color: var(--c-link);
-    border-bottom-color: var(--c-link-hover-bg);
-    font-weight: 600;
 }
 
 .research-panel {
@@ -640,7 +542,7 @@ html.dark .project-tag:hover {
 .project-thumbnail {
     width: 130px;
     aspect-ratio: 1 / 1;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border-color);
     background: var(--bg-surface);

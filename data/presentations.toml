@@ -5,7 +5,8 @@
 #   title       - Presentation title
 #   type        - "Oral" | "Poster" | "Workshop" | "Invited Talk" | "Lecture" |
 #                 "Keynote" | "Panel"
-#   role        - "Presenter" | "First Author" | "Speaker"         (optional)
+#   role        - "Presenter" | "First Author" | "Speaker" | "Co-author"
+#                                                                     (optional)
 #   date        - Month + year string, e.g. "Jun 2023"
 #   year        - Year (integer), used for timeline grouping
 #   venue       - Conference, event, or institution name
@@ -22,9 +23,8 @@
 #   url         - External page for more details                   (optional)
 #   tag         - Blog tag slug for cross-linking; "NA" unassigned
 #
-# Card layout:  title, type badge, date, venue, location, links
-#   Left column:    initial letter placeholder
-#   Body:           title, type + date badges inline, venue, location, links
+# Rendering note: templates/research.html currently uses title, type, date,
+# venue, and location only. Workshop and Poster have distinct visual treatments.
 
 [[presentations]]
 title = "Proteomics Workshop: Common Downstream Analysis Pipeline"

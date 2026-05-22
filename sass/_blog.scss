@@ -132,7 +132,7 @@
 
 .page-body pre {
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 14px 18px;
     overflow-x: auto;
     background: var(--bg-surface);
@@ -170,7 +170,7 @@
     width: 100%;
     margin: 1em 0;
     font-size: 9.5pt;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -277,7 +277,7 @@ html.dark .page-body tr:nth-child(even) {
     gap: 10px;
     padding: 12px 16px;
     margin: 1em 0;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid;
     font-size: 9.5pt;
     line-height: 1.5;
@@ -347,7 +347,7 @@ html.dark .callout-danger {
 .blog-details {
     margin: 0.8em 0;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -426,7 +426,7 @@ html.dark .callout-danger {
 .code-block {
     margin: 0.8em 0;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -644,7 +644,7 @@ html.dark .page-body mark {
     text-decoration: none;
     padding: 12px 16px;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     transition: border-color 0.2s, background 0.2s;
 }
 
@@ -776,7 +776,7 @@ html.dark .page-body mark {
     margin: 1em 0;
     position: relative;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--bg-surface);
 }
 
@@ -816,7 +816,7 @@ html.dark .code-block-header[data-lang="go"] { color: #4fc3f7; border-color: rgb
 .code-block-wrapper pre {
     margin: 0;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 16px 18px 14px;
     background: transparent;
 }

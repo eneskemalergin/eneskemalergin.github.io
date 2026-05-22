@@ -6,11 +6,11 @@
 #                 "Workshop Leader" | "Mentor" | "Supervisor"
 #   course      - Course name, number, or program title
 #   institution - University or organization
-#   department  - Department or faculty                         (optional)
 #   date        - Date range string, e.g. "Sep 2022 - Apr 2022"
 #   year        - Year (integer), used for sorting
-#   format      - "In-person" | "Online" | "Hybrid"             (optional)
+#   department  - Department or faculty                         (optional)
 #   level       - "Undergraduate" | "Graduate" | "Professional" (optional)
+#   format      - "In-person" | "Online" | "Hybrid"             (optional)
 #   description - Short summary of responsibilities             (optional)
 #   highlights  - Array of key achievements or duties           (optional)
 #   supervisor  - Faculty supervisor name                       (optional)
@@ -21,9 +21,8 @@
 #   url         - Course or department URL                      (optional)
 #   tag         - Blog tag slug for cross-linking; "NA" unassigned
 #
-# Card layout:  role badge, course name, institution, date, description
-#   Left:       optional thumbnail / initial letter
-#   Body:       role badge, course, institution, date, description
+# Rendering note: templates/research.html currently uses course, role, date,
+# and institution. Other fields are stored in the data file but not yet surfaced.
 
 [[experiences]]
 role = "TA"

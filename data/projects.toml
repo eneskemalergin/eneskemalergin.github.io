@@ -71,8 +71,11 @@
 #
 # -- Notes ---------------------------------------------------------------------
 #   - Language "Jupyter Notebook" is normalised to "Python" in the data.
-#   - Every project should have version, pub, and access set explicitly.
-#   - Timeline order: stable -> active -> wip -> early -> private -> archived.
+#   - Every project should have pub and access set explicitly.
+#   - Version is optional in the current template, but recommended for public
+#     projects.
+#   - Timeline order in templates/projects.html: mature -> stable -> active ->
+#     wip -> early -> private -> archived.
 #   - Star badge colour is computed by tools/star-colors.py with log
 #     normalisation over the actual star count range in this file.
 #   - Thumbnail is square 130 px (80 px on mobile), border-radius 6px,

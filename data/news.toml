@@ -8,203 +8,203 @@
 #   main-page   - Integer. 1 = shown on homepage, 0 = full news page only
 #   content     - HTML-safe description with links
 #
-# Homepage renders entries with main-page = "1".
+# Homepage renders entries with main-page = 1.
 # /news page renders all entries, newest first.
 
 [[news]]
 date = "04/2026"
 type = "milestone"
-main-page = "1"
+main-page = 1
 content = """Founded <a href='https://zenteomics.com/'>Zenteomics</a>, building proteomics data infrastructure and open-source tooling for mass spectrometry. <a href='https://github.com/Zenteomics'>GitHub</a>."""
 
 [[news]]
 date = "02/2026"
 type = "release"
-main-page = "1"
+main-page = 1
 content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a>, an ultra-fast FASTA indexer written in Zig."
 
 [[news]]
 date = "12/2025"
 type = "publication"
-main-page = "1"
+main-page = 1
 content = """Submitted ProteoForge to bioRxiv. Now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
 
 [[news]]
 date = "06/2025"
 type = "career"
-main-page = "1"
+main-page = 1
 content = "Started as Staff Bioinformatician at BC Children's Hospital Research Institute, continuing proteomics research in the Lange Lab."
 
 [[news]]
 date = "05/2025"
 type = "milestone"
-main-page = "0"
+main-page = 0
 content = "PhD thesis indexed on Google Scholar."
 
 [[news]]
 date = "04/2025"
 type = "publication"
-main-page = "1"
+main-page = 1
 content = """Fifth co-authored paper (PROFYLE) by Barnabas et al. published in <a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/'>EMBO Molecular Medicine</a>."""
 
 [[news]]
 date = "04/2025"
 type = "milestone"
-main-page = "1"
+main-page = 1
 content = "Successfully defended PhD dissertation without revisions. Thesis deposited to <a href='https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334'>UBC Library</a>."
 
 [[news]]
 date = "11/2024"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Attended CNPN 2024 in Whistler, BC."
 
 [[news]]
 date = "07/2024"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = "Fifth co-authored paper (PROFYLE) submitted to bioRxiv."
 
 [[news]]
 date = "06/2024"
 type = "milestone"
-main-page = "0"
+main-page = 0
 content = "Received approval to write and defend PhD thesis."
 
 [[news]]
 date = "05/2024"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = """Published QuEStVar in the <a href='https://doi.org/10.1021/acs.jproteome.4c00131'>Journal of Proteome Research</a>."""
 
 [[news]]
 date = "11/2023"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = """Co-authored paper on pediatric ALL proteomics published in <a href='https://www.nature.com/articles/s41467-023-42701-9'>Nature Communications</a>."""
 
 [[news]]
 date = "07/2023"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Led a workshop on downstream proteomics analysis pipelines for the Trainee Omics Group (TOG) at BCCHR."
 
 [[news]]
 date = "06/2023"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Gave a talk on QuEStVar and stable proteomes at BCCHR's Trainee Omics Group."
 
 [[news]]
 date = "05/2023"
 type = "award"
-main-page = "0"
+main-page = 0
 content = "Received a student travel award at CNPN 2023 in Regina, SK."
 
 [[news]]
 date = "05/2023"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Gave a trainee talk and presented two posters at CNPN 2023 in Regina, SK."
 
 [[news]]
 date = "03/2023"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Presented a poster at BIG 2023 Research Day."
 
 [[news]]
 date = "01/2023"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = "Fourth co-authored paper posted to MedRxiv as a preprint."
 
 [[news]]
 date = "09/2022"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = """Published SQuAPP in <a href='https://academic.oup.com/bioinformatics/article/38/21/4956/6697884'>Bioinformatics</a>."""
 
 [[news]]
 date = "05/2022"
 type = "mentoring"
-main-page = "0"
+main-page = 0
 content = "Supervised first co-op student."
 
 [[news]]
 date = "12/2021"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = """Co-authored paper on PDX models published in the <a href='https://link.springer.com/article/10.1186/s13046-021-01835-8'>Journal of Experimental and Clinical Cancer Research</a>."""
 
 [[news]]
 date = "09/2021"
 type = "milestone"
-main-page = "0"
+main-page = 0
 content = "Passed comprehensive exam and advanced to PhD candidacy."
 
 [[news]]
 date = "08/2020"
 type = "career"
-main-page = "0"
+main-page = 0
 content = "Took a leave of absence from PhD."
 
 [[news]]
 date = "05/2020"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Presented on normalization techniques for proteomics data at BCCHR."
 
 [[news]]
 date = "11/2019"
 type = "publication"
-main-page = "0"
+main-page = 0
 content = """Co-authored first proteomics paper published in <a href='https://www.mcponline.org/content/18/11/2335.abstract'>Molecular and Cellular Proteomics</a>."""
 
 [[news]]
 date = "05/2019"
 type = "award"
-main-page = "0"
+main-page = 0
 content = "Received the Four Year Doctoral Fellowship (4YF) for PhD funding."
 
 [[news]]
 date = "04/2019"
 type = "milestone"
-main-page = "0"
+main-page = 0
 content = "Transferred from Masters to PhD in the UBC Bioinformatics Graduate Program."
 
 [[news]]
 date = "05/2018"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Attended first proteomics conference, CNPN 2018, in Vancouver, BC."
 
 [[news]]
 date = "05/2018"
 type = "award"
-main-page = "0"
+main-page = 0
 content = "Received the Michael Cuccione Childhood Cancer Foundation Graduate Studentship."
 
 [[news]]
 date = "04/2018"
 type = "event"
-main-page = "0"
+main-page = 0
 content = "Presented a class project poster at STAT Day 2018 at UBC."
 
 [[news]]
 date = "09/2017"
 type = "career"
-main-page = "0"
+main-page = 0
 content = "Began graduate studies in the Lange Lab at BC Children's Hospital Research Institute."
 
 [[news]]
 date = "06/2017"
 type = "career"
-main-page = "0"
+main-page = 0
 content = "Relocated from the U.S. to Canada."
 
 [[news]]
 date = "05/2017"
 type = "milestone"
-main-page = "0"
+main-page = 0
 content = "Graduated with Distinction in Computer Science from NAU."
