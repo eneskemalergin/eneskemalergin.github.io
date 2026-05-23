@@ -166,40 +166,64 @@
 /* -- Tables ------------------------------------------------ */
 
 .page-body table {
-    border-collapse: collapse;
     width: 100%;
-    margin: 1em 0;
+    border-collapse: collapse;
     font-size: 9.5pt;
+    margin: 1em 0;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
     overflow: hidden;
+    display: table;
 }
 
 .page-body th,
 .page-body td {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border-color);
     text-align: left;
+    vertical-align: middle;
+    line-height: 1.5;
 }
 
 .page-body th {
     background: var(--bg-surface);
     font-weight: 600;
-    font-size: 9pt;
+    font-size: 8.5pt;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.page-body tr:nth-child(even) {
-    background: rgba(100, 116, 139, 0.03);
+.page-body td {
+    background: var(--bg-color);
 }
 
-.page-body tr:hover {
+.page-body tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.page-body tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--bg-color) 94%, var(--bg-surface));
+}
+
+.page-body tbody tr:hover td {
     background: var(--c-link-surface);
 }
 
-html.dark .page-body tr:nth-child(even) {
-    background: rgba(148, 163, 184, 0.03);
+html.dark .page-body tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--bg-color) 88%, var(--bg-surface));
+}
+
+@media (max-width: 700px) {
+    .page-body table {
+        font-size: 8.5pt;
+    }
+
+    .page-body th,
+    .page-body td {
+        padding: 7px 10px;
+    }
 }
 
 /* -- Images & figures -------------------------------------- */
@@ -213,21 +237,162 @@ html.dark .page-body tr:nth-child(even) {
     border: 1px solid var(--border-color);
 }
 
-.page-body figure {
-    margin: 1.5em 0;
-    text-align: center;
+.blog-figure {
+    margin: 1.8em auto;
+    max-width: 760px;
+    --figure-frame-padding-top: 20px;
+    --figure-frame-padding-inline: 10px;
+    --figure-frame-padding-bottom: 0;
+    --figure-media-padding: 14px;
+    --figure-caption-padding: 6px 14px;
+    --figure-image-max-height: min(64vh, 760px);
 }
 
-.page-body figcaption {
+.code-block-header,
+.blog-figure-label,
+.blog-figure-alt {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1px 10px;
+    line-height: 1.8;
+    border-radius: 4px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    z-index: 1;
+}
+
+.blog-figure-meta {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 0;
+    pointer-events: none;
+}
+
+.blog-figure-label,
+.blog-figure-alt {
+    position: absolute;
+    top: -10px;
+    pointer-events: auto;
+}
+
+.blog-figure-label {
+    right: 12px;
+    color: var(--c-link);
+    border-color: var(--c-link-subtle);
+}
+
+.blog-figure-alt {
+    left: 12px;
+    max-width: min(58%, 340px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: var(--text-muted);
-    font-size: 9pt;
-    margin-top: 0.5em;
-    font-style: normal;
+    border-color: var(--border-color);
 }
 
-.page-body figcaption strong {
-    color: var(--text-main);
-    font-weight: 600;
+.blog-figure-frame {
+    position: relative;
+    padding: var(--figure-frame-padding-top) var(--figure-frame-padding-inline) var(--figure-frame-padding-bottom);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-surface);
+}
+
+.blog-figure-frame::before {
+    content: "";
+    position: absolute;
+    inset: 10px 10px 0;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--c-link-surface);
+    pointer-events: none;
+}
+
+.blog-figure-media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--figure-media-padding);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    overflow: hidden;
+}
+
+.blog-figure .blog-figure-media img {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    max-height: var(--figure-image-max-height);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    object-fit: contain;
+    background: #ffffff;
+    box-shadow: 0 0 0 8px var(--bg-color);
+}
+
+.blog-figure figcaption {
+    margin: 0;
+    padding: var(--figure-caption-padding);
+    border-top: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    background: transparent;
+    font-style: italic;
+}
+
+.blog-figure figcaption p {
+    margin: 0;
+}
+
+.blog-figure figcaption strong {
+    display: inline-block;
+    margin-right: 0.2em;
+}
+
+html.dark .blog-figure .blog-figure-media img {
+    box-shadow: 0 0 0 8px var(--bg-surface);
+}
+
+@media (max-width: 700px) {
+    .blog-figure {
+        --figure-frame-padding-top: 15px;
+        --figure-frame-padding-inline: 8px;
+        --figure-frame-padding-bottom: 0;
+        --figure-media-padding: 8px;
+        --figure-caption-padding: 6px 12px;
+        --figure-image-max-height: min(48vh, 380px);
+    }
+
+    .blog-figure-frame::before {
+        inset: 8px 8px 0;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .blog-figure-label,
+    .blog-figure-alt {
+        top: -9px;
+        font-size: 7pt;
+        padding: 1px 8px;
+    }
+
+    .blog-figure-alt {
+        max-width: min(58%, 180px);
+    }
+
+    .blog-figure .blog-figure-media img {
+        box-shadow: 0 0 0 5px var(--bg-color);
+    }
+
+    html.dark .blog-figure .blog-figure-media img {
+        box-shadow: 0 0 0 5px var(--bg-surface);
+    }
 }
 
 /* -- Footnotes --------------------------------------------- */
@@ -784,16 +949,6 @@ html.dark .page-body mark {
     position: absolute;
     top: -10px;
     right: 12px;
-    font-size: 8pt;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 1px 10px;
-    line-height: 1.8;
-    border-radius: 4px;
-    background: var(--bg-color);
-    border: 1px solid var(--border-color);
-    z-index: 1;
 }
 
 /* Language-specific colors */

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article class="{% if page.toc %}blog-post blog-post--with-toc{% elif page.extra.katex %}blog-post{% endif %}">
+{% set kind = page.extra.kind | default(value="post") %}
+{% set show_toc = page.toc and kind == "post" %}
+<article class="blog-post{% if show_toc %} blog-post--with-toc{% endif %}">
     <div class="page-layout">
-        {% if page.toc %}
+        {% if show_toc %}
         <aside class="post-toc" id="postToc">
             <div class="toc-header">
                 <span class="toc-label">Contents</span>
@@ -33,8 +35,10 @@
                 <div class="page-meta">
                     {% if page.date %}<span class="meta-date">{{ page.date | date(format="%b %d, %Y") }}</span>{% endif %}
                     {% if page.extra.edited_date %}<span class="meta-edited">Updated {{ page.extra.edited_date | date(format="%b %d, %Y") }}</span>{% endif %}
+                    {% if kind == "post" %}
                     {% if page.reading_time %}<span class="meta-reading">{{ page.reading_time }} min read</span>{% endif %}
                     {% if page.word_count %}<span class="meta-words">{{ page.word_count }} words</span>{% endif %}
+                    {% endif %}
                 </div>
             </header>
             <div class="page-body">
@@ -69,7 +73,7 @@
     </div>
 </article>
 
-{% if page.toc %}
+{% if show_toc %}
 <script>
 (function() {
     var toc = document.getElementById('postToc');

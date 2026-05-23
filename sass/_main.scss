@@ -279,54 +279,6 @@ nav {
 }
 
 /* =============================================================
-   TABLES
-   ============================================================= */
-table {
-    width: 100%;
-    max-width: 800px;
-    border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 10pt;
-}
-
-th, td {
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 8px 12px;
-    text-align: left;
-}
-
-th:first-child, td:first-child {
-    padding-left: 0;
-}
-
-th {
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background-color: var(--bg-surface);
-}
-
-@media (max-width: 600px) {
-    table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    th, td {
-        padding: 6px 8px;
-        font-size: 9pt;
-    }
-}
-
-/* =============================================================
    HOME PAGE
    ============================================================= */
 .hero {

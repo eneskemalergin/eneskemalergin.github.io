@@ -5,6 +5,7 @@ description = "The story behind ProteoForge, a framework for finding differentia
 [taxonomies]
 tags = ["proteoforge", "proteomics", "proteoforms", "statistics", "bioinformatics", "mass-spectrometry"]
 [extra]
+kind = "post"
 katex = true
 +++
 

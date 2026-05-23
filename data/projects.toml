@@ -20,7 +20,10 @@
 #   tag       - Blog tag slug for cross-linking; "NA" means not yet assigned
 #   tags      - Array of category tag strings        (optional)
 #   desc      - Markdown description string          (optional)
-#   github    - GitHub URL
+#   github    - GitHub URL (primary/package repo; used in title link)
+#   analysis  - Separate analysis/reproducibility repo URL (optional)
+#   pkg       - Package registry URL: PyPI | Crates.io | CRAN | Bioconductor (optional)
+#               Label and icon are auto-detected from the URL domain in the template.
 #   docs      - Documentation URL                    (optional)
 #   app       - Live application URL                 (optional)
 #   paper     - Published paper DOI / URL            (optional)
@@ -139,8 +142,11 @@ access = "public"
 image = "projects/questvar.jpg"
 tag = "questvar"
 tags = ["proteomics", "statistics", "equivalence-testing"]
-desc = "Reproducible analysis for statistical testing of protein equivalence across cancer cell lines. Published in J. Proteome Res. (2024)."
-github = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript"
+desc = "Python package for statistical equivalence testing of protein quantification across conditions. Published in J. Proteome Res. (2024)."
+github = "https://github.com/eneskemalergin/QuEStVar"
+analysis = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript"
+pkg = "https://pypi.org/project/questvar/"
+docs = "https://eneskemalergin.github.io/QuEStVar/"
 paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
 
 [[projects]]

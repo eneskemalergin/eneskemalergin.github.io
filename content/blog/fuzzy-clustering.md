@@ -5,6 +5,7 @@ description = "A primer on fuzzy (soft) clustering, covering the Fuzzy C-Means a
 [taxonomies]
 tags = ["clustering", "python", "r", "unsupervised-learning", "fuzzy-logic"]
 [extra]
+kind = "post"
 katex = true
 edited_date = "2026-05-18"
 +++
@@ -128,7 +129,7 @@ fviz_cluster(res.fanny, ellipse.type = "convex",
 
 {% end %}
 
-![Fuzzy cluster plot](/blog/images/fuzzy-clustering/cluster_plot.png)
+{{ figure(src="/blog/images/fuzzy-clustering/cluster_plot.png", alt="Fuzzy cluster plot for the Iris dataset", alt_badge="Iris plot", caption="**Figure 1.** Fuzzy cluster plot for the Iris dataset.", label="Figure 1") }}
 
 Setosa forms a tight cluster on the left. Versicolor and virginica overlap in the middle. That overlap is exactly what the membership coefficients capture. The silhouette plot tells a similar story:
 
@@ -139,7 +140,7 @@ fviz_silhouette(res.fanny, palette = c("#00AFBB", "#E7B800", "#FC4E07"),
 
 {% end %}
 
-![Silhouette plot](/blog/images/fuzzy-clustering/silhouette_plot.png)
+{{ figure(src="/blog/images/fuzzy-clustering/silhouette_plot.png", alt="Silhouette plot for the fuzzy clustering result", alt_badge="Silhouette", caption="**Figure 2.** Silhouette plot for the fuzzy clustering result.", label="Figure 2") }}
 
 The average silhouette width of 0.42 is decent. Most points fit their assigned clusters reasonably well, but the overlap between versicolor and virginica pulls the average down.
 
@@ -172,7 +173,7 @@ plt.show()
 
 {% end %}
 
-![Test data](/blog/images/fuzzy-clustering/fuzzy-clustering-4-0.png)
+{{ figure(src="/blog/images/fuzzy-clustering/fuzzy-clustering-4-0.png", alt="Synthetic test data with three cluster centers", alt_badge="Test data", caption="**Figure 3.** Synthetic test data with three visible clusters.", label="Figure 3") }}
 
 Three visible clusters. The question is how many clusters FCM finds on its own. The Fuzzy Partition Coefficient (FPC) tells us. FPC ranges from 0 to 1, with 1 meaning perfectly separated clusters{% sidenote() %}FPC and its close relative the Normalized Fuzzy Partition Coefficient (NFPC) are useful heuristics, but they have a well-known bias: they favour compact, spherical clusters with similar sizes. If your data has elongated clusters, varying densities, or very different sizes, FPC will mislead you. There are alternatives: the Xie-Beni index, the Fukuyama-Sugeno index, and the silhouette width (which works for fuzzy assignments too). I did not know about these in 2018 and relied on FPC alone. Do not make the same mistake. — EKE, May 2026{% end %}. Let us fit models with 2 through 10 clusters and compare.
 
@@ -204,7 +205,7 @@ plt.show()
 
 {% end %}
 
-![Cluster comparison](/blog/images/fuzzy-clustering/fuzzy-clustering-6-0.png)
+{{ figure(src="/blog/images/fuzzy-clustering/fuzzy-clustering-6-0.png", alt="Cluster comparison across different cluster counts and FPC values", alt_badge="Cluster sweep", caption="**Figure 4.** Cluster comparison across different numbers of centers with FPC values.", label="Figure 4") }}
 
 The FPC peaks at 2 clusters, not 3. That is unexpected. Let us check the FPC values directly:
 
@@ -219,7 +220,7 @@ plt.show()
 
 {% end %}
 
-![FPC plot](/blog/images/fuzzy-clustering/fuzzy-clustering-8-0.png)
+{{ figure(src="/blog/images/fuzzy-clustering/fuzzy-clustering-8-0.png", alt="FPC plotted against the number of clusters", alt_badge="FPC curve", caption="**Figure 5.** Fuzzy Partition Coefficient as a function of cluster count.", label="Figure 5") }}
 
 FPC peaks at 2 clusters (0.82) and drops steadily after that. Why would a dataset with three real clusters have a higher FPC at 2?
 
