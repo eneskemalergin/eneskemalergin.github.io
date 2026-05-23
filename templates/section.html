@@ -3,55 +3,125 @@
 {% block content %}
 {% set blog_tag_freq = load_data(path="data/blog_tag_frequencies.json") %}
 
+<h2>{{ section.title }}</h2>
+{% if section.description %}<p class="section-desc">{{ section.description }}</p>{% endif %}
+
+<div class="blog-tags-bar">
+    {% for entry in blog_tag_freq %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endfor %}
+</div>
+
+<div class="blog-tabs" role="tablist">
+    <button class="blog-tab active" data-filter="all">All</button>
+    <button class="blog-tab" data-filter="post">Posts</button>
+    <button class="blog-tab" data-filter="note">Notes</button>
+    <button class="blog-tab" data-filter="opinion">Opinions</button>
+    <button class="blog-tab" data-filter="reading">Reading</button>
+</div>
+
 <div class="blog-layout">
     <div class="blog-main">
-        <h2>{{ section.title }}</h2>
-        {% if section.description %}
-        <p class="section-desc">{{ section.description }}</p>
-        {% endif %}
-
-        {% set pages = paginator.pages | default(value=section.pages) %}
-        {% if pages %}
-        <ul class="blog-list">
-            {% for page in pages %}
-            <li class="blog-item">
+        {% if section.pages %}
+        <ul class="blog-list" id="blog-list">
+            {% for page in section.pages %}
+            {% set kind = page.extra.kind | default(value="post") %}
+            {% set yr = page.date | date(format="%Y") %}
+            {% set mo = page.date | date(format="%B") %}
+            {% if kind == "post" %}
+            <li class="blog-item"
+                data-kind="{{ kind }}"
+                data-year="{{ yr }}"
+                data-month="{{ mo }}"
+                data-title="{{ page.title | escape }}"
+                data-href="{{ page.permalink }}">
                 <div class="blog-header">
                     {% if page.date %}
                     <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
                     {% endif %}
+                    <span class="kind-badge kind-post">post</span>
                 </div>
                 <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
                 {% if page.description %}
                 <p class="list-desc">{{ page.description }}</p>
                 {% endif %}
             </li>
+            {% else %}
+            <li class="blog-item"
+                data-kind="{{ kind }}"
+                data-year="{{ yr }}"
+                data-month="{{ mo }}"
+                data-title="{{ page.title | escape }}"
+                data-href="{{ page.permalink }}">
+                <div class="blog-header">
+                    {% if page.date %}
+                    <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                    {% endif %}
+                    <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                </div>
+                <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
+            </li>
+            {% endif %}
             {% endfor %}
         </ul>
-
-        {% if paginator %}
-        <div class="pagination">
-            {% if paginator.previous %}
-            <a href="{{ paginator.previous }}">&larr; Previous</a>
-            {% endif %}
-            <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
-            {% if paginator.next %}
-            <a href="{{ paginator.next }}">Next &rarr;</a>
-            {% endif %}
-        </div>
-        {% endif %}
-
+        <div class="blog-pagination" id="blog-pagination"></div>
         {% else %}
         <p class="empty">Nothing here yet.</p>
         {% endif %}
     </div>
 
     <aside class="blog-sidebar">
-        <h3>Tags</h3>
-        <div class="sidebar-tags">
-            {% for entry in blog_tag_freq %}
-            <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
-            {% endfor %}
-        </div>
+        <div id="blog-archive"></div>
     </aside>
 </div>
+
+<script src="{{ get_url(path="js/blog-list.js") }}"></script>
+<script>
+(function () {
+    var currentFilter = 'all';
+    var currentPage = 1;
+    var allItems = [];
+
+    function getFiltered() {
+        if (currentFilter === 'all') return allItems;
+        return allItems.filter(function (item) { return item.dataset.kind === currentFilter; });
+    }
+
+    function render() {
+        var filtered = getFiltered();
+        var totalPages = Math.ceil(filtered.length / BlogList.PAGE_SIZE);
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        var start = (currentPage - 1) * BlogList.PAGE_SIZE;
+        filtered.slice(start, start + BlogList.PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
+        BlogList.renderPagination(currentPage, totalPages, function (page) {
+            currentPage = page;
+            render();
+            BlogList.buildArchive(getFiltered());
+            document.getElementById('blog-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function init() {
+        allItems = Array.from(document.querySelectorAll('#blog-list .blog-item'));
+        render();
+        BlogList.buildArchive(getFiltered());
+        document.querySelectorAll('.blog-tab').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.blog-tab').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                render();
+                BlogList.buildArchive(getFiltered());
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+}());
+</script>
 {% endblock %}

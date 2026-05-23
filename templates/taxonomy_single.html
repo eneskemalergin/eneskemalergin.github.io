@@ -1,33 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-<header class="section-header">
-    <h1>{{ term.name }}</h1>
-    <p class="section-desc">Posts tagged with {{ term.name }}.</p>
-</header>
 
-{% set pages = paginator.pages | default(value=term.pages) %}
-{% for page in pages %}
-<article class="list-item">
-    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-    <div class="list-meta">
-        {% if page.date %}{{ page.date | date(format="%B %d, %Y") }}{% endif %}
-    </div>
-    {% if page.description %}
-    <p class="list-desc">{{ page.description }}</p>
-    {% endif %}
-</article>
-{% endfor %}
-
-{% if paginator %}
-<div class="pagination">
-    {% if paginator.previous %}
-    <a href="{{ paginator.previous }}">&larr; Previous</a>
-    {% endif %}
-    <span class="pagination-current">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
-    {% if paginator.next %}
-    <a href="{{ paginator.next }}">Next &rarr;</a>
-    {% endif %}
+<div class="tag-page-header">
+    <h2><span class="tag-page-label">tag:</span> {{ term.name }}</h2>
+    <a href="{{ get_url(path="/tags/") }}" class="tag-page-back">← all tags</a>
 </div>
-{% endif %}
+
+<div class="blog-layout">
+    <div class="blog-main">
+        {% if term.pages %}
+        <ul class="blog-list" id="blog-list">
+            {% for page in term.pages %}
+            {% set kind = page.extra.kind | default(value="post") %}
+            {% set yr = page.date | date(format="%Y") %}
+            {% set mo = page.date | date(format="%B") %}
+            <li class="blog-item"
+                data-kind="{{ kind }}"
+                data-year="{{ yr }}"
+                data-month="{{ mo }}"
+                data-title="{{ page.title | escape }}"
+                data-href="{{ page.permalink }}">
+                <div class="blog-header">
+                    {% if page.date %}
+                    <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                    {% endif %}
+                    <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                </div>
+                <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
+                {% if kind == "post" and page.description %}
+                <p class="list-desc">{{ page.description }}</p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="blog-pagination" id="blog-pagination"></div>
+        {% else %}
+        <p class="empty">Nothing tagged with {{ term.name }} yet.</p>
+        {% endif %}
+    </div>
+
+    <aside class="blog-sidebar">
+        <div id="blog-archive"></div>
+    </aside>
+</div>
+
+<script src="{{ get_url(path="js/blog-list.js") }}"></script>
+<script>
+(function () {
+    var currentPage = 1;
+    var allItems = [];
+
+    function render() {
+        var totalPages = Math.ceil(allItems.length / BlogList.PAGE_SIZE);
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        var start = (currentPage - 1) * BlogList.PAGE_SIZE;
+        allItems.slice(start, start + BlogList.PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
+        BlogList.renderPagination(currentPage, totalPages, function (page) {
+            currentPage = page;
+            render();
+            BlogList.buildArchive(allItems);
+            document.getElementById('blog-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function init() {
+        allItems = Array.from(document.querySelectorAll('#blog-list .blog-item'));
+        render();
+        BlogList.buildArchive(allItems);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+}());
+</script>
 {% endblock %}

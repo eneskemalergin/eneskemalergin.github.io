@@ -858,64 +858,64 @@ html.dark .venue-conference {
     flex-shrink: 0;
 }
 
-.pub-badge.pub-type-journal,
-.pub-badge.pub-status-upcoming {
+.pub-badge.pub-badge--type-journal,
+.pub-badge.pub-badge--status-upcoming {
     background: rgba(37, 99, 235, 0.1);
     color: #2563eb;
     border-color: rgba(37, 99, 235, 0.25);
 }
 
-.pub-badge.pub-type-conference,
-.pub-badge.pub-status-planned {
+.pub-badge.pub-badge--type-conference,
+.pub-badge.pub-badge--status-planned {
     background: rgba(139, 92, 246, 0.1);
     color: #7c3aed;
     border-color: rgba(139, 92, 246, 0.25);
 }
 
-.pub-badge.pub-type-thesis,
-.pub-badge.pub-status-published {
+.pub-badge.pub-badge--type-thesis,
+.pub-badge.pub-badge--status-published {
     background: rgba(5, 150, 105, 0.1);
     color: #059669;
     border-color: rgba(5, 150, 105, 0.25);
 }
 
-.pub-badge.pub-type-preprint,
-.pub-badge.pub-status-preprint {
+.pub-badge.pub-badge--type-preprint,
+.pub-badge.pub-badge--status-preprint {
     background: rgba(217, 119, 6, 0.1);
     color: #d97706;
     border-color: rgba(217, 119, 6, 0.25);
 }
 
-.pub-badge.pub-status-under-review {
+.pub-badge.pub-badge--status-under-review {
     background: rgba(245, 158, 11, 0.1);
     color: #d97706;
     border-color: rgba(245, 158, 11, 0.25);
 }
 
-html.dark .pub-badge.pub-type-journal,
-html.dark .pub-badge.pub-status-upcoming {
+html.dark .pub-badge.pub-badge--type-journal,
+html.dark .pub-badge.pub-badge--status-upcoming {
     background: rgba(96, 165, 250, 0.15);
     color: #60a5fa;
     border-color: rgba(96, 165, 250, 0.25);
 }
 
-html.dark .pub-badge.pub-type-conference,
-html.dark .pub-badge.pub-status-planned {
+html.dark .pub-badge.pub-badge--type-conference,
+html.dark .pub-badge.pub-badge--status-planned {
     background: rgba(167, 139, 250, 0.15);
     color: #a78bfa;
     border-color: rgba(167, 139, 250, 0.25);
 }
 
-html.dark .pub-badge.pub-type-thesis,
-html.dark .pub-badge.pub-status-published {
+html.dark .pub-badge.pub-badge--type-thesis,
+html.dark .pub-badge.pub-badge--status-published {
     background: rgba(52, 211, 153, 0.15);
     color: #34d399;
     border-color: rgba(52, 211, 153, 0.25);
 }
 
-html.dark .pub-badge.pub-type-preprint,
-html.dark .pub-badge.pub-status-under-review,
-html.dark .pub-badge.pub-status-preprint {
+html.dark .pub-badge.pub-badge--type-preprint,
+html.dark .pub-badge.pub-badge--status-under-review,
+html.dark .pub-badge.pub-badge--status-preprint {
     background: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
     border-color: rgba(251, 191, 36, 0.25);
@@ -1110,6 +1110,7 @@ html.dark .pub-badge.pub-status-preprint {
 }
 
 .talk-type--oral,
+.talk-type--invited,
 .talk-type--workshop {
     color: var(--c-link);
     border: 1px solid var(--c-link-subtle);
@@ -1120,6 +1121,13 @@ html.dark .pub-badge.pub-status-preprint {
 .talk-type--ta {
     color: var(--text-muted);
     border: 1px solid var(--border-color);
+}
+
+.talk-role {
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    font-style: italic;
+    white-space: nowrap;
 }
 
 .talk-date {
@@ -1143,9 +1151,51 @@ html.dark .pub-badge.pub-status-preprint {
 }
 
 /* =============================================================
-    BLOGS LISTING
+    BLOG LISTING
     ============================================================= */
 
+/* Tags bar — full width above layout */
+.blog-tags-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px 0 18px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 16px;
+}
+
+/* Kind tabs */
+.blog-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.blog-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 6px 14px;
+    font-size: 9pt;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+    font-family: inherit;
+}
+
+.blog-tab:hover {
+    color: var(--text-main);
+}
+
+.blog-tab.active {
+    color: var(--c-link);
+    border-bottom-color: var(--c-link);
+}
+
+/* Layout */
 .blog-layout {
     display: flex;
     gap: 32px;
@@ -1164,41 +1214,7 @@ html.dark .pub-badge.pub-status-preprint {
     top: 20px;
 }
 
-.blog-sidebar h3 {
-    font-size: 10pt;
-    font-weight: 600;
-    margin: 14px 0 10px 0;
-}
-
-.sidebar-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-}
-
-.sidebar-tags .tag {
-    font-size: 7.5pt;
-    padding: 1px 8px;
-}
-
-.sidebar-tags .tag sup {
-    font-size: 6.5pt;
-    margin-left: 2px;
-    color: var(--text-muted);
-    font-weight: 400;
-}
-
-.sidebar-tags .tag:hover sup {
-    color: white;
-}
-
-@media (max-width: 800px) {
-    .sidebar-tags {
-        justify-content: flex-start;
-    }
-}
-
+/* Blog list */
 .blog-list {
     list-style: none;
     padding: 0;
@@ -1214,17 +1230,78 @@ html.dark .pub-badge.pub-status-preprint {
     border-bottom: none;
 }
 
+.blog-item--compact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 0;
+}
+
+.blog-item--compact .blog-date {
+    flex-shrink: 0;
+}
+
+.blog-item--compact .blog-title {
+    font-size: 10.5pt;
+    font-weight: 400;
+}
+
+/* Kind badges */
+.kind-badge {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+}
+
+.kind-post {
+    color: var(--c-link);
+    border-color: var(--c-link-subtle);
+    background: transparent;
+}
+
+.kind-note {
+    color: var(--text-muted);
+    border-color: var(--border-color);
+    background: transparent;
+}
+
+.kind-opinion {
+    color: var(--c-blog-project);
+    border-color: rgba(180, 83, 9, 0.3);
+    background: rgba(180, 83, 9, 0.05);
+}
+
+.kind-reading {
+    color: var(--c-blog-paper);
+    border-color: rgba(125, 60, 152, 0.3);
+    background: rgba(125, 60, 152, 0.05);
+}
+
+html.dark .kind-opinion {
+    color: var(--c-wip);
+    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.05);
+}
+
+html.dark .kind-reading {
+    color: var(--c-blog-paper);
+    border-color: rgba(196, 181, 253, 0.3);
+    background: rgba(196, 181, 253, 0.05);
+}
+
+/* Blog item components */
 .blog-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 4px;
-}
-
-.blog-tag {
-    font-size: 7.5pt;
-    padding: 1px 8px;
-    border: 1px solid var(--c-link-subtle);
 }
 
 .blog-date {
@@ -1247,6 +1324,133 @@ html.dark .pub-badge.pub-status-preprint {
     text-shadow: var(--glow-link);
 }
 
+/* Pagination */
+.blog-pagination {
+    display: flex;
+    gap: 4px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 9pt;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.page-btn:hover {
+    color: var(--c-link);
+    border-color: var(--c-link-subtle);
+}
+
+.page-btn.active {
+    color: var(--c-link);
+    border-color: var(--c-link);
+    background: var(--c-link-surface);
+}
+
+/* Archive sidebar */
+.archive-year {
+    margin-bottom: 8px;
+}
+
+.archive-year-label {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    list-style: none;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 4px;
+}
+
+.archive-year-label::-webkit-details-marker { display: none; }
+
+details.archive-year > summary::before {
+    content: '▸  ';
+    font-size: 8pt;
+    color: var(--text-muted);
+}
+
+details[open].archive-year > summary::before {
+    content: '▾  ';
+}
+
+.archive-month {
+    margin-left: 10px;
+    margin-bottom: 2px;
+}
+
+.archive-month-label {
+    font-size: 9pt;
+    color: var(--text-muted);
+    cursor: pointer;
+    list-style: none;
+    padding: 2px 0;
+}
+
+.archive-month-label::-webkit-details-marker { display: none; }
+
+details.archive-month > summary::before {
+    content: '+  ';
+    font-size: 8pt;
+    color: var(--text-muted);
+}
+
+details[open].archive-month > summary::before {
+    content: '−  ';
+}
+
+.archive-count {
+    font-size: 7.5pt;
+    color: var(--text-muted);
+}
+
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 6px 14px;
+}
+
+.archive-list li {
+    padding: 1px 0;
+}
+
+.archive-list a {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.archive-list a:hover {
+    color: var(--c-link);
+}
+
+@media (max-width: 800px) {
+    .blog-layout {
+        flex-direction: column;
+    }
+
+    .blog-sidebar {
+        position: static;
+        width: 100%;
+    }
+}
+
+/* Legacy tag variant classes */
+.blog-tag {
+    font-size: 7.5pt;
+    padding: 1px 8px;
+    border: 1px solid var(--c-link-subtle);
+}
+
 .blog-tag--wild-thoughts {
     color: var(--c-blog-wild);
     border: 1px solid rgba(42, 122, 90, 0.3);
@@ -1260,4 +1464,58 @@ html.dark .pub-badge.pub-status-preprint {
 .blog-tag--project {
     color: var(--c-blog-project);
     border: 1px solid rgba(180, 83, 9, 0.3);
+}
+
+/* =============================================================
+    TAG PAGES
+    ============================================================= */
+
+.tag-page-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-page-header h2 {
+    margin: 0;
+}
+
+.tag-page-label {
+    font-size: 9pt;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.tag-page-back {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: auto;
+}
+
+.tag-page-back:hover {
+    color: var(--c-link);
+}
+
+/* Tag cloud — /tags/ index */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.tag-cloud-item sup {
+    font-size: 6.5pt;
+    margin-left: 2px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.tag-cloud-item:hover sup {
+    color: white;
 }

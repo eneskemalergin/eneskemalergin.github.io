@@ -91,7 +91,9 @@
                     <span class="talk-type
                       {%- if item.type == "Workshop" %} talk-type--workshop
                       {%- elif item.type == "Poster" %} talk-type--poster
+                      {%- elif item.type == "Invited Talk" %} talk-type--invited
                       {%- else %} talk-type--oral{% endif %}">{{ item.type }}</span>
+                    {% if item.role %}<span class="talk-role">{{ item.role }}</span>{% endif %}
                     <span class="talk-date">{{ item.date }}</span>
                 </div>
                 <div class="talk-meta">{{ item.venue }}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>

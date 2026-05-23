@@ -2,13 +2,15 @@ base_url = "https://eneskemalergin.github.io"
 default_language = "en"
 title = "Enes K. Ergin"
 compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+build_search_index = true
 
 [markdown]
 bottom_footnotes = true
 
 [[taxonomies]]
 name = "tags"
-paginate_by = 10
 
 [extra]
 name = "Enes K. Ergin, PhD"

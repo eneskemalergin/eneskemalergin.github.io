@@ -322,6 +322,22 @@ desc = "R package for proteolytic digest simulation, peptide scoring, enzyme com
 github = "https://github.com/LangeLab/pepVet"
 
 [[projects]]
+title = "zigR"
+domain = "language-dev"
+source = "personal"
+status = "early"
+stars = 0
+version = "0.0.7"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/zigr.svg"
+tag = "NA"
+tags = ["plotting", "svg", "visualization", "graphics"]
+desc = "A high-performance bridge for integrating Zig into R."
+github = "https://github.com/eneskemalergin/zigr"
+
+[[projects]]
 title = "zagplot"
 domain = "language-dev"
 source = "personal"

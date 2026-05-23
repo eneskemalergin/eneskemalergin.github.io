@@ -1,22 +1,42 @@
 [
   {
-    "name": "bioinformatics",
-    "count": 5
+    "name": "proteomics",
+    "count": 9
   },
   {
-    "name": "proteomics",
+    "name": "bioinformatics",
+    "count": 8
+  },
+  {
+    "name": "statistics",
     "count": 4
+  },
+  {
+    "name": "proteoforms",
+    "count": 3
+  },
+  {
+    "name": "python",
+    "count": 2
+  },
+  {
+    "name": "mass-spectrometry",
+    "count": 2
   },
   {
     "name": "shiny",
     "count": 2
   },
   {
-    "name": "clustering",
+    "name": "z-fasta",
     "count": 1
   },
   {
-    "name": "python",
+    "name": "questvar",
+    "count": 1
+  },
+  {
+    "name": "clustering",
     "count": 1
   },
   {
@@ -36,23 +56,11 @@
     "count": 1
   },
   {
-    "name": "proteoforms",
-    "count": 1
-  },
-  {
-    "name": "statistics",
-    "count": 1
-  },
-  {
-    "name": "mass-spectrometry",
-    "count": 1
-  },
-  {
-    "name": "z-fasta",
-    "count": 1
-  },
-  {
     "name": "squapp",
+    "count": 1
+  },
+  {
+    "name": "equivalence-testing",
     "count": 1
   },
   {

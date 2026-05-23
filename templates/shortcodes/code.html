@@ -10,7 +10,7 @@ Usage:
 {% set code_lang = ln | default(value="code") %}
 <div class="code-block-wrapper">
     <div class="code-block-header" data-lang="{{ code_lang }}">{{ code_lang | capitalize }}</div>
-    <pre><code class="language-{{ code_lang }}">{{ body | escape }}</code></pre>
+    <pre><code class="language-{{ code_lang }}">{{ body | safe }}</code></pre>
     {% if caption %}
     <div class="code-block-caption">{{ caption }}</div>
     {% endif %}

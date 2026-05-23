@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }}
         | {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
-    <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

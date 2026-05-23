@@ -24,14 +24,14 @@
             <div class="paper-badge-row">
                 <span class="paper-venue-inline venue-{{ paper.type }}">{{ paper.venue }}</span>
                 <span class="paper-badge-group">
-                    <span class="pub-badge pub-type-{{ paper.type }}">
+                    <span class="pub-badge pub-badge--type-{{ paper.type }}">
                         {% if paper.type == "journal" %}<i class="fas fa-book-open"></i>
                         {% elif paper.type == "conference" %}<i class="fas fa-microphone"></i>
                         {% elif paper.type == "thesis" %}<i class="fas fa-graduation-cap"></i>
                         {% elif paper.type == "preprint" %}<i class="fas fa-file-lines"></i>{% endif %}
                         {{ paper.type }}
                     </span>
-                    <span class="pub-badge pub-status-{{ paper.status }}">
+                    <span class="pub-badge pub-badge--status-{{ paper.status }}">
                         {% if paper.status == "published" %}<i class="fas fa-check-circle"></i>
                         {% elif paper.status == "under-review" %}<i class="fas fa-hourglass-half"></i>
                         {% else %}<i class="fas fa-file-lines"></i>{% endif %}
