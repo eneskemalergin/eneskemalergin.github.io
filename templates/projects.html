@@ -55,7 +55,7 @@
                             {% if p.access == "public" %}<i class="fas fa-lock-open"></i>{% else %}<i class="fas fa-lock"></i>{% endif %}
                             {{ p.access }}
                         </span>
-                        <span class="pub-badge pub-status-{{ p.pub }}">
+                        <span class="pub-badge pub-badge--status-{{ p.pub }}">
                             {% if p.pub == "published" %}<i class="fas fa-book"></i>{% elif p.pub == "preprint" %}<i class="fas fa-file-lines"></i>{% elif p.pub == "upcoming" %}<i class="fas fa-pen-fancy"></i>{% elif p.pub == "planned" %}<i class="fas fa-calendar"></i>{% else %}<i class="fas fa-minus"></i>{% endif %}
                             {{ p.pub }}
                         </span>

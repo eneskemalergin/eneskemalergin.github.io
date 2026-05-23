@@ -1154,7 +1154,7 @@ html.dark .pub-badge.pub-badge--status-preprint {
     BLOG LISTING
     ============================================================= */
 
-/* Tags bar — full width above layout */
+/* Tags bar: full width above layout */
 .blog-tags-bar {
     display: flex;
     flex-wrap: wrap;
@@ -1501,7 +1501,7 @@ details[open].archive-month > summary::before {
     color: var(--c-link);
 }
 
-/* Tag cloud — /tags/ index */
+/* Tag cloud: /tags/ index */
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;

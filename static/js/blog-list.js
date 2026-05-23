@@ -1,4 +1,4 @@
-/* blog-list.js — shared utilities for blog listing and tag pages */
+/* blog-list.js : shared utilities for blog listing and tag pages */
 var BlogList = (function () {
     var PAGE_SIZE = 10;
     var MONTH_ORDER = [

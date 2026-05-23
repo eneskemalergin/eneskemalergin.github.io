@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 262" font-family="'Inter', system-ui, sans-serif">
+  <!-- Background -->
+  <rect width="600" height="262" fill="#fdfdfd" rx="8"/>
+
+  <!-- Title -->
+  <text x="300" y="24" text-anchor="middle" font-size="12.5" font-weight="600" fill="#333333">Geomean vs R : lower is faster (2026-05-23)</text>
+
+  <!-- 0.5x guide line -->
+  <line x1="300" y1="36" x2="300" y2="228" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="3,4"/>
+  <text x="300" y="244" text-anchor="middle" font-size="10" fill="#cbd5e1">0.5x</text>
+
+  <!-- 1.0x baseline reference line -->
+  <line x1="520" y1="36" x2="520" y2="228" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="520" y="244" text-anchor="middle" font-size="10" fill="#94a3b8">1.0x (R baseline)</text>
+
+  <!-- R bar: width 440 (1.000x) -->
+  <rect x="80" y="44" width="440" height="22" fill="#e2e8f0" rx="3"/>
+  <text x="74" y="59" text-anchor="end" font-size="11" fill="#666666">R</text>
+  <text x="526" y="59" font-size="11" fill="#94a3b8">1.000x</text>
+
+  <!-- C .Call bar: width 411 (0.935x) -->
+  <rect x="80" y="74" width="411" height="22" fill="#94a3b8" rx="3"/>
+  <text x="74" y="89" text-anchor="end" font-size="11" fill="#64748b">C .Call</text>
+  <text x="497" y="89" font-size="11" fill="#64748b">0.935x</text>
+
+  <!-- Rcpp bar: width 392 (0.891x) -->
+  <rect x="80" y="104" width="392" height="22" fill="#b45309" rx="3"/>
+  <text x="74" y="119" text-anchor="end" font-size="11" fill="#92400e">Rcpp</text>
+  <text x="478" y="119" font-size="11" fill="#92400e">0.891x</text>
+
+  <!-- extendr bar: width 306 (0.695x) -->
+  <rect x="80" y="134" width="306" height="22" fill="#ea580c" rx="3"/>
+  <text x="74" y="149" text-anchor="end" font-size="11" fill="#c2410c">extendr</text>
+  <text x="392" y="149" font-size="11" fill="#c2410c">0.695x</text>
+
+  <!-- Savvy bar: width 285 (0.648x) -->
+  <rect x="80" y="164" width="285" height="22" fill="#9333ea" rx="3"/>
+  <text x="74" y="179" text-anchor="end" font-size="11" fill="#7e22ce">Savvy</text>
+  <text x="371" y="179" font-size="11" fill="#7e22ce">0.648x</text>
+
+  <!-- zigr bar: width 209 (0.475x) -->
+  <rect x="80" y="194" width="209" height="22" fill="#006b7b" rx="3"/>
+  <text x="74" y="209" text-anchor="end" font-size="11" font-weight="700" fill="#006b7b">zigr</text>
+  <text x="295" y="209" font-size="11" font-weight="700" fill="#006b7b">0.475x</text>
+</svg>

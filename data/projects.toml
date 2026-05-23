@@ -150,6 +150,22 @@ docs = "https://eneskemalergin.github.io/QuEStVar/"
 paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
 
 [[projects]]
+title = "z-toml"
+domain = "language-dev"
+source = "personal"
+status = "stable"
+stars = 2
+version = "0.3.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/z-toml.svg"
+tag = "NA"
+tags = ["toml", "parser", "cli", "library"]
+desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
+github = "https://github.com/eneskemalergin/z-toml"
+
+[[projects]]
 title = "z-fasta"
 domain = "core-tooling"
 source = "personal"
@@ -209,22 +225,6 @@ tag = "NA"
 tags = ["proteomics", "metadata", "fair", "cli"]
 desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
 github = "https://github.com/LangeLab/PXAudit"
-
-[[projects]]
-title = "z-toml"
-domain = "language-dev"
-source = "personal"
-status = "active"
-stars = 2
-version = "0.1.0"
-language = "Zig"
-pub = "na"
-access = "public"
-image = "projects/z-toml.svg"
-tag = "NA"
-tags = ["toml", "parser", "cli", "library"]
-desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
-github = "https://github.com/eneskemalergin/z-toml"
 
 [[projects]]
 title = "z-oci"
@@ -332,8 +332,8 @@ language = "Zig"
 pub = "na"
 access = "public"
 image = "projects/zigr.svg"
-tag = "NA"
-tags = ["plotting", "svg", "visualization", "graphics"]
+tag = "zigr"
+tags = ["r", "zig", "language-binding"]
 desc = "A high-performance bridge for integrating Zig into R."
 github = "https://github.com/eneskemalergin/zigr"
 

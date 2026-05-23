@@ -1,34 +1,38 @@
 [
   {
-    "name": "proteomics",
-    "count": 9
-  },
-  {
-    "name": "bioinformatics",
-    "count": 8
+    "name": "r",
+    "count": 3
   },
   {
     "name": "statistics",
-    "count": 4
+    "count": 3
   },
   {
-    "name": "proteoforms",
-    "count": 3
+    "name": "zig",
+    "count": 2
   },
   {
     "name": "python",
     "count": 2
   },
   {
-    "name": "mass-spectrometry",
+    "name": "proteomics",
     "count": 2
   },
   {
-    "name": "shiny",
-    "count": 2
+    "name": "benchmarking",
+    "count": 1
   },
   {
-    "name": "z-fasta",
+    "name": "performance",
+    "count": 1
+  },
+  {
+    "name": "zigr",
+    "count": 1
+  },
+  {
+    "name": "omics",
     "count": 1
   },
   {
@@ -37,10 +41,6 @@
   },
   {
     "name": "clustering",
-    "count": 1
-  },
-  {
-    "name": "r",
     "count": 1
   },
   {
@@ -56,7 +56,15 @@
     "count": 1
   },
   {
-    "name": "squapp",
+    "name": "proteoforms",
+    "count": 1
+  },
+  {
+    "name": "bioinformatics",
+    "count": 1
+  },
+  {
+    "name": "mass-spectrometry",
     "count": 1
   },
   {
@@ -64,31 +72,7 @@
     "count": 1
   },
   {
-    "name": "fasta",
-    "count": 1
-  },
-  {
-    "name": "cli",
-    "count": 1
-  },
-  {
-    "name": "ptm",
-    "count": 1
-  },
-  {
-    "name": "data-analysis",
-    "count": 1
-  },
-  {
-    "name": "visualization",
-    "count": 1
-  },
-  {
-    "name": "web-app",
-    "count": 1
-  },
-  {
-    "name": "quantification",
+    "name": "language-binding",
     "count": 1
   }
 ]

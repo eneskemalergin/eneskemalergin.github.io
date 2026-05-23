@@ -12,19 +12,15 @@
     "count": 3
   },
   {
-    "name": "plotting",
-    "count": 3
-  },
-  {
     "name": "bioinformatics",
     "count": 2
   },
   {
-    "name": "metadata",
+    "name": "parser",
     "count": 2
   },
   {
-    "name": "parser",
+    "name": "metadata",
     "count": 2
   },
   {
@@ -36,15 +32,7 @@
     "count": 2
   },
   {
-    "name": "svg",
-    "count": 2
-  },
-  {
-    "name": "visualization",
-    "count": 2
-  },
-  {
-    "name": "graphics",
+    "name": "plotting",
     "count": 2
   },
   {
@@ -57,6 +45,10 @@
   },
   {
     "name": "equivalence-testing",
+    "count": 1
+  },
+  {
+    "name": "toml",
     "count": 1
   },
   {
@@ -73,10 +65,6 @@
   },
   {
     "name": "fair",
-    "count": 1
-  },
-  {
-    "name": "toml",
     "count": 1
   },
   {
@@ -145,6 +133,30 @@
   },
   {
     "name": "bottom-up",
+    "count": 1
+  },
+  {
+    "name": "r",
+    "count": 1
+  },
+  {
+    "name": "zig",
+    "count": 1
+  },
+  {
+    "name": "language-binding",
+    "count": 1
+  },
+  {
+    "name": "svg",
+    "count": 1
+  },
+  {
+    "name": "visualization",
+    "count": 1
+  },
+  {
+    "name": "graphics",
     "count": 1
   },
   {
