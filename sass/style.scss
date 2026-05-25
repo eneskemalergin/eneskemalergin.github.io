@@ -110,30 +110,6 @@ html.dark .page-body img {
     opacity: 0.85;
 }
 
-// ─── Tag overrides ──────────────────────────────────────
-
-html.dark .blog-tag--study-notes {
-    background: var(--bg-surface);
-}
-
-html.dark .blog-tag--wild-thoughts {
-    background: var(--bg-surface);
-    color: var(--c-blog-wild);
-    border-color: rgba(110, 231, 183, 0.3);
-}
-
-html.dark .blog-tag--paper-reading {
-    background: var(--bg-surface);
-    color: var(--c-blog-paper);
-    border-color: rgba(196, 181, 253, 0.3);
-}
-
-html.dark .blog-tag--project {
-    background: var(--bg-surface);
-    color: var(--c-blog-project);
-    border-color: rgba(251, 191, 36, 0.3);
-}
-
 html.dark .talk-type--oral,
 html.dark .talk-type--workshop {
     background: var(--bg-surface);

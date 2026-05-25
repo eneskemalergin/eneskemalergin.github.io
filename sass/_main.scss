@@ -1104,7 +1104,7 @@ html.dark .pub-badge.pub-badge--status-preprint {
     font-size: 8.5pt;
     font-weight: 600;
     padding: 2px 7px;
-    border-radius: 3px;
+    border-radius: 999px;
     white-space: nowrap;
     letter-spacing: 0.02em;
 }
@@ -1187,7 +1187,7 @@ html.dark .pub-badge.pub-badge--status-preprint {
 }
 
 .blog-tab:hover {
-    color: var(--text-main);
+    color: var(--c-link);
 }
 
 .blog-tab.active {
@@ -1444,27 +1444,6 @@ details[open].archive-month > summary::before {
     }
 }
 
-/* Legacy tag variant classes */
-.blog-tag {
-    font-size: 7.5pt;
-    padding: 1px 8px;
-    border: 1px solid var(--c-link-subtle);
-}
-
-.blog-tag--wild-thoughts {
-    color: var(--c-blog-wild);
-    border: 1px solid rgba(42, 122, 90, 0.3);
-}
-
-.blog-tag--paper-reading {
-    color: var(--c-blog-paper);
-    border: 1px solid rgba(125, 60, 152, 0.3);
-}
-
-.blog-tag--project {
-    color: var(--c-blog-project);
-    border: 1px solid rgba(180, 83, 9, 0.3);
-}
 
 /* =============================================================
     TAG PAGES

@@ -34,7 +34,7 @@
             </div>
             <div class="project-body">
                 <div class="project-head">
-                    <span class="project-name"><a href="{{ p.github }}" target="_blank">{{ p.title }}</a></span>
+                    {% set gh = p | get(key="github", default="") %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
                     <div class="project-head-badges">
                         <span class="lang-badge lang-{{ p.language }}">
                             {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
@@ -70,7 +70,7 @@
                 {% endif %}
                 <div class="project-desc">{{ p.desc }}</div>
                 <div class="project-links">
-                    <a href="{{ p.github }}" class="project-link" target="_blank">GitHub</a>
+                    {% set gh = p | get(key="github", default="") %}{% if gh %}<a href="{{ gh }}" class="project-link" target="_blank">GitHub</a>{% endif %}
                     {% if p.analysis %}<a href="{{ p.analysis }}" class="project-link" target="_blank">Analysis</a>{% endif %}
                     {% if p.pkg %}
                     <a href="{{ p.pkg }}" class="project-link" target="_blank">
