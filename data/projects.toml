@@ -200,16 +200,19 @@ github = "https://github.com/eneskemalergin/loqculate"
 title = "pxseek"
 domain = "metadata"
 source = "langelab"
-status = "active"
+status = "stable"
 stars = 2
-version = "0.4.5"
+version = "0.5.1"
 language = "Python"
 pub = "na"
 access = "public"
+image = "projects/pxseek.svg"
 tag = "NA"
 tags = ["proteomics", "metadata", "parser", "cli"]
 desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata with local caching."
 github = "https://github.com/LangeLab/pxseek"
+pkg = "https://pypi.org/project/pxseek/"
+docs = "https://github.com/LangeLab/pxseek/wiki"
 
 [[projects]]
 title = "PXAudit"
@@ -217,14 +220,16 @@ domain = "metadata"
 source = "langelab"
 status = "active"
 stars = 1
-version = "0.1.0"
+version = "0.3.0"
 language = "Python"
 pub = "na"
 access = "public"
+image = "projects/pxaudit.svg"
 tag = "NA"
 tags = ["proteomics", "metadata", "fair", "cli"]
 desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
 github = "https://github.com/LangeLab/PXAudit"
+docs = "https://github.com/LangeLab/PXAudit/wiki"
 
 [[projects]]
 title = "z-oci"
