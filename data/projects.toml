@@ -6,8 +6,7 @@
 #   domain    - Functional area: "data-analysis" | "metadata" | "core-tooling" |
 #               "language-dev" | "standards"
 #   source    - Project origin: "langelab" | "zenteomics" | "personal"
-#   status    - "mature" | "stable" | "active" | "wip" | "early" | "private" |
-#               "archived"
+#   status    - "mature" | "stable" | "active" | "wip" | "early" | "archived"
 #               (also determines timeline stage grouping order)
 #   stars     - GitHub star count (integer, 0 to hide)
 #   version   - Semver string, e.g. "0.3.0".  Default "0.1.0" if omitted.
@@ -155,7 +154,7 @@ domain = "language-dev"
 source = "personal"
 status = "stable"
 stars = 2
-version = "0.3.0"
+version = "0.4.0"
 language = "Zig"
 pub = "na"
 access = "public"
@@ -166,12 +165,46 @@ desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs.
 github = "https://github.com/eneskemalergin/z-toml"
 
 [[projects]]
+title = "pxseek"
+domain = "metadata"
+source = "langelab"
+status = "stable"
+stars = 2
+version = "0.5.1"
+language = "Python"
+pub = "na"
+access = "public"
+image = "projects/pxseek.svg"
+tag = "NA"
+tags = ["proteomics", "metadata", "parser", "cli"]
+desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata with local caching."
+github = "https://github.com/LangeLab/pxseek"
+pkg = "https://pypi.org/project/pxseek/"
+docs = "https://github.com/LangeLab/pxseek/wiki"
+
+[[projects]]
+title = "zebrac"
+domain = "core-tooling"
+source = "personal"
+status = "stable"
+stars = 1
+version = "0.5.3"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/zebrac.svg"
+tag = "NA"
+tags = ["benchmarking", "hyperfine", "perf", "cli"]
+desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
+github = "https://github.com/eneskemalergin/zebrac"
+
+[[projects]]
 title = "z-fasta"
 domain = "core-tooling"
 source = "personal"
 status = "active"
 stars = 5
-version = "0.2.7"
+version = "0.2.8"
 language = "Zig"
 pub = "planned"
 access = "public"
@@ -197,24 +230,6 @@ desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibra
 github = "https://github.com/eneskemalergin/loqculate"
 
 [[projects]]
-title = "pxseek"
-domain = "metadata"
-source = "langelab"
-status = "stable"
-stars = 2
-version = "0.5.1"
-language = "Python"
-pub = "na"
-access = "public"
-image = "projects/pxseek.svg"
-tag = "NA"
-tags = ["proteomics", "metadata", "parser", "cli"]
-desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata with local caching."
-github = "https://github.com/LangeLab/pxseek"
-pkg = "https://pypi.org/project/pxseek/"
-docs = "https://github.com/LangeLab/pxseek/wiki"
-
-[[projects]]
 title = "PXAudit"
 domain = "metadata"
 source = "langelab"
@@ -237,7 +252,7 @@ domain = "core-tooling"
 source = "personal"
 status = "active"
 stars = 1
-version = "0.2.0"
+version = "0.3.0"
 language = "Zig"
 pub = "na"
 access = "public"
@@ -248,33 +263,17 @@ desc = "Pure Zig OCI and Docker Registry API v2 toolkit for reference parsing, O
 github = "https://github.com/eneskemalergin/z-oci"
 
 [[projects]]
-title = "zebrac"
-domain = "core-tooling"
-source = "personal"
-status = "active"
-stars = 1
-version = "0.1.0"
-language = "Zig"
-pub = "na"
-access = "public"
-image = "projects/zebrac.svg"
-tag = "NA"
-tags = ["benchmarking", "hyperfine", "perf", "cli"]
-desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
-github = "https://github.com/eneskemalergin/zebrac"
-
-[[projects]]
 title = "mzValidate"
 domain = "standards"
 source = "personal"
 status = "active"
 stars = 1
-version = "0.1.0"
+version = "0.1.3"
 language = "Zig"
 pub = "na"
 access = "public"
 tag = "NA"
-tags = ["MS", "open-data", "validator", "cli"]
+tags = ["MS", "open-data", "validator", "cli", "mzML"]
 desc = "Fast, zero-dependency validator for open proteomics formats, starting with mzML."
 github = "https://github.com/eneskemalergin/mzValidate"
 
@@ -300,7 +299,7 @@ domain = "data-analysis"
 source = "langelab"
 status = "active"
 stars = 0
-version = "0.2.0"
+version = "0.3.2"
 language = "Python"
 pub = "na"
 access = "private"
@@ -315,8 +314,8 @@ title = "pepVet"
 domain = "data-analysis"
 source = "langelab"
 status = "wip"
-stars = 0
-version = "0.1.1"
+stars = 1
+version = "0.1.5"
 language = "R"
 pub = "planned"
 access = "private"
@@ -327,12 +326,44 @@ desc = "R package for proteolytic digest simulation, peptide scoring, enzyme com
 github = "https://github.com/LangeLab/pepVet"
 
 [[projects]]
+title = "XICGuard"
+domain = "data-analysis"
+source = "langelab"
+status = "wip"
+stars = 0
+version = "0.0.5"
+language = "Python"
+pub = "na"
+access = "private"
+image = "projects/XICGuard.svg"
+tag = "NA"
+tags = ["proteomics", "xic", "quality-control", "validation", "plotting"]
+desc = "CLI tool for validating extracted ion chromatograms (XICs), filtering reliable proteins, and interactive plot-based exploration."
+github = "https://github.com/LangeLab/XICGuard"
+
+[[projects]]
+title = "Maskomancy"
+domain = "data-analysis"
+source = "personal"
+status = "wip"
+stars = 0
+version = "0.1.0"
+language = "Python"
+pub = "na"
+access = "private"
+image = "projects/Maskomancy.svg"
+tag = "NA"
+tags = ["unsupervise", "PCA", "Nipals", "missing-data", "proteomics"]
+desc = "Missing-value-tolerant PCA for omics-scale matrices"
+github = "https://github.com/eneskemalergin/Maskomancy"
+
+[[projects]]
 title = "zigR"
 domain = "language-dev"
 source = "personal"
 status = "early"
 stars = 0
-version = "0.0.7"
+version = "0.0.9"
 language = "Zig"
 pub = "na"
 access = "public"
@@ -348,7 +379,7 @@ domain = "language-dev"
 source = "personal"
 status = "early"
 stars = 0
-version = "0.1.0"
+version = "0.2.0"
 language = "Zig"
 pub = "na"
 access = "private"
@@ -359,27 +390,12 @@ desc = "Dependency-free, pure-Zig SVG plotting library and CLI for generating pu
 github = "https://github.com/eneskemalergin/ZagPlot"
 
 [[projects]]
-title = "XICGuard"
-domain = "data-analysis"
-source = "langelab"
-status = "wip"
-stars = 0
-version = "0.0.4"
-language = "Python"
-pub = "na"
-access = "private"
-tag = "NA"
-tags = ["proteomics", "xic", "quality-control", "validation", "plotting"]
-desc = "CLI tool for validating extracted ion chromatograms (XICs), filtering reliable proteins, and interactive plot-based exploration."
-github = "https://github.com/LangeLab/XICGuard"
-
-[[projects]]
 title = "mzBridge"
 domain = "standards"
 source = "personal"
 status = "early"
 stars = 0
-version = "0.0.1"
+version = "0.0.2"
 language = "Zig"
 pub = "na"
 access = "private"

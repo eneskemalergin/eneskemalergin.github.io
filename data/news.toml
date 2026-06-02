@@ -15,7 +15,13 @@
 date = "05/2026"
 type = "release"
 main-page = 0
-content = """Released <a href='https://pypi.org/project/questvar/'>QuEStVar v0.1.0</a> on PyPI. The package now has its own <a href='https://github.com/eneskemalergin/QuEStVar'>GitHub repo</a> and <a href='https://eneskemalergin.github.io/QuEStVar/'>documentation site</a>, separate from the original analysis archive."""
+content = """<a href='https://pypi.org/project/pxseek/'>pxseek</a> published on PyPI. CLI for querying and filtering ProteomeXchange dataset metadata with local caching."""
+
+[[news]]
+date = "05/2026"
+type = "release"
+main-page = 0
+content = """Released <a href='https://pypi.org/project/questvar/'>QuEStVar v0.1.0</a> on PyPI."""
 
 [[news]]
 date = "04/2026"

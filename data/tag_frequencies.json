@@ -1,7 +1,7 @@
 [
   {
     "name": "proteomics",
-    "count": 9
+    "count": 10
   },
   {
     "name": "cli",
@@ -52,6 +52,18 @@
     "count": 1
   },
   {
+    "name": "benchmarking",
+    "count": 1
+  },
+  {
+    "name": "hyperfine",
+    "count": 1
+  },
+  {
+    "name": "perf",
+    "count": 1
+  },
+  {
     "name": "fasta",
     "count": 1
   },
@@ -76,23 +88,15 @@
     "count": 1
   },
   {
-    "name": "benchmarking",
-    "count": 1
-  },
-  {
-    "name": "hyperfine",
-    "count": 1
-  },
-  {
-    "name": "perf",
-    "count": 1
-  },
-  {
     "name": "open-data",
     "count": 1
   },
   {
     "name": "validator",
+    "count": 1
+  },
+  {
+    "name": "mzML",
     "count": 1
   },
   {
@@ -136,6 +140,34 @@
     "count": 1
   },
   {
+    "name": "xic",
+    "count": 1
+  },
+  {
+    "name": "quality-control",
+    "count": 1
+  },
+  {
+    "name": "validation",
+    "count": 1
+  },
+  {
+    "name": "unsupervise",
+    "count": 1
+  },
+  {
+    "name": "PCA",
+    "count": 1
+  },
+  {
+    "name": "Nipals",
+    "count": 1
+  },
+  {
+    "name": "missing-data",
+    "count": 1
+  },
+  {
     "name": "r",
     "count": 1
   },
@@ -157,18 +189,6 @@
   },
   {
     "name": "graphics",
-    "count": 1
-  },
-  {
-    "name": "xic",
-    "count": 1
-  },
-  {
-    "name": "quality-control",
-    "count": 1
-  },
-  {
-    "name": "validation",
     "count": 1
   },
   {
