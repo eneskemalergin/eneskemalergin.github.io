@@ -64,6 +64,22 @@
     "count": 1
   },
   {
+    "name": "batch-effect-correction",
+    "count": 1
+  },
+  {
+    "name": "harmonization",
+    "count": 1
+  },
+  {
+    "name": "multi-omics",
+    "count": 1
+  },
+  {
+    "name": "biostatistics",
+    "count": 1
+  },
+  {
     "name": "fasta",
     "count": 1
   },
@@ -105,22 +121,6 @@
   },
   {
     "name": "codec",
-    "count": 1
-  },
-  {
-    "name": "batch-effect-correction",
-    "count": 1
-  },
-  {
-    "name": "harmonization",
-    "count": 1
-  },
-  {
-    "name": "multi-omics",
-    "count": 1
-  },
-  {
-    "name": "biostatistics",
     "count": 1
   },
   {

@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>{{ taxonomy.name | title }}</h2>
-<p class="section-desc">Browse the topic index and jump into individual tag archives.</p>
+<p class="section-desc">{{ terms | length }} topics across blog posts, projects, and publications. Tags link content by shared themes.</p>
 
 <div class="tag-cloud">
     {% for term in terms %}

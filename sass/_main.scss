@@ -1222,12 +1222,43 @@ html.dark .pub-badge.pub-badge--status-preprint {
 }
 
 .blog-item {
-    padding: 12px 0;
+    padding: 20px 0 18px 15px;
     border-bottom: 1px solid var(--border-color);
+    border-left: 3px solid transparent;
+    margin-left: -15px;
+    transition: border-color 0.2s ease;
 }
 
 .blog-item:last-child {
     border-bottom: none;
+}
+
+.blog-item[data-kind="post"] {
+    border-left-color: var(--c-link);
+}
+
+.blog-item[data-kind="note"] {
+    border-left-color: var(--border-color);
+}
+
+.blog-item[data-kind="opinion"] {
+    border-left-color: var(--c-blog-project);
+}
+
+.blog-item[data-kind="reading"] {
+    border-left-color: var(--c-blog-paper);
+}
+
+.blog-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.blog-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .blog-item--compact {
@@ -1304,24 +1335,81 @@ html.dark .kind-reading {
     margin-bottom: 4px;
 }
 
+.blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-meta-sep {
+    color: var(--text-muted);
+    opacity: 0.5;
+    font-size: 8pt;
+}
+
 .blog-date {
-    font-size: 9pt;
+    font-size: 8pt;
     color: var(--text-muted);
     font-family: 'SFMono-Regular', Consolas, monospace;
+    opacity: 0.75;
+}
+
+.blog-reading-time {
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    opacity: 0.75;
 }
 
 .blog-title {
-    font-size: 11pt;
-    font-weight: 500;
+    font-size: 12.5pt;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0;
 }
 
 .blog-title a {
     color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
 .blog-title a:hover {
     color: var(--c-link);
     text-shadow: var(--glow-link);
+}
+
+.blog-description {
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 300;
+}
+
+.blog-topics {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.topic-pill {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    transition: all 0.15s ease;
+    letter-spacing: 0.02em;
+}
+
+.topic-pill:hover {
+    color: var(--c-link);
+    border-color: var(--c-link-subtle);
+    background: var(--c-link-surface);
 }
 
 /* Pagination */
@@ -1442,6 +1530,28 @@ details[open].archive-month > summary::before {
         position: static;
         width: 100%;
     }
+
+    .blog-item {
+        padding: 16px 0 14px 12px;
+        margin-left: -12px;
+    }
+
+    .blog-title {
+        font-size: 11.5pt;
+    }
+
+    .blog-description {
+        font-size: 9pt;
+    }
+
+    .blog-date {
+        font-size: 7.5pt;
+    }
+
+    .topic-pill {
+        font-size: 7pt;
+        padding: 1px 7px;
+    }
 }
 
 
@@ -1458,6 +1568,12 @@ details[open].archive-month > summary::before {
     border-bottom: 1px solid var(--border-color);
 }
 
+.tag-page-title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
 .tag-page-header h2 {
     margin: 0;
 }
@@ -1469,6 +1585,12 @@ details[open].archive-month > summary::before {
     font-family: 'SFMono-Regular', Consolas, monospace;
 }
 
+.tag-page-count {
+    font-size: 8pt;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
 .tag-page-back {
     font-size: 8.5pt;
     color: var(--text-muted);
@@ -1478,6 +1600,35 @@ details[open].archive-month > summary::before {
 
 .tag-page-back:hover {
     color: var(--c-link);
+}
+
+/* Tag intro */
+.tag-intro {
+    margin-bottom: 30px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-intro p {
+    margin: 0;
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Tag index stats */
+.tag-index-stats {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 9pt;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.tag-stat-sep {
+    margin: 0 8px;
+    opacity: 0.5;
 }
 
 /* Tag cloud: /tags/ index */

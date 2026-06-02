@@ -3,9 +3,26 @@
 {% block content %}
 
 <div class="tag-page-header">
-    <h2><span class="tag-page-label">tag:</span> {{ term.name }}</h2>
+    <div class="tag-page-title">
+        <h2><span class="tag-page-label">tag:</span> {{ term.name }}</h2>
+        <span class="tag-page-count">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
+    </div>
     <a href="{{ get_url(path="/tags/") }}" class="tag-page-back">← all tags</a>
 </div>
+
+{% if term.pages %}
+{% set latest = term.pages | first %}
+{% set earliest = term.pages | last %}
+<div class="tag-intro">
+    {% if latest.date and earliest.date and latest.date != earliest.date %}
+    <p>Writing about {{ term.name }} from {{ earliest.date | date(format="%B %Y") }} to {{ latest.date | date(format="%B %Y") }}.</p>
+    {% elif latest.date %}
+    <p>Writing about {{ term.name }} since {{ latest.date | date(format="%B %Y") }}.</p>
+    {% else %}
+    <p>Posts tagged with {{ term.name }}.</p>
+    {% endif %}
+</div>
+{% endif %}
 
 <div class="blog-layout">
     <div class="blog-main">
@@ -21,16 +38,33 @@
                 data-month="{{ mo }}"
                 data-title="{{ page.title | escape }}"
                 data-href="{{ page.permalink }}">
-                <div class="blog-header">
-                    {% if page.date %}
-                    <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                <div class="blog-item-content">
+                    <div class="blog-title-row">
+                        <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
+                    </div>
+                    <div class="blog-meta">
+                        {% if page.date %}
+                        <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time and page.date %}
+                        <span class="blog-meta-sep">·</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time %}
+                        <span class="blog-reading-time">{{ page.reading_time }} min</span>
+                        {% endif %}
+                    </div>
+                    {% if page.description %}
+                    <p class="blog-description">{{ page.description }}</p>
                     {% endif %}
-                    <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                    {% if page.taxonomies.tags %}
+                    <div class="blog-topics">
+                        {% for tag in page.taxonomies.tags | slice(end=2) %}
+                        <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="topic-pill">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></div>
-                {% if kind == "post" and page.description %}
-                <p class="list-desc">{{ page.description }}</p>
-                {% endif %}
             </li>
             {% endfor %}
         </ul>

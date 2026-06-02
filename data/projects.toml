@@ -125,6 +125,7 @@ image = "projects/proteoforge.jpg"
 tag = "NA"
 tags = ["proteomics", "proteoforms"]
 desc = "Reproducible analysis snapshot for the ProteoForge manuscript. Under revision at J. Proteome Res."
+github = "https://github.com/eneskemalergin/ProteoForge"
 analysis = "https://github.com/LangeLab/ProteoForge_Analysis"
 preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
 
@@ -197,6 +198,23 @@ tag = "NA"
 tags = ["benchmarking", "hyperfine", "perf", "cli"]
 desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
 github = "https://github.com/eneskemalergin/zebrac"
+
+[[projects]]
+title = "HarmonizePy"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 0
+version = "0.3.2"
+language = "Python"
+pub = "na"
+access = "private"
+image = "projects/HarmonizePy.svg"
+tag = "NA"
+tags = ["batch-effect-correction", "harmonization", "multi-omics", "biostatistics"]
+desc = "Batch-effect harmonization toolkit for multi-omics data, ported from HarmonizR with pure-Python validation."
+github = "https://github.com/LangeLab/HarmonizePy"
+docs = "https://github.com/LangeLab/HarmonizePy/wiki"
 
 [[projects]]
 title = "z-fasta"
@@ -292,22 +310,6 @@ tag = "NA"
 tags = ["MS", "mzml", "compression", "codec"]
 desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
 github = "https://github.com/eneskemalergin/mzarc"
-
-[[projects]]
-title = "HarmonizePy"
-domain = "data-analysis"
-source = "langelab"
-status = "active"
-stars = 0
-version = "0.3.2"
-language = "Python"
-pub = "na"
-access = "private"
-image = "projects/HarmonizePy.svg"
-tag = "NA"
-tags = ["batch-effect-correction", "harmonization", "multi-omics", "biostatistics"]
-desc = "Batch-effect harmonization toolkit for multi-omics data, ported from HarmonizR with pure-Python validation."
-github = "https://github.com/LangeLab/HarmonizePy"
 
 [[projects]]
 title = "pepVet"

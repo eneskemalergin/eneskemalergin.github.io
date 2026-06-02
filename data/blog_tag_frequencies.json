@@ -4,15 +4,19 @@
     "count": 3
   },
   {
+    "name": "zig",
+    "count": 3
+  },
+  {
     "name": "statistics",
     "count": 3
   },
   {
-    "name": "zig",
+    "name": "python",
     "count": 2
   },
   {
-    "name": "python",
+    "name": "bioinformatics",
     "count": 2
   },
   {
@@ -52,15 +56,23 @@
     "count": 1
   },
   {
+    "name": "tooling",
+    "count": 1
+  },
+  {
+    "name": "systems-programming",
+    "count": 1
+  },
+  {
+    "name": "opinion",
+    "count": 1
+  },
+  {
     "name": "proteoforge",
     "count": 1
   },
   {
     "name": "proteoforms",
-    "count": 1
-  },
-  {
-    "name": "bioinformatics",
     "count": 1
   },
   {
