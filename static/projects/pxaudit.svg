@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 175 215.71919"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="banner.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   width="175"
+   height="215.71919"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs24" />
+  <sodipodi:namedview
+     id="namedview24"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.0458333"
+     inkscape:cx="51.658085"
+     inkscape:cy="89.969105"
+     inkscape:window-width="3840"
+     inkscape:window-height="2089"
+     inkscape:window-x="2160"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg24" />
+  <!--
+    PXAudit banner — 240×240 square.
+
+    Layout (top → bottom):
+      20 px  top padding
+      icon   100×100, horizontally centered at x=120  (translate 70,20)
+      16 px  gap
+      dots   7 × r=3.5, 14 px center-to-center, representing FAIR tiers 1–7
+      16 px  gap
+      text   "pxaudit" wordmark, font-size=32, baseline y=175
+
+    Single medium-dark background · emerald "px" accent · slate "audit"
+  -->
+  <style
+     id="style1">
+    .bg           { fill: #1E293B; stroke: #0F172A; stroke-width: 1.5; }
+    .text-px      { fill: #34D399; }
+    .text-audit   { fill: #CBD5E1; }
+  </style>
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <!-- ── Icon (100×100 native, centered: translate 70,20) ──────────────── -->
+  <!-- end icon -->
+  <!-- ── 7 tier dots (T1 = purple left → T7 = green right) ─────────────── -->
+  <!--
+    7 dots × r=3.5, 14 px center-to-center, total span 84 px.
+    Centered at x=120: first dot at x=78, last at x=162.
+    y=136 (16 px below gem bottom at y=120).
+  -->
+  <!-- ── Wordmark ───────────────────────────────────────────────────────── -->
+  <!--
+    "px"    bold, accent color  — brand prefix
+    "audit" medium, base color  — descriptive word
+    Baseline at y=175, font-size 32.  text-anchor=middle at x=120.
+  -->
+  <g
+     id="g1"
+     transform="translate(-32.859374,-0.45603009)">
+    <g
+       transform="matrix(1.3811904,0,0,1.3811904,50.803491,5.097314)"
+       id="g16">
+      <!-- 7 triangular facets (top→bottom: T7 opaque emerald → T1 faded gray) -->
+      <!-- 1: Table (TL–TR–IC) — T7: fully opaque emerald -->
+      <polygon
+         points="76,12 50,42 24,12 "
+         fill="#059669"
+         fill-opacity="1"
+         id="polygon2" />
+      <!-- 2: Left crown (TL–L–IC) — T6: strong green -->
+      <polygon
+         points="6,52 50,42 24,12 "
+         fill="#3d9b50"
+         fill-opacity="0.84"
+         id="polygon3" />
+      <!-- 3: Right crown (TR–IC–R) — T5: medium green -->
+      <polygon
+         points="50,42 94,52 76,12 "
+         fill="#509d63"
+         fill-opacity="0.68"
+         id="polygon4" />
+      <!-- 4: Left upper pavilion (L–IC–IP) — T4: muted green -->
+      <polygon
+         points="50,42 50,65 6,52 "
+         fill="#639e76"
+         fill-opacity="0.55"
+         id="polygon5" />
+      <!-- 5: Right upper pavilion (IC–R–IP) — T3: light sage -->
+      <polygon
+         points="94,52 50,65 50,42 "
+         fill="#76a089"
+         fill-opacity="0.42"
+         id="polygon6" />
+      <!-- 6: Left lower pavilion (L–IP–B) — T2: gray-green -->
+      <polygon
+         points="50,65 50,94 6,52 "
+         fill="#89a19c"
+         fill-opacity="0.3"
+         id="polygon7" />
+      <!-- 7: Right lower pavilion (IP–R–B) — T1: gray, most faded -->
+      <polygon
+         points="94,52 50,94 50,65 "
+         fill="#9ca3af"
+         fill-opacity="0.2"
+         id="polygon8" />
+      <!-- Table inner highlight (flat-table light reflection) -->
+      <polygon
+         points="67,16 50,38 33,16 "
+         fill="#ffffff"
+         opacity="0.08"
+         id="polygon9" />
+      <!-- Facet edge lines -->
+      <g
+         stroke="#f1f5f9"
+         stroke-width="0.75"
+         fill="none"
+         opacity="0.22"
+         id="g15">
+        <line
+           x1="24"
+           y1="12"
+           x2="50"
+           y2="42"
+           id="line9" />
+        <line
+           x1="76"
+           y1="12"
+           x2="50"
+           y2="42"
+           id="line10" />
+        <line
+           x1="6"
+           y1="52"
+           x2="50"
+           y2="42"
+           id="line11" />
+        <line
+           x1="94"
+           y1="52"
+           x2="50"
+           y2="42"
+           id="line12" />
+        <line
+           x1="50"
+           y1="42"
+           x2="50"
+           y2="65"
+           id="line13" />
+        <line
+           x1="6"
+           y1="52"
+           x2="50"
+           y2="65"
+           id="line14" />
+        <line
+           x1="94"
+           y1="52"
+           x2="50"
+           y2="65"
+           id="line15" />
+      </g>
+      <!-- Gem outline -->
+      <polygon
+         points="6,52 24,12 76,12 94,52 50,94 "
+         fill="none"
+         stroke="#e2e8f0"
+         stroke-width="1.8"
+         stroke-linejoin="round"
+         id="polygon15"
+         style="stroke:#aad2b5;stroke-opacity:1" />
+      <!-- Magnifying glass (lens in crown, handle toward pavilion) -->
+      <circle
+         cx="44"
+         cy="29"
+         r="8"
+         fill="#ffffff"
+         fill-opacity="0.07"
+         stroke="#ffffff"
+         stroke-width="2.6"
+         opacity="0.86"
+         id="circle15" />
+      <line
+         x1="50"
+         y1="35"
+         x2="58"
+         y2="43"
+         stroke="#ffffff"
+         stroke-width="3.6"
+         stroke-linecap="round"
+         opacity="0.86"
+         id="line16" />
+      <circle
+         cx="41"
+         cy="26"
+         r="1.6"
+         fill="#ffffff"
+         opacity="0.5"
+         id="circle16" />
+    </g>
+    <g
+       id="g24"
+       transform="translate(0,-5.7594543)">
+      <circle
+         cx="61.853016"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#9ca3af"
+         fill-opacity="0.2"
+         id="circle17"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="81.189682"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#89a19c"
+         fill-opacity="0.3"
+         id="circle18"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="100.52634"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#76a089"
+         fill-opacity="0.42"
+         id="circle19"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="119.86301"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#639e76"
+         fill-opacity="0.55"
+         id="circle20"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="139.19968"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#509d63"
+         fill-opacity="0.68"
+         id="circle21"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="158.53635"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#3d9b50"
+         fill-opacity="0.84"
+         id="circle22"
+         style="stroke-width:1.38119" />
+      <circle
+         cx="177.873"
+         cy="151.3154"
+         r="4.8341665"
+         fill="#059669"
+         fill-opacity="1"
+         id="circle23"
+         style="stroke-width:1.38119" />
+    </g>
+    <text
+       x="119.86301"
+       y="187.18182"
+       text-anchor="middle"
+       font-family="Inter, 'Segoe UI', system-ui, '-apple-system', sans-serif"
+       font-size="44.1981px"
+       id="text24"
+       style="stroke-width:1.38119"><tspan
+         class="text-px"
+         font-weight="800"
+         letter-spacing="-0.690595"
+         id="tspan23"
+         style="stroke-width:1.38119">px</tspan><tspan
+         class="text-audit"
+         font-weight="400"
+         letter-spacing="0.414357"
+         id="tspan24"
+         style="stroke-width:1.38119">audit</tspan></text>
+  </g>
+</svg>

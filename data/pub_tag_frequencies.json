@@ -1,0 +1,138 @@
+[
+  {
+    "name": "proteomics",
+    "count": 8
+  },
+  {
+    "name": "mass-spectrometry",
+    "count": 6
+  },
+  {
+    "name": "bioinformatics",
+    "count": 5
+  },
+  {
+    "name": "cancer-biology",
+    "count": 4
+  },
+  {
+    "name": "pediatric-cancer",
+    "count": 4
+  },
+  {
+    "name": "proteoforms",
+    "count": 3
+  },
+  {
+    "name": "statistics",
+    "count": 3
+  },
+  {
+    "name": "quantification",
+    "count": 3
+  },
+  {
+    "name": "genomics",
+    "count": 3
+  },
+  {
+    "name": "leukemia",
+    "count": 3
+  },
+  {
+    "name": "peptide-analysis",
+    "count": 2
+  },
+  {
+    "name": "pdx-models",
+    "count": 2
+  },
+  {
+    "name": "precision-oncology",
+    "count": 2
+  },
+  {
+    "name": "drug-response",
+    "count": 2
+  },
+  {
+    "name": "computational-biology",
+    "count": 2
+  },
+  {
+    "name": "data-analysis",
+    "count": 2
+  },
+  {
+    "name": "imputation",
+    "count": 1
+  },
+  {
+    "name": "equivalence-testing",
+    "count": 1
+  },
+  {
+    "name": "cell-lines",
+    "count": 1
+  },
+  {
+    "name": "ptm",
+    "count": 1
+  },
+  {
+    "name": "visualization",
+    "count": 1
+  },
+  {
+    "name": "web-app",
+    "count": 1
+  },
+  {
+    "name": "shiny",
+    "count": 1
+  },
+  {
+    "name": "phosphoproteomics",
+    "count": 1
+  },
+  {
+    "name": "n-termini",
+    "count": 1
+  },
+  {
+    "name": "enrichment",
+    "count": 1
+  },
+  {
+    "name": "microscale",
+    "count": 1
+  },
+  {
+    "name": "virology",
+    "count": 1
+  },
+  {
+    "name": "drug-discovery",
+    "count": 1
+  },
+  {
+    "name": "docking",
+    "count": 1
+  },
+  {
+    "name": "cchfv",
+    "count": 1
+  },
+  {
+    "name": "protease",
+    "count": 1
+  },
+  {
+    "name": "antivirals",
+    "count": 1
+  },
+  {
+    "name": "virtual-screening",
+    "count": 1
+  }
+]

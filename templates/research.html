@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block content %}
+{% set pubs = load_data(path="data/publications.toml") %}
+{% set presentations = load_data(path="data/presentations.toml") %}
+{% set teaching = load_data(path="data/teaching.toml") %}
+
+<h2>Research</h2>
+
+<div class="research-tabs">
+    <span class="research-tab active" data-tab="publications">Publications</span>
+    <span class="research-tab" data-tab="presentations">Presentations</span>
+    <span class="research-tab" data-tab="teaching">Teaching</span>
+</div>
+
+<div id="publications" class="research-panel active">
+
+    <div class="pub-legend">
+        <span class="pub-legend-item"><i class="fas fa-book-open"></i> journal</span>
+        <span class="pub-legend-item"><i class="fas fa-hourglass-half"></i> under-review</span>
+        <span class="pub-legend-item"><i class="fas fa-graduation-cap"></i> thesis</span>
+        <span class="pub-legend-item"><i class="fas fa-check-circle"></i> published</span>
+        <span class="pub-legend-sep">|</span>
+        <span class="pub-legend-item">&#42; corresponding author</span>
+    </div>
+
+    {% set under_review = pubs.publications | filter(attribute="status", value="under-review") %}
+    {% if under_review %}
+    <div class="timeline-group">
+        <div class="timeline-year">Preprint</div>
+        <div class="timeline-papers">
+        {% for paper in under_review %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% set upcoming_planned = pubs.publications | filter(attribute="status", value="upcoming") %}
+    {% set planned = pubs.publications | filter(attribute="status", value="planned") %}
+    {% if upcoming_planned or planned %}
+    <div class="timeline-group">
+        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-papers">
+        {% for paper in upcoming_planned %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        {% for paper in planned %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% set published = pubs.publications | filter(attribute="status", value="published") %}
+    {% set_global pub_years = [] %}
+    {% for paper in published %}
+      {% if paper.year not in pub_years %}
+        {% set_global pub_years = pub_years | concat(with=paper.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in pub_years | sort | reverse %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ y }}</div>
+        <div class="timeline-papers">
+        {% for paper in published | filter(attribute="year", value=y) %}
+            {{ macros::render_paper(paper=paper) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+<div id="presentations" class="research-panel">
+    {% set_global pres_years = [] %}
+    {% for item in presentations.presentations %}
+      {% if item.year not in pres_years %}
+        {% set_global pres_years = pres_years | concat(with=item.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in pres_years | sort | reverse %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ y }}</div>
+        <div class="timeline-papers">
+        {% for item in presentations.presentations | filter(attribute="year", value=y) %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.title }}</p>
+                <div class="talk-header">
+                    <span class="talk-type
+                      {%- if item.type == "Workshop" %} talk-type--workshop
+                      {%- elif item.type == "Poster" %} talk-type--poster
+                      {%- elif item.type == "Invited Talk" %} talk-type--invited
+                      {%- else %} talk-type--oral{% endif %}">{{ item.type }}</span>
+                    {% if item.role %}<span class="talk-role">{{ item.role }}</span>{% endif %}
+                    <span class="talk-date">{{ item.date }}</span>
+                </div>
+                <div class="talk-meta">{{ item.venue }}{% if item.location %} &middot; {{ item.location }}{% endif %}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="teaching" class="research-panel">
+    {% set_global teach_years = [] %}
+    {% for item in teaching.experiences %}
+      {% if item.year not in teach_years %}
+        {% set_global teach_years = teach_years | concat(with=item.year) %}
+      {% endif %}
+    {% endfor %}
+    {% for y in teach_years | sort | reverse %}
+    <div class="timeline-group">
+        <div class="timeline-year">{{ y }}</div>
+        <div class="timeline-papers">
+        {% for item in teaching.experiences | filter(attribute="year", value=y) %}
+            <div class="paper-card">
+                <p class="paper-title">{{ item.course }}</p>
+                <div class="talk-header">
+                    <span class="talk-type{% if item.role == "TA" %} talk-type--ta{% else %} talk-type--teaching{% endif %}">{{ item.role }}</span>
+                    <span class="talk-date">{{ item.date }}</span>
+                </div>
+                <div class="talk-meta">{{ item.institution }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% set pub_tag_freq = load_data(path="data/pub_tag_frequencies.json") %}
+
+<hr>
+<div class="tag-legend">
+    <span class="tag-legend-label">Tags by appearance:</span>
+    {% for entry in pub_tag_freq %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endfor %}
+</div>
+
+<script>
+(function() {
+    var tabs = document.querySelectorAll('.research-tab');
+    var panels = document.querySelectorAll('.research-panel');
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var name = this.getAttribute('data-tab');
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            this.classList.add('active');
+            document.getElementById(name).classList.add('active');
+        });
+    });
+})();
+</script>
+{% endblock %}

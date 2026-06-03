@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set home = load_data(path="data/home.toml") %}
+
+<div class="hero">
+    <div class="hero-left">
+        {% if home.avatar %}
+        <img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" />
+        {% endif %}
+        <ul class="icons">
+            {% for item in config.extra.social %}
+            <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener"><i class="{{ item.icon }}"></i></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="hero-body">
+        <div class="hero-text">
+            <h2>{{ config.extra.name }}</h2>
+            {% for line in home.titles %}
+            <p>{{ line | safe }}</p>
+            {% endfor %}
+        </div>
+
+        {% for paragraph in home.bio %}
+        <p class="hero-bio">{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% if home.research %}
+<hr>
+<h2>Research interests</h2>
+<ul class="research-list">
+    {% for topic in home.research %}
+    <li>
+        <div class="research-topic">{{ topic.topic }}</div>
+        {% if topic.desc %}
+        <p class="research-desc">{{ topic.desc }}</p>
+        {% endif %}
+        {% if topic.items %}
+        <div class="research-papers">
+            {% for item in topic.items %}
+            <span class="research-paper-item">
+                {% if item.venue %}<span class="research-venue">{{ item.venue }}</span>{% endif %}
+                {% if item.url %}<a href="{{ item.url }}" target="_blank">{% endif %}{{ item.label }}{% if item.url %}</a>{% endif %}
+            </span>{% if not loop.last %}&thinsp;&middot;&thinsp;{% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% set all_news = load_data(path="data/news.toml") %}
+{% if all_news.news %}
+<hr>
+<h2>News</h2>
+<div class="news-list">
+    {% for item in all_news.news %}
+            {% if item["main-page"] == 1 %}
+    <div class="news-item">
+        <span class="news-date">{{ item.date }}</span>
+        <span class="news-type news-type-{{ item.type }}">{{ item.type }}</span>
+        <span class="news-content">{{ item.content | safe }}</span>
+    </div>
+      {% endif %}
+    {% endfor %}
+</div>
+<p class="news-footer"><a href="{{ get_url(path="/news/") }}">View all news</a></p>
+{% endif %}
+{% endblock %}

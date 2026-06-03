@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ taxonomy.name | title }}</h2>
+<p class="section-desc">{{ terms | length }} topics across blog posts, projects, and publications. Tags link content by shared themes.</p>
+
+<div class="tag-cloud">
+    {% for term in terms %}
+    <a href="{{ term.permalink }}" class="tag tag-cloud-item">
+        {{ term.name }}<sup>{{ term.pages | length }}</sup>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

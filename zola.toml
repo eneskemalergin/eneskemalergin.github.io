@@ -1,0 +1,54 @@
+base_url = "https://eneskemalergin.github.io"
+default_language = "en"
+title = "Enes K. Ergin"
+compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+build_search_index = true
+
+[markdown]
+bottom_footnotes = true
+
+[[taxonomies]]
+name = "tags"
+
+[extra]
+name = "Enes K. Ergin, PhD"
+
+menu = [
+    { name = "Home", url = "/" },
+    { name = "Projects", url = "/projects/" },
+    { name = "Research", url = "/research/" },
+    { name = "Blog", url = "/blog/" },
+    { name = "CV", url = "https://github.com/eneskemalergin/My_CV/blob/master/Full_CV_Resonance.pdf" },
+]
+
+[[extra.social]]
+name = "E-Mail"
+url = "mailto:eneskemalergin@gmail.com"
+icon = "fas fa-envelope"
+
+[[extra.social]]
+name = "Bluesky"
+url = "https://bsky.app/profile/eneskemalergin.bsky.social"
+icon = "fa-brands fa-bluesky"
+
+[[extra.social]]
+name = "LinkedIn"
+url = "https://linkedin.com/in/eneskemalergin"
+icon = "fab fa-linkedin"
+
+[[extra.social]]
+name = "GitHub"
+url = "https://github.com/eneskemalergin"
+icon = "fab fa-github"
+
+[[extra.social]]
+name = "ORCID"
+url = "https://orcid.org/0000-0001-9810-7399"
+icon = "ai ai-orcid"
+
+[[extra.social]]
+name = "Google Scholar"
+url = "https://scholar.google.com/citations?user=6iZzHecAAAAJ"
+icon = "ai ai-google-scholar"

@@ -1,0 +1,62 @@
+{% macro render_paper(paper) %}
+<div class="paper-card paper-card-detailed">
+    <div class="paper-main">
+        <div class="paper-left">
+            <div class="paper-thumbnail">
+                {% if paper.image %}
+                <img src="{{ get_url(path=paper.image) }}" alt="{{ paper.title }} figure" loading="lazy" />
+                {% else %}
+                <div class="project-thumb-placeholder">{{ paper.title | truncate(length=1, end="") }}</div>
+                {% endif %}
+            </div>
+            {% if paper.domain %}
+            <span class="pub-domain">{{ paper.domain }}</span>
+            {% endif %}
+            {% if paper.tags %}
+            <div class="pub-tag-list">
+                {% for tag in paper.tags %}
+                <span class="pub-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="paper-body">
+            <div class="paper-badge-row">
+                <span class="paper-venue-inline venue-{{ paper.type }}">{{ paper.venue }}</span>
+                <span class="paper-badge-group">
+                    <span class="pub-badge pub-badge--type-{{ paper.type }}">
+                        {% if paper.type == "journal" %}<i class="fas fa-book-open"></i>
+                        {% elif paper.type == "conference" %}<i class="fas fa-microphone"></i>
+                        {% elif paper.type == "thesis" %}<i class="fas fa-graduation-cap"></i>
+                        {% elif paper.type == "preprint" %}<i class="fas fa-file-lines"></i>{% endif %}
+                        {{ paper.type }}
+                    </span>
+                    <span class="pub-badge pub-badge--status-{{ paper.status }}">
+                        {% if paper.status == "published" %}<i class="fas fa-check-circle"></i>
+                        {% elif paper.status == "under-review" %}<i class="fas fa-hourglass-half"></i>
+                        {% else %}<i class="fas fa-file-lines"></i>{% endif %}
+                        {{ paper.status }}
+                    </span>
+                </span>
+            </div>
+            <span class="paper-title">{{ paper.title | safe }}</span>
+            <p class="paper-authors">{{ paper.authors | safe }}</p>
+            {% if paper.tldr %}
+            <p class="tldr">{{ paper.tldr }}</p>
+            {% endif %}
+            {% if paper.links or (paper.tag and paper.tag != "NA") %}
+            <div class="paper-links">
+                {% if paper.links %}
+                {% for link in paper.links %}
+                <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
+                {% endfor %}
+                {% endif %}
+                {% if paper.tag and paper.tag != "NA" %}
+                <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endmacro render_paper %}

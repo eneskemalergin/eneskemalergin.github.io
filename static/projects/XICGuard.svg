@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   width="500"
+   height="500"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.6983195"
+     inkscape:cx="149.72282"
+     inkscape:cy="315.38148"
+     inkscape:window-width="3840"
+     inkscape:window-height="2089"
+     inkscape:window-x="2160"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11" />
+  <!--
+    Concept: XICGuard monitors both MS1 precursor ions and MS2 fragment ions.
+    Three co-eluting peaks share the same retention time apex (x=50),
+    stacked by intensity. The tallest is the MS1 precursor; the two shorter
+    peaks are MS2 fragment ions. A dashed retention-time axis aligns them,
+    echoing the "alignment scoring" at the heart of reliability assessment.
+  -->
+  <defs
+     id="defs2">
+    <linearGradient
+       id="miShieldGrad"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#EDF4FB"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#C2D8ED"
+         id="stop2" />
+    </linearGradient>
+    <clipPath
+       id="miClip">
+      <path
+         d="M 20,10 Q 50,5 80,10 Q 84,10 84,16 V 63                C 84,63 67,78 50,91                C 33,78 16,63 16,63                V 16 Q 16,10 20,10 Z"
+         id="path2" />
+    </clipPath>
+  </defs>
+  <!-- ── Background square ─────────────────────────────────────-->
+  <!-- Fill: #1A2B3E  — dark anchor of the #355070 blue family       -->
+  <!-- Stroke: #4A7A9B — mid-tone already used for fragment-1 trace; -->
+  <!--   visible against white pages and dark-mode pages alike.      -->
+  <!-- rx=14 gives a modern app-icon corner radius at any scale.     -->
+  <!-- Inset by stroke-width/2 (1.75px) so stroke stays in viewBox. -->
+  <rect
+     x="1.75"
+     y="1.75"
+     width="96.5"
+     height="96.5"
+     rx="14"
+     ry="14"
+     fill="#D4E6F5"
+     stroke="#4A7A9B"
+     stroke-width="1.5"
+     id="rect-bg" />
+  <!-- ── Shield body ─────────────────────────────────────────── -->
+  <path
+     d="m 20,10 c 20,-3.3333333 40,-3.3333333 60,0 2.49052,1.05688 4,2.058949 4,6 V 63 C 84,63 67,78 50,91 33,78 16,63 16,63 V 16 c 0,-4 1.444514,-5.221738 4,-6 z"
+     fill="url(#miShieldGrad)"
+     stroke="#355070"
+     stroke-width="3.5"
+     stroke-linejoin="round"
+     id="path3"
+     sodipodi:nodetypes="ccscccsc" />
+  <!-- ── Dashed RT alignment axis ─────────────────────────────-->
+  <!-- All peaks share the same retention time at x=50 -->
+  <line
+     x1="50"
+     y1="12.000002"
+     x2="50"
+     y2="59.999992"
+     stroke="#355070"
+     stroke-width="1"
+     stroke-dasharray="2, 3"
+     stroke-opacity="0.28"
+     id="line3" />
+  <!-- ── Fragment ion 2 (narrowest, shortest) ──────────────────-->
+  <!-- Represents a lower-intensity MS2 fragment -->
+  <path
+     d="m 34,63 c 6,0 12,-16 16,-16 4,0 10,16 16,16 z"
+     fill="#6b9fbf"
+     fill-opacity="0.18"
+     clip-path="url(#miClip)"
+     id="path4"
+     transform="translate(0,-2)" />
+  <path
+     d="m 34,61 c 6,0 12,-16 16,-16 4,0 10,16 16,16"
+     fill="none"
+     stroke="#6b9fbf"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     opacity="0.7"
+     id="path5" />
+  <!-- ── Fragment ion 1 (medium width and height) ──────────────-->
+  <!-- Represents a higher-intensity MS2 fragment -->
+  <path
+     d="m 28,63 c 7,0 16,-26 22,-26 6,0 15,26 22,26 z"
+     fill="#4a7a9b"
+     fill-opacity="0.18"
+     clip-path="url(#miClip)"
+     id="path6"
+     transform="translate(0,-2)" />
+  <path
+     d="m 28,61 c 7,0 16,-26 22,-26 6,0 15,26 22,26"
+     fill="none"
+     stroke="#4a7a9b"
+     stroke-width="2.1"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     opacity="0.8"
+     id="path7" />
+  <!-- ── Main precursor ion / MS1 (tallest, widest) ────────────-->
+  <path
+     d="m 22,63 c 9,0 21,-36 28,-36 7,0 19,36 28,36 z"
+     fill="#355070"
+     fill-opacity="0.22"
+     clip-path="url(#miClip)"
+     id="path8"
+     transform="translate(0,-2)" />
+  <!-- ── Retention-time baseline ────────────────────────────── -->
+  <line
+     x1="20"
+     y1="60.999992"
+     x2="80"
+     y2="60.999992"
+     stroke="#355070"
+     stroke-width="1.3"
+     stroke-opacity="0.4"
+     id="line8" />
+  <!-- ── MS1 trace (drawn last so it sits on top) ───────────── -->
+  <path
+     d="m 20,61 h 2 c 9,0 21,-36 28,-36 7,0 19,36 28,36 h 2"
+     fill="none"
+     stroke="#355070"
+     stroke-width="2.8"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="path9" />
+  <!-- ── Apex markers (stacked, same x) ────────────────────── -->
+  <circle
+     cx="50"
+     cy="44.999992"
+     r="2"
+     fill="#6b9fbf"
+     opacity="0.8"
+     id="circle9" />
+  <circle
+     cx="50"
+     cy="34.999992"
+     r="2.4000001"
+     fill="#4a7a9b"
+     opacity="0.85"
+     id="circle10" />
+  <circle
+     cx="50"
+     cy="25.000002"
+     r="3.2"
+     fill="#355070"
+     id="circle11" />
+  <!-- ── Checkmark ─────────────────────────────────────────── -->
+  <path
+     d="M 42,75 L 48,82 L 60,70"
+     fill="none"
+     stroke="#355070"
+     stroke-width="2.6"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     opacity="0.72"
+     id="path11" />
+</svg>

@@ -1,0 +1,34 @@
+{#
+Responsive figure wrapper for blog images.
+
+Usage:
+  {{ figure(src="/blog/images/example.png", alt="Example", caption="Figure 1: Example caption.") }}
+
+Optional parameters:
+  label: short right-side tab shown on the figure frame
+  alt_badge: short left-side tab, defaults to alt text when omitted
+  width: CSS width value for the figure container, e.g. "720px" or "92%"
+  class: optional extra class names
+#}
+{% set figure_label = label | default(value="Figure") %}
+{% set figure_alt_badge = alt_badge | default(value=alt | default(value="")) %}
+<figure class="blog-figure{% if class %} {{ class }}{% endif %}"{% if width %} style="max-width: {{ width }};"{% endif %}>
+    <div class="blog-figure-frame">
+        {% if figure_alt_badge or figure_label %}
+        <div class="blog-figure-meta" aria-hidden="true">
+            {% if figure_alt_badge %}
+            <div class="blog-figure-alt" title="{{ alt | default(value=figure_alt_badge) }}">{{ figure_alt_badge }}</div>
+            {% endif %}
+            {% if figure_label %}
+            <div class="blog-figure-label">{{ figure_label }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="blog-figure-media">
+            <img src="{{ src }}" alt="{{ alt | default(value='') }}" loading="lazy" />
+        </div>
+        {% if caption %}
+        <figcaption>{{ caption | markdown | safe }}</figcaption>
+        {% endif %}
+    </div>
+</figure>

@@ -1,0 +1,16 @@
+{#
+A callout / alert box styled like Notion's colored blocks.
+
+Usage:
+  {% callout(type="tip") %}
+  Your content here. Supports **markdown** inline.
+  {% end %}
+
+Parameters:
+  type: "note" (default) | "tip" | "warning" | "danger"
+  icon: optional emoji override (defaults: 💡📝⚠️🚫)
+#}
+<div class="callout callout-{{ type | default(value='note') }}">
+    <span class="callout-icon">{% if icon %}{{ icon }}{% elif type == "tip" %}💡{% elif type == "warning" %}⚠️{% elif type == "danger" %}🚫{% else %}📝{% endif %}</span>
+    <div class="callout-content">{{ body | markdown | safe }}</div>
+</div>

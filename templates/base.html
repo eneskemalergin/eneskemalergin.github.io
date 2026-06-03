@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }}
+        | {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />
+    <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github.min.css" crossorigin="anonymous" id="hljs-theme" />
+    <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" crossorigin="anonymous" onload="hljs.highlightAll();"></script>
+    {% if page.extra.katex %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    {% endif %}
+    <script>
+    (function(){
+        var theme = localStorage.getItem('theme');
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+    })();
+    </script>
+</head>
+
+<body>
+    <nav>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="navbar">
+            {% for item in config.extra.menu %}
+            {% if item.url is starting_with("http") %}
+            <li><a href="{{ item.url }}" target="_blank">{{ item.name }}</a></li>
+            {% else %}
+            {% set rel = "" %}
+            {% if current_url is defined %}{% set rel = current_url | replace(from=config.base_url, to="") %}{% endif %}
+            <li><a href="{{ get_url(path=item.url) }}" {% if rel %}{% if item.url=="/" %}{% if rel=="/" or rel=="" %}
+                    class="active" {% endif %}{% else %}{% if rel is starting_with(item.url) %} class="active" {% endif
+                    %}{% endif %}{% endif %}>{{ item.name }}</a></li>
+            {% endif %}
+            {% endfor %}
+            <li class="nav-toggle">
+                <button class="theme-toggle" aria-label="Switch to dark mode">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb"><span class="toggle-icon"><i class="fas fa-sun"></i></span></span>
+                    </span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="content">
+        {% block content %}{% endblock %}
+        <footer>
+            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}.</p>
+            <p class="footer-built">Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener">Zola</a></p>
+        </footer>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburger = document.querySelector('.hamburger');
+            var navbar = document.querySelector('.navbar');
+            if (!hamburger || !navbar) return;
+            hamburger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.classList.toggle('active');
+                navbar.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', !expanded);
+            });
+            document.querySelectorAll('.navbar a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('active');
+                    navbar.classList.remove('active');
+                });
+            });
+            document.addEventListener('click', function (event) {
+                if (!navbar.contains(event.target) && !hamburger.contains(event.target) && navbar.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navbar.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script>
+    (function() {
+        try {
+            var html = document.documentElement;
+            var toggle = document.querySelector('.theme-toggle');
+            if (!toggle) return;
+            var icon = toggle.querySelector('.toggle-icon');
+            function apply(theme) {
+                var isDark = theme === 'dark';
+                html.classList.toggle('dark', isDark);
+                try { localStorage.setItem('theme', theme); } catch(e) {}
+                if (icon) icon.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+                toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                var hljsLink = document.getElementById('hljs-theme');
+                if (hljsLink) {
+                    hljsLink.href = isDark
+                        ? 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css'
+                        : 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github.min.css';
+                }
+            }
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch(e) {}
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            apply(saved || (prefersDark ? 'dark' : 'light'));
+            toggle.addEventListener('click', function() {
+                apply(html.classList.contains('dark') ? 'light' : 'dark');
+            });
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch(e) {}
+                if (!saved) apply(e.matches ? 'dark' : 'light');
+            });
+        } catch(e) { /* silent fallback */ }
+    })();
+    </script>
+    <script>
+    (function() {
+        document.addEventListener('click', function(e) {
+            var ref = e.target.closest('.sidenote-ref');
+            if (!ref) return;
+            var wasActive = ref.classList.contains('sn-active');
+            document.querySelectorAll('.sidenote-ref.sn-active').forEach(function(el) {
+                el.classList.remove('sn-active');
+            });
+            if (!wasActive) {
+                ref.classList.add('sn-active');
+            }
+        });
+    })();
+    </script>
+</body>
+
+</html>

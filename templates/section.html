@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set blog_tag_freq = load_data(path="data/blog_tag_frequencies.json") %}
+
+<h2>{{ section.title }}</h2>
+{% if section.description %}<p class="section-desc">{{ section.description }}</p>{% endif %}
+
+<div class="blog-tags-bar">
+    {% for entry in blog_tag_freq %}
+    {% if entry.count >= 2 %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endif %}
+    {% endfor %}
+    <a href="{{ get_url(path="/tags/") }}" class="tag">all tags →</a>
+</div>
+
+<div class="blog-tabs" role="tablist">
+    <button class="blog-tab active" data-filter="all">All</button>
+    <button class="blog-tab" data-filter="post">Posts</button>
+    <button class="blog-tab" data-filter="note">Notes</button>
+    <button class="blog-tab" data-filter="opinion">Opinions</button>
+    <button class="blog-tab" data-filter="reading">Reading</button>
+</div>
+
+<div class="blog-layout">
+    <div class="blog-main">
+        {% if section.pages %}
+        <ul class="blog-list" id="blog-list">
+            {% for page in section.pages %}
+            {% set kind = page.extra.kind | default(value="post") %}
+            {% set yr = page.date | date(format="%Y") %}
+            {% set mo = page.date | date(format="%B") %}
+            <li class="blog-item"
+                data-kind="{{ kind }}"
+                data-year="{{ yr }}"
+                data-month="{{ mo }}"
+                data-title="{{ page.title | escape }}"
+                data-href="{{ page.permalink }}">
+                <div class="blog-item-content">
+                    <div class="blog-title-row">
+                        <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
+                    </div>
+                    <div class="blog-meta">
+                        {% if page.date %}
+                        <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time and page.date %}
+                        <span class="blog-meta-sep">·</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time %}
+                        <span class="blog-reading-time">{{ page.reading_time }} min</span>
+                        {% endif %}
+                    </div>
+                    {% if page.description %}
+                    <p class="blog-description">{{ page.description }}</p>
+                    {% endif %}
+                    {% if page.taxonomies.tags %}
+                    <div class="blog-topics">
+                        {% for tag in page.taxonomies.tags | slice(end=3) %}
+                        <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="topic-pill">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="blog-pagination" id="blog-pagination"></div>
+        {% else %}
+        <p class="empty">Nothing here yet.</p>
+        {% endif %}
+    </div>
+
+    <aside class="blog-sidebar">
+        <div id="blog-archive"></div>
+    </aside>
+</div>
+
+<script src="{{ get_url(path="js/blog-list.js") }}"></script>
+<script>
+(function () {
+    var currentFilter = 'all';
+    var currentPage = 1;
+    var allItems = [];
+
+    function getFiltered() {
+        if (currentFilter === 'all') return allItems;
+        return allItems.filter(function (item) { return item.dataset.kind === currentFilter; });
+    }
+
+    function render() {
+        var filtered = getFiltered();
+        var totalPages = Math.ceil(filtered.length / BlogList.PAGE_SIZE);
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        var start = (currentPage - 1) * BlogList.PAGE_SIZE;
+        filtered.slice(start, start + BlogList.PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
+        BlogList.renderPagination(currentPage, totalPages, function (page) {
+            currentPage = page;
+            render();
+            BlogList.buildArchive(getFiltered());
+            document.getElementById('blog-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function init() {
+        allItems = Array.from(document.querySelectorAll('#blog-list .blog-item'));
+        render();
+        BlogList.buildArchive(getFiltered());
+        document.querySelectorAll('.blog-tab').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.blog-tab').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                render();
+                BlogList.buildArchive(getFiltered());
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+}());
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{#
+Styled code block with language label and caption.
+
+Usage:
+  {% code(ln="python", caption="CS1: Data simulation function") %}
+  def hello():
+      print("world")
+  {% end %}
+#}
+{% set code_lang = ln | default(value="code") %}
+<div class="code-block-wrapper">
+    <div class="code-block-header" data-lang="{{ code_lang }}">{{ code_lang | capitalize }}</div>
+    <pre><code class="language-{{ code_lang }}">{{ body | safe }}</code></pre>
+    {% if caption %}
+    <div class="code-block-caption">{{ caption }}</div>
+    {% endif %}
+</div>

@@ -1,0 +1,407 @@
+# -- Project Schema Reference --------------------------------------------------
+#
+# Each [[projects]] entry supports these fields:
+#
+#   title     - Project display name
+#   domain    - Functional area: "data-analysis" | "metadata" | "core-tooling" |
+#               "language-dev" | "standards"
+#   source    - Project origin: "langelab" | "zenteomics" | "personal"
+#   status    - "mature" | "stable" | "active" | "wip" | "early" | "archived"
+#               (also determines timeline stage grouping order)
+#   stars     - GitHub star count (integer, 0 to hide)
+#   version   - Semver string, e.g. "0.3.0".  Default "0.1.0" if omitted.
+#   language  - "Python" | "R" | "Zig" | "Rust" | "C" | "C++" | "C#" |
+#               "LaTeX" | "Go".  Jupyter Notebook is normalized to Python.
+#   pub       - Publication status: "published" | "preprint" | "upcoming" |
+#               "planned" | "na"
+#   access    - Repository visibility: "public" | "private"
+#   image     - Thumbnail path relative to static/  (optional)
+#   tag       - Blog tag slug for cross-linking; "NA" means not yet assigned
+#   tags      - Array of category tag strings        (optional)
+#   desc      - Markdown description string          (optional)
+#   github    - GitHub URL (primary/package repo; used in title link)
+#   analysis  - Separate analysis/reproducibility repo URL (optional)
+#   pkg       - Package registry URL: PyPI | Crates.io | CRAN | Bioconductor (optional)
+#               Label and icon are auto-detected from the URL domain in the template.
+#   docs      - Documentation URL                    (optional)
+#   app       - Live application URL                 (optional)
+#   paper     - Published paper DOI / URL            (optional)
+#   preprint  - Preprint URL                         (optional)
+#
+# -- Head Badges (right-aligned, in order) -------------------------------------
+#
+#   1. Language badge     .lang-badge.lang-{Python|R|Zig|Rust|C|C++|C#|LaTeX|Go}
+#        Python: #3776AB blue,         fa-python icon
+#        R:      #276DC2 blue,         fa-r-project icon
+#        Zig:    #d98e0d amber,        fa-code icon
+#        Rust:   #DEA584 rust-orange,  fa-rust icon
+#        C:      #555555 gray,         fa-code icon
+#        C++:    #00599C blue,         fa-code icon
+#        C#:     #68217A purple,       fa-code icon
+#        LaTeX:  #008080 teal,         fa-file-lines icon
+#        Go:     #00ADD8 light-blue,   fa-golang icon
+#
+#   2. Access badge       .access-badge.access-{public|private}
+#        public:  #059669 green,       fa-lock-open icon
+#        private: #d97706 amber,       fa-lock icon
+#
+#   3. Stars badge        .star-badge (log-normalized colour)
+#        Colour computed by tools/star-colors.py using log normalisation
+#        over the actual star-count range in this file.  Values inlined
+#        as CSS custom properties (--clr, --clr-d, --bdr, --bdr-d, --bg, --bg-d).
+#        Lowest count -> lightest red (#fca5a5), highest -> darkest (#b91c1c).
+#
+#   4. Version badge      .version-badge
+#        Muted gray pill, no variant.
+#
+#   5. Publication badge  .pub-badge.pub-{published|preprint|upcoming|planned|na}
+#        published: #059669 green,     fa-book icon
+#        preprint:  #d97706 amber,     fa-file-lines icon
+#        upcoming:  #2563eb blue,      fa-pen-fancy icon
+#        planned:   #7c3aed purple,    fa-calendar icon
+#        na:        #64748b gray,      fa-minus icon
+#
+# -- Left Column (under thumbnail) ---------------------------------------------
+#
+#   .project-domain    - Uppercase muted label ("DATA-ANALYSIS", "METADATA",
+#                        "CORE-TOOLING", "LANGUAGE-DEV", "STANDARDS")
+#   .project-source    - Uppercase muted label ("LANGELAB", "ZENTEOMICS",
+#                        "PERSONAL")
+#
+# -- Dark Mode -----------------------------------------------------------------
+#   All coloured badges have brighter/saturated dark-mode variants (see CSS).
+#
+# -- Notes ---------------------------------------------------------------------
+#   - Language "Jupyter Notebook" is normalised to "Python" in the data.
+#   - Every project should have pub and access set explicitly.
+#   - Version is optional in the current template, but recommended for public
+#     projects.
+#   - Timeline order in templates/projects.html: mature -> stable -> active ->
+#     wip -> early -> private -> archived.
+#   - Star badge colour is computed by tools/star-colors.py with log
+#     normalisation over the actual star count range in this file.
+#   - Thumbnail is square 130 px (80 px on mobile), border-radius 6px,
+#     1px border, with initial letter placeholder when no image.
+#   - tag = "NA" means blog tag slug not yet assigned (fill later).
+#   - Tag frequency cloud is generated into data/tag_frequencies.json by
+#     tools/tag-freq.py.  Run ./build.sh instead of bare zola build/serve
+#     to regenerate it.
+#   - Star colours and tag frequencies are pre-processed in build.sh:
+#       tools/tag-freq.py     -> data/tag_frequencies.json
+#       tools/star-colors.py  -> data/project_stars.json
+#   - The full badge rendering lives in sass/style.scss and
+#     templates/projects.html.
+
+[[projects]]
+title = "SQuAPP"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 10
+version = "0.3.0"
+language = "R"
+pub = "published"
+access = "public"
+image = "projects/squapp.jpg"
+tag = "squapp"
+tags = ["proteomics", "bioinformatics"]
+desc = "R/Shiny web app for start-to-end quantitative proteomics analysis across protein, peptide, and PTM levels. Published in Bioinformatics (2022)."
+github = "https://github.com/LangeLab/SQuAPP"
+docs = "https://github.com/LangeLab/SQuAPP/wiki"
+app = "http://squapp.langelab.org"
+paper = "https://doi.org/10.1093/bioinformatics/btac628"
+
+[[projects]]
+title = "ProteoForge"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 4
+version = "0.1.0"
+language = "Python"
+pub = "preprint"
+access = "public"
+image = "projects/proteoforge.jpg"
+tag = "proteoforge"
+tags = ["proteomics", "proteoforms"]
+desc = "Reproducible analysis snapshot for the ProteoForge manuscript. Under revision at J. Proteome Res."
+github = "https://github.com/eneskemalergin/ProteoForge"
+analysis = "https://github.com/LangeLab/ProteoForge_Analysis"
+preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
+
+[[projects]]
+title = "QuEStVar"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 2
+version = "0.1.0"
+language = "Python"
+pub = "published"
+access = "public"
+image = "projects/questvar.jpg"
+tag = "questvar"
+tags = ["proteomics", "statistics", "equivalence-testing"]
+desc = "Python package for statistical equivalence testing of protein quantification across conditions. Published in J. Proteome Res. (2024)."
+github = "https://github.com/eneskemalergin/QuEStVar"
+analysis = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript"
+pkg = "https://pypi.org/project/questvar/"
+docs = "https://eneskemalergin.github.io/QuEStVar/"
+paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
+
+[[projects]]
+title = "z-toml"
+domain = "language-dev"
+source = "personal"
+status = "stable"
+stars = 2
+version = "0.4.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/z-toml.svg"
+tag = "ztoml"
+tags = ["toml", "parser", "cli", "library"]
+desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
+github = "https://github.com/eneskemalergin/z-toml"
+
+[[projects]]
+title = "pxseek"
+domain = "metadata"
+source = "langelab"
+status = "stable"
+stars = 2
+version = "0.5.1"
+language = "Python"
+pub = "na"
+access = "public"
+image = "projects/pxseek.svg"
+tag = "pxseek"
+tags = ["proteomics", "metadata", "parser", "cli"]
+desc = "Python CLI for querying, filtering, and retrieving ProteomeXchange dataset metadata with local caching."
+github = "https://github.com/LangeLab/pxseek"
+pkg = "https://pypi.org/project/pxseek/"
+docs = "https://github.com/LangeLab/pxseek/wiki"
+
+[[projects]]
+title = "zebrac"
+domain = "core-tooling"
+source = "personal"
+status = "stable"
+stars = 1
+version = "0.5.3"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/zebrac.svg"
+tag = "zebrac"
+tags = ["benchmarking", "hyperfine", "perf", "cli"]
+desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
+github = "https://github.com/eneskemalergin/zebrac"
+
+[[projects]]
+title = "HarmonizePy"
+domain = "data-analysis"
+source = "langelab"
+status = "stable"
+stars = 0
+version = "0.3.2"
+language = "Python"
+pub = "na"
+access = "public"
+image = "projects/HarmonizePy.svg"
+tag = "harmonizepy"
+tags = ["batch-effect-correction", "harmonization", "multi-omics", "biostatistics"]
+desc = "Pure-Python batch-effect harmonization toolkit for multi-omics data, validated against R HarmonizR, sva::ComBat, and limma."
+github = "https://github.com/LangeLab/HarmonizePy"
+docs = "https://github.com/LangeLab/HarmonizePy/wiki"
+
+[[projects]]
+title = "z-fasta"
+domain = "core-tooling"
+source = "personal"
+status = "active"
+stars = 5
+version = "0.2.8"
+language = "Zig"
+pub = "planned"
+access = "public"
+tag = "zfasta"
+tags = ["bioinformatics", "fasta", "cli"]
+desc = "Zero-dependency FASTA indexer and extractor with SIMD scanning, memory-mapped IO, and samtools-compatible output."
+github = "https://github.com/eneskemalergin/z-fasta"
+
+[[projects]]
+title = "loqculate"
+domain = "data-analysis"
+source = "personal"
+status = "active"
+stars = 4
+version = "0.3.0"
+language = "Python"
+pub = "planned"
+access = "public"
+image = "projects/loqculate.svg"
+tag = "loqculate"
+tags = ["proteomics", "calibration", "lod/loq", "cli", "library"]
+desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
+github = "https://github.com/eneskemalergin/loqculate"
+
+[[projects]]
+title = "PXAudit"
+domain = "metadata"
+source = "langelab"
+status = "active"
+stars = 1
+version = "0.3.0"
+language = "Python"
+pub = "na"
+access = "public"
+image = "projects/pxaudit.svg"
+tag = "pxaudit"
+tags = ["proteomics", "metadata", "fair", "cli"]
+desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
+github = "https://github.com/LangeLab/PXAudit"
+docs = "https://github.com/LangeLab/PXAudit/wiki"
+
+[[projects]]
+title = "z-oci"
+domain = "core-tooling"
+source = "personal"
+status = "active"
+stars = 1
+version = "0.3.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/z-oci.svg"
+tag = "zoci"
+tags = ["oci", "container-registry", "library"]
+desc = "Pure Zig OCI and Docker Registry API v2 toolkit for reference parsing, OCI types, and registry authentication."
+github = "https://github.com/eneskemalergin/z-oci"
+
+[[projects]]
+title = "mzValidate"
+domain = "standards"
+source = "personal"
+status = "active"
+stars = 1
+version = "0.1.3"
+language = "Zig"
+pub = "na"
+access = "public"
+tag = "mzvalidate"
+tags = ["mass-spectrometry", "open-data", "validator", "cli", "mzML"]
+desc = "Fast, zero-dependency validator for open proteomics formats, starting with mzML."
+github = "https://github.com/eneskemalergin/mzValidate"
+
+[[projects]]
+title = "mzarc"
+domain = "standards"
+source = "personal"
+status = "active"
+stars = 1
+version = "0.1.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/mzarc.jpg"
+tag = "mzarc"
+tags = ["mass-spectrometry", "mzML", "compression", "codec"]
+desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
+github = "https://github.com/eneskemalergin/mzarc"
+
+[[projects]]
+title = "pepVet"
+domain = "data-analysis"
+source = "langelab"
+status = "wip"
+stars = 1
+version = "0.1.5"
+language = "R"
+pub = "planned"
+access = "private"
+image = "projects/pepVet-logo.png"
+tag = "pepvet"
+tags = ["proteomics", "digestion-simulation", "peptides", "enzyme-selection", "bottom-up"]
+desc = "R package for proteolytic digest simulation, peptide scoring, enzyme comparison, and prep workflow presets for bottom-up proteomics."
+github = "https://github.com/LangeLab/pepVet"
+
+[[projects]]
+title = "XICGuard"
+domain = "data-analysis"
+source = "langelab"
+status = "wip"
+stars = 0
+version = "0.0.5"
+language = "Python"
+pub = "na"
+access = "private"
+image = "projects/XICGuard.svg"
+tag = "xicguard"
+tags = ["proteomics", "xic", "quality-control", "validation", "plotting"]
+desc = "CLI tool for validating extracted ion chromatograms (XICs), filtering reliable proteins, and interactive plot-based exploration."
+github = "https://github.com/LangeLab/XICGuard"
+
+[[projects]]
+title = "Maskomancy"
+domain = "data-analysis"
+source = "personal"
+status = "wip"
+stars = 0
+version = "0.1.0"
+language = "Python"
+pub = "na"
+access = "private"
+image = "projects/Maskomancy.svg"
+tag = "maskomancy"
+tags = ["unsupervised-learning", "PCA", "Nipals", "missing-data", "proteomics"]
+desc = "Missing-value-tolerant PCA for omics-scale matrices"
+github = "https://github.com/eneskemalergin/Maskomancy"
+
+[[projects]]
+title = "zigR"
+domain = "language-dev"
+source = "personal"
+status = "early"
+stars = 0
+version = "0.0.9"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/zigr.svg"
+tag = "zigr"
+tags = ["r", "zig", "language-binding"]
+desc = "A high-performance bridge for integrating Zig into R."
+github = "https://github.com/eneskemalergin/zigr"
+
+[[projects]]
+title = "zagplot"
+domain = "language-dev"
+source = "personal"
+status = "early"
+stars = 0
+version = "0.2.0"
+language = "Zig"
+pub = "na"
+access = "private"
+image = "projects/zagplot.svg"
+tag = "zagplot"
+tags = ["plotting", "svg", "visualization", "graphics"]
+desc = "Dependency-free, pure-Zig SVG plotting library and CLI for generating publication-quality vector graphics."
+github = "https://github.com/eneskemalergin/ZagPlot"
+
+[[projects]]
+title = "mzBridge"
+domain = "standards"
+source = "personal"
+status = "early"
+stars = 0
+version = "0.0.2"
+language = "Zig"
+pub = "na"
+access = "private"
+tag = "mzbridge"
+tags = ["proteomics", "raw-data", "mzML", "conversion", "reverse-engineering"]
+desc = "Lightning-fast raw data to mzML converter, built in Zig as a research prototype by reverse-engineering vendor Raw files."
+github = "https://github.com/eneskemalergin/mzBridge"

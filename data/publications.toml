@@ -1,0 +1,278 @@
+# --- Publication Schema Reference -------------------------------------------------
+#
+# Each [[publications]] entry supports these fields:
+#
+#   title     - Full paper title (HTML-safe: <i>, <u> etc. pass through)
+#   authors   - Author list.  <u>self</u> highlights your name (cyan, bold).
+#               Append * to the corresponding author's name (e.g. "Lange, P. F.*").
+#               For papers with >6 authors where you are a middle author,
+#               shorten to: First, ... <u>You</u>, ... Last, Last*  (see rule below).
+#   venue     - Journal, conference, or repository display name
+#   domain    - Topic category: "proteomics" | "cancer-biology" | "thesis" | "virology"
+#   year      - Publication year (integer)
+#   type      - "journal" | "conference" | "thesis" | "preprint"
+#   status    - "published" | "preprint" | "under-review" | "upcoming" | "planned"
+#                published    → paper is out, peer-reviewed
+#                under-review → submitted for peer review (shown in Preprint section)
+#                upcoming     → accepted/forthcoming (not yet out)
+#                planned      → in preparation
+#   access    - "open-access" | "closed"
+#   doi       - DOI string (optional).  Use bare identifier, not full URL.
+#   image     - Thumbnail path relative to static/  (optional, e.g. "papers/fig1.jpg")
+#   tag       - Blog tag slug for cross-linking.  "NA" means unassigned.
+#   tags      - Array of up to 8 topic tag strings describing the paper's domain,
+#               methods, and biological context.  First tag used as domain fallback.
+#               Use the harmonized vocabulary below for consistency across papers.
+#   links     - Array of { label, url } objects for Paper, Code, Preprint, etc.
+#   tldr      - Full-paragraph summary.  3-5 sentences explaining the problem,
+#               approach, key finding, and significance.
+#
+# --- Domain categories ----------------------------------------------------------
+#
+#   proteomics        General proteomics, mass-spec workflows, quantification
+#   cancer-biology    Pediatric cancer, leukemia, PDX models, precision oncology
+#   thesis            PhD dissertation / graduate thesis
+#   virology          Viral proteases, pathogen biology, antiviral discovery
+#
+# --- Card badge colours ---------------------------------------------------------
+#
+#   Type badges  (.pub-badge.pub-type-*)
+#     journal:    #2563eb blue      bg: rgba(37,99,235,0.10)     icon: fa-book-open
+#     conference: #7c3aed purple    bg: rgba(139,92,246,0.10)    icon: fa-microphone
+#     thesis:     #059669 green     bg: rgba(5,150,105,0.10)     icon: fa-graduation-cap
+#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.10)     icon: fa-file-lines
+#
+#   Status badges  (.pub-badge.pub-status-*)
+#     published:     #059669 green  bg: rgba(5,150,105,0.10)     icon: fa-check-circle
+#     under-review:  #d97706 amber  bg: rgba(245,158,11,0.10)    icon: fa-hourglass-half
+#     upcoming:      #2563eb blue   bg: rgba(37,99,235,0.10)     icon: fa-clock
+#     planned:       #8b5cf6 purple bg: rgba(139,92,246,0.10)    icon: fa-calendar-plus
+#
+#   Venue badges  (.venue-*  - color-coded by paper type)
+#     journal:    #2563eb blue      bg: rgba(37,99,235,0.08)
+#     conference: #7c3aed purple    bg: rgba(139,92,246,0.08)
+#     thesis:     #059669 green     bg: rgba(5,150,105,0.08)
+#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.08)
+#
+#   Dark mode: all colours shift to more saturated/bright variants (see CSS).
+#
+# --- Card layout ----------------------------------------------------------------
+#
+#   |------------------------------------------------------------------|
+#   | |----------|  [venue badge]  [type badge]  [status badge]        |
+#   | |  thumb   |  Title of the paper                                 |
+#   | |  or init |  Authors with <u>self</u> and corresponding*        |
+#   | |  letter  |  [Paper] [Code] [Blog]                              |
+#   | |--------- |  |------------------------------------------------| |
+#   | | PRO-     |  | TLDR: paragraph summary here...                | |
+#   | | TEOMICS  |  |------------------------------------------------| |
+#   | |          |                                                     |
+#   | | [tag]    |                                                     |
+#   | | [tag]    |                                                     |
+#   | |----------|                                                     |
+#   |------------------------------------------------------------------|
+#
+#   Left column:    thumbnail (130x130, or initial letter + border-radius 6px),
+#                   domain label (uppercase, muted), topic tags (cyan ghost pills)
+#   Badge row:      venue pill (left), type + status pills (right)
+#   Body:           title (bold, 11pt), authors, links, TLDR (stylised box)
+#
+# --- Author shortening rule -----------------------------------------------------
+#   If the paper has more than 6 authors AND the self-author is a middle author,
+#   show:  First Author, ... <u>Self</u>, ... Last Author*.
+#   If the self-author is first or last, or the list has ≤6 authors, show all.
+#
+# --- Harmonized tag vocabulary --------------------------------------------------
+#
+#   Domain:     proteomics, bioinformatics, computational-biology, cancer-biology,
+#               virology
+#   Disease:    pediatric-cancer, leukemia
+#   Model:      pdx-models, cell-lines
+#   Methods:    mass-spectrometry, statistics, equivalence-testing, imputation,
+#               enrichment, docking, virtual-screening, genomics,
+#               phosphoproteomics, quantification
+#   Topics:     proteoforms, ptm, n-termini, drug-response, precision-oncology,
+#               data-analysis, peptide-analysis
+#   Tech:       shiny, web-app, visualization
+#   Specific:   cchfv, protease, antivirals, microscale
+#
+# --- Tag frequency --------------------------------------------------------------
+#   Tags are tallied across all publications by build.sh into
+#   data/pub_tag_frequencies.json, which is loaded by research.html to render
+#   a "Tags by appearance" frequency cloud below the publication list.
+#
+# --- Rendering ------------------------------------------------------------------
+#   templates/research.html   - publications tab, legend, year grouping, tag cloud
+#   templates/macros.html     - render_paper() macro shared across templates
+#   sass/_main.scss           - publication card layout (".paper-card-detailed" etc.)
+
+
+[[publications]]
+title = "ProteoForge: An Imputation-Aware Framework for Differential Proteoform Discovery in Bottom-Up Proteomics"
+authors = "<u>Ergin, E. K.</u>, Conrrero, A., Ferguson, K. M., Lange, P. F.*"
+venue = "bioRxiv"
+domain = "proteomics"
+year = 2025
+type = "preprint"
+status = "under-review"
+access = "open-access"
+doi = "10.64898/2025.12.12.694008"
+image = "publications/Ergin_2026_proteoforge.jpg"
+tag = "proteoforge"
+tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry", "quantification", "peptide-analysis"]
+links = [
+    { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
+]
+tldr = "Standard protein-level quantification hides biologically important variation at the proteoform level, and existing deconvolution methods break down when missing values are common. ProteoForge addresses this with an imputation-aware statistical model that identifies peptides behaving discordantly from their parent protein, clusters co-varying peptides, and constructs differential proteoforms (dPFs). The framework consists of four modules: data processing and normalization, discordant peptide identification, quantitative clustering, and dPF construction. Benchmarking on simulated and spike-in datasets showed that ProteoForge maintains high accuracy and stability even under heavy missingness, outperforming existing deconvolution approaches. Applied to a lung cancer hypoxia dataset, ProteoForge uncovered extensive proteoform-level regulation that conventional protein-level analysis missed entirely."
+
+
+[[publications]]
+title = "Proteomics and personalized PDX models identify treatment for a progressive malignancy within an actionable timeframe"
+authors = "Barnabas, G. D., ... <u>Ergin, E. K.</u>, ... Lange, P. F.*"
+venue = "EMBO Molecular Medicine"
+domain = "cancer-biology"
+year = 2025
+type = "journal"
+status = "published"
+access = "open-access"
+image = "publications/barnabas_2025_profyle.jpg"
+tag = "NA"
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "pdx-models", "precision-oncology", "drug-response", "mass-spectrometry", "genomics"]
+links = [
+    { label = "Paper", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
+]
+tldr = "Translating precision oncology into effective therapies for hard-to-cure childhood malignancies remains a major challenge. This study presents a case for combining proteomics with patient-derived xenograft (PDX) models to identify personalized treatment within a clinically actionable window. For an adolescent with a progressive spindle epithelial tumor with thymus-like elements (SETTLE), proteomics identified elevated SHMT2 as a targetable protein within two weeks of biopsy, pointing to the antidepressant sertraline as a candidate therapy. PDX models grown from the patient's tumor confirmed drug sensitivity. The work demonstrates that proteomics can complement genomics in real-time pediatric oncology, delivering actionable molecular targets faster than genome-only approaches."
+
+
+[[publications]]
+title = "Computational interrogation of proteoform dynamics in pediatric cancer"
+authors = "<u>Ergin, E. K.</u>"
+venue = "PhD Thesis, University of British Columbia"
+domain = "thesis"
+year = 2025
+type = "thesis"
+status = "published"
+access = "open-access"
+image = "publications/thesis-ergin-ubc.jpg"
+tag = "NA"
+tags = ["proteomics", "proteoforms", "computational-biology", "pediatric-cancer", "mass-spectrometry", "bioinformatics", "statistics", "leukemia"]
+links = [
+    { label = "Thesis", url = "https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0448334" },
+]
+tldr = "This thesis develops computational and statistical methods for proteoform-level analysis of bottom-up mass spectrometry data in childhood cancer. Traditional proteomics workflows focus on protein-level readouts, but post-translational modifications and proteoforms carry biologically critical information that protein-level summaries obscure. The work introduces the QuEStVar equivalence testing framework for identifying quantitatively stable and variable proteins across biological systems, and the ProteoForge framework for imputation-aware differential proteoform discovery. Together, these methods shift proteomics analysis from protein-level to peptide-level and fragment-level granularity, enabling detection of regulatory events invisible to conventional approaches. Applications span pediatric leukemia proteomes, cancer cell line panels, and hypoxia-driven proteoform regulation."
+
+
+[[publications]]
+title = "Statistical Testing for Protein Equivalence Identifies Core Functional Modules Conserved across 360 Cancer Cell Lines"
+authors = "<u>Ergin, E. K.</u>, Myung, J. J. K., Lange, P. F.*"
+venue = "Journal of Proteome Research"
+domain = "proteomics"
+year = 2024
+type = "journal"
+status = "published"
+access = "closed"
+doi = "10.1021/acs.jproteome.4c00131"
+image = "publications/Ergin_2024_questvar.gif"
+tag = "questvar"
+tags = ["proteomics", "statistics", "equivalence-testing", "bioinformatics", "cell-lines", "cancer-biology", "quantification", "data-analysis"]
+links = [
+    { label = "Paper", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
+]
+tldr = "Most proteomics analyses focus on what changes between conditions, but knowing what stays the same is equally important. QuEStVar (Quantitative Exploration of Stability and Variability) combines differential testing with two-one-sided t-tests (TOST) for equivalence, classifying each protein as statistically different, equivalent, or indeterminate. Applied to a panel of 360 cancer cell lines spanning 25 tissue types, QuEStVar identified a conserved core proteome whose stable proteins are enriched in transcription, translation, and nucleocytoplasmic transport. These functional modules define the shared molecular machinery that cancer cells maintain regardless of tissue origin or subtype, offering a new lens for studying biological systems through what is preserved rather than what is disrupted."
+
+
+[[publications]]
+title = "Targetable lesions and proteomes predict therapy sensitivity through disease evolution in pediatric acute lymphoblastic leukemia"
+authors = "Lorentzian, A. C., ... <u>Ergin, E. K.</u>, ... Lange, P. F.*"
+venue = "Nature Communications"
+domain = "cancer-biology"
+year = 2023
+type = "journal"
+status = "published"
+access = "open-access"
+doi = "10.1038/s41467-023-42701-9"
+image = "publications/Lorentzian_2022.jpg"
+tag = "NA"
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "leukemia", "genomics", "drug-response", "precision-oncology", "mass-spectrometry"]
+links = [
+    { label = "Paper", url = "https://www.nature.com/articles/s41467-023-42701-9" },
+]
+tldr = "Childhood ALL relapses often arise from subclonal outgrowths, but the impact of clonal evolution on the actionable proteome and drug response is poorly understood. This study presents a comprehensive retrospective analysis of paired diagnosis and relapse ALL specimens using targeted next-generation sequencing and quantitative proteomics. The results show that actionable genome variants and proteomes remain largely stable through disease progression, and paired viably frozen biopsies confirm high correlation of drug response to variant-targeted therapies. Proteome analysis further prioritized PARP1 as a pan-ALL target candidate required for survival following cellular stress, with both diagnostic and relapsed samples showing robust sensitivity to PARP1/2 inhibitors. The findings support initiating precision oncology approaches at diagnosis and incorporating proteome analysis to determine therapy sensitivities likely retained at relapse."
+
+
+[[publications]]
+title = "SQuAPP: Simple Quantitative Analysis of Proteins and PTMs"
+authors = "<u>Ergin, E. K.</u>, Uzozie, A. C., Chen, S., Su, Y., Lange, P. F.*"
+venue = "Bioinformatics"
+domain = "proteomics"
+year = 2022
+type = "journal"
+status = "published"
+access = "open-access"
+doi = "10.1093/bioinformatics/btac628"
+image = "publications/squapp_ergin.jpg"
+tag = "squapp"
+tags = ["proteomics", "bioinformatics", "ptm", "data-analysis", "visualization", "web-app", "quantification", "shiny"]
+links = [
+    { label = "Paper", url = "https://doi.org/10.1093/bioinformatics/btac628" },
+    { label = "Code", url = "https://github.com/LangeLab/SQuAPP" },
+    { label = "App", url = "http://squapp.langelab.org" },
+]
+tldr = "Comprehensive analysis of proteomics data across protein, peptide, and post-translational modification (PTM) levels remains inaccessible to most biologists. SQuAPP is an R/Shiny web application that provides a streamlined workflow for quality control, data preprocessing, statistical analysis, and visualization of quantitative proteomics data. It processes protein, peptide, and PTM datasets in parallel, then integrates them quantitatively. This parallel processing enables rapid identification of protein-level-independent modulation of modifications and intuitive interpretation of dynamic dependencies between different PTMs. SQuAPP is available as an online app, a local R installation, and a Docker container, making it accessible to both expert and novice users without requiring programming."
+
+
+[[publications]]
+title = "PDX models reflect the proteome landscape of pediatric acute lymphoblastic leukemia but divert in select pathways"
+authors = "Uzozie, A. C., <u>Ergin, E. K.</u>, ... Lange, P. F.*"
+venue = "Journal of Experimental and Clinical Cancer Research"
+domain = "cancer-biology"
+year = 2022
+type = "journal"
+status = "published"
+access = "open-access"
+doi = "10.1186/s13046-021-01835-8"
+image = "publications/Uzozie_2021.jpg"
+tag = "NA"
+tags = ["proteomics", "cancer-biology", "pediatric-cancer", "pdx-models", "leukemia", "phosphoproteomics", "genomics", "mass-spectrometry"]
+links = [
+    { label = "Paper", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
+]
+tldr = "Murine xenografts of pediatric leukemia faithfully recapitulate genomic aberrations, but whether this fidelity extends to the functional proteome was unclear. This study performed a multi-level proteomic comparison of 11 pediatric B- and T-cell ALL patients and 19 corresponding xenograft models, examining global protein abundance, phosphorylation, and proteolytic processing. The results show that PDX models broadly reflect the patient proteome landscape, preserving the majority of disease-relevant protein expression patterns. However, select pathways diverge between patient and xenograft, highlighting specific biological contexts where preclinical xenograft data should be interpreted with caution. Targeted next-generation sequencing confirmed retention of key genetic abnormalities across the matched pairs."
+
+
+[[publications]]
+title = "Sensitive determination of proteolytic proteoforms in limited microscale proteome samples"
+authors = "Weng, S. H., ... <u>Ergin, E. K.</u>, ... Lange, P. F.*"
+venue = "Molecular and Cellular Proteomics"
+domain = "proteomics"
+year = 2019
+type = "journal"
+status = "published"
+access = "open-access"
+doi = "10.1074/mcp.RA119.001678"
+image = "publications/Weng-2019.jpg"
+tag = "NA"
+tags = ["proteomics", "proteoforms", "mass-spectrometry", "n-termini", "enrichment", "bioinformatics", "peptide-analysis", "microscale"]
+links = [
+    { label = "Paper", url = "https://www.mcponline.org/article/S1535-9476(20)31769-2/fulltext" },
+]
+tldr = "Protein N termini are definitive markers of truncated, alternatively translated, or modified proteoforms, but existing enrichment methods require large sample amounts that exclude many biologically relevant contexts. This paper introduces HUNTER (High-efficiency Undecanal-based N Termini EnRichment), a scalable and automatable method for N-terminal peptide enrichment from microscale samples. HUNTER identified over 1,000 N termini from as little as 2 micrograms of HeLa cell lysate, opening proteoform-level analysis to previously inaccessible sample types. The method enables proteome-wide, unbiased identification of site-specific regulatory proteolytic processing and protease substrates in samples where time- and space-confined proteolytic events would otherwise go undetected."
+
+
+[[publications]]
+title = "Identification of small molecule binding pocket for inhibition of Crimean-Congo hemorrhagic fever virus OTU protease"
+authors = "Kocabas, F.*, <u>Ergin, E. K.</u>"
+venue = "Turkish Journal of Biology"
+domain = "virology"
+year = 2016
+type = "journal"
+status = "published"
+access = "open-access"
+doi = "10.3906/biy-1501-56"
+image = "publications/kocabas_2016.jpg"
+tag = "NA"
+tags = ["virology", "drug-discovery", "docking", "cchfv", "protease", "antivirals", "computational-biology", "virtual-screening"]
+links = [
+    { label = "Paper", url = "https://doi.org/10.3906/biy-1501-56" },
+]
+tldr = "Crimean-Congo hemorrhagic fever virus (CCHFV) is a tick-borne pathogen with high fatality rates and no approved treatments. The viral OTU protease plays a key role in immune evasion by stripping ubiquitin and ISG15 from host signaling proteins, making it an attractive drug target. This study used molecular docking and virtual screening to map the OTU protease structure and identify small molecule binding pockets capable of inhibiting its activity. Compound libraries were screened against the protease to rank candidate inhibitors by predicted binding affinity and pocket geometry. The work provided early structural insight into druggable sites on the CCHFV OTU domain, laying groundwork for future antiviral development against this neglected pathogen."

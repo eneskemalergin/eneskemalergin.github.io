@@ -1,0 +1,17 @@
+{#
+A collapsible details/summary toggle.
+
+Usage:
+  {% details(summary="Click to expand") %}
+  Hidden content here.
+  {% end %}
+
+Parameters:
+  summary: the toggle label text
+  open: set to "true" to start expanded (default: false)
+#}
+{% set is_open = open | default(value="false") %}
+<details class="blog-details"{% if is_open == "true" %} open{% endif %}>
+    <summary>{{ summary | default(value="Details") }}</summary>
+    <div class="blog-details-content">{{ body | markdown | safe }}</div>
+</details>

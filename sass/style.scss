@@ -1,0 +1,843 @@
+@import "_main";
+@import "_blog";
+
+// ─── Light theme CSS variables ──────────────────────────
+
+:root {
+    --c-link: #006b7b;
+    --c-link-hover-bg: #0093a8;
+    --bg-color: #fbfbf8;
+    --bg-page-top: #f3efe4;
+    --bg-nav-menu: rgba(244, 242, 235, 0.94);
+    --blur-nav-menu: 12px;
+    --text-main: #1e2833;
+    --text-muted: #666666;
+    --border-color: #e0dcd3;
+    --border-nav: rgba(224, 220, 211, 0.88);
+    --shadow-nav-menu: 0 10px 24px rgba(31, 41, 51, 0.12);
+    --c-star: #d97706;
+    --c-planning: #8b5cf6;
+    --c-data-collection: #3b82f6;
+    --c-writing: #f59e0b;
+    --c-editing: #10b981;
+    --c-under-review: #ef4444;
+    --c-active: #2a7a5a;
+    --c-wip: #b45309;
+    --c-blog-wild: #2a7a5a;
+    --c-blog-paper: #7d3c98;
+    --c-blog-project: #b45309;
+    // Derived tokens: theme-aware rgba values
+    --bg-surface: #f4f2eb;
+    --glow-link: 0 0 10px rgba(0, 107, 123, 0.4);
+    --c-link-subtle: rgba(0, 107, 123, 0.3);
+    --c-link-surface: rgba(0, 107, 123, 0.04);
+    --border-c-planning: rgba(139, 92, 246, 0.3);
+    --border-c-data-collection: rgba(59, 130, 246, 0.3);
+    --border-c-writing: rgba(245, 158, 11, 0.3);
+    --border-c-editing: rgba(16, 185, 129, 0.3);
+    --border-c-under-review: rgba(239, 68, 68, 0.3);
+}
+
+:root.dark {
+    --c-link: #2dd4bf;
+    --c-link-hover-bg: #0f766e;
+    --bg-color: #0f172a;
+    --bg-page-top: #162137;
+    --bg-nav-menu: rgba(23, 32, 51, 0.94);
+    --bg-surface: #172033;
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --border-nav: rgba(71, 85, 105, 0.82);
+    --shadow-nav-menu: 0 10px 24px rgba(2, 6, 23, 0.34);
+    --c-star: #fbbf24;
+    --c-planning: #a78bfa;
+    --c-data-collection: #60a5fa;
+    --c-writing: #fbbf24;
+    --c-editing: #34d399;
+    --c-under-review: #f87171;
+    --c-active: #34d399;
+    --c-wip: #fbbf24;
+    --c-blog-wild: #6ee7b7;
+    --c-blog-paper: #c4b5fd;
+    --c-blog-project: #fbbf24;
+    // Derived tokens: theme-aware rgba values
+    --glow-link: 0 0 10px rgba(45, 212, 191, 0.45);
+    --c-link-subtle: rgba(45, 212, 191, 0.3);
+    --c-link-surface: rgba(45, 212, 191, 0.04);
+    --border-c-planning: rgba(167, 139, 250, 0.3);
+    --border-c-data-collection: rgba(96, 165, 250, 0.3);
+    --border-c-writing: rgba(251, 191, 36, 0.3);
+    --border-c-editing: rgba(52, 211, 153, 0.3);
+    --border-c-under-review: rgba(248, 113, 113, 0.3);
+}
+
+// ─── Base backgrounds ───────────────────────────────────
+
+body {
+    background-color: var(--bg-color);
+    background-image: linear-gradient(180deg, var(--bg-page-top) 0%, var(--bg-color) 260px);
+    background-repeat: no-repeat;
+    color: var(--text-main);
+}
+
+html.dark #content p,
+html.dark #content,
+html.dark .talk-title {
+    color: var(--text-muted);
+}
+
+html.dark .page-body li {
+    color: var(--text-muted);
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4,
+html.dark .paper-title,
+html.dark .research-topic,
+html.dark .news-content {
+    color: var(--text-main);
+}
+
+html.dark mark {
+    color: var(--c-link);
+}
+
+html.dark .page-body code {
+    background: var(--bg-surface);
+}
+
+html.dark .page-body blockquote {
+    border-left-color: var(--border-color); // tone down the colored border in dark mode
+}
+
+html.dark .page-body img {
+    opacity: 0.85;
+}
+
+html.dark .talk-type--oral,
+html.dark .talk-type--workshop {
+    background: var(--bg-surface);
+    color: var(--c-link);
+}
+
+html.dark .talk-type--poster,
+html.dark .talk-type--teaching,
+html.dark .talk-type--ta {
+    background: var(--bg-surface);
+    color: var(--text-muted);
+}
+
+// ─── Theme toggle switch ────────────────────────────────
+
+.navbar li.nav-toggle {
+    margin-left: auto;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--c-link-surface);
+}
+
+.toggle-track {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 22px;
+    border-radius: 11px;
+    background: #c8c8c8;
+    transition: background 0.25s;
+    box-sizing: border-box;
+}
+
+html.dark .toggle-track {
+    background: #505050;
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+html.dark .toggle-thumb {
+    transform: translateX(22px);
+}
+
+.toggle-icon {
+    font-size: 16px;
+    line-height: 1;
+    color: #e89520;
+    transition: color 0.25s;
+}
+
+html.dark .toggle-icon {
+    color: #ffee88;
+    text-shadow: 0 0 8px rgba(255, 238, 136, 0.7);
+}
+
+.theme-toggle:hover .toggle-thumb {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+}
+
+.theme-toggle:focus-visible {
+    outline: 1px solid var(--c-link);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.theme-toggle:active .toggle-thumb {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transform: scale(0.92);
+}
+
+html.dark .theme-toggle:active .toggle-thumb {
+    transform: translateX(22px) scale(0.92);
+}
+
+// ─── Project stats ──────────────────────────────────────
+
+.project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 0;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.project-head .project-name a {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.project-head .project-name a:hover {
+    color: var(--c-link);
+    text-shadow: var(--glow-link);
+}
+
+.project-head-badges {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.version-badge {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+    background: rgba(100, 116, 139, 0.08);
+    color: var(--text-muted);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+html.dark .version-badge {
+    background: rgba(148, 163, 184, 0.12);
+    color: var(--text-muted);
+    border-color: rgba(148, 163, 184, 0.25);
+}
+
+.access-badge {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+.access-badge i {
+    margin-right: 2px;
+    font-size: 7pt;
+}
+
+.access-public {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.access-private {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+html.dark .access-public {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .access-private {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+.star-badge {
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+    color: var(--clr);
+    border-color: var(--bdr);
+    background: var(--bg);
+}
+
+html.dark .star-badge {
+    color: var(--clr-d);
+    border-color: var(--bdr-d);
+    background: var(--bg-d);
+}
+
+// ─── Projects page ──────────────────────────────────────
+
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-meta {
+    font-size: 9pt;
+    color: var(--text-muted);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin-bottom: 8px;
+}
+
+.project-tag, .tag, .paper-tag, .blog-tag {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    color: var(--c-link);
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.project-tag,
+.tag {
+    border: 1px solid var(--c-link-subtle);
+}
+
+.project-tag:hover {
+    background-color: var(--c-link-surface);
+    border-color: var(--c-link);
+}
+
+.tag:hover {
+    background-color: var(--c-link-hover-bg);
+    border-color: var(--c-link-hover-bg);
+    color: white;
+}
+
+html.dark .project-tag:hover {
+    background-color: rgba(45, 212, 191, 0.1);
+    border-color: var(--c-link);
+    color: var(--c-link);
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+// ─── Research tabs ──────────────────────────────────────
+
+.research-desc {
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    margin: 0 0 6px 0;
+    line-height: 1.5;
+}
+
+.research-tabs {
+    display: flex;
+    margin: 1em 0 2em 0;
+    border-bottom: 1px solid var(--border-nav);
+}
+
+.navbar a,
+.research-tab {
+    font-size: 10.5pt;
+    color: var(--text-muted);
+    transition: color 0.2s, text-shadow 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.navbar a:hover,
+.research-tab:hover {
+    color: var(--c-link);
+    text-shadow: var(--glow-link);
+    background-color: var(--c-link-surface);
+}
+
+.navbar a.active,
+.research-tab.active {
+    color: var(--c-link);
+    font-weight: 600;
+    background-color: var(--c-link-surface);
+    box-shadow: inset 0 -2px 0 var(--c-link-hover-bg);
+}
+
+.research-tab {
+    font-size: 10.5pt;
+    font-weight: 500;
+    padding: 12px 18px 14px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    user-select: none;
+}
+
+.research-panel {
+    display: none;
+}
+
+.research-panel.active {
+    display: block;
+}
+
+// ─── Generic page / post + section listing ──────────────
+
+.page-header,
+.section-header {
+    margin-bottom: 2em;
+}
+
+.page-header h1,
+.section-header h1 {
+    font-size: 20pt;
+    font-weight: 500;
+    margin: 0;
+}
+
+// .page-meta and .page-body are fully defined in _blog.scss
+
+.section-desc {
+    font-size: 10pt;
+    color: var(--text-muted);
+    margin-top: 0.5em;
+}
+
+.list-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item h2 {
+    font-size: 11pt;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+}
+
+.list-item h2 a {
+    color: var(--text-main);
+}
+
+.list-item h2 a:hover {
+    color: var(--c-link);
+    text-shadow: var(--glow-link);
+}
+
+.list-meta {
+    font-size: 9pt;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.list-desc {
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+// ─── Project timeline card layout ───────────────────────
+
+.project-item-timeline {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.project-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 130px;
+}
+
+.project-thumbnail {
+    width: 130px;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28pt;
+    font-weight: 700;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    letter-spacing: -0.04em;
+    color: var(--c-link);
+    background: var(--bg-surface);
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.project-body {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 700px) {
+    .project-item-timeline {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .project-left {
+        width: 100%;
+        flex-direction: row;
+        gap: 14px;
+        align-items: flex-start;
+    }
+
+    .project-thumbnail {
+        width: 80px;
+        flex-shrink: 0;
+    }
+
+    .project-meta {
+        margin-top: 0;
+        align-items: flex-start;
+    }
+}
+
+// ─── Language badge ─────────────────────────────────────
+
+.lang-badge,
+.pub-badge {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+.lang-badge i,
+.pub-badge i {
+    margin-right: 2px;
+    font-size: 7pt;
+}
+
+.lang-Python {
+    background: rgba(55, 118, 171, 0.1);
+    color: #3776AB;
+    border-color: rgba(55, 118, 171, 0.25);
+}
+
+.lang-R {
+    background: rgba(39, 109, 194, 0.1);
+    color: #276DC2;
+    border-color: rgba(39, 109, 194, 0.25);
+}
+
+.lang-Zig {
+    background: rgba(247, 164, 29, 0.1);
+    color: #d98e0d;
+    border-color: rgba(247, 164, 29, 0.25);
+}
+
+html.dark .lang-Python {
+    background: rgba(100, 160, 220, 0.15);
+    color: #78b4e0;
+    border-color: rgba(100, 160, 220, 0.3);
+}
+
+html.dark .lang-R {
+    background: rgba(80, 150, 230, 0.15);
+    color: #6ea8e8;
+    border-color: rgba(80, 150, 230, 0.3);
+}
+
+html.dark .lang-Zig {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.lang-Rust {
+    background: rgba(222, 165, 132, 0.1);
+    color: #c67a4e;
+    border-color: rgba(222, 165, 132, 0.25);
+}
+
+html.dark .lang-Rust {
+    background: rgba(236, 186, 156, 0.15);
+    color: #e8b892;
+    border-color: rgba(236, 186, 156, 0.3);
+}
+
+.lang-C {
+    background: rgba(85, 85, 85, 0.08);
+    color: #555555;
+    border-color: rgba(85, 85, 85, 0.2);
+}
+
+html.dark .lang-C {
+    background: rgba(160, 160, 160, 0.12);
+    color: #a0a0a0;
+    border-color: rgba(160, 160, 160, 0.25);
+}
+
+.lang-C\2b\2b {
+    background: rgba(0, 89, 156, 0.1);
+    color: #00599C;
+    border-color: rgba(0, 89, 156, 0.25);
+}
+
+html.dark .lang-C\2b\2b {
+    background: rgba(40, 140, 220, 0.15);
+    color: #57a6d6;
+    border-color: rgba(40, 140, 220, 0.3);
+}
+
+.lang-C\23 {
+    background: rgba(104, 33, 122, 0.1);
+    color: #68217A;
+    border-color: rgba(104, 33, 122, 0.25);
+}
+
+html.dark .lang-C\23 {
+    background: rgba(150, 60, 180, 0.15);
+    color: #9b59b6;
+    border-color: rgba(150, 60, 180, 0.3);
+}
+
+.lang-LaTeX {
+    background: rgba(0, 128, 128, 0.1);
+    color: #006666;
+    border-color: rgba(0, 128, 128, 0.25);
+}
+
+html.dark .lang-LaTeX {
+    background: rgba(0, 170, 170, 0.15);
+    color: #1a9e9e;
+    border-color: rgba(0, 170, 170, 0.3);
+}
+
+.lang-Go {
+    background: rgba(0, 173, 216, 0.1);
+    color: #0096b8;
+    border-color: rgba(0, 173, 216, 0.25);
+}
+
+html.dark .lang-Go {
+    background: rgba(50, 195, 240, 0.15);
+    color: #4fc3f7;
+    border-color: rgba(50, 195, 240, 0.3);
+}
+
+// ─── Publication badge ──────────────────────────────────
+
+.pub-published {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.pub-preprint {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+.pub-upcoming {
+    background: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.pub-planned {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.pub-na {
+    background: rgba(100, 116, 139, 0.1);
+    color: var(--text-muted);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+html.dark .pub-published {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .pub-preprint {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+html.dark .pub-upcoming {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.25);
+}
+
+html.dark .pub-planned {
+    background: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+html.dark .pub-na {
+    background: rgba(148, 163, 184, 0.15);
+    color: var(--text-muted);
+    border-color: rgba(148, 163, 184, 0.25);
+}
+
+// ─── Project domain / source label ──────────────────────
+
+.project-domain,
+.project-source {
+    font-size: 7.5pt;
+    line-height: 1.3;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+// ─── Timeline project item border overrides ────────────
+
+.timeline-papers .project-item {
+    border-bottom: 1px solid var(--border-color);
+    border-top: none;
+    padding: 16px 0;
+}
+
+.timeline-papers .project-item:last-child {
+    border-bottom: none;
+}
+
+// ─── Pagination ──────────────────────────────────────────
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+    font-size: 10pt;
+}
+
+.pagination-current {
+    color: var(--text-muted);
+}
+
+.empty {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 10pt;
+}
+
+// ─── 404 ────────────────────────────────────────────────
+
+.error {
+    text-align: center;
+    padding: 4em 0;
+}
+
+.error h1 {
+    font-size: 3em;
+    color: var(--text-muted);
+    font-weight: 100;
+}
+
+.error p {
+    font-size: 11pt;
+    color: var(--text-muted);
+    margin: 1em 0;
+}

@@ -1,0 +1,2117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Abscondia icon v6c — color & polish pass
+  No text.
+
+  All geometry identical to v6b.  Changes:
+    • Disc: richer two-stop radial + thin inner feather gradient ring
+    • Arrows: drawn twice (dark outline under, color fill over) for pop
+    • Origin dot: small cyan ring replaces plain stroke
+    • Rim: added a bright specular crescent arc at top-left
+    • Badge bg: deeper radial with a very faint inner circle ring
+    • Axis lines: slightly warmer blue-gray, slightly thicker
+    • Scatter dots: slight size variation for organic feel
+    • Missing blocks: subtle inner-glow on dark tiles
+-->
+
+<svg
+   viewBox="0 0 200 200"
+   width="200"
+   height="200"
+   version="1.1"
+   id="svg77"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview77"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.7457987"
+     inkscape:cx="26.090313"
+     inkscape:cy="154.76299"
+     inkscape:window-width="3840"
+     inkscape:window-height="2089"
+     inkscape:window-x="2160"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg77" />
+  <defs
+     id="defs26">
+    <marker
+       style="overflow:visible"
+       id="marker78"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.5"
+       markerHeight="0.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path78" />
+    </marker>
+    <!-- ── Clips ── -->
+    <clipPath
+       id="c-disc">
+      <ellipse
+         cx="100"
+         cy="110"
+         rx="76"
+         ry="25"
+         id="ellipse1" />
+    </clipPath>
+    <!-- ── Badge background ── -->
+    <radialGradient
+       id="bg"
+       cx="42%"
+       cy="30%"
+       r="75%">
+      <stop
+         offset="0%"
+         stop-color="#1e3858"
+         id="stop1" />
+      <stop
+         offset="60%"
+         stop-color="#0c1e36"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#060e1a"
+         id="stop3" />
+    </radialGradient>
+    <!-- Subtle inner-ring vignette on badge -->
+    <radialGradient
+       id="bg-vignette"
+       cx="50%"
+       cy="50%"
+       r="50%">
+      <stop
+         offset="65%"
+         stop-color="transparent"
+         id="stop4" />
+      <stop
+         offset="100%"
+         stop-color="#020810"
+         stop-opacity="0.55"
+         id="stop5" />
+    </radialGradient>
+    <!-- ── Disc gradients ── -->
+    <!-- Primary lit fill -->
+    <radialGradient
+       id="disc-fill"
+       cx="43.405457"
+       cy="170.86884"
+       r="71.485942"
+       gradientTransform="scale(1.7435596,0.57353933)"
+       fx="43.405457"
+       fy="170.86884"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#e0f2fe"
+         id="stop6" />
+      <stop
+         offset="38%"
+         stop-color="#7dd3fc"
+         id="stop7" />
+      <stop
+         offset="72%"
+         stop-color="#2c85c0"
+         id="stop8" />
+      <stop
+         offset="100%"
+         stop-color="#1a5a88"
+         stop-opacity="0.80"
+         id="stop9" />
+    </radialGradient>
+    <!-- Shadow overlay for lower-half of disc (3D depth) -->
+    <linearGradient
+       id="disc-shadow"
+       x1="9.9260423"
+       y1="265.96703"
+       x2="9.9260423"
+       y2="328.83197"
+       gradientTransform="scale(2.4178821,0.4135851)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#041020"
+         stop-opacity="0.00"
+         id="stop10" />
+      <stop
+         offset="100%"
+         stop-color="#041020"
+         stop-opacity="0.32"
+         id="stop11" />
+    </linearGradient>
+    <!-- ── Center area glow ── -->
+    <radialGradient
+       id="glow"
+       cx="100"
+       cy="96"
+       r="36"
+       fx="100"
+       fy="96"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#bfdbfe"
+         stop-opacity="0.38"
+         id="stop12" />
+      <stop
+         offset="70%"
+         stop-color="#7dd3fc"
+         stop-opacity="0.10"
+         id="stop13" />
+      <stop
+         offset="100%"
+         stop-color="#7dd3fc"
+         stop-opacity="0.00"
+         id="stop14" />
+    </radialGradient>
+    <!-- ── Metallic rim ── -->
+    <linearGradient
+       id="rim"
+       x1="28"
+       y1="8"
+       x2="172"
+       y2="192"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#e4eff8"
+         id="stop15" />
+      <stop
+         offset="18%"
+         stop-color="#8098b0"
+         id="stop16" />
+      <stop
+         offset="44%"
+         stop-color="#ccdae8"
+         id="stop17" />
+      <stop
+         offset="72%"
+         stop-color="#506880"
+         id="stop18" />
+      <stop
+         offset="100%"
+         stop-color="#a8bccc"
+         id="stop19" />
+    </linearGradient>
+    <!-- ── Arrow markers (userSpaceOnUse — size fixed regardless of stroke) ──
+         Outer (dark) marker: slightly wider, for the shadow-outline trick.
+         Inner (color) marker: the visible arrowhead.
+    ── -->
+    <!-- Pink (inner) -->
+    <marker
+       id="m-pink"
+       markerWidth="16"
+       markerHeight="12"
+       refX="14"
+       refY="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 14 5, 0 10"
+         fill="#f472b6"
+         id="polygon19" />
+    </marker>
+    <!-- Pink (outer shadow) -->
+    <marker
+       id="m-pink-sh"
+       markerWidth="20"
+       markerHeight="16"
+       refX="16"
+       refY="6.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 16 6.5, 0 13"
+         fill="#0d1b2a"
+         opacity="0.55"
+         id="polygon20" />
+    </marker>
+    <!-- Orange (inner) -->
+    <marker
+       id="m-org"
+       markerWidth="16"
+       markerHeight="12"
+       refX="14"
+       refY="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 14 5, 0 10"
+         fill="#fb923c"
+         id="polygon21" />
+    </marker>
+    <!-- Orange (outer shadow) -->
+    <marker
+       id="m-org-sh"
+       markerWidth="20"
+       markerHeight="16"
+       refX="16"
+       refY="6.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 16 6.5, 0 13"
+         fill="#0d1b2a"
+         opacity="0.55"
+         id="polygon22" />
+    </marker>
+    <!-- Amber (inner) -->
+    <marker
+       id="m-amb"
+       markerWidth="16"
+       markerHeight="12"
+       refX="14"
+       refY="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 14 5, 0 10"
+         fill="#fbbf24"
+         id="polygon23" />
+    </marker>
+    <!-- Amber (outer shadow) -->
+    <marker
+       id="m-amb-sh"
+       markerWidth="20"
+       markerHeight="16"
+       refX="16"
+       refY="6.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0 0, 16 6.5, 0 13"
+         fill="#0d1b2a"
+         opacity="0.55"
+         id="polygon24" />
+    </marker>
+    <!-- Axis arrowhead -->
+    <marker
+       id="m-ax"
+       markerWidth="8"
+       markerHeight="7"
+       refX="8"
+       refY="3.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse"
+       viewBox="0 0 8 7"
+       preserveAspectRatio="xMidYMid">
+      <polygon
+         points="0 0, 8 3.5, 0 7"
+         fill="#506070"
+         opacity="0.85"
+         id="polygon25" />
+    </marker>
+    <!-- Tile inner-glow filter -->
+    <filter
+       id="tile-glow"
+       x="-0.225"
+       y="-0.24"
+       width="1.45"
+       height="1.48">
+      <feGaussianBlur
+         in="SourceAlpha"
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur25" />
+      <feFlood
+         flood-color="#38bdf8"
+         flood-opacity="0.40"
+         result="color"
+         id="feFlood25" />
+      <feComposite
+         in="color"
+         in2="blur"
+         operator="in"
+         result="shadow"
+         id="feComposite25" />
+      <feMerge
+         id="feMerge26">
+        <feMergeNode
+           in="shadow"
+           id="feMergeNode25" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode26" />
+      </feMerge>
+    </filter>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath79">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle79" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath80">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle80" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath81">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle81" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath82">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle82" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath83">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle83" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath84">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle84" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath85">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle85" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath86">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle86" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath87">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle87" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath88">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle88" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath89">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle89" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath90">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle90" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath91">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle91" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath93">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle93" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath94">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle94" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath95">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle95" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath96">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle96" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath97">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle97" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath98">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle98" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath99">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle99" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath100">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle100" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath101">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle101" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath102">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle102" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath103">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle103" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath104">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle104" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath105">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle105" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath106">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle106" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath107">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle107" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath108">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle108" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath109">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle109" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath110">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle110" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath111">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle111" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath112">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle112" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath113">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle113" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath114">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle114" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath115">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle115" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath116">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle116" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath117">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle117" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath118">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle118" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath119">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle119" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath120">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle120" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath121">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle121" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath122">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle122" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath123">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle123" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath124">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle124" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath125">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle125" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath126">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle126" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath128">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle128" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath129">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle129" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath130">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle130" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath131">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle131" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath132">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle132" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath133">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle133" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath134">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle134" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath135">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle135" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath136">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle136" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath137">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle137" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath138">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle138" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath95-7">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle95-5" />
+    </clipPath>
+    <marker
+       style="overflow:visible"
+       id="marker78-6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.5"
+       markerHeight="0.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path78-2" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath82-9">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle82-1" />
+    </clipPath>
+    <marker
+       style="overflow:visible"
+       id="marker78-6-0"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.5"
+       markerHeight="0.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path78-2-9" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath82-9-3">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle82-1-6" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-2">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-5">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-5" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-6">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-56" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-7">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-4" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-54">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-7" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-3">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-07" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-8">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-8" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-4">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-9" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-68">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-92" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-9">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-50" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-71">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-72" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-61">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-06" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-94">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-90" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-711">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-59" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-73">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-6" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-948">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-1" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-39">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-08" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-96">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-3" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-1">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-15" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-81">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-03" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-44">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-76" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-962">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-17" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-41">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-85" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-38">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-83" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-64">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-33" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-0">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-48" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-76">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-43" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-92">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-54" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-46">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-922" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-548">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-12" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-680">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-2" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-11">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-085" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-25">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-86" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-24">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-062" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-813">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-11" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-03">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-91" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-33">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-80" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-40">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-04" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-75">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-69" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-82">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-99" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-761">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-32" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-14">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-910" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-70">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-480" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-610">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-42" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-55">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-29" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-380">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-40" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-62">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-544" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-05">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-02" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-51">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-74" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-69">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-422" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-28">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-89" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-86">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-838" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-80">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-47" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath127-1-687">
+      <circle
+         cx="100"
+         cy="100"
+         r="91"
+         id="circle127-0-903" />
+    </clipPath>
+  </defs>
+  <!-- ════════════════════════════════
+       1. Badge background + vignette
+  ════════════════════════════════ -->
+  <!-- /c-badge -->
+  <!-- ════════════════════════════════
+       6. Metallic rim (above clip — always visible)
+  ════════════════════════════════ -->
+  <!-- Main metallic band -->
+  <!-- Inner shadow ring -->
+  <!-- Outer faint specular ring -->
+  <!-- Specular crescent arc: bright highlight at top-left of rim -->
+  <g
+     id="g140"
+     inkscape:label="background">
+    <circle
+       cx="100"
+       cy="100"
+       r="94"
+       fill="url(#bg)"
+       id="circle26" />
+    <circle
+       cx="100"
+       cy="100"
+       r="91"
+       fill="url(#bg-vignette)"
+       id="circle27" />
+    <circle
+       cx="100"
+       cy="100"
+       r="91.8"
+       fill="none"
+       stroke="url(#rim)"
+       stroke-width="5.5"
+       id="circle75" />
+    <circle
+       cx="100"
+       cy="100"
+       r="89.2"
+       fill="none"
+       stroke="#030810"
+       stroke-width="1.4"
+       opacity="0.70"
+       id="circle76" />
+    <circle
+       cx="100"
+       cy="100"
+       r="94.2"
+       fill="none"
+       stroke="white"
+       stroke-width="0.7"
+       opacity="0.18"
+       id="circle77"
+       style="stroke:#f1f1f1;stroke-opacity:1" />
+  </g>
+  <g
+     id="g143"
+     inkscape:label="outliers">
+    <ellipse
+       style="fill:#61798d;fill-opacity:1;stroke:#aac2dc;stroke-width:1.00086077;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.74902;paint-order:fill markers stroke;stroke-miterlimit:3.8"
+       id="path138"
+       cx="28.40815"
+       cy="137.02953"
+       rx="73.265266"
+       ry="31.51281"
+       transform="matrix(0.88007755,-0.47482997,0.52559902,0.85073243,0,0)" />
+    <path
+       style="fill:#040a15;fill-opacity:1;stroke:#b6c6d5;stroke-width:0.6;stroke-miterlimit:3.6;stroke-dasharray:0.60000002, 1.80000007;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;stroke-linecap:round;stroke-linejoin:round"
+       d="m 82.402021,143.08686 -1.390138,-8.99522 10.770316,-5.31673 1.157584,10.6362 z"
+       id="path141" />
+    <path
+       style="fill:#040a15;fill-opacity:1;stroke:#b6c6d5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8;stroke-dasharray:0.6, 1.8;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 163.36094,79.308622 -9.52445,1.222984 -0.63002,6.819059 6.37434,2.594207 z"
+       id="path143" />
+    <path
+       style="fill:#040a15;fill-opacity:1;stroke:#b6c6d5;stroke-width:1;stroke-miterlimit:3.8;stroke-dasharray:1, 3;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;stroke-linecap:round;stroke-linejoin:round"
+       d="m 58.41195,90.487421 5.555555,6.656185 23.362166,-13.488153 -5.568665,-8.052728 -12.054507,7.023061 z"
+       id="path142" />
+    <path
+       style="fill:#040a15;stroke:#b6c6d5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8;stroke-dasharray:0.6, 1.8;paint-order:stroke fill markers"
+       d="m 33.205853,118.74057 13.341637,-5.18841 6.670819,27.8692 -0.741202,5.63313 -9.487387,-1.63064 -8.153222,-4.59546 -4.002492,-6.81905 -0.592961,-5.92962 z"
+       id="path1" />
+  </g>
+  <g
+     id="g139"
+     inkscape:label="axes">
+    <line
+       x1="100"
+       y1="152"
+       x2="100"
+       y2="40"
+       stroke="#405870"
+       stroke-width="1.4"
+       marker-end="url(#m-ax)"
+       opacity="0.8"
+       id="line27"
+       style="stroke:#b6c6d5;stroke-width:1.61013;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker78-6)"
+       clip-path="url(#clipPath96)"
+       transform="matrix(1,0,0,1.0225296,0,-6.038362)" />
+    <line
+       x1="44"
+       y1="64"
+       x2="156"
+       y2="130"
+       stroke="#405870"
+       stroke-width="1.4"
+       marker-end="url(#m-ax)"
+       opacity="0.8"
+       id="line28"
+       style="stroke:#b6c6d5;stroke-width:1.45121;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker78-6)"
+       clip-path="url(#clipPath95)"
+       transform="matrix(0.98596674,0,0,0.98596674,8.4296071,8.4665416)" />
+    <line
+       x1="44"
+       y1="64"
+       x2="156"
+       y2="130"
+       stroke="#405870"
+       stroke-width="1.4"
+       marker-end="url(#m-ax)"
+       opacity="0.8"
+       id="line28-5"
+       style="marker-end:url(#marker78-6);stroke-width:1.38826678;stroke-dasharray:none;stroke:#b6c6d5;stroke-opacity:1"
+       clip-path="url(#clipPath95-7)"
+       transform="matrix(0.6302823,-1.091681,1.091681,0.6302823,-71.431593,149.24028)" />
+  </g>
+  <g
+     id="g141"
+     inkscape:label="points">
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3"
+       clip-path="url(#clipPath127-1)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,23.968443,55.767347)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-1"
+       clip-path="url(#clipPath127-1-2)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,55.341233,68.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-7"
+       clip-path="url(#clipPath127-1-5)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,51.341233,75.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-3"
+       clip-path="url(#clipPath127-1-6)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,49.341233,83.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-2"
+       clip-path="url(#clipPath127-1-7)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,60.341233,77.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-4"
+       clip-path="url(#clipPath127-1-54)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,69.341233,68.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-6"
+       clip-path="url(#clipPath127-1-3)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,64.341233,62.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-31"
+       clip-path="url(#clipPath127-1-8)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,28.829703,51.89735)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-0"
+       clip-path="url(#clipPath127-1-4)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,44.341233,62.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-64"
+       clip-path="url(#clipPath127-1-68)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,35.341233,53.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-8"
+       clip-path="url(#clipPath127-1-9)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,28.341233,61.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-22"
+       clip-path="url(#clipPath127-1-71)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,20.341233,62.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-5"
+       clip-path="url(#clipPath127-1-61)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,36.341233,67.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-17"
+       clip-path="url(#clipPath127-1-94)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,41.341233,76.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-76"
+       clip-path="url(#clipPath127-1-711)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,26.341233,79.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-63"
+       clip-path="url(#clipPath127-1-73)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,27.341233,83.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-9"
+       clip-path="url(#clipPath127-1-948)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,34.341233,86.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-50"
+       clip-path="url(#clipPath127-1-39)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,35.341233,78.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-56"
+       clip-path="url(#clipPath127-1-96)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,39.341233,91.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-84"
+       clip-path="url(#clipPath127-1-1)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,25.341233,102.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-44"
+       clip-path="url(#clipPath127-1-81)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,18.341233,98.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-175"
+       clip-path="url(#clipPath127-1-44)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,20.341233,106.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-57"
+       clip-path="url(#clipPath127-1-962)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,4.341233,101.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-75"
+       clip-path="url(#clipPath127-1-41)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,1.341233,110.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-89"
+       clip-path="url(#clipPath127-1-38)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-6.658767,115.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-86"
+       clip-path="url(#clipPath127-1-64)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-17.658767,116.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-897"
+       clip-path="url(#clipPath127-1-0)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-25.658767,116.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-30"
+       clip-path="url(#clipPath127-1-76)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-39.658767,123.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-59"
+       clip-path="url(#clipPath127-1-92)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-7.658767,112.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-77"
+       clip-path="url(#clipPath127-1-46)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-7.658767,112.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-93"
+       clip-path="url(#clipPath127-1-548)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-26.658767,119.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-05"
+       clip-path="url(#clipPath127-1-680)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-42.658767,103.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-646"
+       clip-path="url(#clipPath127-1-11)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-42.658767,103.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-847"
+       clip-path="url(#clipPath127-1-25)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-30.658767,94.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-90"
+       clip-path="url(#clipPath127-1-24)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-22.658767,77.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-34"
+       clip-path="url(#clipPath127-1-813)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-9.658767,80.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-69"
+       clip-path="url(#clipPath127-1-03)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-6.658767,85.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-66"
+       clip-path="url(#clipPath127-1-33)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-26.658767,90.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-26"
+       clip-path="url(#clipPath127-1-40)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-18.173872,74.008067)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-02"
+       clip-path="url(#clipPath127-1-82)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-10.658767,109.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-599"
+       clip-path="url(#clipPath127-1-761)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-20.658767,111.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-58"
+       clip-path="url(#clipPath127-1-14)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-2.658767,102.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-29"
+       clip-path="url(#clipPath127-1-70)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-25.658767,111.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-20"
+       clip-path="url(#clipPath127-1-610)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-17.658767,122.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-28"
+       clip-path="url(#clipPath127-1-55)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,0.341233,120.01056)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-19"
+       clip-path="url(#clipPath127-1-380)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-5.658767,65.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-936"
+       clip-path="url(#clipPath127-1-62)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,0.341233,82.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-43"
+       clip-path="url(#clipPath127-1-05)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,8.341233,63.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-14"
+       clip-path="url(#clipPath127-1-51)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,18.341233,71.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-41"
+       clip-path="url(#clipPath127-1-69)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,42.341233,85.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-88"
+       clip-path="url(#clipPath127-1-28)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,17.341233,92.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-33"
+       clip-path="url(#clipPath127-1-86)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,4.341233,94.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-890"
+       clip-path="url(#clipPath127-1-80)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-18.658767,95.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-37"
+       clip-path="url(#clipPath127-1-687)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-11.658767,86.010558)" />
+    <circle
+       cx="124"
+       cy="106"
+       r="2.0999999"
+       fill="#ffffff"
+       opacity="0.78"
+       id="circle39-3-72"
+       clip-path="url(#clipPath127-1-75)"
+       transform="matrix(0.46865883,-0.2705803,0.2705803,0.46865883,-24.658767,96.01056)" />
+  </g>
+  <g
+     id="g138"
+     inkscape:label="var-dir"
+     transform="matrix(1.2541174,0,0,1.2541174,-27.881121,-22.807004)">
+    <line
+       x1="100"
+       y1="96"
+       x2="168"
+       y2="116"
+       stroke="#fbbf24"
+       stroke-width="4.5"
+       stroke-linecap="round"
+       marker-end="url(#m-amb)"
+       id="line72"
+       clip-path="url(#clipPath82)"
+       transform="matrix(0.67468153,0.17962563,-0.17962563,0.67468153,51.529088,13.746584)"
+       style="marker-end:url(#marker78)" />
+    <line
+       x1="100"
+       y1="96"
+       x2="168"
+       y2="116"
+       stroke="#fbbf24"
+       stroke-width="4.5"
+       stroke-linecap="round"
+       marker-end="url(#m-amb)"
+       id="line72-7"
+       clip-path="url(#clipPath82-9)"
+       transform="matrix(0.32765553,-0.61652444,0.61652444,0.32765553,10.176385,127.01846)"
+       style="stroke:#f48604;stroke-opacity:1;marker-end:url(#marker78-6)" />
+    <line
+       x1="100"
+       y1="96"
+       x2="168"
+       y2="116"
+       stroke="#fbbf24"
+       stroke-width="4.5"
+       stroke-linecap="round"
+       marker-end="url(#m-amb)"
+       id="line72-7-6"
+       clip-path="url(#clipPath82-9-3)"
+       transform="matrix(-0.51071339,-0.47605921,0.47605921,-0.51071339,107.47464,193.33777)"
+       style="stroke:#f44b04;stroke-opacity:1;marker-end:url(#marker78-6-0)" />
+  </g>
+</svg>

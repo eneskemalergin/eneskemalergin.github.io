@@ -1,0 +1,8 @@
+{#
+A margin sidenote. Output after the paragraph, floated right.
+
+Usage:
+  <p>Some text{% sidenote() %}Note here.{% end %}</p>
+#}
+<span class="sidenote-ref">&#9670;</span>
+<span class="sidenote">{{ body | markdown | replace(from="<p>", to="") | replace(from="</p>", to="") | safe }}</span>

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set data = load_data(path="data/projects.toml") %}
+{% set star_data = load_data(path="data/project_stars.json") %}
+{% set order = ["mature", "stable", "active", "wip", "early", "private", "archived"] %}
+
+<h2>Projects</h2>
+
+{% for stage in order %}
+{% set items = data.projects | filter(attribute="status", value=stage) %}
+{% if items %}
+<div class="timeline-group">
+    <div class="timeline-stage">{{ stage }}</div>
+    <div class="timeline-papers">
+        {% for p in items %}
+        <div class="project-item project-item-timeline">
+            <div class="project-left">
+                <div class="project-thumbnail">
+                    {% if p.image %}
+                    <img src="{{ get_url(path=p.image) }}" alt="{{ p.title }} screenshot" loading="lazy" />
+                    {% else %}
+                    <div class="project-thumb-placeholder">{{ p.title | truncate(length=1, end="") }}</div>
+                    {% endif %}
+                </div>
+                <div class="project-meta">
+                    {% if p.domain %}
+                    <span class="project-domain">{{ p.domain }}</span>
+                    {% endif %}
+                    {% if p.source %}
+                    <span class="project-source">{{ p.source }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="project-body">
+                <div class="project-head">
+                    {% set gh = p | get(key="github", default="") %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
+                    <div class="project-head-badges">
+                        <span class="lang-badge lang-{{ p.language }}">
+                            {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
+                            {% elif p.language == "R" %}<i class="fa-brands fa-r-project"></i>
+                            {% elif p.language == "Rust" %}<i class="fa-brands fa-rust"></i>
+                            {% elif p.language == "Go" %}<i class="fa-brands fa-golang"></i>
+                            {% elif p.language == "LaTeX" %}<i class="fas fa-file-lines"></i>
+                            {% else %}<i class="fas fa-code"></i>{% endif %}
+                            {{ p.language }}
+                        </span>
+                        {% if p.stars and p.stars > 0 %}
+                        <span class="star-badge" style="--clr:{{ star_data[p.title].clr }};--bdr:{{ star_data[p.title].bdr }};--bg:{{ star_data[p.title].bg }};--clr-d:{{ star_data[p.title]["clr-d"] }};--bdr-d:{{ star_data[p.title]["bdr-d"] }};--bg-d:{{ star_data[p.title]["bg-d"] }};">&#9733; {{ p.stars }}</span>
+                        {% endif %}
+                        {% if p.version %}
+                        <span class="version-badge">v{{ p.version }}</span>
+                        {% endif %}
+                        <span class="access-badge access-{{ p.access }}">
+                            {% if p.access == "public" %}<i class="fas fa-lock-open"></i>{% else %}<i class="fas fa-lock"></i>{% endif %}
+                            {{ p.access }}
+                        </span>
+                        <span class="pub-badge pub-badge--status-{{ p.pub }}">
+                            {% if p.pub == "published" %}<i class="fas fa-book"></i>{% elif p.pub == "preprint" %}<i class="fas fa-file-lines"></i>{% elif p.pub == "upcoming" %}<i class="fas fa-pen-fancy"></i>{% elif p.pub == "planned" %}<i class="fas fa-calendar"></i>{% else %}<i class="fas fa-minus"></i>{% endif %}
+                            {{ p.pub }}
+                        </span>
+                    </div>
+                </div>
+                {% if p.tags %}
+                <div class="project-tags">
+                    {% for tag in p.tags %}
+                    <span class="project-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="project-desc">{{ p.desc }}</div>
+                <div class="project-links">
+                    {% set gh = p | get(key="github", default="") %}{% if gh %}<a href="{{ gh }}" class="project-link" target="_blank">GitHub</a>{% endif %}
+                    {% if p.analysis %}<a href="{{ p.analysis }}" class="project-link" target="_blank">Analysis</a>{% endif %}
+                    {% if p.pkg %}
+                    <a href="{{ p.pkg }}" class="project-link" target="_blank">
+                        {%- if "pypi.org" in p.pkg %}PyPI
+                        {%- elif "crates.io" in p.pkg %}Crates.io
+                        {%- elif "cran.r-project.org" in p.pkg or "cran.rstudio.com" in p.pkg %}CRAN
+                        {%- elif "bioconductor.org" in p.pkg %}Bioconductor
+                        {%- else %}Package{%- endif %}
+                    </a>
+                    {% endif %}
+                    {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
+                    {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
+                    {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
+                    {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                    {% if p.tag and p.tag != "NA" %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% set tag_freq = load_data(path="data/tag_frequencies.json") %}
+
+<hr>
+<div class="tag-legend">
+    <span class="tag-legend-label">Tags by appearance:</span>
+    {% for entry in tag_freq %}
+    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endfor %}
+</div>
+{% endblock %}
