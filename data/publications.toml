@@ -118,7 +118,7 @@ status = "under-review"
 access = "open-access"
 doi = "10.64898/2025.12.12.694008"
 image = "publications/Ergin_2026_proteoforge.jpg"
-tag = "NA"
+tag = "proteoforge"
 tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry", "quantification", "peptide-analysis"]
 links = [
     { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
@@ -173,7 +173,7 @@ status = "published"
 access = "closed"
 doi = "10.1021/acs.jproteome.4c00131"
 image = "publications/Ergin_2024_questvar.gif"
-tag = "NA"
+tag = "questvar"
 tags = ["proteomics", "statistics", "equivalence-testing", "bioinformatics", "cell-lines", "cancer-biology", "quantification", "data-analysis"]
 links = [
     { label = "Paper", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },

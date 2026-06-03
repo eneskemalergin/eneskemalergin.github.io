@@ -12,6 +12,10 @@
     "count": 3
   },
   {
+    "name": "mzml",
+    "count": 3
+  },
+  {
     "name": "bioinformatics",
     "count": 2
   },
@@ -24,11 +28,7 @@
     "count": 2
   },
   {
-    "name": "MS",
-    "count": 2
-  },
-  {
-    "name": "mzml",
+    "name": "mass-spectrometry",
     "count": 2
   },
   {
@@ -112,10 +112,6 @@
     "count": 1
   },
   {
-    "name": "mzML",
-    "count": 1
-  },
-  {
     "name": "compression",
     "count": 1
   },
@@ -152,7 +148,7 @@
     "count": 1
   },
   {
-    "name": "unsupervise",
+    "name": "unsupervised-learning",
     "count": 1
   },
   {
