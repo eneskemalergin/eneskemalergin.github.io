@@ -1,6 +1,6 @@
 /* blog-list.js : shared utilities for blog listing and tag pages */
 var BlogList = (function () {
-    var PAGE_SIZE = 10;
+    var PAGE_SIZE = 5;
     var MONTH_ORDER = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'

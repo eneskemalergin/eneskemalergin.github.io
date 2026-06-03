@@ -8,7 +8,7 @@ description = "Nextflow and Snakemake both get the big things right and the smal
 
 [taxonomies]
 
-tags = ["zig", "bioinformatics", "workflow-engines", "tooling", "opinion"]
+tags = ["zig", "workflow-engines", "bioinformatics", "tooling"]
 
 [extra]
 

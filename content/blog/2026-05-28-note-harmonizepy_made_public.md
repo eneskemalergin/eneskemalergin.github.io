@@ -3,7 +3,7 @@ title = "HarmonizePy: HarmonizR's Approach, in Python"
 date = 2026-05-28
 description = "A note on making HarmonizePy public, and why we wanted a Python version of HarmonizR's missing-value-aware batch correction."
 [taxonomies]
-tags = ["proteomics", "batch-effect-correction", "harmonization", "python", "tooling", "note", "harmonizepy"]
+tags = ["proteomics", "batch-effect-correction", "harmonization", "statistics", "multi-omics", "biostatistics", "python", "tooling", "harmonizepy"]
 [extra]
 kind = "note"
 +++

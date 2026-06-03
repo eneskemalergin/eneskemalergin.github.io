@@ -3,7 +3,7 @@ title = "zebrac: Why I Forked poop"
 date = 2026-05-05
 description = "A note on why I forked Andrew Kelley's poop into zebrac, what I have added so far, and the direction I want to take it next."
 [taxonomies]
-tags = ["zig", "benchmarking", "linux", "performance", "tooling", "poop", "hyperfine", "note", "zebrac"]
+tags = ["zig", "benchmarking", "performance", "linux", "tooling", "hyperfine", "poop", "zebrac"]
 [extra]
 kind = "note"
 +++

@@ -3,7 +3,7 @@ title = "proDA"
 date = 2020-05-05
 description = "Probabilistic dropout analysis for label-free proteomics. Handles missing values by modeling dropout curves instead of imputing."
 [taxonomies]
-tags = ["proteomics", "statistics", "quantification", "differential-abundance"]
+tags = ["proteomics", "proteoforms", "quantification", "mass-spectrometry", "statistics", "bioinformatics", "differential-abundance"]
 [extra]
 kind = "reading"
 featured_image = "/blog/images/proda/proDA_fig2.jpg"

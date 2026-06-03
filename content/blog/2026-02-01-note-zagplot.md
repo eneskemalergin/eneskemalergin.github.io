@@ -3,7 +3,7 @@ title = "ZagPlot: An Experiment in Learning Zig Through Plotting"
 date = 2026-02-01
 description = "A note on what I am doing with ZagPlot, a small private Zig plotting project. Not a finished tool, just an excuse to learn graphics, API design, and Zig's systems story from the inside."
 [taxonomies]
-tags = ["zig", "plotting", "visualization", "learning", "tooling", "note", "zagplot"]
+tags = ["zig", "plotting", "svg", "graphics", "visualization", "cli", "tooling", "zagplot"]
 [extra]
 kind = "note"
 +++

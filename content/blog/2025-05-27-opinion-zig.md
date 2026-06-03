@@ -3,7 +3,7 @@ title = "Why I'm Learning Zig Instead of Doubling Down on Rust"
 date = 2025-05-25
 description = "I already knew Rust. I'm learning Zig anyway. Not because it's better, but because it fits a specific kind of work: small, fast tools that live forever in pipelines. An early take, not a manifesto."
 [taxonomies]
-tags = ["zig", "bioinformatics", "tooling", "systems-programming", "opinion"]
+tags = ["zig", "systems-programming", "bioinformatics", "tooling"]
 [extra]
 kind = "opinion"
 +++

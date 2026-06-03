@@ -3,7 +3,7 @@ title = "pxseek: From a Selenium Script to a PyPI Package"
 date = 2026-05-26
 description = "The story of a small ProteomeXchange metadata tool that started as a fragile Selenium parser and became a PyPI package the lab can actually depend on."
 [taxonomies]
-tags = ["proteomics", "metadata", "proteomexchange", "python", "cli", "tooling", "pxseek"]
+tags = ["proteomics", "metadata", "proteomexchange", "cli", "python", "tooling", "open-data", "pxseek"]
 [extra]
 kind = "note"
 +++

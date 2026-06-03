@@ -8,8 +8,11 @@
 
 <div class="blog-tags-bar">
     {% for entry in blog_tag_freq %}
+    {% if entry.count >= 2 %}
     <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {% endif %}
     {% endfor %}
+    <a href="{{ get_url(path="/tags/") }}" class="tag">all tags →</a>
 </div>
 
 <div class="blog-tabs" role="tablist">
@@ -55,7 +58,7 @@
                     {% endif %}
                     {% if page.taxonomies.tags %}
                     <div class="blog-topics">
-                        {% for tag in page.taxonomies.tags | slice(end=2) %}
+                        {% for tag in page.taxonomies.tags | slice(end=3) %}
                         <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="topic-pill">{{ tag }}</a>
                         {% endfor %}
                     </div>

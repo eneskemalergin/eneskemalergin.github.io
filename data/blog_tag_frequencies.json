@@ -1,38 +1,54 @@
 [
   {
     "name": "proteomics",
-    "count": 16
-  },
-  {
-    "name": "zig",
-    "count": 11
+    "count": 17
   },
   {
     "name": "tooling",
-    "count": 9
+    "count": 11
   },
   {
     "name": "bioinformatics",
-    "count": 7
+    "count": 11
+  },
+  {
+    "name": "zig",
+    "count": 10
   },
   {
     "name": "mass-spectrometry",
-    "count": 7
+    "count": 10
   },
   {
     "name": "statistics",
-    "count": 6
-  },
-  {
-    "name": "opinion",
-    "count": 5
+    "count": 7
   },
   {
     "name": "cli",
+    "count": 6
+  },
+  {
+    "name": "mzML",
     "count": 5
   },
   {
+    "name": "performance",
+    "count": 4
+  },
+  {
+    "name": "benchmarking",
+    "count": 4
+  },
+  {
     "name": "python",
+    "count": 4
+  },
+  {
+    "name": "proteoforms",
+    "count": 4
+  },
+  {
+    "name": "quantification",
     "count": 4
   },
   {
@@ -40,15 +56,11 @@
     "count": 3
   },
   {
-    "name": "performance",
-    "count": 3
-  },
-  {
     "name": "r",
     "count": 3
   },
   {
-    "name": "benchmarking",
+    "name": "equivalence-testing",
     "count": 3
   },
   {
@@ -56,15 +68,19 @@
     "count": 3
   },
   {
-    "name": "note",
+    "name": "reverse-engineering",
     "count": 3
   },
   {
-    "name": "quantification",
+    "name": "open-science",
     "count": 3
   },
   {
-    "name": "proteoforms",
+    "name": "open-data",
+    "count": 3
+  },
+  {
+    "name": "conversion",
     "count": 3
   },
   {
@@ -76,7 +92,7 @@
     "count": 2
   },
   {
-    "name": "post",
+    "name": "language-binding",
     "count": 2
   },
   {
@@ -85,6 +101,14 @@
   },
   {
     "name": "plotting",
+    "count": 2
+  },
+  {
+    "name": "svg",
+    "count": 2
+  },
+  {
+    "name": "graphics",
     "count": 2
   },
   {
@@ -104,11 +128,19 @@
     "count": 2
   },
   {
-    "name": "open-science",
+    "name": "multi-omics",
     "count": 2
   },
   {
-    "name": "mzML",
+    "name": "biostatistics",
+    "count": 2
+  },
+  {
+    "name": "vendor-formats",
+    "count": 2
+  },
+  {
+    "name": "file-formats",
     "count": 2
   },
   {
@@ -117,14 +149,6 @@
   },
   {
     "name": "metadata",
-    "count": 2
-  },
-  {
-    "name": "equivalence-testing",
-    "count": 2
-  },
-  {
-    "name": "mzml",
     "count": 2
   },
   {
@@ -152,19 +176,11 @@
     "count": 1
   },
   {
-    "name": "omics",
-    "count": 1
-  },
-  {
     "name": "questvar",
     "count": 1
   },
   {
     "name": "mzarc",
-    "count": 1
-  },
-  {
-    "name": "reading",
     "count": 1
   },
   {
@@ -177,10 +193,6 @@
   },
   {
     "name": "rescoring",
-    "count": 1
-  },
-  {
-    "name": "learning",
     "count": 1
   },
   {
@@ -232,10 +244,6 @@
     "count": 1
   },
   {
-    "name": "file-formats",
-    "count": 1
-  },
-  {
     "name": "health",
     "count": 1
   },
@@ -261,14 +269,6 @@
   },
   {
     "name": "dia",
-    "count": 1
-  },
-  {
-    "name": "vendor-formats",
-    "count": 1
-  },
-  {
-    "name": "open-data",
     "count": 1
   },
   {
@@ -312,35 +312,7 @@
     "count": 1
   },
   {
-    "name": "multi-omics",
-    "count": 1
-  },
-  {
-    "name": "biostatistics",
-    "count": 1
-  },
-  {
-    "name": "language-binding",
-    "count": 1
-  },
-  {
-    "name": "svg",
-    "count": 1
-  },
-  {
-    "name": "graphics",
-    "count": 1
-  },
-  {
     "name": "raw-data",
-    "count": 1
-  },
-  {
-    "name": "conversion",
-    "count": 1
-  },
-  {
-    "name": "reverse-engineering",
     "count": 1
   },
   {

@@ -3,7 +3,7 @@ title = "QuEStVar v0.1.0 is out"
 date = 2026-05-22
 description = "Release note for QuEStVar v0.1.0. Python package for paired equivalence and difference testing, now stable on PyPI."
 [taxonomies]
-tags = ["omics", "statistics", "python", "questvar"]
+tags = ["proteomics", "statistics", "equivalence-testing", "bioinformatics", "python", "questvar"]
 [extra]
 kind = "note"
 +++

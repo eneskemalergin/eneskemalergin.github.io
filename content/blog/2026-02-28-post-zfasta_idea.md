@@ -3,7 +3,7 @@ title = "z-fasta: Indexing FASTA 17x Faster, and All the Things It Still Cannot 
 date = 2026-02-28
 description = "Zero-dependency FASTA indexing that matches samtools byte-for-byte while running up to 17x faster. Built in Zig with SIMD and mmap. Also: a proof of concept that needs Zig 0.14, has no gzip support, and cannot extract sequences yet."
 [taxonomies]
-tags = ["zig", "bioinformatics", "fasta", "simd", "performance", "tooling", "post", "zfasta"]
+tags = ["zig", "bioinformatics", "fasta", "simd", "performance", "tooling", "zfasta"]
 [extra]
 kind = "post"
 katex = false

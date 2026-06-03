@@ -3,7 +3,7 @@ title = "Vendor-Locked MS Files and Open Formats, a Collision"
 date = 2025-12-28
 description = "Thermo locks its format behind Windows DLLs. Bruker does better. Spectronaut adds its own proprietary layer on top. Open formats are inevitable, but the real bottleneck is proprietary converters in the middle."
 [taxonomies]
-tags = ["proteomics", "open-science", "mass-spectrometry", "file-formats", "mzML", "opinion"]
+tags = ["proteomics", "mass-spectrometry", "vendor-formats", "file-formats", "reverse-engineering", "open-science", "open-data", "conversion", "mzML"]
 [extra]
 kind = "opinion"
 +++

@@ -291,7 +291,7 @@ language = "Zig"
 pub = "na"
 access = "public"
 tag = "mzvalidate"
-tags = ["mass-spectrometry", "open-data", "validator", "cli", "mzml"]
+tags = ["mass-spectrometry", "open-data", "validator", "cli", "mzML"]
 desc = "Fast, zero-dependency validator for open proteomics formats, starting with mzML."
 github = "https://github.com/eneskemalergin/mzValidate"
 
@@ -307,7 +307,7 @@ pub = "na"
 access = "public"
 image = "projects/mzarc.jpg"
 tag = "mzarc"
-tags = ["mass-spectrometry", "mzml", "compression", "codec"]
+tags = ["mass-spectrometry", "mzML", "compression", "codec"]
 desc = "Research codec for mzML-derived spectra, built in Zig with Python ingestion and benchmark tooling."
 github = "https://github.com/eneskemalergin/mzarc"
 
@@ -402,6 +402,6 @@ language = "Zig"
 pub = "na"
 access = "private"
 tag = "mzbridge"
-tags = ["proteomics", "raw-data", "mzml", "conversion", "reverse-engineering"]
+tags = ["proteomics", "raw-data", "mzML", "conversion", "reverse-engineering"]
 desc = "Lightning-fast raw data to mzML converter, built in Zig as a research prototype by reverse-engineering vendor Raw files."
 github = "https://github.com/eneskemalergin/mzBridge"

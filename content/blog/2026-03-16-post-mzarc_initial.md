@@ -3,7 +3,7 @@ title = "mzarc v0.0.1: Can Domain-Specific Compression Beat General-Purpose Code
 date = 2026-03-16
 description = "Early prototype of a domain-specific compression codec for mass spectrometry data. Lossless path beats gzip and comes close to mzMLb. Lossy at q=4096 hits 13.17 MiB from 75.55 MiB mzML. Single DDA dataset. Decode is 27x faster than mzMLb. Early days."
 [taxonomies]
-tags = ["zig", "proteomics", "compression", "codec", "mass-spectrometry", "tooling", "post", "mzarc"]
+tags = ["zig", "compression", "codec", "proteomics", "mass-spectrometry", "benchmarking", "performance", "mzML", "tooling", "mzarc"]
 [extra]
 kind = "post"
 katex = false

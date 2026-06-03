@@ -3,7 +3,7 @@ title = "Native R Extensions with Zig: Initial Observations"
 date = 2026-05-23
 description = "C and C++ cover the classic extension story. Rust through extendr and Savvy brings memory safety to the table. Both are modern, both are performant. Neither fits the R C API boundary as naturally as a language designed to treat C interop as a first-class feature. Early observations from zigr: six backends, 23 tasks, and a case for Zig as the missing option."
 [taxonomies]
-tags = ["r", "zig", "benchmarking", "performance", "zigr"]
+tags = ["zig", "r", "language-binding", "benchmarking", "performance", "tooling", "zigr"]
 [extra]
 kind = "post"
 +++

@@ -3,7 +3,7 @@ title = "The Storage Crisis Nobody Budgets For"
 date = 2026-02-21
 description = "Proteomics data is growing faster than storage budgets. AI demand is driving up hardware prices. The format debate is a distraction. Compression tools exist but nobody uses them. The real problem is that storage is an unaccounted line item, and the field optimizes for generation, not retention."
 [taxonomies]
-tags = ["proteomics", "storage", "compression", "infrastructure", "mass-spectrometry", "mzML", "opinion"]
+tags = ["proteomics", "mass-spectrometry", "storage", "compression", "infrastructure", "open-science", "mzML"]
 [extra]
 kind = "opinion"
 +++

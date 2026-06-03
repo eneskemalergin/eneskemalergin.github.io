@@ -3,7 +3,7 @@ title = "ProteoForge: What Happens When You Stop Averaging Your Peptides"
 date = 2025-12-20
 description = "The story behind ProteoForge, a framework for finding differential proteoforms in bottom-up proteomics data. Why protein-level averages hide biology, how missing data broke every tool we tried, and what we found when we applied it to a hypoxia dataset."
 [taxonomies]
-tags = ["proteoforge", "proteomics", "proteoforms", "statistics", "bioinformatics", "mass-spectrometry"]
+tags = ["proteomics", "proteoforms", "mass-spectrometry", "statistics", "quantification", "bioinformatics", "proteoforge"]
 [extra]
 kind = "post"
 katex = true

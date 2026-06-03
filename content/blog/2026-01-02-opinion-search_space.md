@@ -8,7 +8,7 @@ description = "The search engine space is crowded, fast-moving, and genuinely co
 
 [taxonomies]
 
-tags = ["proteomics", "search-engines", "dda", "dia", "open-science", "zig", "opinion"]
+tags = ["proteomics", "mass-spectrometry", "search-engines", "bioinformatics", "dda", "dia", "tooling", "open-science"]
 
 [extra]
 

@@ -3,7 +3,7 @@ title = "Prosit"
 date = 2019-07-15
 description = "Deep learning for MS2 spectrum and retention time prediction. Accurate enough for rescoring and library generation."
 [taxonomies]
-tags = ["reading", "proteomics", "deep-learning", "spectral-prediction", "rescoring"]
+tags = ["proteomics", "mass-spectrometry", "deep-learning", "spectral-prediction", "bioinformatics", "rescoring"]
 [extra]
 kind = "reading"
 featured_image = "/blog/images/reading/prosit_mirror.jpg"

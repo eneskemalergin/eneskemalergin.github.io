@@ -3,7 +3,7 @@ title = "mzBridge: An Early Attempt to Go from Vendor to Open"
 date = 2026-01-09
 description = "Why vendor mass spectrometry formats bother me, why a small native bridge might matter, and why Zig feels like the right place to test the idea."
 [taxonomies]
-tags = ["proteomics", "mass-spectrometry", "vendor-formats", "zig", "open-data", "mzbridge"]
+tags = ["proteomics", "mass-spectrometry", "vendor-formats", "reverse-engineering", "conversion", "file-formats", "zig", "open-data", "mzbridge"]
 [extra]
 kind = "note"
 +++
