@@ -119,15 +119,15 @@ status = "stable"
 stars = 4
 version = "0.1.0"
 language = "Python"
-pub = "preprint"
+pub = "published"
 access = "public"
 image = "projects/proteoforge.jpg"
 tag = "proteoforge"
-tags = ["proteomics", "proteoforms"]
-desc = "Reproducible analysis snapshot for the ProteoForge manuscript. Under revision at J. Proteome Res."
+tags = ["proteomics", "proteoforms", "statistics"]
+desc = "ProteoForge enables exploration of differential proteoforms from peptide-leve bottom-up proteomics data. Python package and Analysis pipeline for ProteoForge. Published in J. Proteome Res. (2026)."
 github = "https://github.com/eneskemalergin/ProteoForge"
 analysis = "https://github.com/LangeLab/ProteoForge_Analysis"
-preprint = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1"
+paper = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235"
 
 [[projects]]
 title = "QuEStVar"

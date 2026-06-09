@@ -110,18 +110,19 @@
 [[publications]]
 title = "ProteoForge: An Imputation-Aware Framework for Differential Proteoform Discovery in Bottom-Up Proteomics"
 authors = "<u>Ergin, E. K.</u>, Conrrero, A., Ferguson, K. M., Lange, P. F.*"
-venue = "bioRxiv"
+venue = "Journal of Proteome Research"
 domain = "proteomics"
-year = 2025
-type = "preprint"
-status = "under-review"
+year = 2026
+type = "journal"
+status = "published"
 access = "open-access"
-doi = "10.64898/2025.12.12.694008"
+doi = "10.1021/acs.jproteome.5c01235"
 image = "publications/Ergin_2026_proteoforge.jpg"
 tag = "proteoforge"
 tags = ["proteomics", "proteoforms", "imputation", "statistics", "bioinformatics", "mass-spectrometry", "quantification", "peptide-analysis"]
 links = [
     { label = "Preprint", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
+    { label = "Paper", url = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235"}
 ]
 tldr = "Standard protein-level quantification hides biologically important variation at the proteoform level, and existing deconvolution methods break down when missing values are common. ProteoForge addresses this with an imputation-aware statistical model that identifies peptides behaving discordantly from their parent protein, clusters co-varying peptides, and constructs differential proteoforms (dPFs). The framework consists of four modules: data processing and normalization, discordant peptide identification, quantitative clustering, and dPF construction. Benchmarking on simulated and spike-in datasets showed that ProteoForge maintains high accuracy and stability even under heavy missingness, outperforming existing deconvolution approaches. Applied to a lung cancer hypoxia dataset, ProteoForge uncovered extensive proteoform-level regulation that conventional protein-level analysis missed entirely."
 
