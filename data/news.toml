@@ -12,6 +12,12 @@
 # /news page renders all entries, newest first.
 
 [[news]]
+date = "06/2026"
+type = "publication"
+main-page = 1
+content = """ProteoForge published in the <a href='https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235'>Journal of Proteome Research</a>. Imputation-aware framework for differential proteoform discovery in bottom-up proteomics."""
+
+[[news]]
 date = "05/2026"
 type = "release"
 main-page = 0
@@ -38,7 +44,7 @@ content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fa
 [[news]]
 date = "12/2025"
 type = "publication"
-main-page = 1
+main-page = 0
 content = """Submitted ProteoForge to bioRxiv. Now under revision at the <em>Journal of Proteome Research</em>. <a href='https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1'>Preprint</a>."""
 
 [[news]]

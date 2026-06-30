@@ -15,7 +15,7 @@ bio = [
 topic = "Quantitative proteomics & proteoform biology"
 desc = "Developing methods for differential proteoform discovery, protein equivalence testing, and PTM-aware quantitative analysis. My work here includes ProteoForge, QuEStVar, and SQuAPP."
 items = [
-    { venue = "ProteoForge", label = "bioRxiv, 2025", url = "https://www.biorxiv.org/content/10.64898/2025.12.12.694008v1" },
+    { venue = "ProteoForge", label = "J. Proteome Res., 2026", url = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235" },
     { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
     { venue = "SQuAPP", label = "Bioinformatics, 2022", url = "https://doi.org/10.1093/bioinformatics/btac628" },
     { venue = "N-termini proteoforms (Weng et al.)", label = "Mol. Cell. Proteomics, 2019", url = "https://www.mcponline.org/content/18/11/2335.abstract" },
