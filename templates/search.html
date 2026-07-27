@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Search</h2>
+
+<div class="search-box">
+    <input type="search" id="search-input" placeholder="Search posts, projects, research…" aria-label="Search the site" autocomplete="off" />
+    <span class="search-hint" id="search-hint">Type to search.</span>
+</div>
+
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+
+<noscript>
+    <p class="search-empty">Search needs JavaScript enabled.</p>
+</noscript>
+
+<script defer src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+<script defer src="{{ get_url(path="search_index.en.js") }}"></script>
+<script defer src="{{ get_url(path="js/search.js") }}"></script>
+{% endblock %}

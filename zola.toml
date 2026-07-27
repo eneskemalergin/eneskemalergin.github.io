@@ -20,6 +20,7 @@ menu = [
     { name = "Projects", url = "/projects/" },
     { name = "Research", url = "/research/" },
     { name = "Blog", url = "/blog/" },
+    { name = "Search", url = "/search/" },
     { name = "CV", url = "/cv/" },
 ]
 

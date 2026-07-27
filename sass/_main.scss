@@ -1719,3 +1719,90 @@ details[open].archive-month > summary::before {
 .cv-download i {
     font-size: 9pt;
 }
+
+/* =============================================================
+   Search page — elasticlunr over Zola's built-in index
+   ============================================================= */
+.search-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 1.2em;
+}
+
+#search-input {
+    flex: 1;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 12pt;
+    font-weight: 300;
+    color: var(--text-main);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--c-link);
+    box-shadow: 0 0 0 3px var(--c-link-surface);
+}
+
+.search-hint {
+    font-size: 9pt;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-item:last-child {
+    border-bottom: none;
+}
+
+.search-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 4px;
+    color: var(--text-main);
+}
+
+.search-link:hover {
+    background-color: var(--c-link-surface);
+    text-decoration: none;
+}
+
+.search-label {
+    flex-shrink: 0;
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-link);
+    border: 1px solid var(--c-link-subtle);
+    border-radius: 999px;
+    padding: 1px 8px;
+}
+
+.search-title {
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+.search-empty {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 10pt;
+}

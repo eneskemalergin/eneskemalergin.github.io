@@ -6,6 +6,22 @@ var BlogList = (function () {
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
+    function escape(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+
+    // Whitelist schemes for href values read from data attributes.
+    // Anything else (e.g. "javascript:") is dropped before injection.
+    function safeUrl(ref) {
+        var c = ref.charAt(0);
+        if (c === '/' || c === '#' || c === '?') return ref;
+        var m = /^([a-z][a-z0-9+.\-]*):/i.exec(ref);
+        if (m && (m[1].toLowerCase() === 'http' || m[1].toLowerCase() === 'https')) return ref;
+        return '';
+    }
+
     function renderPagination(currentPage, totalPages, onPageChange) {
         var container = document.getElementById('blog-pagination');
         if (!container) return;
@@ -23,7 +39,7 @@ var BlogList = (function () {
         container.innerHTML = html;
         container.querySelectorAll('.page-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                onPageChange(parseInt(btn.dataset.page));
+                onPageChange(parseInt(btn.dataset.page, 10));
             });
         });
     }
@@ -45,15 +61,17 @@ var BlogList = (function () {
         if (years.length === 0) { sidebar.innerHTML = '<p class="empty">Nothing here.</p>'; return; }
         var html = '';
         years.forEach(function (yr) {
-            html += '<details class="archive-year" open><summary class="archive-year-label">' + yr + '</summary>';
+            html += '<details class="archive-year" open><summary class="archive-year-label">' + escape(yr) + '</summary>';
             var months = Object.keys(tree[yr]);
             months.sort(function (a, b) { return MONTH_ORDER.indexOf(b) - MONTH_ORDER.indexOf(a); });
             months.forEach(function (mo) {
                 var count = tree[yr][mo].length;
-                html += '<details class="archive-month"><summary class="archive-month-label">' + mo + ' <span class="archive-count">(' + count + ')</span></summary>';
+                html += '<details class="archive-month"><summary class="archive-month-label">' + escape(mo) + ' <span class="archive-count">(' + escape(count) + ')</span></summary>';
                 html += '<ul class="archive-list">';
                 tree[yr][mo].forEach(function (p) {
-                    html += '<li><a href="' + p.href + '">' + p.title + '</a></li>';
+                    var href = safeUrl(p.href);
+                    if (!href) return;
+                    html += '<li><a href="' + escape(href) + '">' + escape(p.title) + '</a></li>';
                 });
                 html += '</ul></details>';
             });
