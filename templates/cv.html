@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set meta = load_data(path="data/cv_meta.toml", required=false) %}
+{% set cv_available = meta and meta.available %}
+{% set gh_blob = "https://github.com/eneskemalergin/My_CV/blob/master/Full_CV_Resonance.pdf" %}
+
+<h2>CV</h2>
+<p class="cv-intro">
+    Mirrored from <a href="{{ gh_blob }}" target="_blank" rel="noopener">eneskemalergin/My_CV</a>
+    so the canonical source stays in one place.
+</p>
+
+<div class="cv-viewer">
+    {% if cv_available %}
+    <iframe
+        src="{{ get_url(path="cv/Full_CV_Resonance.pdf") }}"
+        title="Enes K. Ergin — Curriculum Vitae"
+        class="cv-frame"
+        loading="lazy"></iframe>
+    {% else %}
+    <div class="cv-fallback">
+        <p>The inline preview isn't available right now.</p>
+        <a class="cv-download" href="{{ gh_blob }}" target="_blank" rel="noopener">
+            <i class="fas fa-file-pdf"></i> View CV on GitHub
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="cv-actions">
+    {% if cv_available %}
+    <a class="cv-download" href="{{ get_url(path="cv/Full_CV_Resonance.pdf") }}" download>
+        <i class="fas fa-download"></i> Download PDF
+    </a>
+    {% endif %}
+    <a class="cv-download" href="{{ gh_blob }}" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Source on GitHub
+    </a>
+</div>
+{% endblock %}

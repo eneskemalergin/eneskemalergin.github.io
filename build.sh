@@ -4,6 +4,37 @@
 set -e
 cd "$(dirname "$0")"
 
+# ─── Mirror CV PDF from My_CV repo (single source of truth) ───
+# The site renders the CV inline via an <iframe> pointing at this local copy,
+# which GitHub Pages serves as application/pdf (same-origin, frameable).
+# raw.githubusercontent.com can't be framed (X-Frame-Options: deny), so the
+# PDF is mirrored at build time instead. Skipped silently offline/CI network
+# blips keep any previously fetched copy.
+CV_SRC="https://raw.githubusercontent.com/eneskemalergin/My_CV/master/Full_CV_Resonance.pdf"
+CV_DIR="static/cv"
+CV_DST="$CV_DIR/Full_CV_Resonance.pdf"
+mkdir -p "$CV_DIR"
+if command -v curl >/dev/null 2>&1; then
+    if curl -fsSL --retry 2 "$CV_SRC" -o "$CV_DST.tmp"; then
+        mv "$CV_DST.tmp" "$CV_DST"
+        echo "Synced CV: $CV_DST"
+    else
+        rm -f "$CV_DST.tmp"
+        if [ -f "$CV_DST" ]; then
+            echo "CV sync failed; keeping previous copy at $CV_DST"
+        else
+            echo "CV sync failed and no local copy exists; /cv/ will show the fallback link"
+        fi
+    fi
+fi
+
+# Sentinel consumed by templates/cv.html to decide iframe vs. fallback link.
+if [ -f "$CV_DST" ]; then
+    printf 'available = true\nsrc_url = "%s"\n' "$CV_SRC" > data/cv_meta.toml
+else
+    printf 'available = false\nsrc_url = "%s"\n' "$CV_SRC" > data/cv_meta.toml
+fi
+
 python3 tools/tag-freq.py
 python3 tools/tag-freq.py data/publications.toml data/pub_tag_frequencies.json --table publications
 python3 tools/star-colors.py

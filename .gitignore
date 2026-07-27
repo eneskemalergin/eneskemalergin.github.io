@@ -2,3 +2,6 @@
 ref/
 plan/
 public/
+
+# CV PDF is mirrored from the My_CV repo at build time (single source of truth).
+static/cv/Full_CV_Resonance.pdf

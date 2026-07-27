@@ -20,6 +20,10 @@
     "count": 2
   },
   {
+    "name": "statistics",
+    "count": 2
+  },
+  {
     "name": "parser",
     "count": 2
   },
@@ -37,10 +41,6 @@
   },
   {
     "name": "proteoforms",
-    "count": 1
-  },
-  {
-    "name": "statistics",
     "count": 1
   },
   {

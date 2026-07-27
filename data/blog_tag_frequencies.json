@@ -1,7 +1,7 @@
 [
   {
     "name": "proteomics",
-    "count": 17
+    "count": 18
   },
   {
     "name": "tooling",
@@ -21,7 +21,7 @@
   },
   {
     "name": "statistics",
-    "count": 7
+    "count": 8
   },
   {
     "name": "cli",
@@ -29,6 +29,10 @@
   },
   {
     "name": "mzML",
+    "count": 5
+  },
+  {
+    "name": "proteoforms",
     "count": 5
   },
   {
@@ -41,10 +45,6 @@
   },
   {
     "name": "python",
-    "count": 4
-  },
-  {
-    "name": "proteoforms",
     "count": 4
   },
   {
@@ -97,6 +97,10 @@
   },
   {
     "name": "codec",
+    "count": 2
+  },
+  {
+    "name": "proteoforge",
     "count": 2
   },
   {
@@ -233,10 +237,6 @@
   },
   {
     "name": "differential-abundance",
-    "count": 1
-  },
-  {
-    "name": "proteoforge",
     "count": 1
   },
   {
