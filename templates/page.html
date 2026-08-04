@@ -15,11 +15,11 @@
                 <ul class="toc-list">
                 {% for h2 in page.toc %}
                     <li class="toc-item toc-item-h2{% if loop.first %} toc-active{% endif %}">
-                        <a href="#{{ h2.id }}">{{ h2.title }}</a>
+                        <a href="#{{ h2.id }}">{{ h2.title | safe }}</a>
                         {% if h2.children %}
                         <ul class="toc-list toc-list-h3">
                         {% for h3 in h2.children %}
-                            <li class="toc-item toc-item-h3"><a href="#{{ h3.id }}">{{ h3.title }}</a></li>
+                            <li class="toc-item toc-item-h3"><a href="#{{ h3.id }}">{{ h3.title | safe }}</a></li>
                         {% endfor %}
                         </ul>
                         {% endif %}
@@ -80,27 +80,70 @@
     var toc = document.getElementById('postToc');
     var body = document.getElementById('tocBody');
     var toggle = document.getElementById('tocToggle');
-    var links = toc.querySelectorAll('a');
+    if (!toc || !body || !toggle) return;
+
+    var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
     var headings = [];
+    var byId = new Map();
+
+    function decodeApostrophes(text) {
+        return text
+            .replace(/&#39;/g, "'")
+            .replace(/&#x27;/g, "'")
+            .replace(/&apos;/g, "'")
+            .replace(/&amp;#39;/g, "'")
+            .replace(/&amp;#x27;/g, "'")
+            .replace(/&amp;apos;/g, "'");
+    }
+
+    function sanitizeLabel(link) {
+        var raw = link.textContent;
+        var fixed = decodeApostrophes(raw);
+        if (fixed !== raw) {
+            link.textContent = fixed;
+        }
+    }
+
+    function normalizeId(rawId) {
+        if (!rawId) return rawId;
+        try { return decodeURIComponent(rawId); } catch (e) { return rawId; }
+    }
+
+    function clearActive() {
+        for (var i = 0; i < links.length; i++) {
+            var li = links[i].closest('.toc-item');
+            if (li) li.classList.remove('toc-active');
+        }
+    }
 
     links.forEach(function(link) {
         var id = link.getAttribute('href').slice(1);
         var el = document.getElementById(id);
-        if (el) headings.push({ el: el, link: link });
+        if (!el) return;
+        sanitizeLabel(link);
+        headings.push({ el: el, link: link });
+        byId.set(id, link);
+        byId.set(normalizeId(id), link);
     });
 
     if (headings.length && 'IntersectionObserver' in window) {
         var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    links.forEach(function(l) { l.closest('.toc-item').classList.remove('toc-active'); });
-                    var active = entry.target;
-                    var link = toc.querySelector('a[href="#' + active.id + '"]');
-                    if (link) link.closest('.toc-item').classList.add('toc-active');
-                }
-            });
+            var best = null;
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) best = entries[i].target;
+            }
+            if (!best) return;
+
+            clearActive();
+            var active = byId.get(best.id) || byId.get(normalizeId(best.id)) || byId.get(best.getAttribute('id'));
+            if (active) {
+                var activeItem = active.closest('.toc-item');
+                if (activeItem) activeItem.classList.add('toc-active');
+            }
         }, { rootMargin: '-80px 0px -60% 0px' });
-        headings.forEach(function(h) { obs.observe(h.el); });
+        for (var i = 0; i < headings.length; i++) {
+            obs.observe(headings[i].el);
+        }
     }
 
     toggle.addEventListener('click', function() {

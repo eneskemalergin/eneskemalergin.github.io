@@ -12,6 +12,12 @@ var BlogList = (function () {
         });
     }
 
+    function decodeHtml(text) {
+        var ta = document.createElement('textarea');
+        ta.innerHTML = String(text || '');
+        return ta.value;
+    }
+
     // Whitelist schemes for href values read from data attributes.
     // Anything else (e.g. "javascript:") is dropped before injection.
     function safeUrl(ref) {
@@ -49,7 +55,7 @@ var BlogList = (function () {
         items.forEach(function (item) {
             var yr = item.dataset.year;
             var mo = item.dataset.month;
-            var title = item.dataset.title;
+            var title = decodeHtml(item.dataset.title);
             var href = item.dataset.href;
             if (!tree[yr]) tree[yr] = {};
             if (!tree[yr][mo]) tree[yr][mo] = [];
