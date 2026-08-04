@@ -13,14 +13,14 @@ Requires Python 3 (for tag frequency and star color preprocessing) and Zola 0.19
 
 ## Structure
 
-| Path | Role |
-| --- | --- |
-| `content/` | Markdown for blog posts, section index files |
-| `data/` | Structured TOML: projects, publications, news, presentations, teaching |
-| `templates/` | Jinja2-style Zola templates + 5 shortcodes |
-| `sass/` | SCSS: design tokens, layout, component styles |
-| `tools/` | Python scripts: tag frequency aggregation, GitHub star color normalization |
-| `plan/` | Design system, writing rules, markdown reference (private) |
+| Path         | Role                                                                       |
+| ------------ | -------------------------------------------------------------------------- |
+| `content/`   | Markdown for blog posts, section index files                               |
+| `data/`      | Structured TOML: projects, publications, news, presentations, teaching     |
+| `templates/` | Jinja2-style Zola templates + 5 shortcodes                                 |
+| `sass/`      | SCSS: design tokens, layout, component styles                              |
+| `tools/`     | Python scripts: tag frequency aggregation, GitHub star color normalization |
+| `plan/`      | Design system, writing rules, markdown reference (private)                 |
 
 At build time, `build.sh` also mirrors the latest CV PDF from `eneskemalergin/My_CV` into `static/cv/` (single source of truth — see `content/cv/` and `templates/cv.html`) and writes a `data/cv_meta.toml` sentinel so the `/cv/` page can fall back to a GitHub link when offline. Zola's built-in search index (`build_search_index`) powers the `/search/` page via `templates/search.html` + `static/js/search.js`.
 
