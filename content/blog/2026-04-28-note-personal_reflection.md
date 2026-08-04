@@ -1,6 +1,6 @@
 +++
 title = "The Month My Body Forced a Priority Review"
-date = 2026-04-26
+date = 2026-04-28
 description = "A personal note about a month of sickness, a long hospital stay, and the uncomfortable work of deciding what actually deserves my time."
 [taxonomies]
 tags = ["personal", "health", "priorities", "work", "open-source"]
