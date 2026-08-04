@@ -290,6 +290,7 @@ version = "0.1.4"
 language = "Zig"
 pub = "na"
 access = "public"
+image = "projects/mzvalidate.svg"
 tag = "mzvalidate"
 tags = ["mass-spectrometry", "open-data", "validator", "cli", "mzML"]
 desc = "Fast, zero-dependency validator for open proteomics formats, starting with mzML."
