@@ -427,90 +427,102 @@ nav {
     text-align: center;
 }
 
+// News badges use distinct hue families. Light mode uses darker text for
+// contrast; dark mode uses the corresponding lighter shade of each hue.
 .news-type-publication {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    background: rgba(29, 78, 216, 0.1);
+    color: #1d4ed8;
+    border: 1px solid rgba(29, 78, 216, 0.2);
 }
 
 .news-type-release {
-    background: rgba(5, 150, 105, 0.1);
-    color: #059669;
-    border: 1px solid rgba(5, 150, 105, 0.2);
+    background: rgba(4, 120, 87, 0.1);
+    color: #047857;
+    border: 1px solid rgba(4, 120, 87, 0.2);
 }
 
 .news-type-project {
-    background: rgba(8, 145, 178, 0.1);
-    color: #0e7490;
-    border: 1px solid rgba(8, 145, 178, 0.2);
+    background: rgba(21, 94, 117, 0.1);
+    color: #155e75;
+    border: 1px solid rgba(21, 94, 117, 0.2);
 }
 
 .news-type-milestone {
-    background: rgba(217, 119, 6, 0.1);
-    color: #d97706;
-    border: 1px solid rgba(217, 119, 6, 0.2);
+    background: rgba(146, 64, 14, 0.1);
+    color: #92400e;
+    border: 1px solid rgba(146, 64, 14, 0.2);
 }
 
 .news-type-career {
-    background: rgba(139, 92, 246, 0.1);
-    color: #7c3aed;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: rgba(109, 40, 217, 0.1);
+    color: #6d28d9;
+    border: 1px solid rgba(109, 40, 217, 0.2);
 }
 
 .news-type-award {
-    background: rgba(245, 158, 11, 0.1);
-    color: #d97706;
-    border: 1px solid rgba(245, 158, 11, 0.2);
+    background: rgba(190, 24, 93, 0.1);
+    color: #be185d;
+    border: 1px solid rgba(190, 24, 93, 0.2);
 }
 
 .news-type-event {
-    background: rgba(100, 116, 139, 0.1);
-    color: #64748b;
-    border: 1px solid rgba(100, 116, 139, 0.2);
+    background: rgba(71, 85, 105, 0.1);
+    color: #475569;
+    border: 1px solid rgba(71, 85, 105, 0.2);
 }
 
 .news-type-mentoring {
-    background: rgba(16, 185, 129, 0.1);
-    color: #059669;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    background: rgba(67, 56, 202, 0.1);
+    color: #4338ca;
+    border: 1px solid rgba(67, 56, 202, 0.2);
 }
 
 html.dark .news-type-publication {
-    background: rgba(96, 165, 250, 0.15);
-    color: #60a5fa;
-    border-color: rgba(96, 165, 250, 0.25);
+    background: rgba(147, 197, 253, 0.15);
+    color: #93c5fd;
+    border-color: rgba(147, 197, 253, 0.25);
 }
 
-html.dark .news-type-release,
-html.dark .news-type-mentoring {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    border-color: rgba(52, 211, 153, 0.25);
+html.dark .news-type-release {
+    background: rgba(110, 231, 183, 0.15);
+    color: #6ee7b7;
+    border-color: rgba(110, 231, 183, 0.25);
 }
 
 html.dark .news-type-project {
-    background: rgba(34, 211, 238, 0.15);
-    color: #22d3ee;
-    border-color: rgba(34, 211, 238, 0.25);
+    background: rgba(103, 232, 249, 0.15);
+    color: #67e8f9;
+    border-color: rgba(103, 232, 249, 0.25);
 }
 
-html.dark .news-type-milestone,
-html.dark .news-type-award {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
+html.dark .news-type-milestone {
+    background: rgba(252, 211, 77, 0.15);
+    color: #fcd34d;
+    border-color: rgba(252, 211, 77, 0.25);
 }
 
 html.dark .news-type-career {
-    background: rgba(167, 139, 250, 0.15);
-    color: #a78bfa;
-    border-color: rgba(167, 139, 250, 0.25);
+    background: rgba(196, 181, 253, 0.15);
+    color: #c4b5fd;
+    border-color: rgba(196, 181, 253, 0.25);
+}
+
+html.dark .news-type-award {
+    background: rgba(249, 168, 212, 0.15);
+    color: #f9a8d4;
+    border-color: rgba(249, 168, 212, 0.25);
 }
 
 html.dark .news-type-event {
-    background: rgba(148, 163, 184, 0.15);
-    color: var(--text-muted);
-    border-color: rgba(148, 163, 184, 0.25);
+    background: rgba(203, 213, 225, 0.15);
+    color: #cbd5e1;
+    border-color: rgba(203, 213, 225, 0.25);
+}
+
+html.dark .news-type-mentoring {
+    background: rgba(165, 180, 252, 0.15);
+    color: #a5b4fc;
+    border-color: rgba(165, 180, 252, 0.25);
 }
 
 .news-content {
