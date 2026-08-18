@@ -150,22 +150,6 @@ docs = "https://eneskemalergin.github.io/QuEStVar/"
 paper = "https://doi.org/10.1021/acs.jproteome.4c00131"
 
 [[projects]]
-title = "z-toml"
-domain = "language-dev"
-source = "personal"
-status = "stable"
-stars = 5
-version = "0.4.0"
-language = "Zig"
-pub = "na"
-access = "public"
-image = "projects/z-toml.svg"
-tag = "ztoml"
-tags = ["toml", "parser", "cli", "library"]
-desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
-github = "https://github.com/eneskemalergin/z-toml"
-
-[[projects]]
 title = "pxseek"
 domain = "metadata"
 source = "langelab"
@@ -184,20 +168,21 @@ pkg = "https://pypi.org/project/pxseek/"
 docs = "https://github.com/LangeLab/pxseek/wiki"
 
 [[projects]]
-title = "zebrac"
-domain = "core-tooling"
-source = "personal"
+title = "PXAudit"
+domain = "metadata"
+source = "langelab"
 status = "stable"
 stars = 2
-version = "0.6.2"
-language = "Zig"
+version = "0.6.0"
+language = "Python"
 pub = "na"
 access = "public"
-image = "projects/zebrac.svg"
-tag = "zebrac"
-tags = ["benchmarking", "hyperfine", "perf", "cli"]
-desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
-github = "https://github.com/eneskemalergin/zebrac"
+image = "projects/pxaudit.svg"
+tag = "pxaudit"
+tags = ["proteomics", "metadata", "fair", "cli"]
+desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
+github = "https://github.com/LangeLab/PXAudit"
+docs = "https://github.com/LangeLab/PXAudit/wiki"
 
 [[projects]]
 title = "HarmonizePy"
@@ -233,6 +218,54 @@ desc = "R package for proteolytic digest simulation, peptide scoring, enzyme com
 github = "https://github.com/LangeLab/pepVet"
 
 [[projects]]
+title = "zebrac"
+domain = "core-tooling"
+source = "personal"
+status = "stable"
+stars = 2
+version = "0.6.2"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/zebrac.svg"
+tag = "zebrac"
+tags = ["benchmarking", "hyperfine", "perf", "cli"]
+desc = "Linux benchmarking CLI using perf_event_open, hardware counters, peak RSS, JSON output, and statistical comparison."
+github = "https://github.com/eneskemalergin/zebrac"
+
+[[projects]]
+title = "z-toml"
+domain = "language-dev"
+source = "personal"
+status = "stable"
+stars = 5
+version = "0.4.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/z-toml.svg"
+tag = "ztoml"
+tags = ["toml", "parser", "cli", "library"]
+desc = "TOML v1.1.0 parser and writer for Zig 0.16, with typed and dynamic APIs."
+github = "https://github.com/eneskemalergin/z-toml"
+
+[[projects]]
+title = "z-oci"
+domain = "core-tooling"
+source = "personal"
+status = "stable"
+stars = 2
+version = "0.7.2"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/z-oci.svg"
+tag = "zoci"
+tags = ["oci", "container-registry", "library"]
+desc = "Pure Zig OCI and Docker Registry API v2 toolkit for reference parsing, OCI types, and registry authentication."
+github = "https://github.com/eneskemalergin/z-oci"
+
+[[projects]]
 title = "z-fasta"
 domain = "core-tooling"
 source = "personal"
@@ -263,39 +296,6 @@ tag = "loqculate"
 tags = ["proteomics", "calibration", "lod/loq", "cli", "library"]
 desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
 github = "https://github.com/eneskemalergin/loqculate"
-
-[[projects]]
-title = "PXAudit"
-domain = "metadata"
-source = "langelab"
-status = "active"
-stars = 2
-version = "0.6.0"
-language = "Python"
-pub = "na"
-access = "public"
-image = "projects/pxaudit.svg"
-tag = "pxaudit"
-tags = ["proteomics", "metadata", "fair", "cli"]
-desc = "Python CLI for auditing PRIDE study metadata with a FAIR ladder and quantification-readiness score."
-github = "https://github.com/LangeLab/PXAudit"
-docs = "https://github.com/LangeLab/PXAudit/wiki"
-
-[[projects]]
-title = "z-oci"
-domain = "core-tooling"
-source = "personal"
-status = "active"
-stars = 2
-version = "0.7.2"
-language = "Zig"
-pub = "na"
-access = "public"
-image = "projects/z-oci.svg"
-tag = "zoci"
-tags = ["oci", "container-registry", "library"]
-desc = "Pure Zig OCI and Docker Registry API v2 toolkit for reference parsing, OCI types, and registry authentication."
-github = "https://github.com/eneskemalergin/z-oci"
 
 [[projects]]
 title = "mzValidate"

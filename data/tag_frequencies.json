@@ -24,11 +24,11 @@
     "count": 2
   },
   {
-    "name": "parser",
+    "name": "metadata",
     "count": 2
   },
   {
-    "name": "metadata",
+    "name": "parser",
     "count": 2
   },
   {
@@ -48,19 +48,7 @@
     "count": 1
   },
   {
-    "name": "toml",
-    "count": 1
-  },
-  {
-    "name": "benchmarking",
-    "count": 1
-  },
-  {
-    "name": "hyperfine",
-    "count": 1
-  },
-  {
-    "name": "perf",
+    "name": "fair",
     "count": 1
   },
   {
@@ -96,6 +84,30 @@
     "count": 1
   },
   {
+    "name": "benchmarking",
+    "count": 1
+  },
+  {
+    "name": "hyperfine",
+    "count": 1
+  },
+  {
+    "name": "perf",
+    "count": 1
+  },
+  {
+    "name": "toml",
+    "count": 1
+  },
+  {
+    "name": "oci",
+    "count": 1
+  },
+  {
+    "name": "container-registry",
+    "count": 1
+  },
+  {
     "name": "fasta",
     "count": 1
   },
@@ -105,18 +117,6 @@
   },
   {
     "name": "lod/loq",
-    "count": 1
-  },
-  {
-    "name": "fair",
-    "count": 1
-  },
-  {
-    "name": "oci",
-    "count": 1
-  },
-  {
-    "name": "container-registry",
     "count": 1
   },
   {
