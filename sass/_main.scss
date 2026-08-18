@@ -439,6 +439,12 @@ nav {
     border: 1px solid rgba(5, 150, 105, 0.2);
 }
 
+.news-type-project {
+    background: rgba(8, 145, 178, 0.1);
+    color: #0e7490;
+    border: 1px solid rgba(8, 145, 178, 0.2);
+}
+
 .news-type-milestone {
     background: rgba(217, 119, 6, 0.1);
     color: #d97706;
@@ -480,6 +486,12 @@ html.dark .news-type-mentoring {
     background: rgba(52, 211, 153, 0.15);
     color: #34d399;
     border-color: rgba(52, 211, 153, 0.25);
+}
+
+html.dark .news-type-project {
+    background: rgba(34, 211, 238, 0.15);
+    color: #22d3ee;
+    border-color: rgba(34, 211, 238, 0.25);
 }
 
 html.dark .news-type-milestone,

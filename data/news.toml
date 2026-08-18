@@ -3,19 +3,83 @@
 # Each [[news]] entry supports these fields:
 #
 #   date        - Month/year string, e.g. "04/2026"
-#   type        - "publication" | "release" | "milestone" | "career" |
-#                 "award" | "event" | "mentoring"
+#   type        - "publication" | "release" | "project" | "milestone" |
+#                 "career" | "award" | "event" | "mentoring"
 #   main-page   - Integer. 1 = shown on homepage, 0 = full news page only
 #   content     - HTML-safe description with links
 #
+# Type guidance:
+#   publication - Scholarly dissemination: published paper, preprint, or
+#                 manuscript submitted for peer review.
+#   release     - A public software or data availability event, including a
+#                 package published to a registry or a project open-sourced.
+#   project     - A meaningful software or community-project development
+#                 update, such as starting work, reaching feature completeness,
+#                 or entering an external review process. This is not a personal
+#                 or academic achievement category.
+#   milestone   - A completed personal, academic, or organizational achievement,
+#                 such as defending a PhD or founding an initiative. Do not use
+#                 it for routine project progress or planned work.
+#   career      - A role, appointment, or employment change.
+#   award       - An award, fellowship, or other formal recognition.
+#   event       - A talk, workshop, conference, or other attended event.
+#   mentoring   - A teaching, supervision, or mentoring activity.
+#
+# `type` categorizes the update; it does not indicate importance. Use
+# `main-page = 1` selectively for updates that deserve homepage visibility.
+# Keep entries newest first. Use concise, factual content and link the relevant
+# public project, publication, or organization when a stable URL exists.
+#
 # Homepage renders entries with main-page = 1.
 # /news page renders all entries, newest first.
+
+[[news]]
+date = "08/2026"
+type = "release"
+main-page = 0
+content = "Submitted <a href='https://pypi.org/project/pxaudit/'>PXAudit</a> to PyPI: PRIDE metadata auditing with FAIR and quantification-readiness scoring. <a href='https://github.com/LangeLab/PXAudit'>GitHub</a>."
+
+[[news]]
+date = "08/2026"
+type = "project"
+main-page = 0
+content = "<a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a> reached feature-complete, usable status as a fast, zero-dependency FASTA indexer; a benchmark write-up is planned."
+
+[[news]]
+date = "07/2026"
+type = "publication"
+main-page = 0
+content = """Submitted \"<em>Toward decentralized proteome-guided precision oncology: a multicenter proteomic congruency study</em>\" to the <em>Journal of Proteome Research</em>. The manuscript is undergoing peer review."""
+
+[[news]]
+date = "07/2026"
+type = "project"
+main-page = 0
+content = "Submitted <a href='https://github.com/LangeLab/pepVet'>pepVet</a> to Bioconductor; the R package is under review."
+
+[[news]]
+date = "06/2026"
+type = "release"
+main-page = 0
+content = "Made <a href='https://github.com/LangeLab/HarmonizePy'>HarmonizePy</a> public ahead of publication: pure-Python batch-effect harmonization for structured missingness."
 
 [[news]]
 date = "06/2026"
 type = "publication"
 main-page = 1
 content = """ProteoForge published in the <a href='https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235'>Journal of Proteome Research</a>. Imputation-aware framework for differential proteoform discovery in bottom-up proteomics."""
+
+[[news]]
+date = "05/2026"
+type = "project"
+main-page = 0
+content = "Started <a href='https://github.com/Zenteomics'>Zenteomics</a>' first community project, an <em>awesome-proteomics</em> resource targeted for public release in August 2026."
+
+[[news]]
+date = "05/2026"
+type = "project"
+main-page = 0
+content = "<a href='https://github.com/eneskemalergin/z-toml'>z-toml</a> reached feature-complete, usable status as a TOML 1.1 parser and writer for Zig."
 
 [[news]]
 date = "05/2026"
@@ -38,7 +102,7 @@ content = """Founded <a href='https://zenteomics.com/'>Zenteomics</a>, building 
 [[news]]
 date = "02/2026"
 type = "release"
-main-page = 1
+main-page = 0
 content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a>, an ultra-fast FASTA indexer written in Zig."
 
 [[news]]
