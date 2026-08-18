@@ -106,6 +106,26 @@
 #   templates/macros.html     - render_paper() macro shared across templates
 #   sass/_main.scss           - publication card layout (".paper-card-detailed" etc.)
 
+# --- Pending publication -------------------------------------------------------
+#
+# Keep this block commented until public disclosure is approved by the author
+# team. Do not add the private manuscript ID or submission correspondence here.
+# Confirm the domain, tags, corresponding-author marker, and public summary
+# before uncommenting. Add a DOI, image, and public links only when they exist.
+#
+# [[publications]]
+# title = "Toward decentralized proteome-guided precision oncology: a multicenter proteomic congruency study"
+# authors = "Lange, P. F., ... <u>Ergin, E. K.</u>, ... Droit, A."
+# venue = "Journal of Proteome Research"
+# domain = "cancer-biology"
+# year = 2026
+# type = "journal"
+# status = "under-review"
+# access = "closed"
+# tag = "NA"
+# tags = ["proteomics", "cancer-biology", "precision-oncology"]
+# tldr = "Add an approved public summary based on the abstract before uncommenting."
+
 
 [[publications]]
 title = "ProteoForge: An Imputation-Aware Framework for Differential Proteoform Discovery in Bottom-Up Proteomics"
