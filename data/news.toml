@@ -29,6 +29,8 @@
 # `main-page = 1` selectively for updates that deserve homepage visibility.
 # Keep entries newest first. Use concise, factual content and link the relevant
 # public project, publication, or organization when a stable URL exists.
+# For software updates, include a confirmed event-time version inline as
+# `(vX.Y.Z)`. Keep that historical version unchanged when the project advances.
 #
 # Homepage renders entries with main-page = 1.
 # /news page renders all entries, newest first.
@@ -37,13 +39,13 @@
 date = "08/2026"
 type = "release"
 main-page = 0
-content = "Submitted <a href='https://pypi.org/project/pxaudit/'>PXAudit</a> to PyPI: PRIDE metadata auditing with FAIR and quantification-readiness scoring. <a href='https://github.com/LangeLab/PXAudit'>GitHub</a>."
+content = "Submitted <a href='https://pypi.org/project/pxaudit/'>PXAudit</a> (v0.6.0) to PyPI: PRIDE metadata auditing with FAIR and quantification-readiness scoring. <a href='https://github.com/LangeLab/PXAudit'>GitHub</a>."
 
 [[news]]
 date = "08/2026"
 type = "project"
 main-page = 0
-content = "<a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a> reached feature-complete, usable status as a fast, zero-dependency FASTA indexer; a benchmark write-up is planned."
+content = "<a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a> (v0.3.2) reached feature-complete, usable status as a fast, zero-dependency FASTA indexer; a benchmark write-up is planned."
 
 [[news]]
 date = "07/2026"
@@ -55,13 +57,19 @@ content = """Submitted \"<em>Toward decentralized proteome-guided precision onco
 date = "07/2026"
 type = "project"
 main-page = 0
+content = "<a href='https://github.com/eneskemalergin/z-oci'>z-oci</a> (v0.7.2) reached feature-complete, usable status as a pure-Zig OCI and Docker Registry API v2 toolkit."
+
+[[news]]
+date = "07/2026"
+type = "project"
+main-page = 0
 content = "Submitted <a href='https://github.com/LangeLab/pepVet'>pepVet</a> to Bioconductor; the R package is under review."
 
 [[news]]
 date = "06/2026"
 type = "release"
 main-page = 0
-content = "Made <a href='https://github.com/LangeLab/HarmonizePy'>HarmonizePy</a> public ahead of publication: pure-Python batch-effect harmonization for structured missingness."
+content = "Made <a href='https://github.com/LangeLab/HarmonizePy'>HarmonizePy</a> (v0.3.2) public ahead of publication: pure-Python batch-effect harmonization for structured missingness."
 
 [[news]]
 date = "06/2026"
@@ -79,13 +87,13 @@ content = "Started <a href='https://github.com/Zenteomics'>Zenteomics</a>' first
 date = "05/2026"
 type = "project"
 main-page = 0
-content = "<a href='https://github.com/eneskemalergin/z-toml'>z-toml</a> reached feature-complete, usable status as a TOML 1.1 parser and writer for Zig."
+content = "<a href='https://github.com/eneskemalergin/z-toml'>z-toml</a> (v0.4.0) reached feature-complete, usable status as a TOML 1.1 parser and writer for Zig."
 
 [[news]]
 date = "05/2026"
 type = "release"
 main-page = 0
-content = """<a href='https://pypi.org/project/pxseek/'>pxseek</a> published on PyPI. CLI for querying and filtering ProteomeXchange dataset metadata with local caching."""
+content = """<a href='https://pypi.org/project/pxseek/'>pxseek</a> (v0.5.0) published on PyPI. CLI for querying and filtering ProteomeXchange dataset metadata with local caching."""
 
 [[news]]
 date = "05/2026"
@@ -103,7 +111,7 @@ content = """Founded <a href='https://zenteomics.com/'>Zenteomics</a>, building 
 date = "02/2026"
 type = "release"
 main-page = 0
-content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a>, an ultra-fast FASTA indexer written in Zig."
+content = "Open-sourced <a href='https://github.com/eneskemalergin/z-fasta'>z-fasta</a> (v0.1.0), an ultra-fast FASTA indexer written in Zig."
 
 [[news]]
 date = "12/2025"
