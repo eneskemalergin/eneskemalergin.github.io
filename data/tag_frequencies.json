@@ -80,6 +80,22 @@
     "count": 1
   },
   {
+    "name": "digestion-simulation",
+    "count": 1
+  },
+  {
+    "name": "peptides",
+    "count": 1
+  },
+  {
+    "name": "enzyme-selection",
+    "count": 1
+  },
+  {
+    "name": "bottom-up",
+    "count": 1
+  },
+  {
     "name": "fasta",
     "count": 1
   },
@@ -117,22 +133,6 @@
   },
   {
     "name": "codec",
-    "count": 1
-  },
-  {
-    "name": "digestion-simulation",
-    "count": 1
-  },
-  {
-    "name": "peptides",
-    "count": 1
-  },
-  {
-    "name": "enzyme-selection",
-    "count": 1
-  },
-  {
-    "name": "bottom-up",
     "count": 1
   },
   {
