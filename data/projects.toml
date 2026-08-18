@@ -362,6 +362,53 @@ desc = "Missing-value-tolerant PCA for omics-scale matrices"
 github = "https://github.com/eneskemalergin/Maskomancy"
 
 [[projects]]
+title = "z-fastq"
+domain = "core-tooling"
+source = "personal"
+status = "wip"
+stars = 0
+version = "0.0.12"
+language = "Zig"
+pub = "na"
+access = "private"
+# image = "projects/z-fastq.svg"
+tag = "z-fastq"
+tags = ["bioinformatics", "fastq", "cli"]
+desc = "Lightning-fast, bounded-memory, workflow-ready FASTQ toolkit written in Zig."
+github = "https://github.com/eneskemalergin/z-fastq"
+
+[[projects]]
+title = "z-peptide"
+domain = "core-tooling"
+source = "personal"
+status = "early"
+stars = 0
+language = "Zig"
+pub = "na"
+access = "private"
+# image = "projects/z-peptide.svg"
+tag = "NA"
+tags = ["proteomics", "peptides", "digestion", "decoy", "fasta"]
+desc = "Planned Zig CLI and library for exact peptide provenance across user-supplied protein databases; no production artifact is implemented yet."
+github = "https://github.com/eneskemalergin/z-peptide"
+
+[[projects]]
+title = "z-xml"
+domain = "standards"
+source = "personal"
+status = "active"
+stars = 0
+version = "0.0.0"
+language = "Zig"
+pub = "na"
+access = "private"
+# image = "projects/z-xml.svg"
+tag = "NA"
+tags = ["xml", "parser", "standards", "library"]
+desc = "Benchmark-led XML library for Zig 0.16, currently qualifying XML 1.0 UTF-8 readers with raw-name and namespace-aware profiles."
+github = "https://github.com/eneskemalergin/z-xml"
+
+[[projects]]
 title = "zigR"
 domain = "language-dev"
 source = "personal"
@@ -407,3 +454,18 @@ tag = "mzbridge"
 tags = ["proteomics", "raw-data", "mzML", "conversion", "reverse-engineering"]
 desc = "Lightning-fast raw data to mzML converter, built in Zig as a research prototype by reverse-engineering vendor Raw files."
 github = "https://github.com/eneskemalergin/mzBridge"
+
+[[projects]]
+title = "z-mzml"
+domain = "standards"
+source = "personal"
+status = "early"
+stars = 0
+language = "Zig"
+pub = "na"
+access = "private"
+# image = "projects/z-mzml.svg"
+tag = "NA"
+tags = ["mass-spectrometry", "mzml", "parser", "library"]
+desc = "Early-stage Zig library for reading, writing, and working with mzML files; its public API is not yet stable."
+github = "https://github.com/eneskemalergin/z-mzml"

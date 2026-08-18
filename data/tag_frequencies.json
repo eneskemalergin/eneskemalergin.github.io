@@ -1,23 +1,31 @@
 [
   {
     "name": "proteomics",
-    "count": 10
+    "count": 11
   },
   {
     "name": "cli",
-    "count": 7
+    "count": 8
   },
   {
     "name": "library",
+    "count": 5
+  },
+  {
+    "name": "parser",
+    "count": 4
+  },
+  {
+    "name": "bioinformatics",
+    "count": 3
+  },
+  {
+    "name": "mass-spectrometry",
     "count": 3
   },
   {
     "name": "mzML",
     "count": 3
-  },
-  {
-    "name": "bioinformatics",
-    "count": 2
   },
   {
     "name": "statistics",
@@ -28,11 +36,11 @@
     "count": 2
   },
   {
-    "name": "parser",
+    "name": "peptides",
     "count": 2
   },
   {
-    "name": "mass-spectrometry",
+    "name": "fasta",
     "count": 2
   },
   {
@@ -72,10 +80,6 @@
     "count": 1
   },
   {
-    "name": "peptides",
-    "count": 1
-  },
-  {
     "name": "enzyme-selection",
     "count": 1
   },
@@ -105,10 +109,6 @@
   },
   {
     "name": "container-registry",
-    "count": 1
-  },
-  {
-    "name": "fasta",
     "count": 1
   },
   {
@@ -164,6 +164,26 @@
     "count": 1
   },
   {
+    "name": "fastq",
+    "count": 1
+  },
+  {
+    "name": "digestion",
+    "count": 1
+  },
+  {
+    "name": "decoy",
+    "count": 1
+  },
+  {
+    "name": "xml",
+    "count": 1
+  },
+  {
+    "name": "standards",
+    "count": 1
+  },
+  {
     "name": "r",
     "count": 1
   },
@@ -197,6 +217,10 @@
   },
   {
     "name": "reverse-engineering",
+    "count": 1
+  },
+  {
+    "name": "mzml",
     "count": 1
   }
 ]
