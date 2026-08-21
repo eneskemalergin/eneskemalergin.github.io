@@ -18,6 +18,7 @@ Requires Python 3.12 for preprocessing and Zola 0.22.1. The repository's `mise.t
 | ------------ | -------------------------------------------------------------------------- |
 | `content/`   | Markdown for blog posts, section index files                               |
 | `data/`      | Structured TOML: projects, publications, news, presentations, teaching     |
+| `static/`    | Site assets, local browser scripts, and pinned third-party assets           |
 | `templates/` | Jinja2-style Zola templates + 5 shortcodes                                 |
 | `sass/`      | SCSS: design tokens, layout, component styles                              |
 | `tools/`     | Python scripts: tag frequency aggregation, GitHub star color normalization |
@@ -27,11 +28,11 @@ At build time, `build.sh` also mirrors the latest CV PDF from `eneskemalergin/My
 
 ## Shortcodes
 
-Custom shortcodes that extend markdown: callout boxes (Notion-style with emoji icons), margin sidenotes, captioned figures, language-labeled code blocks, and collapsible details. Rendered server-side, zero client JavaScript.
+Custom shortcodes that extend markdown: callout boxes (Notion-style with emoji icons), margin sidenotes, captioned figures, language-labeled code blocks, and collapsible details. Their markup is rendered server-side; small local scripts handle theme selection, code highlighting, and math rendering.
 
 ## Design
 
-Muted backgrounds, Inter at weight 300, teal accent, first-class dark mode. 20 static pages, ~92ms build, page weight comparable to a single Medium article sans framework.
+Muted backgrounds, restrained sans-serif typography, teal accent, first-class dark mode. 20 static pages with no client framework.
 
 ## License
 
