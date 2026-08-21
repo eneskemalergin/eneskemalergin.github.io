@@ -32,7 +32,7 @@ Custom shortcodes that extend markdown: callout boxes (Notion-style with emoji i
 
 ## Design
 
-Muted backgrounds, restrained sans-serif typography, teal accent, first-class dark mode. 20 static pages with no client framework.
+Muted backgrounds, restrained sans-serif typography, teal accent, first-class dark mode, and no client framework. Generated page counts vary with content and taxonomy output.
 
 ## License
 
