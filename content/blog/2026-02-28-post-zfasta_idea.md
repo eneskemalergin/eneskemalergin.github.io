@@ -112,7 +112,7 @@ The Rust ecosystem has several FASTA indexing libraries. `rust-htslib` wraps hts
 
 ## What is next
 
-The current v0.1.0 only indexes. The repository{% sidenote() %}<a href="https://github.com/eneskemalergin/z-fasta" target="_blank">github.com/eneskemalergin/z-fasta</a>. The README has a more detailed roadmap.{% end %} already has a roadmap for what comes after:
+The current v0.1.0 only indexes. The repository{% sidenote() %}<a href="https://github.com/eneskemalergin/z-fasta" target="_blank" rel="noopener noreferrer">github.com/eneskemalergin/z-fasta</a>. The README has a more detailed roadmap.{% end %} already has a roadmap for what comes after:
 
 - **`z-fasta get`** - O(1) sub-sequence extraction by name or region. The other half of `samtools faidx`.
 - **`z-fasta bed`** - Extract sequences for every entry in a BED file in a single pass.

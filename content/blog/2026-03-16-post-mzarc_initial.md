@@ -201,7 +201,7 @@ After that, the project either has evidence to continue or evidence to stop.
 
 ## Where this fits
 
-mzarc is the second Zig tool I have shipped{% sidenote() %}The first was <a href="https://github.com/eneskemalergin/z-fasta" target="_blank">z-fasta</a>, a FASTA indexer that runs 9-17x faster than samtools. I wrote about it <a href="/blog/post-zfasta-idea/" target="_blank">here</a>.{% end %}. z-fasta proved that a single static binary could beat established tools on a narrow, well-defined problem. mzarc is trying to prove something harder: that domain-specific encoding can beat general-purpose compression on a format that matters to my field.
+mzarc is the second Zig tool I have shipped{% sidenote() %}The first was <a href="https://github.com/eneskemalergin/z-fasta" target="_blank" rel="noopener noreferrer">z-fasta</a>, a FASTA indexer that runs 9-17x faster than samtools. I wrote about it <a href="/blog/post-zfasta-idea/" target="_blank" rel="noopener noreferrer">here</a>.{% end %}. z-fasta proved that a single static binary could beat established tools on a narrow, well-defined problem. mzarc is trying to prove something harder: that domain-specific encoding can beat general-purpose compression on a format that matters to my field.
 
 The honest assessment after v0.0.1 is that the thesis is not yet proven. The lossless path trails mzMLb. The decode path is fast but scalar-only. The dataset coverage is one file. The search impact is unmeasured.
 

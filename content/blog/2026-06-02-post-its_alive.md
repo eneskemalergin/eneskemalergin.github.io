@@ -10,7 +10,7 @@ kind = "post"
 
 {% callout(type="tip") %}
 
-**TLDR:** This site is now built with <a href="https://www.getzola.org" target="_blank">Zola</a>, a static site generator that turns markdown into HTML in under 100ms. Custom shortcodes for callouts, sidenotes, code blocks, figures, and collapsible details. Old posts migrated from an obsolete platform with retroactive commentary added through sidenotes. Dark mode included. No JavaScript framework required.
+**TLDR:** This site is now built with <a href="https://www.getzola.org" target="_blank" rel="noopener noreferrer">Zola</a>, a static site generator that turns markdown into HTML in under 100ms. Custom shortcodes for callouts, sidenotes, code blocks, figures, and collapsible details. Old posts migrated from an obsolete platform with retroactive commentary added through sidenotes. Dark mode included. No JavaScript framework required.
 
 {% end %}
 

@@ -34,7 +34,7 @@
             </div>
             <div class="project-body">
                 <div class="project-head">
-                    {% set gh = p | get(key="github", default="") %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
+                    {% set gh = p | get(key="github", default="") %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
                     <div class="project-head-badges">
                         <span class="lang-badge lang-{{ p.language }}">
                             {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
@@ -70,10 +70,10 @@
                 {% endif %}
                 <div class="project-desc">{{ p.desc }}</div>
                 <div class="project-links">
-                    {% set gh = p | get(key="github", default="") %}{% if gh %}<a href="{{ gh }}" class="project-link" target="_blank">GitHub</a>{% endif %}
-                    {% if p.analysis %}<a href="{{ p.analysis }}" class="project-link" target="_blank">Analysis</a>{% endif %}
+                    {% set gh = p | get(key="github", default="") %}{% if gh %}<a href="{{ gh }}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
+                    {% if p.analysis %}<a href="{{ p.analysis }}" class="project-link" target="_blank" rel="noopener noreferrer">Analysis</a>{% endif %}
                     {% if p.pkg %}
-                    <a href="{{ p.pkg }}" class="project-link" target="_blank">
+                    <a href="{{ p.pkg }}" class="project-link" target="_blank" rel="noopener noreferrer">
                         {%- if "pypi.org" in p.pkg %}PyPI
                         {%- elif "crates.io" in p.pkg %}Crates.io
                         {%- elif "cran.r-project.org" in p.pkg or "cran.rstudio.com" in p.pkg %}CRAN
@@ -81,10 +81,10 @@
                         {%- else %}Package{%- endif %}
                     </a>
                     {% endif %}
-                    {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank">Docs</a>{% endif %}
-                    {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank">App</a>{% endif %}
-                    {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank">Paper</a>{% endif %}
-                    {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank">Preprint</a>{% endif %}
+                    {% if p.docs %}<a href="{{ p.docs }}" class="project-link" target="_blank" rel="noopener noreferrer">Docs</a>{% endif %}
+                    {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank" rel="noopener noreferrer">App</a>{% endif %}
+                    {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank" rel="noopener noreferrer">Paper</a>{% endif %}
+                    {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank" rel="noopener noreferrer">Preprint</a>{% endif %}
                     {% if p.tag and p.tag != "NA" %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
                 </div>
             </div>

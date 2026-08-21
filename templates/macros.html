@@ -48,7 +48,7 @@
             <div class="paper-links">
                 {% if paper.links %}
                 {% for link in paper.links %}
-                <a href="{{ link.url }}" target="_blank" class="paper-link">{{ link.label }}</a>
+                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" class="paper-link">{{ link.label }}</a>
                 {% endfor %}
                 {% endif %}
                 {% if paper.tag and paper.tag != "NA" %}

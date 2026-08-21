@@ -10,7 +10,7 @@
         {% endif %}
         <ul class="icons">
             {% for item in config.extra.social %}
-            <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener"><i class="{{ item.icon }}"></i></a></li>
+            <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener noreferrer"><i class="{{ item.icon }}"></i></a></li>
             {% endfor %}
         </ul>
     </div>
@@ -43,7 +43,7 @@
             {% for item in topic.items %}
             <span class="research-paper-item">
                 {% if item.venue %}<span class="research-venue">{{ item.venue }}</span>{% endif %}
-                {% if item.url %}<a href="{{ item.url }}" target="_blank">{% endif %}{{ item.label }}{% if item.url %}</a>{% endif %}
+                {% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{% endif %}{{ item.label }}{% if item.url %}</a>{% endif %}
             </span>{% if not loop.last %}&thinsp;&middot;&thinsp;{% endif %}
             {% endfor %}
         </div>
