@@ -4,6 +4,38 @@
 set -e
 cd "$(dirname "$0")"
 
+PYTHON="${PYTHON:-python3.12}"
+ZOLA_VERSION="0.22.1"
+
+if ! command -v "$PYTHON" >/dev/null 2>&1; then
+    echo "Python 3.12 is required. Set PYTHON to its executable if needed." >&2
+    exit 1
+fi
+
+PYTHON_MAJOR_MINOR="$($PYTHON -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
+if [ "$PYTHON_MAJOR_MINOR" != "3.12" ]; then
+    echo "Python 3.12 is required; found $PYTHON_MAJOR_MINOR." >&2
+    exit 1
+fi
+
+if command -v mise >/dev/null 2>&1; then
+    ZOLA=(mise exec -- zola)
+elif command -v zola >/dev/null 2>&1; then
+    ZOLA=(zola)
+else
+    echo "Zola $ZOLA_VERSION is required. Run 'mise install' or install that exact version." >&2
+    exit 1
+fi
+
+ZOLA_ACTUAL_VERSION="$("${ZOLA[@]}" --version 2>/dev/null)"
+case "$ZOLA_ACTUAL_VERSION" in
+    "zola $ZOLA_VERSION"*) ;;
+    *)
+        echo "Zola $ZOLA_VERSION is required; found $ZOLA_ACTUAL_VERSION." >&2
+        exit 1
+        ;;
+esac
+
 # ─── Mirror CV PDF from My_CV repo (single source of truth) ───
 # The site renders the CV inline via an <iframe> pointing at this local copy,
 # which GitHub Pages serves as application/pdf (same-origin, frameable).
@@ -35,11 +67,11 @@ else
     printf 'available = false\nsrc_url = "%s"\n' "$CV_SRC" > data/cv_meta.toml
 fi
 
-python3 tools/tag-freq.py
-python3 tools/tag-freq.py data/publications.toml data/pub_tag_frequencies.json --table publications
-python3 tools/star-colors.py
+"$PYTHON" tools/tag-freq.py
+"$PYTHON" tools/tag-freq.py data/publications.toml data/pub_tag_frequencies.json --table publications
+"$PYTHON" tools/star-colors.py
 
-python3 << 'PYEOF'
+"$PYTHON" << 'PYEOF'
 import json, re, os, tomllib
 from collections import Counter
 
@@ -87,8 +119,8 @@ PYEOF
 
 cmd="${1:-build}"
 if [ "$cmd" = "serve" ]; then
-    zola build
-    zola serve
+    "${ZOLA[@]}" build
+    "${ZOLA[@]}" serve
 else
-    zola "$cmd"
+    "${ZOLA[@]}" "$cmd"
 fi

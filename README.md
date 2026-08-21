@@ -1,15 +1,16 @@
 # eneskemalergin.github.io
 
-Personal professiona/academic website, built with [Zola](https://www.getzola.org). Not a theme. Not a CMS. Markdown in, static HTML out.
+Personal professional/academic website, built with [Zola](https://www.getzola.org). Not a theme. Not a CMS. Markdown in, static HTML out.
 
 ## Quick start
 
 ```sh
+mise install
 make build   # pre-process + zola build → public/
 make serve   # local preview at localhost:1111
 ```
 
-Requires Python 3 (for tag frequency and star color preprocessing) and Zola 0.19+.
+Requires Python 3.12 for preprocessing and Zola 0.22.1. The repository's `mise.toml` pins Zola for local builds; `build.sh` checks both tool versions before doing any work.
 
 ## Structure
 
