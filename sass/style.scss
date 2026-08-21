@@ -4,6 +4,7 @@
 // ─── Light theme CSS variables ──────────────────────────
 
 :root {
+    color-scheme: light dark;
     --c-link: #006b7b;
     --c-link-hover-bg: #0093a8;
     --bg-color: #fbfbf8;
@@ -39,6 +40,7 @@
 }
 
 :root.dark {
+    color-scheme: dark;
     --c-link: #2dd4bf;
     --c-link-hover-bg: #0f766e;
     --bg-color: #0f172a;
@@ -70,6 +72,10 @@
     --border-c-writing: rgba(251, 191, 36, 0.3);
     --border-c-editing: rgba(52, 211, 153, 0.3);
     --border-c-under-review: rgba(248, 113, 113, 0.3);
+}
+
+:root.theme-light {
+    color-scheme: light;
 }
 
 // ─── Base backgrounds ───────────────────────────────────

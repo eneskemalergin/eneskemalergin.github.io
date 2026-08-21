@@ -52,7 +52,10 @@
 
     function updateControl() {
         var button = document.querySelector(".theme-toggle");
-        if (!button) return;
+        if (!button) {
+            updateCodeTheme();
+            return;
+        }
 
         var actual = isDarkMode(preference) ? "dark" : "light";
         var next = nextPreference();
@@ -68,15 +71,32 @@
         }
         button.setAttribute("aria-label", label);
         button.setAttribute("title", label);
-        button.setAttribute("data-theme-preference", preference);
         updateCodeTheme();
+    }
+
+    function watchCodeTheme() {
+        if (!document.head || typeof window.MutationObserver !== "function") return;
+
+        var observer = new window.MutationObserver(function (records) {
+            for (var i = 0; i < records.length; i += 1) {
+                for (var j = 0; j < records[i].addedNodes.length; j += 1) {
+                    var node = records[i].addedNodes[j];
+                    if (node.nodeType === 1 && node.id === "hljs-theme") {
+                        updateCodeTheme();
+                        observer.disconnect();
+                        return;
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.head, { childList: true });
     }
 
     function applyPreference(value, persist) {
         preference = isValidPreference(value) ? value : "system";
         html.classList.toggle("dark", isDarkMode(preference));
         html.classList.toggle("theme-light", preference === "light");
-        html.setAttribute("data-theme-preference", preference);
 
         if (persist) {
             try {
@@ -96,6 +116,7 @@
     }
 
     applyPreference(readPreference(), false);
+    watchCodeTheme();
 
     if (mediaQuery !== null) {
         if (typeof mediaQuery.addEventListener === "function") {
