@@ -184,7 +184,7 @@ tldr = "This thesis develops computational and statistical methods for proteofor
 
 
 [[publications]]
-title = "Statistical Testing for Protein Equivalence Identifies Core Functional Modules Conserved across 360 Cancer Cell Lines"
+title = "Statistical Testing for Protein Equivalence Identifies Core Functional Modules Conserved across 360 Cancer Cell Lines and Presents a General Approach to Investigating Biological Systems"
 authors = "<u>Ergin, E. K.</u>, Myung, J. J. K., Lange, P. F.*"
 venue = "Journal of Proteome Research"
 domain = "proteomics"
@@ -247,7 +247,7 @@ title = "PDX models reflect the proteome landscape of pediatric acute lymphoblas
 authors = "Uzozie, A. C., <u>Ergin, E. K.</u>, ... Lange, P. F.*"
 venue = "Journal of Experimental and Clinical Cancer Research"
 domain = "cancer-biology"
-year = 2022
+year = 2021
 type = "journal"
 status = "published"
 access = "open-access"
@@ -270,7 +270,7 @@ year = 2019
 type = "journal"
 status = "published"
 access = "open-access"
-doi = "10.1074/mcp.RA119.001678"
+doi = "10.1074/mcp.TIR119.001560"
 image = "publications/Weng-2019.jpg"
 tag = "NA"
 tags = ["proteomics", "proteoforms", "mass-spectrometry", "n-termini", "enrichment", "bioinformatics", "peptide-analysis", "microscale"]

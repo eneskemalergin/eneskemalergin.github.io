@@ -18,7 +18,7 @@ Requires Python 3.12 for preprocessing and Zola 0.22.1. The repository's `mise.t
 | ------------ | -------------------------------------------------------------------------- |
 | `content/`   | Markdown for blog posts, section index files                               |
 | `data/`      | Structured TOML: projects, publications, news, presentations, teaching     |
-| `static/`    | Site assets, local browser scripts, and pinned third-party assets           |
+| `static/`    | Site assets, local browser scripts, and pinned third-party assets          |
 | `templates/` | Jinja2-style Zola templates + 5 shortcodes                                 |
 | `sass/`      | SCSS: design tokens, layout, component styles                              |
 | `tools/`     | Python scripts: tag frequency aggregation, GitHub star color normalization |

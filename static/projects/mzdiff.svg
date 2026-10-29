@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-labelledby="title description">
+  <title id="title">mzDiff</title>
+  <desc id="description">Warm XML brackets enclose a profile spectrum with one peak redrawn in orange where the compared file differs, a small MS DATA label, and an orange delta for difference.</desc>
+  <rect x="3" y="3" width="154" height="154" rx="27" fill="#151515" stroke="#f7a41d" stroke-width="3"/>
+  <path d="M44 39 25 80l19 41M116 39l19 41-19 41" fill="none" stroke="#f4eed7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M51.5 80h5l2-10 2 10h6l2-26 2 26h5l2-15 2 15h6l2-39 2 39h5l2-23 2 23h10" fill="none" stroke="#f4eed7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M84.5 80l3-24 3 24" fill="none" stroke="#f7a41d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="79.9" y="92.7" fill="#f4eed7" font-family="monospace" font-size="10" letter-spacing="1" text-anchor="middle">MS DATA</text>
+  <path d="M80 103.5 90 120.5H70Z" fill="none" stroke="#f7a41d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
