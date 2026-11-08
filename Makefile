@@ -10,6 +10,7 @@ serve:
 
 check: build
 	$(PYTHON) tools/check-links.py public
+	$(PYTHON) tools/check-html.py public
 
 clean:
 	rm -rf public/

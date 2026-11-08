@@ -35,7 +35,7 @@
 <ul class="research-list">
     {% for topic in home.research %}
     <li>
-        <div class="research-topic">{{ topic.topic }}</div>
+        <h3 class="research-topic">{{ topic.topic }}</h3>
         {% if topic.desc %}
         <p class="research-desc">{{ topic.desc }}</p>
         {% endif %}
