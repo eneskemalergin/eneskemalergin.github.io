@@ -14,7 +14,7 @@
 {% if p.private_reason and p.private_reason not in private_reasons %}{{ throw(message="data/projects.toml: unknown private_reason '" ~ p.private_reason ~ "' on '" ~ p.title ~ "'") }}{% endif %}
 {% endfor %}
 
-<h2>Projects</h2>
+<h1 class="page-title">Projects</h1>
 
 {% for stage in order %}
 {% set items = data.projects | filter(attribute="status", value=stage) %}

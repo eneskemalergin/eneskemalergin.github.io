@@ -167,6 +167,17 @@
 
 /* -- Tables ------------------------------------------------ */
 
+// The scroll box takes the table's margin, so it collapses with its
+// neighbors as the table's own margin did.
+.page-body .table-scroll {
+    overflow-x: auto;
+    margin: 9.5pt 0;
+}
+
+.page-body .table-scroll > table {
+    margin: 0;
+}
+
 .page-body table {
     width: 100%;
     border-collapse: collapse;
@@ -220,6 +231,10 @@ html.dark .page-body tbody tr:nth-child(even) td {
 @media (max-width: 700px) {
     .page-body table {
         font-size: 8.5pt;
+    }
+
+    .page-body .table-scroll {
+        margin: 8.5pt 0;
     }
 
     .page-body th,
@@ -657,6 +672,10 @@ html.dark .page-body mark {
 }
 
 .sidenote-ref {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
     color: var(--c-link);
     font-size: 0.7em;
     vertical-align: super;
@@ -667,6 +686,12 @@ html.dark .page-body mark {
 
 .sidenote-ref:hover {
     text-shadow: var(--glow-link);
+}
+
+.sidenote-ref:focus-visible {
+    outline: 1px solid var(--c-link);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 .sidenote {
@@ -739,6 +764,8 @@ html.dark .page-body mark {
 .page-main {
     flex: 1;
     min-width: 0;
+    // Long URLs and identifiers break instead of widening the page.
+    overflow-wrap: break-word;
 }
 
 /* -- Post meta bar ---------------------------------------- */
@@ -848,6 +875,7 @@ html.dark .page-body mark {
 @media (max-width: 1000px) {
     .blog-post--with-toc .page-layout {
         flex-direction: column;
+        align-items: stretch;
     }
     .post-toc {
         position: static;
@@ -891,10 +919,27 @@ html.dark .page-body mark {
     border-color: var(--c-link);
 }
 
+// The toggle needs JavaScript; without it the contents stay open.
+html:not(.js) .toc-toggle {
+    display: none;
+}
+
 .toc-toggle:focus-visible {
     outline: 1px solid var(--c-link);
     outline-offset: 2px;
     border-radius: 4px;
+}
+
+.toc-body {
+    padding-top: 8px;
+    border-bottom: 1px solid var(--border-nav);
+}
+
+@media (max-width: 600px) {
+    .toc-body {
+        padding-top: 0;
+        border-bottom: none;
+    }
 }
 
 .toc-list {

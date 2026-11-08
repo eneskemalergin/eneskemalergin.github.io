@@ -23,7 +23,7 @@
 
 <div class="tag-page-header">
     <div class="tag-page-title">
-        <h2><span class="tag-page-label">tag:</span> {{ term.name }}</h2>
+        <h1 class="page-title"><span class="tag-page-label">tag:</span> {{ term.name }}</h1>
         <span class="tag-page-count">{{ n_posts }} post{{ n_posts | pluralize }}{% if n_projects %}, {{ n_projects }} project{{ n_projects | pluralize }}{% endif %}{% if n_pubs %}, {{ n_pubs }} publication{{ n_pubs | pluralize }}{% endif %}</span>
     </div>
     <a href="{{ get_url(path="/tags/") }}" class="tag-page-back">← all tags</a>
@@ -87,7 +87,7 @@
             </li>
             {% endfor %}
         </ul>
-        <div class="blog-pagination" id="blog-pagination"></div>
+        <nav class="blog-pagination" id="blog-pagination" aria-label="Pages" hidden></nav>
         {% else %}
         <p class="empty">Nothing tagged with {{ term.name }} yet.</p>
         {% endif %}
@@ -132,35 +132,4 @@
 </div>
 
 <script src="{{ get_url(path="js/blog-list.js") }}"></script>
-<script>
-(function () {
-    var currentPage = 1;
-    var allItems = [];
-
-    function render() {
-        var totalPages = Math.ceil(allItems.length / BlogList.PAGE_SIZE);
-        allItems.forEach(function (item) { item.style.display = 'none'; });
-        var start = (currentPage - 1) * BlogList.PAGE_SIZE;
-        allItems.slice(start, start + BlogList.PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
-        BlogList.renderPagination(currentPage, totalPages, function (page) {
-            currentPage = page;
-            render();
-            BlogList.buildArchive(allItems);
-            document.getElementById('blog-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    function init() {
-        allItems = Array.from(document.querySelectorAll('#blog-list .blog-item'));
-        render();
-        BlogList.buildArchive(allItems);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-}());
-</script>
 {% endblock %}

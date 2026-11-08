@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ taxonomy.name | title }}</h2>
+<h1 class="page-title">{{ taxonomy.name | title }}</h1>
 <p class="section-desc">{{ terms | length }} topics from blog posts; the numbers count posts. A topic page also lists the projects and publications that share it.</p>
 
 <div class="tag-cloud">

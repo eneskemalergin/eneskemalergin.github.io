@@ -7,7 +7,7 @@
 {% set cv_file = cv.path | split(pat="/") | last %}
 {% set gh_blob = "https://github.com/" ~ cv.repo ~ "/blob/" ~ cv.commit ~ "/" ~ cv.path %}
 
-<h2>CV</h2>
+<h1 class="page-title">CV</h1>
 <p class="cv-intro">
     Mirrored from <a href="{{ gh_blob }}" target="_blank" rel="noopener noreferrer">{{ cv.repo }}</a>
     so the canonical source stays in one place.

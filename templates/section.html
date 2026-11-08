@@ -6,7 +6,7 @@
 {% set tag_taxonomy = get_taxonomy(kind="tags") %}
 {% set tag_terms = tag_taxonomy.items %}
 
-<h2>{{ section.title }}</h2>
+<h1 class="page-title">{{ section.title }}</h1>
 {% if section.description %}<p class="section-desc">{{ section.description }}</p>{% endif %}
 
 <div class="blog-tags-bar">
@@ -18,12 +18,13 @@
     <a href="{{ get_url(path="/tags/") }}" class="tag">all tags →</a>
 </div>
 
-<div class="blog-tabs" role="tablist">
-    <button class="blog-tab active" data-filter="all">All</button>
-    <button class="blog-tab" data-filter="post">Posts</button>
-    <button class="blog-tab" data-filter="note">Notes</button>
-    <button class="blog-tab" data-filter="opinion">Opinions</button>
-    <button class="blog-tab" data-filter="reading">Reading</button>
+{#- js/blog-list.js runs these filters; without JavaScript the row stays hidden. -#}
+<div class="blog-tabs" role="group" aria-label="Filter by kind">
+    <button type="button" class="blog-tab active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="blog-tab" data-filter="post" aria-pressed="false">Posts</button>
+    <button type="button" class="blog-tab" data-filter="note" aria-pressed="false">Notes</button>
+    <button type="button" class="blog-tab" data-filter="opinion" aria-pressed="false">Opinions</button>
+    <button type="button" class="blog-tab" data-filter="reading" aria-pressed="false">Reading</button>
 </div>
 
 <div class="blog-layout">
@@ -70,7 +71,7 @@
             </li>
             {% endfor %}
         </ul>
-        <div class="blog-pagination" id="blog-pagination"></div>
+        <nav class="blog-pagination" id="blog-pagination" aria-label="Pages" hidden></nav>
         {% else %}
         <p class="empty">Nothing here yet.</p>
         {% endif %}
@@ -82,52 +83,4 @@
 </div>
 
 <script src="{{ get_url(path="js/blog-list.js") }}"></script>
-<script>
-(function () {
-    var currentFilter = 'all';
-    var currentPage = 1;
-    var allItems = [];
-
-    function getFiltered() {
-        if (currentFilter === 'all') return allItems;
-        return allItems.filter(function (item) { return item.dataset.kind === currentFilter; });
-    }
-
-    function render() {
-        var filtered = getFiltered();
-        var totalPages = Math.ceil(filtered.length / BlogList.PAGE_SIZE);
-        allItems.forEach(function (item) { item.style.display = 'none'; });
-        var start = (currentPage - 1) * BlogList.PAGE_SIZE;
-        filtered.slice(start, start + BlogList.PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
-        BlogList.renderPagination(currentPage, totalPages, function (page) {
-            currentPage = page;
-            render();
-            BlogList.buildArchive(getFiltered());
-            document.getElementById('blog-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    function init() {
-        allItems = Array.from(document.querySelectorAll('#blog-list .blog-item'));
-        render();
-        BlogList.buildArchive(getFiltered());
-        document.querySelectorAll('.blog-tab').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.blog-tab').forEach(function (b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                currentPage = 1;
-                render();
-                BlogList.buildArchive(getFiltered());
-            });
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-}());
-</script>
 {% endblock %}

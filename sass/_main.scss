@@ -15,8 +15,14 @@ h1, h2, h3, h4 {
     font-weight: 500;
 }
 
-h2 {
+h2,
+.page-title {
     font-size: 16pt;
+}
+
+// A page's h1 keeps the size and spacing the h2 title had.
+.page-title {
+    margin: 0.83em 0;
 }
 
 h3 {
@@ -70,6 +76,14 @@ hr {
     margin: 1em 0;
 }
 
+// The site footer sits after <main> and lines up with its content box.
+.site-footer {
+    width: calc(100% - 40px);
+    max-width: 860px;
+    margin: 3em auto 0;
+    padding-bottom: 20px;
+}
+
 footer {
     margin-top: 3em;
     border-top: 1px solid var(--border-color);
@@ -104,6 +118,24 @@ footer p {
     text-decoration-color: var(--c-link);
 }
 
+// Skip link: off screen until it takes keyboard focus.
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    z-index: 1100;
+    padding: 6px 12px;
+    font-size: 9.5pt;
+    color: var(--c-link);
+    background: var(--bg-color);
+    border: 1px solid var(--c-link);
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
 /* =============================================================
    LAYOUT
    ============================================================= */
@@ -111,7 +143,7 @@ footer p {
     position: relative;
     width: 100%;
     max-width: 900px;
-    padding: 20px;
+    padding: 20px 20px 0;
     box-sizing: border-box;
     margin: 0 auto;
     text-align: left;
@@ -135,7 +167,7 @@ footer p {
 /* =============================================================
    NAVIGATION
    ============================================================= */
-nav {
+.site-nav {
     position: relative;
     max-width: 900px;
     margin: 0 auto 24px auto;
@@ -211,7 +243,9 @@ nav {
 }
 
 @media (max-width: 600px) {
-    nav {
+    // The menu button gets its own row, so no page content sits under it.
+    .site-nav {
+        min-height: 56px;
         margin-bottom: 0;
         padding: 0;
         border-bottom: none;
@@ -301,14 +335,14 @@ nav {
     min-width: 0;
 }
 
-.hero-text h2 {
+.hero-text h1 {
     margin: 0 0 4px 0;
     font-size: 18pt;
     font-weight: 600;
     line-height: 1.2;
 }
 
-.hero-text h2 + p {
+.hero-text h1 + p {
     margin: 0 0 6px 0;
     font-size: 11pt;
     font-weight: 500;
@@ -1188,9 +1222,14 @@ html.dark .pub-badge.pub-badge--status-preprint {
     margin-bottom: 16px;
 }
 
-/* Kind tabs */
+/* Kind filters: hidden without JavaScript, which runs them */
 .blog-tabs {
+    display: none;
+}
+
+html.js .blog-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 0;
     margin-bottom: 20px;
     border-bottom: 2px solid var(--border-color);
@@ -1446,6 +1485,10 @@ html.dark .kind-opinion {
     flex-wrap: wrap;
 }
 
+.blog-pagination[hidden] {
+    display: none;
+}
+
 .page-btn {
     background: none;
     border: 1px solid var(--border-color);
@@ -1600,7 +1643,7 @@ details[open].archive-month > summary::before {
     gap: 12px;
 }
 
-.tag-page-header h2 {
+.tag-page-header h1 {
     margin: 0;
 }
 

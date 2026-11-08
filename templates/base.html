@@ -29,20 +29,21 @@
 </head>
 
 <body>
-    <nav>
-        <button type="button" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <nav class="site-nav" aria-label="Primary">
+        <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">
             <span></span><span></span><span></span>
         </button>
-        <ul class="navbar">
+        <ul class="navbar" id="site-menu">
+            {% set rel = "" %}
+            {% if current_url is defined %}{% set rel = current_url | replace(from=config.base_url, to="") %}{% endif %}
             {% for item in config.extra.menu %}
             {% if item.url is starting_with("http") %}
             <li><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a></li>
             {% else %}
-            {% set rel = "" %}
-            {% if current_url is defined %}{% set rel = current_url | replace(from=config.base_url, to="") %}{% endif %}
-            <li><a href="{{ get_url(path=item.url) }}" {% if rel %}{% if item.url=="/" %}{% if rel=="/" or rel=="" %}
-                    class="active" {% endif %}{% else %}{% if rel is starting_with(item.url) %} class="active" {% endif
-                    %}{% endif %}{% endif %}>{{ item.name }}</a></li>
+            {#- A link is active on its own page and on pages below it; only its own page is "page". -#}
+            {% if not rel %}{% set active = false %}{% elif item.url == "/" %}{% set active = rel == "/" %}{% else %}{% set active = rel is starting_with(item.url) %}{% endif %}
+            <li><a href="{{ get_url(path=item.url) }}"{% if active %} class="active" aria-current="{% if rel == item.url %}page{% else %}true{% endif %}"{% endif %}>{{ item.name }}</a></li>
             {% endif %}
             {% endfor %}
             <li class="nav-toggle">
@@ -55,55 +56,18 @@
         </ul>
     </nav>
 
-    <section id="content">
+    <main id="content">
         {% block content %}{% endblock %}
-        <footer>
-            <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}.</p>
-            <p class="footer-built">Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener noreferrer">Zola</a></p>
-        </footer>
-    </section>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}.</p>
+        <p class="footer-built">Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener noreferrer">Zola</a></p>
+    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var hamburger = document.querySelector('.hamburger');
-            var navbar = document.querySelector('.navbar');
-            if (!hamburger || !navbar) return;
-            hamburger.addEventListener('click', function (e) {
-                e.stopPropagation();
-                var expanded = hamburger.getAttribute('aria-expanded') === 'true';
-                hamburger.classList.toggle('active');
-                navbar.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', !expanded);
-            });
-            document.querySelectorAll('.navbar a').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    hamburger.classList.remove('active');
-                    navbar.classList.remove('active');
-                });
-            });
-            document.addEventListener('click', function (event) {
-                if (!navbar.contains(event.target) && !hamburger.contains(event.target) && navbar.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    navbar.classList.remove('active');
-                }
-            });
-        });
-    </script>
-    <script>
-    (function() {
-        document.addEventListener('click', function(e) {
-            var ref = e.target.closest('.sidenote-ref');
-            if (!ref) return;
-            var wasActive = ref.classList.contains('sn-active');
-            document.querySelectorAll('.sidenote-ref.sn-active').forEach(function(el) {
-                el.classList.remove('sn-active');
-            });
-            if (!wasActive) {
-                ref.classList.add('sn-active');
-            }
-        });
-    })();
-    </script>
+    <script src="{{ get_url(path="js/nav.js") }}"></script>
+    {% if (page is defined and page.content is containing("sidenote-ref")) %}
+    <script src="{{ get_url(path="js/sidenotes.js") }}"></script>
+    {% endif %}
 </body>
 
 </html>

@@ -1,8 +1,10 @@
 {#
-A margin sidenote. Output after the paragraph, floated right.
+A margin sidenote. Output after the paragraph, floated right. The marker is a
+button: on narrow screens it shows and hides the note (js/sidenotes.js); on
+wide screens the note is always visible and the button highlights it.
 
 Usage:
   <p>Some text{% sidenote() %}Note here.{% end %}</p>
 #}
-<span class="sidenote-ref">&#9670;</span>
-<span class="sidenote">{{ body | markdown | replace(from="<p>", to="") | replace(from="</p>", to="") | safe }}</span>
+<button type="button" class="sidenote-ref" aria-expanded="false" aria-controls="sidenote-{{ nth }}" aria-label="Sidenote {{ nth }}">&#9670;</button>
+<span class="sidenote" id="sidenote-{{ nth }}" role="note">{{ body | markdown | replace(from="<p>", to="") | replace(from="</p>", to="") | safe }}</span>

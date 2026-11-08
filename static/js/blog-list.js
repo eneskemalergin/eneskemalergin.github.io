@@ -1,5 +1,8 @@
-/* blog-list.js : shared utilities for blog listing and tag pages */
-var BlogList = (function () {
+/* blog-list.js : the post list on the blog page and on tag pages. Pages
+   through the list five posts at a time, builds the archive sidebar, and on the
+   blog page filters by kind. Without JavaScript every post shows and the
+   filter row stays hidden. */
+(function () {
     var PAGE_SIZE = 5;
     var MONTH_ORDER = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -31,16 +34,17 @@ var BlogList = (function () {
     function renderPagination(currentPage, totalPages, onPageChange) {
         var container = document.getElementById('blog-pagination');
         if (!container) return;
+        container.hidden = totalPages <= 1;
         if (totalPages <= 1) { container.innerHTML = ''; return; }
         var html = '';
         if (currentPage > 1) {
-            html += '<button class="page-btn" data-page="' + (currentPage - 1) + '">&larr;</button>';
+            html += '<button type="button" class="page-btn" data-page="' + (currentPage - 1) + '" aria-label="Previous page">&larr;</button>';
         }
         for (var i = 1; i <= totalPages; i++) {
-            html += '<button class="page-btn' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '">' + i + '</button>';
+            html += '<button type="button" class="page-btn' + (i === currentPage ? ' active" aria-current="page' : '') + '" data-page="' + i + '" aria-label="Page ' + i + '">' + i + '</button>';
         }
         if (currentPage < totalPages) {
-            html += '<button class="page-btn" data-page="' + (currentPage + 1) + '">&rarr;</button>';
+            html += '<button type="button" class="page-btn" data-page="' + (currentPage + 1) + '" aria-label="Next page">&rarr;</button>';
         }
         container.innerHTML = html;
         container.querySelectorAll('.page-btn').forEach(function (btn) {
@@ -86,5 +90,57 @@ var BlogList = (function () {
         sidebar.innerHTML = html;
     }
 
-    return { PAGE_SIZE: PAGE_SIZE, renderPagination: renderPagination, buildArchive: buildArchive };
+    function init() {
+        var list = document.getElementById('blog-list');
+        if (!list) return;
+        var allItems = Array.prototype.slice.call(list.querySelectorAll('.blog-item'));
+        var filters = Array.prototype.slice.call(document.querySelectorAll('.blog-tab'));
+        var currentFilter = 'all';
+        var currentPage = 1;
+
+        function filtered() {
+            if (currentFilter === 'all') return allItems;
+            return allItems.filter(function (item) { return item.dataset.kind === currentFilter; });
+        }
+
+        function render() {
+            var items = filtered();
+            var totalPages = Math.ceil(items.length / PAGE_SIZE);
+            allItems.forEach(function (item) { item.style.display = 'none'; });
+            var start = (currentPage - 1) * PAGE_SIZE;
+            items.slice(start, start + PAGE_SIZE).forEach(function (item) { item.style.display = ''; });
+            renderPagination(currentPage, totalPages, function (page) {
+                currentPage = page;
+                render();
+                buildArchive(filtered());
+                // Keyboard focus follows the new page instead of the removed button.
+                var first = items[(currentPage - 1) * PAGE_SIZE];
+                var link = first && first.querySelector('.blog-title a');
+                if (link) link.focus({ preventScroll: true });
+                list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        filters.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filters.forEach(function (b) {
+                    b.classList.toggle('active', b === btn);
+                    b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+                });
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                render();
+                buildArchive(filtered());
+            });
+        });
+
+        render();
+        buildArchive(filtered());
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 }());
