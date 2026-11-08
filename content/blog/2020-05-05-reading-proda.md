@@ -1,13 +1,13 @@
 +++
 title = "proDA"
 date = 2020-05-05
+updated = 2026-06-02
 description = "Probabilistic dropout analysis for label-free proteomics. Handles missing values by modeling dropout curves instead of imputing."
 [taxonomies]
 tags = ["proteomics", "proteoforms", "quantification", "mass-spectrometry", "statistics", "bioinformatics", "differential-abundance"]
 [extra]
 kind = "reading"
 featured_image = "/blog/images/proda/proDA_fig2.jpg"
-edited_date = "2026-06-02"
 +++
 
 > **Note:** This reading note was originally written in 2020 when I first encountered the preprint. I have expanded and updated it in June 2026 with proper citation details (the paper was published in *Journal of Proteome Research* after the initial bioRxiv version) and verified that the proDA package remains actively maintained on Bioconductor.

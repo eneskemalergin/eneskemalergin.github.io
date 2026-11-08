@@ -1,20 +1,66 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block robots %}<meta name="robots" content="noindex" />{% endblock robots %}
 
 {% block content %}
 <h1 class="page-title">Search</h1>
 
-<div class="search-box">
-    <input type="search" id="search-input" placeholder="Search posts, projects, research…" aria-label="Search the site" autocomplete="off" />
-    <span class="search-hint" id="search-hint">Type to search.</span>
-</div>
+<form class="search-box" role="search" action="" method="get">
+    <input type="search" id="search-input" name="q" placeholder="Search posts, projects, research…" aria-label="Search the site" autocomplete="off" />
+    <span class="search-hint" id="search-hint" role="status">Type to search.</span>
+</form>
 
-<ul class="search-results" id="search-results" aria-live="polite"></ul>
+<ul class="search-results" id="search-results"></ul>
 
 <noscript>
     <p class="search-empty">Search needs JavaScript enabled.</p>
 </noscript>
 
-<script defer src="{{ get_url(path="elasticlunr.min.js") }}"></script>
-<script defer src="{{ get_url(path="search_index.en.js") }}"></script>
-<script defer src="{{ get_url(path="js/search.js") }}"></script>
+{#- The search index: one record per public item, built from the same data the
+    pages render. Posts contribute title, description, tags, and headings, not
+    full text. Keys: t type, n name, u URL, s summary shown under the name,
+    k tags, h headings, x extra matched text, d sort date. The block is data,
+    not a script, and macros::json escapes every "<". -#}
+{% set home = load_data(path="data/home.toml") %}
+{% set project_data = load_data(path="data/projects.toml") %}
+{% set pub_data = load_data(path="data/publications.toml") %}
+{% set talk_data = load_data(path="data/presentations.toml") %}
+{% set teaching_data = load_data(path="data/teaching.toml") %}
+{% set news_data = load_data(path="data/news.toml") %}
+{% set blog = get_section(path="blog/_index.md") %}
+{% set projects_url = get_url(path="@/projects/_index.md") %}
+{% set research_url = get_url(path="@/research/_index.md") %}
+<script type="application/json" id="search-data">[
+{"t":"Page","n":{{ macros::json(value=config.extra.name) }},"u":{{ macros::json(value=get_url(path="@/_index.md")) }},"s":{{ macros::json(value=home.bio | first | default(value="")) }},"x":{{ macros::json(value=home.titles | join(sep=" ") | striptags) }}}
+{%- for path in ["projects/_index.md", "research/_index.md", "blog/_index.md", "news/_index.md", "cv/_index.md"] %}
+{%- set sec = get_section(path=path, metadata_only=true) %}
+,{"t":"Page","n":{{ macros::json(value=sec.title) }},"u":{{ macros::json(value=sec.permalink) }},"s":{{ macros::json(value=sec.description | default(value="")) }}}
+{%- endfor %}
+{%- for p in blog.pages %}
+{%- set_global heads = [] %}
+{%- for h2 in p.toc %}{% set_global heads = heads | concat(with=h2.title | striptags) %}{% for h3 in h2.children %}{% set_global heads = heads | concat(with=h3.title | striptags) %}{% endfor %}{% endfor %}
+,{"t":{{ macros::json(value=p.extra.kind | default(value="post") | title) }},"n":{{ macros::json(value=p.title) }},"u":{{ macros::json(value=p.permalink) }},"s":{{ macros::json(value=p.description | default(value="")) }},"k":{{ macros::json(value=p.taxonomies.tags | default(value=[])) }},"h":{{ macros::json(value=heads) }},"d":{{ macros::json(value=p.date | default(value="")) }}}
+{%- endfor %}
+{%- for p in project_data.projects %}
+{%- set anchor = p.title | slugify %}
+,{"t":"Project","n":{{ macros::json(value=p.title) }},"u":{{ macros::json(value=projects_url ~ "#project-" ~ anchor) }},"s":{{ macros::json(value=p.desc) }},"k":{{ macros::json(value=p.tags | default(value=[])) }},"x":{{ macros::json(value=p.language ~ " " ~ p.status ~ " " ~ p.access) }}}
+{%- endfor %}
+{%- for paper in pub_data.publications %}
+{%- if paper.status == "published" %}{% set when = paper.venue ~ ", " ~ paper.year %}{% elif paper.status == "upcoming" %}{% set when = "In press" %}{% elif paper.status == "preprint" %}{% set when = "Preprint" %}{% elif paper.status == "under-review" %}{% set when = "Under review" %}{% else %}{% set when = "In preparation" %}{% endif %}
+{%- set name = paper.title | striptags %}{% set anchor = name | slugify %}{% set authors = paper.authors | striptags %}{% set venue = paper.venue | default(value="") %}
+,{"t":"Publication","n":{{ macros::json(value=name) }},"u":{{ macros::json(value=research_url ~ "#pub-" ~ anchor) }},"s":{{ macros::json(value=when) }},"k":{{ macros::json(value=paper.tags | default(value=[])) }},"x":{{ macros::json(value=authors ~ " " ~ venue) }},"d":{{ macros::json(value=paper.year | default(value=0) | as_str) }}}
+{%- endfor %}
+{%- for talk in talk_data.presentations %}
+{%- set location = talk.location | default(value="") %}{% set event = talk.event | default(value="") %}
+,{"t":"Talk","n":{{ macros::json(value=talk.title) }},"u":{{ macros::json(value=research_url ~ "#presentations") }},"s":{{ macros::json(value=talk.venue ~ ", " ~ talk.date) }},"k":{{ macros::json(value=talk.tags | default(value=[])) }},"x":{{ macros::json(value=talk.type ~ " " ~ location ~ " " ~ event) }},"d":{{ macros::json(value=talk.year | as_str) }}}
+{%- endfor %}
+{%- for item in teaching_data.experiences %}
+,{"t":"Teaching","n":{{ macros::json(value=item.course) }},"u":{{ macros::json(value=research_url ~ "#teaching") }},"s":{{ macros::json(value=item.role ~ ", " ~ item.institution ~ ", " ~ item.date) }},"d":{{ macros::json(value=item.year | as_str) }}}
+{%- endfor %}
+{%- for item in news_data.news %}
+,{"t":"News","n":{{ macros::json(value=item.content | striptags) }},"u":{{ macros::json(value=get_url(path="@/news/_index.md")) }},"s":{{ macros::json(value=item.date) }},"x":{{ macros::json(value=item.type) }}}
+{%- endfor %}
+]</script>
+<script src="{{ get_url(path="js/search.js") }}"></script>
 {% endblock %}

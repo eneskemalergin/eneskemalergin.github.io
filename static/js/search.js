@@ -1,12 +1,22 @@
-/* search.js : client-side search over Zola's elasticlunr index */
+/* search.js : site search over the index that templates/search.html embeds
+   as JSON. Every query word must match a record's name, tags, headings,
+   summary, or extra text; matches in the name weigh most. The query lives in
+   the URL (?q=), so a search can be shared and survives a reload. */
 (function () {
+    var form = document.querySelector('.search-box');
     var input = document.getElementById('search-input');
     var results = document.getElementById('search-results');
     var hint = document.getElementById('search-hint');
-    if (!input || !results || !window.elasticlunr || !window.searchIndex) return;
+    var data = document.getElementById('search-data');
+    if (!form || !input || !results || !data) return;
 
-    var index = elasticlunr.Index.load(window.searchIndex);
-    var docs = window.searchIndex.documentStore ? window.searchIndex.documentStore.docs : {};
+    var MAX_RESULTS = 50;
+    var records;
+    try {
+        records = JSON.parse(data.textContent);
+    } catch (e) {
+        return;
+    }
 
     function escape(s) {
         return String(s).replace(/[&<>"']/g, function (c) {
@@ -14,18 +24,14 @@
         });
     }
 
-    function titleFor(ref) {
-        var d = docs[ref];
-        if (d && d.title) return d.title;
-        var slug = ref.replace(/\/$/, '').split('/').pop();
-        if (!slug) return ref;
-        try {
-            return decodeURIComponent(slug).replace(/-/g, ' ');
-        } catch (e) {
-            return slug;
-        }
+    // Record text comes from data files and may hold HTML entities such as &amp;.
+    function decodeHtml(text) {
+        var ta = document.createElement('textarea');
+        ta.innerHTML = String(text || '');
+        return ta.value;
     }
 
+    // Allow only site-relative and http(s) URLs into href.
     function safeUrl(ref) {
         var c = ref.charAt(0);
         if (c === '/' || c === '#' || c === '?') return ref;
@@ -34,55 +40,128 @@
         return '';
     }
 
-    function labelFor(ref) {
-        if (ref === 'https://eneskemalergin.github.io/' || ref === '/') return 'Home';
-        if (ref.indexOf('/blog/') !== -1) return 'Blog';
-        if (ref.indexOf('/projects/') !== -1) return 'Projects';
-        if (ref.indexOf('/research/') !== -1) return 'Research';
-        if (ref.indexOf('/tags/') !== -1) return 'Tag';
-        if (ref.indexOf('/news/') !== -1) return 'News';
-        if (ref.indexOf('/cv/') !== -1) return 'CV';
-        return 'Page';
+    function normalize(text) {
+        return decodeHtml(text).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function words(text) {
+        return normalize(text).split(/[^a-z0-9]+/).filter(Boolean);
+    }
+
+    // Field weights for an exact word match; a prefix match scores two thirds.
+    var FIELDS = [['n', 10], ['k', 6], ['h', 3], ['s', 2], ['x', 1]];
+
+    records.forEach(function (r) {
+        r.n = decodeHtml(r.n);
+        r.s = decodeHtml(r.s || '');
+        r.words = {};
+        FIELDS.forEach(function (f) {
+            var value = r[f[0]];
+            r.words[f[0]] = words(Array.isArray(value) ? value.join(' ') : (value || ''));
+        });
+    });
+
+    function scoreWord(record, term) {
+        var best = 0;
+        FIELDS.forEach(function (f) {
+            var list = record.words[f[0]];
+            for (var i = 0; i < list.length; i++) {
+                var w = list[i];
+                var s = w === term ? f[1] : (w.indexOf(term) === 0 ? f[1] * 2 / 3 : 0);
+                if (s > best) best = s;
+            }
+        });
+        return best;
+    }
+
+    // A post whose headings match shows the first matching heading as context.
+    function contextFor(record, terms) {
+        if (record.s) return record.s;
+        var heads = record.h || [];
+        for (var i = 0; i < heads.length; i++) {
+            var hw = words(heads[i]);
+            if (terms.some(function (t) { return hw.some(function (w) { return w.indexOf(t) === 0; }); })) {
+                return decodeHtml(heads[i]);
+            }
+        }
+        return '';
+    }
+
+    function search(query) {
+        var terms = words(query);
+        if (!terms.length) return [];
+        var hits = [];
+        records.forEach(function (r) {
+            var total = 0;
+            for (var i = 0; i < terms.length; i++) {
+                var s = scoreWord(r, terms[i]);
+                if (!s) return;
+                total += s;
+            }
+            // A name that is exactly the query outranks names that only contain it.
+            if (r.words.n.join(' ') === terms.join(' ')) total += 5;
+            hits.push({ record: r, score: total });
+        });
+        hits.sort(function (a, b) {
+            return b.score - a.score || String(b.record.d || '').localeCompare(String(a.record.d || ''));
+        });
+        return hits.slice(0, MAX_RESULTS).map(function (h) {
+            return { record: h.record, context: contextFor(h.record, terms) };
+        });
     }
 
     function render(query) {
         if (!query.trim()) {
             results.innerHTML = '';
-            if (hint) hint.textContent = 'Type to search.';
+            hint.textContent = 'Type to search.';
             return;
         }
-        var hits;
-        try {
-            hits = index.search(query, { expand: true });
-        } catch (e) {
-            hits = [];
-        }
+        var hits = search(query);
         if (!hits.length) {
             results.innerHTML = '';
-            if (hint) hint.textContent = 'No results.';
+            hint.textContent = 'No results.';
             return;
         }
-        if (hint) hint.textContent = hits.length + ' result' + (hits.length === 1 ? '' : 's');
+        hint.textContent = hits.length + (hits.length === MAX_RESULTS ? '+' : '') + ' result' + (hits.length === 1 ? '' : 's');
         var html = '';
-        for (var i = 0; i < hits.length; i++) {
-            var ref = hits[i].ref;
-            var href = safeUrl(ref);
-            if (!href) continue;
+        hits.forEach(function (hit) {
+            var href = safeUrl(hit.record.u);
+            if (!href) return;
             html += '<li class="search-item">' +
                 '<a href="' + escape(href) + '" class="search-link">' +
-                '<span class="search-label">' + escape(labelFor(ref)) + '</span>' +
-                '<span class="search-title">' + escape(titleFor(ref)) + '</span>' +
-                '</a></li>';
-        }
+                '<span class="search-label">' + escape(hit.record.t) + '</span>' +
+                '<span class="search-text">' +
+                '<span class="search-title">' + escape(hit.record.n) + '</span>' +
+                (hit.context ? '<span class="search-context">' + escape(hit.context) + '</span>' : '') +
+                '</span></a></li>';
+        });
         results.innerHTML = html;
+    }
+
+    function setQuery(query) {
+        var url = query ? '?q=' + encodeURIComponent(query) : location.pathname;
+        history.replaceState(null, '', url);
     }
 
     var timer;
     input.addEventListener('input', function () {
-        var q = input.value;
         clearTimeout(timer);
-        timer = setTimeout(function () { render(q); }, 80);
+        timer = setTimeout(function () {
+            render(input.value);
+            setQuery(input.value.trim());
+        }, 80);
     });
 
-    input.focus();
-})();
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        clearTimeout(timer);
+        render(input.value);
+        setQuery(input.value.trim());
+    });
+
+    var initial = new URLSearchParams(location.search).get('q');
+    if (initial) {
+        input.value = initial;
+        render(initial);
+    }
+}());

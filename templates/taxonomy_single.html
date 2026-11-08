@@ -1,22 +1,23 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block robots %}
+{#- A tag page with a single item is too thin to index. -#}
+{% set total = macros::tag_item_count(term=term) | int %}
+{% if total < 2 %}<meta name="robots" content="noindex" />{% endif %}
+{% endblock robots %}
 
 {% block content %}
 {#- Projects and publications join a tag page when one of their tags, or their
-    blog `tag`, has the page's slug. -#}
+    blog `tag`, has the page's slug (macros::tag_matches). -#}
 {% set project_data = load_data(path="data/projects.toml") %}
 {% set pub_data = load_data(path="data/publications.toml") %}
 {% set_global related_projects = [] %}
-{% for p in project_data.projects %}
-{% set_global hit = p.tag is defined and p.tag != "NA" and p.tag | slugify == term.slug %}
-{% for t in p.tags | default(value=[]) %}{% if t | slugify == term.slug %}{% set_global hit = true %}{% endif %}{% endfor %}
-{% if hit %}{% set_global related_projects = related_projects | concat(with=p) %}{% endif %}
-{% endfor %}
+{% set positions = macros::tag_matches(slug=term.slug, items=project_data.projects) | trim_end_matches(pat=",") %}
+{% if positions %}{% for i in positions | split(pat=",") %}{% set_global related_projects = related_projects | concat(with=project_data.projects | nth(n=i | int)) %}{% endfor %}{% endif %}
 {% set_global related_pubs = [] %}
-{% for paper in pub_data.publications %}
-{% set_global hit = paper.tag is defined and paper.tag != "NA" and paper.tag | slugify == term.slug %}
-{% for t in paper.tags | default(value=[]) %}{% if t | slugify == term.slug %}{% set_global hit = true %}{% endif %}{% endfor %}
-{% if hit %}{% set_global related_pubs = related_pubs | concat(with=paper) %}{% endif %}
-{% endfor %}
+{% set positions = macros::tag_matches(slug=term.slug, items=pub_data.publications) | trim_end_matches(pat=",") %}
+{% if positions %}{% for i in positions | split(pat=",") %}{% set_global related_pubs = related_pubs | concat(with=pub_data.publications | nth(n=i | int)) %}{% endfor %}{% endif %}
 {% set n_posts = term.pages | length %}
 {% set n_projects = related_projects | length %}
 {% set n_pubs = related_pubs | length %}

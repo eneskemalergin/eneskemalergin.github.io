@@ -1,13 +1,13 @@
 +++
 title = "Fuzzy Clustering"
 date = 2018-05-01
+updated = 2026-05-18
 description = "A primer on fuzzy (soft) clustering, covering the Fuzzy C-Means algorithm with implementations in R and Python, the math behind membership coefficients, and how it differs from hard clustering."
 [taxonomies]
 tags = ["clustering", "python", "r", "unsupervised-learning", "fuzzy-logic"]
 [extra]
 kind = "post"
 katex = true
-edited_date = "2026-05-18"
 +++
 
 > **Note:** This post was originally published on my old blog on 2018-05-01 and has been transferred here. I have rewritten parts of the original article for clarity and style while keeping the main story and facts intact. Where my current self disagreed with or wanted to expand on the original, I added margin notes signed *— Eke, May 2026*.

@@ -1,3 +1,4 @@
+{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,42 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }}
-        | {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
+    {#- Title and description for this page, also used by the sharing metadata. -#}
+    {%- if page is defined and page.title %}{% set meta_title = page.title %}
+    {%- elif section is defined and section.title %}{% set meta_title = section.title %}
+    {%- elif term is defined %}{% set meta_title = "Tag: " ~ term.name %}
+    {%- elif taxonomy is defined %}{% set meta_title = taxonomy.name | title %}
+    {%- else %}{% set meta_title = "" %}{% endif %}
+    {%- if page is defined and page.description %}{% set meta_description = page.description %}
+    {%- elif section is defined and section.description %}{% set meta_description = section.description %}
+    {%- elif term is defined %}{% set meta_description = "Posts tagged " ~ term.name ~ ", with the projects and publications that share the topic." %}
+    {%- elif taxonomy is defined %}{% set meta_description = "Topics from the blog, each with its posts and the projects and publications that share it." %}
+    {%- else %}{% set meta_description = "" %}{% endif %}
+    <title>{% if meta_title %}{{ meta_title }} | {% endif %}{{ config.title }}</title>
+    {% if meta_description %}<meta name="description" content="{{ meta_description }}" />{% endif %}
+    {% if current_url is defined %}<link rel="canonical" href="{{ current_url }}" />{% endif %}
+    {% block robots %}{% endblock robots %}
+    <meta property="og:site_name" content="{{ config.title }}" />
+    <meta property="og:title" content="{{ meta_title | default(value=config.title) }}" />
+    {% if meta_description %}<meta property="og:description" content="{{ meta_description }}" />{% endif %}
+    {% if current_url is defined %}<meta property="og:url" content="{{ current_url }}" />{% endif %}
+    {% if page is defined and page.date %}
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="{{ page.date }}" />
+    {% if page.updated %}<meta property="article:modified_time" content="{{ page.updated }}" />{% endif %}
+    {% else %}
+    <meta property="og:type" content="website" />
+    {% endif %}
+    <meta name="twitter:card" content="summary" />
+    {#- Structured data: the person on the home page, an article on each post. -#}
+    {% if section is defined and section.path == "/" %}
+    {% set home = load_data(path="data/home.toml") %}
+    {% set_global same_as = [] %}
+    {% for item in config.extra.social %}{% if item.url is starting_with("http") %}{% set_global same_as = same_as | concat(with=item.url) %}{% endif %}{% endfor %}
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ macros::json(value=config.title) }},"url":{{ macros::json(value=get_url(path="/")) }}{% if home.avatar %},"image":{{ macros::json(value=get_url(path=home.avatar)) }}{% endif %},"sameAs":{{ macros::json(value=same_as) }}}</script>
+    {% elif page is defined and page.date %}
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ macros::json(value=page.title) }}{% if page.description %},"description":{{ macros::json(value=page.description) }}{% endif %},"datePublished":{{ macros::json(value=page.date) }},"dateModified":{{ macros::json(value=page.updated | default(value=page.date)) }},"url":{{ macros::json(value=page.permalink) }},"mainEntityOfPage":{{ macros::json(value=page.permalink) }},"author":{"@type":"Person","name":{{ macros::json(value=config.title) }},"url":{{ macros::json(value=get_url(path="/")) }}},"keywords":{{ macros::json(value=page.taxonomies.tags | default(value=[]) | join(sep=", ")) }}}</script>
+    {% endif %}
     <script src="{{ get_url(path="js/theme.js") }}"></script>
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />

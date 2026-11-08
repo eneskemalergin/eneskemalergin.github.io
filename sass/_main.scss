@@ -1934,9 +1934,24 @@ details[open].archive-month > summary::before {
     padding: 1px 8px;
 }
 
+.search-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
 .search-title {
     font-size: 11pt;
     font-weight: 500;
+}
+
+.search-context {
+    font-size: 9pt;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .search-empty {

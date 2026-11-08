@@ -29,6 +29,37 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
 {%- endif -%}
 {%- endmacro blog_link %}
 
+{#- The projects and publications that carry a tag: by a `tags` entry or by
+    their blog `tag`, matched by slug. Output: their positions in `items`,
+    comma-separated, for the tag page lists and the tag item count. -#}
+{% macro tag_matches(slug, items) -%}
+{%- for item in items -%}
+{%- set_global hit = item.tag is defined and item.tag != "NA" and item.tag | slugify == slug -%}
+{%- for t in item.tags | default(value=[]) %}{% if t | slugify == slug %}{% set_global hit = true %}{% endif %}{% endfor -%}
+{%- if hit %}{{ loop.index0 }},{% endif -%}
+{%- endfor -%}
+{%- endmacro tag_matches %}
+
+{#- How many items a tag page lists: its posts plus the projects and
+    publications that carry the tag. -#}
+{% macro tag_item_count(term) -%}
+{%- set project_data = load_data(path="data/projects.toml") -%}
+{%- set pub_data = load_data(path="data/publications.toml") -%}
+{%- set projects = self::tag_matches(slug=term.slug, items=project_data.projects) -%}
+{%- set pubs = self::tag_matches(slug=term.slug, items=pub_data.publications) -%}
+{%- set n_posts = term.pages | length -%}
+{%- set n_projects = projects | split(pat=",") | length -%}
+{%- set n_pubs = pubs | split(pat=",") | length -%}
+{#- Each list ends with a comma, so splitting yields one empty part too. -#}
+{{ n_posts + n_projects + n_pubs - 2 }}
+{%- endmacro tag_item_count %}
+
+{#- A value as JSON inside an HTML data block: every "<" becomes \u003c, so the
+    block cannot end early. -#}
+{% macro json(value) -%}
+{{ value | json_encode | replace(from="<", to="\u003c") | safe }}
+{%- endmacro json %}
+
 {% macro render_paper(paper, terms) %}
 <div class="paper-card paper-card-detailed" id="pub-{{ paper.title | striptags | slugify }}">
     <div class="paper-main">

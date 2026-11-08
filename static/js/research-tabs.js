@@ -1,7 +1,8 @@
 /* research-tabs.js : keyboard-accessible tabs for the Research page.
    The markup holds real tab buttons and one <section> per panel. CSS shows
    the tabs only when <html> has the "js" class (set by theme.js); this script
-   adds the tab-panel semantics and the mouse and keyboard behavior. */
+   adds the tab-panel semantics, the mouse and keyboard behavior, and opens the
+   panel that a URL fragment points into. */
 (function () {
     "use strict";
 
@@ -30,6 +31,19 @@
             });
             if (moveFocus) tab.focus();
         }
+
+        // A link to a panel, or to something inside one, opens that panel.
+        function showTarget() {
+            var id = decodeURIComponent(location.hash.slice(1));
+            var target = id && document.getElementById(id);
+            var panel = target && target.closest(".research-panel");
+            if (!panel) return;
+            var tab = tabs.filter(function (t) { return t.getAttribute("aria-controls") === panel.id; })[0];
+            if (tab) select(tab, false);
+            if (target !== panel) target.scrollIntoView();
+        }
+        showTarget();
+        window.addEventListener("hashchange", showTarget);
 
         list.addEventListener("click", function (event) {
             var tab = event.target.closest('[role="tab"]');

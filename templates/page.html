@@ -35,7 +35,7 @@
                 <div class="page-meta">
                     {% if kind != "post" %}<span class="kind-badge kind-{{ kind }}">{{ kind }}</span>{% endif %}
                     {% if page.date %}<span class="meta-date">{{ page.date | date(format="%b %d, %Y") }}</span>{% endif %}
-                    {% if page.extra.edited_date %}<span class="meta-edited">Updated {{ page.extra.edited_date | date(format="%b %d, %Y") }}</span>{% endif %}
+                    {% if page.updated %}<span class="meta-edited">Updated {{ page.updated | date(format="%b %d, %Y") }}</span>{% endif %}
                     {% if kind == "post" %}
                     {% if page.reading_time %}<span class="meta-reading">{{ page.reading_time }} min read</span>{% endif %}
                     {% if page.word_count %}<span class="meta-words">{{ page.word_count }} words</span>{% endif %}

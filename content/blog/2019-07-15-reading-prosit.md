@@ -1,13 +1,13 @@
 +++
 title = "Prosit"
 date = 2019-07-15
+updated = 2026-06-02
 description = "Deep learning for MS2 spectrum and retention time prediction. Accurate enough for rescoring and library generation."
 [taxonomies]
 tags = ["proteomics", "mass-spectrometry", "deep-learning", "spectral-prediction", "bioinformatics", "rescoring"]
 [extra]
 kind = "reading"
 featured_image = "/blog/images/reading/prosit_mirror.jpg"
-edited_date = "2026-06-02"
 +++
 
 > **Note:** I first wrote this note in the summer of 2019, right after the Nature Methods paper dropped. When I rebuild my webside and migrate the posts I had an oppurtunity to provide edits in June 2026 with proper citation details and a check on where the models live now, since the original code repository was retired in favor of newer tooling.
