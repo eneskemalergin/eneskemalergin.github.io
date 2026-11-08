@@ -62,35 +62,6 @@
     list-style-type: decimal;
 }
 
-/* -- Task lists (checkboxes) ------------------------------- */
-
-.page-body ul.task-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.page-body .task-list-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-}
-
-.page-body .task-list-item::before {
-    content: "";
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    margin-top: 4px;
-    border: 1.5px solid var(--text-muted);
-    border-radius: 3px;
-    background: transparent;
-}
-
-.page-body .task-list-item.checked::before {
-    background: var(--c-link);
-    border-color: var(--c-link);
-}
-
 /* -- Horizontal rule --------------------------------------- */
 
 .page-body hr {
@@ -148,21 +119,6 @@
     padding: 0;
     background: none;
     font-size: 0.82em;
-}
-
-/* -- Code language label (pseudo-element) ------------------- */
-
-.page-body pre::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 4px;
-    right: 8px;
-    font-size: 6.5pt;
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.5;
 }
 
 /* -- Tables ------------------------------------------------ */
@@ -442,16 +398,14 @@ html.dark .blog-figure .blog-figure-media img {
 
 /* -- Footnote reference links ------------------------------ */
 
-.page-body sup a,
-.page-body a.footnote-ref {
+.page-body sup a {
     color: var(--c-link);
     font-weight: 500;
     text-decoration: none;
     font-size: 0.78em;
 }
 
-.page-body sup a:hover,
-.page-body a.footnote-ref:hover {
+.page-body sup a:hover {
     text-decoration: underline;
 }
 
@@ -590,30 +544,7 @@ html.dark .callout-danger {
     font-size: 1.05em !important;
 }
 
-/* -- Image + caption wrapper -------------------------------- */
-
-.img-wrapper {
-    margin: 1.5em 0;
-    text-align: center;
-}
-
-.img-wrapper img {
-    margin: 0 auto 0.3em;
-}
-
-.img-wrapper .img-caption {
-    font-size: 8.5pt;
-    color: var(--text-muted);
-}
-
 /* -- Code block with filename header ----------------------- */
-
-.code-block {
-    margin: 0.8em 0;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
-}
 
 .code-block-header {
     padding: 4px 12px;
@@ -623,12 +554,6 @@ html.dark .callout-danger {
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-color);
     font-family: "SFMono-Regular", Consolas, monospace;
-}
-
-.code-block pre {
-    margin: 0;
-    border: none;
-    border-radius: 0;
 }
 
 /* -- Inline highlights ------------------------------------- */
@@ -1002,13 +927,13 @@ html:not(.js) .toc-toggle {
 }
 
 /* Language-specific colors */
-.code-block-header[data-lang="python"] { color: #3776AB; border-color: rgba(55, 118, 171, 0.3); }
-.code-block-header[data-lang="r"] { color: #276DC2; border-color: rgba(39, 109, 194, 0.3); }
-.code-block-header[data-lang="zig"] { color: #d98e0d; border-color: rgba(217, 142, 13, 0.3); }
-.code-block-header[data-lang="bash"] { color: #64748b; border-color: rgba(100, 116, 139, 0.3); }
-.code-block-header[data-lang="rust"] { color: #c67a4e; border-color: rgba(198, 122, 78, 0.3); }
-.code-block-header[data-lang="javascript"] { color: #d97706; border-color: rgba(217, 119, 6, 0.3); }
-.code-block-header[data-lang="go"] { color: #0096b8; border-color: rgba(0, 150, 184, 0.3); }
+.code-block-header[data-lang="python"] { color: #306998; border-color: rgba(55, 118, 171, 0.3); }
+.code-block-header[data-lang="r"] { color: #2669bc; border-color: rgba(39, 109, 194, 0.3); }
+.code-block-header[data-lang="zig"] { color: #966209; border-color: rgba(217, 142, 13, 0.3); }
+.code-block-header[data-lang="bash"] { color: #5f6e84; border-color: rgba(100, 116, 139, 0.3); }
+.code-block-header[data-lang="rust"] { color: #9f5b33; border-color: rgba(198, 122, 78, 0.3); }
+.code-block-header[data-lang="javascript"] { color: #a05804; border-color: rgba(217, 119, 6, 0.3); }
+.code-block-header[data-lang="go"] { color: #007792; border-color: rgba(0, 150, 184, 0.3); }
 
 html.dark .code-block-header[data-lang="python"] { color: #78b4e0; border-color: rgba(120, 180, 224, 0.3); }
 html.dark .code-block-header[data-lang="r"] { color: #6ea8e8; border-color: rgba(110, 168, 232, 0.3); }
@@ -1033,21 +958,3 @@ html.dark .code-block-header[data-lang="go"] { color: #4fc3f7; border-color: rgb
     border-top: 1px solid var(--border-color);
     font-style: italic;
 }
-
-/* -- Zola syntax highlighting overrides -------------------- */
-
-.page-body pre .z-link { color: var(--c-link); }
-.page-body pre .z-string { color: #16a34a; }
-.page-body pre .z-number { color: #2563eb; }
-.page-body pre .z-keyword { color: #7c3aed; font-weight: 500; }
-.page-body pre .z-comment { color: #94a3b8; font-style: italic; }
-.page-body pre .z-function { color: #2563eb; }
-.page-body pre .z-type { color: #059669; }
-.page-body pre .z-attribute { color: #d97706; }
-
-html.dark .page-body pre .z-string { color: #4ade80; }
-html.dark .page-body pre .z-number { color: #60a5fa; }
-html.dark .page-body pre .z-keyword { color: #a78bfa; }
-html.dark .page-body pre .z-function { color: #60a5fa; }
-html.dark .page-body pre .z-type { color: #34d399; }
-html.dark .page-body pre .z-attribute { color: #fbbf24; }

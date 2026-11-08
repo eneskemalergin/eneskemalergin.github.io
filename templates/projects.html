@@ -27,7 +27,7 @@
             <div class="project-left">
                 <div class="project-thumbnail">
                     {% if p.image %}
-                    <img src="{{ get_url(path=p.image) }}" alt="{{ p.title }} screenshot" loading="lazy" />
+                    {% set image_size = get_image_metadata(path=p.image) %}<img src="{{ get_url(path=p.image) }}" alt="{{ p.title }} screenshot" loading="lazy" width="{{ image_size.width }}" height="{{ image_size.height }}" />
                     {% else %}
                     <div class="project-thumb-placeholder">{{ p.title | truncate(length=1, end="") }}</div>
                     {% endif %}
@@ -47,26 +47,26 @@
                     {% set gh = p | get(key="github", default="") %}{% if p.access == "private" %}{% set gh = "" %}{% endif %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
                     <div class="project-head-badges">
                         <span class="lang-badge lang-{{ p.language }}">
-                            {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
-                            {% elif p.language == "R" %}<i class="fa-brands fa-r-project"></i>
-                            {% elif p.language == "Rust" %}<i class="fa-brands fa-rust"></i>
-                            {% elif p.language == "Go" %}<i class="fa-brands fa-golang"></i>
-                            {% elif p.language == "LaTeX" %}<i class="fas fa-file-lines"></i>
-                            {% else %}<i class="fas fa-code"></i>{% endif %}
+                            {% if p.language == "Python" %}{{ macros::icon(name="python") }}
+                            {% elif p.language == "R" %}{{ macros::icon(name="r-project") }}
+                            {% elif p.language == "Rust" %}{{ macros::icon(name="rust") }}
+                            {% elif p.language == "Go" %}{{ macros::icon(name="golang") }}
+                            {% elif p.language == "LaTeX" %}{{ macros::icon(name="file-lines") }}
+                            {% else %}{{ macros::icon(name="code") }}{% endif %}
                             {{ p.language }}
                         </span>
                         {% if p.stars and p.stars > 0 %}
-                        <span class="star-badge" style="--clr:{{ star_data[p.title].clr }};--bdr:{{ star_data[p.title].bdr }};--bg:{{ star_data[p.title].bg }};--clr-d:{{ star_data[p.title]["clr-d"] }};--bdr-d:{{ star_data[p.title]["bdr-d"] }};--bg-d:{{ star_data[p.title]["bg-d"] }};">&#9733; {{ p.stars }}</span>
+                        <span class="star-badge star-level-{{ star_data[p.title].level }}"><span aria-hidden="true">&#9733;</span> {{ p.stars }}<span class="visually-hidden"> GitHub stars</span></span>
                         {% endif %}
                         {% if p.version %}
                         <span class="version-badge">v{{ p.version }}</span>
                         {% endif %}
                         <span class="access-badge access-{{ p.access }}">
-                            {% if p.access == "public" %}<i class="fas fa-lock-open"></i>{% else %}<i class="fas fa-lock"></i>{% endif %}
+                            {% if p.access == "public" %}{{ macros::icon(name="lock-open") }}{% else %}{{ macros::icon(name="lock") }}{% endif %}
                             {{ p.access }}
                         </span>
                         <span class="pub-badge pub-badge--status-{{ p.pub }}">
-                            {% if p.pub == "published" %}<i class="fas fa-book"></i>{% elif p.pub == "preprint" %}<i class="fas fa-file-lines"></i>{% elif p.pub == "upcoming" %}<i class="fas fa-pen-fancy"></i>{% elif p.pub == "planned" %}<i class="fas fa-calendar"></i>{% else %}<i class="fas fa-minus"></i>{% endif %}
+                            {% if p.pub == "published" %}{{ macros::icon(name="book") }}{% elif p.pub == "preprint" %}{{ macros::icon(name="file-lines") }}{% elif p.pub == "upcoming" %}{{ macros::icon(name="pen-fancy") }}{% elif p.pub == "planned" %}{{ macros::icon(name="calendar") }}{% else %}{{ macros::icon(name="minus") }}{% endif %}
                             {{ p.pub }}
                         </span>
                     </div>
@@ -86,7 +86,7 @@
                     {% set plan = p.public_plan | default(value="") %}
                     {% if reason == "in-development" %}{% set lead = "In development" %}{% elif reason == "pending-publication" %}{% set lead = "Waiting on the paper" %}{% elif reason == "proprietary" %}{% set lead = "Proprietary" %}{% elif reason == "internal" %}{% set lead = "Lab internal" %}{% else %}{% set lead = "" %}{% endif %}
                     {% if lead and plan %}{% set chip = lead ~ ", public " ~ plan %}{% elif lead %}{% set chip = lead %}{% elif plan %}{% set chip = "Public " ~ plan %}{% elif p | get(key="github", default="") %}{% set chip = "Source private" %}{% else %}{% set chip = "Not released yet" %}{% endif %}
-                    <span class="project-lock"><i class="fas fa-lock" aria-hidden="true"></i>{{ chip }}</span>
+                    <span class="project-lock">{{ macros::icon(name="lock") }}{{ chip }}</span>
                     {% elif gh %}<a href="{{ gh }}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
                     {% if p.analysis and p.access != "private" %}<a href="{{ p.analysis }}" class="project-link" target="_blank" rel="noopener noreferrer">Analysis</a>{% endif %}
                     {% if p.pkg %}

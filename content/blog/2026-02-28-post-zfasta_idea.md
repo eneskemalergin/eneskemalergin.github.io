@@ -53,7 +53,7 @@ Three modes:
 
 Benchmarked against samtools, seqkit (Go), and fastahack (C++) on three real datasets. All tests on an AMD Ryzen 9 3950X with warm cache, using hyperfine.
 
-{{ figure(src="https://raw.githubusercontent.com/eneskemalergin/z-fasta/ee2b23d3ff6e7e783f37c17bb838b0b3bbc49407/bench/results/figures/performance.png", alt="Bar chart comparing indexing time in seconds for z-fasta, samtools, seqkit, and fastahack on genome, proteome, and transcriptome datasets", alt_badge="benchmark", caption="Indexing time in seconds across genome (3.0 GB), proteome (66 MB), and transcriptome (972 MB) datasets. Lower is better.", label="Figure 1") }}
+{{ figure(src="/blog/images/z-fasta/performance.png", alt="Bar chart comparing indexing time in seconds for z-fasta, samtools, seqkit, and fastahack on genome, proteome, and transcriptome datasets", alt_badge="benchmark", caption="Indexing time in seconds across genome (3.0 GB), proteome (66 MB), and transcriptome (972 MB) datasets. Lower is better.", label="Figure 1") }}
 
 | Dataset | Size | z-fasta (no-dedup) | samtools | seqkit | fastahack | Speedup vs samtools |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -64,7 +64,7 @@ Benchmarked against samtools, seqkit (Go), and fastahack (C++) on three real dat
 
 z-fasta is faster than every tool on every dataset. The gap widens with file size.
 
-{{ figure(src="https://raw.githubusercontent.com/eneskemalergin/z-fasta/ee2b23d3ff6e7e783f37c17bb838b0b3bbc49407/bench/results/figures/scaling_size.png", alt="Line chart of indexing time vs file size for z-fasta, samtools, seqkit, and fastahack, from 1 MB to 1000 MB", alt_badge="scaling", caption="Indexing time vs file size. z-fasta and samtools both scale linearly. z-fasta’s slope is an order of magnitude shallower.", label="Figure 2") }}
+{{ figure(src="/blog/images/z-fasta/scaling_size.png", alt="Line chart of indexing time vs file size for z-fasta, samtools, seqkit, and fastahack, from 1 MB to 1000 MB", alt_badge="scaling", caption="Indexing time vs file size. z-fasta and samtools both scale linearly. z-fasta’s slope is an order of magnitude shallower.", label="Figure 2") }}
 
 z-fasta and samtools both scale linearly with file size. z-fasta's slope is an order of magnitude shallower. At 1 GB, samtools takes 3 seconds. z-fasta takes 0.2 seconds.
 
@@ -96,7 +96,7 @@ If you cannot afford even the virtual memory footprint, `--low-mem` switches to 
 
 Speed means nothing if the output is wrong. I tested z-fasta against samtools on 20 edge cases: zero-byte files, missing trailing newlines, mixed `\r\n` endings, unicode headers, binary garbage mid-file, tab characters in sequence names, sequences with no line wrapping.
 
-{{ figure(src="https://raw.githubusercontent.com/eneskemalergin/z-fasta/ee2b23d3ff6e7e783f37c17bb838b0b3bbc49407/bench/results/figures/edge_cases.png", alt="Heatmap showing pass/fail for each tool across 20 edge cases: z-fasta and samtools both fail on the same 4 cases, seqkit and fastahack deviate", alt_badge="correctness", caption="Edge case heatmap. Green = pass, red = fail. z-fasta matches samtools on all 20 cases, including exit codes for errors.", label="Figure 3") }}
+{{ figure(src="/blog/images/z-fasta/edge_cases.png", alt="Heatmap showing pass/fail for each tool across 20 edge cases: z-fasta and samtools both fail on the same 4 cases, seqkit and fastahack deviate", alt_badge="correctness", caption="Edge case heatmap. Green = pass, red = fail. z-fasta matches samtools on all 20 cases, including exit codes for errors.", label="Figure 3") }}
 
 **Result: 20/20 edge cases match samtools behavior exactly**, including exit codes for error cases. seqkit silently accepts some malformed inputs that both samtools and z-fasta reject.
 

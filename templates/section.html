@@ -51,7 +51,7 @@
                         <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
                         {% endif %}
                         {% if kind == "post" and page.reading_time and page.date %}
-                        <span class="blog-meta-sep">·</span>
+                        <span class="blog-meta-sep" aria-hidden="true">·</span>
                         {% endif %}
                         {% if kind == "post" and page.reading_time %}
                         <span class="blog-reading-time">{{ page.reading_time }} min</span>

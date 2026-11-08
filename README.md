@@ -21,7 +21,7 @@ Requires Python 3.12 for preprocessing and Zola 0.22.1. The repository's `mise.t
 | `static/`    | Site assets, local browser scripts, and pinned third-party assets          |
 | `templates/` | Jinja2-style Zola templates + 5 shortcodes                                 |
 | `sass/`      | SCSS: design tokens, layout, component styles                              |
-| `tools/`     | Python scripts: tag frequencies, star colors, internal link check          |
+| `tools/`     | Python scripts: tag frequencies, star levels, internal link check          |
 
 At build time, `build.sh` also downloads the CV PDF from `eneskemalergin/My_CV` at the commit pinned in `data/cv.toml` into `static/cv/` (single source of truth; see `content/cv/` and `templates/cv.html`), checks that it is a PDF, and writes a `data/generated/cv_meta.toml` sentinel. Without network access a local build falls back to a GitHub link on `/cv/`, while CI fails instead. To publish a new CV, update the commit in `data/cv.toml`. All derived data (tag frequencies, star colors, CV status) goes to `data/generated/`, which is not committed; `make check` builds the site and checks its internal links. `templates/search.html` builds the search index from the same content and data the pages render (posts, projects, publications, talks, teaching, news) and embeds it in the `/search/` page, where `static/js/search.js` matches queries in the browser.
 

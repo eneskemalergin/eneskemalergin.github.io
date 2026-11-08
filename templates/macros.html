@@ -40,6 +40,15 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
 {%- endfor -%}
 {%- endmacro tag_matches %}
 
+{#- An icon from data/icons.toml as inline SVG. It is 1em tall, takes the text
+    color, and is hidden from assistive technology: the text or label next to
+    it carries the meaning. -#}
+{% macro icon(name, class="") -%}
+{%- set icons = load_data(path="data/icons.toml") -%}
+{%- set glyph = icons[name] -%}
+<svg class="icon{% if class %} {{ class }}{% endif %}" viewBox="{{ glyph.viewbox }}" aria-hidden="true" focusable="false"><path d="{{ glyph.d }}"/></svg>
+{%- endmacro icon %}
+
 {#- How many items a tag page lists: its posts plus the projects and
     publications that carry the tag. -#}
 {% macro tag_item_count(term) -%}
@@ -66,7 +75,7 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
         <div class="paper-left">
             <div class="paper-thumbnail">
                 {% if paper.image %}
-                <img src="{{ get_url(path=paper.image) }}" alt="{{ paper.title }} figure" loading="lazy" />
+                {% set image_size = get_image_metadata(path=paper.image) %}<img src="{{ get_url(path=paper.image) }}" alt="{{ paper.title }} figure" loading="lazy" width="{{ image_size.width }}" height="{{ image_size.height }}" />
                 {% else %}
                 <div class="project-thumb-placeholder">{{ paper.title | truncate(length=1, end="") }}</div>
                 {% endif %}
@@ -87,16 +96,16 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
                 <span class="paper-venue-inline venue-{{ paper.type }}">{{ paper.venue }}</span>
                 <span class="paper-badge-group">
                     <span class="pub-badge pub-badge--type-{{ paper.type }}">
-                        {% if paper.type == "journal" %}<i class="fas fa-book-open"></i>
-                        {% elif paper.type == "conference" %}<i class="fas fa-microphone"></i>
-                        {% elif paper.type == "thesis" %}<i class="fas fa-graduation-cap"></i>
-                        {% elif paper.type == "preprint" %}<i class="fas fa-file-lines"></i>{% endif %}
+                        {% if paper.type == "journal" %}{{ self::icon(name="book-open") }}
+                        {% elif paper.type == "conference" %}{{ self::icon(name="microphone") }}
+                        {% elif paper.type == "thesis" %}{{ self::icon(name="graduation-cap") }}
+                        {% elif paper.type == "preprint" %}{{ self::icon(name="file-lines") }}{% endif %}
                         {{ paper.type }}
                     </span>
                     <span class="pub-badge pub-badge--status-{{ paper.status }}">
-                        {% if paper.status == "published" %}<i class="fas fa-check-circle"></i>
-                        {% elif paper.status == "under-review" %}<i class="fas fa-hourglass-half"></i>
-                        {% else %}<i class="fas fa-file-lines"></i>{% endif %}
+                        {% if paper.status == "published" %}{{ self::icon(name="check-circle") }}
+                        {% elif paper.status == "under-review" %}{{ self::icon(name="hourglass-half") }}
+                        {% else %}{{ self::icon(name="file-lines") }}{% endif %}
                         {{ paper.status }}
                     </span>
                 </span>

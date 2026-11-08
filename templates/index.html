@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 {% set home = load_data(path="data/home.toml") %}
@@ -6,11 +7,11 @@
 <div class="hero">
     <div class="hero-left">
         {% if home.avatar %}
-        <img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" />
+        {% set avatar_size = get_image_metadata(path=home.avatar) %}<img src="{{ get_url(path=home.avatar) }}" alt="{{ config.extra.name }}" class="avatar" width="{{ avatar_size.width }}" height="{{ avatar_size.height }}" />
         {% endif %}
         <ul class="icons">
             {% for item in config.extra.social %}
-            <li><a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener noreferrer"><i class="{{ item.icon }}"></i></a></li>
+            <li><a href="{{ item.url }}" title="{{ item.name }}" aria-label="{{ item.name }}" target="_blank" rel="noopener noreferrer">{{ macros::icon(name=item.icon) }}</a></li>
             {% endfor %}
         </ul>
     </div>

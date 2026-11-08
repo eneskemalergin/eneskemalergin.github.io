@@ -93,7 +93,7 @@ printf 'available = %s\nsrc_url = "%s"\ncommit = "%s"\n' "$cv_ok" "$CV_SRC" "$CV
 
 "$PYTHON" tools/tag-freq.py
 "$PYTHON" tools/tag-freq.py data/publications.toml data/generated/pub_tag_frequencies.json --table publications
-"$PYTHON" tools/star-colors.py
+"$PYTHON" tools/star-levels.py
 "$PYTHON" tools/blog-tag-freq.py
 
 cmd="${1:-build}"

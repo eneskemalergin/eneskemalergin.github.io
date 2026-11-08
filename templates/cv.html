@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 {% set meta = load_data(path="data/generated/cv_meta.toml", required=false) %}
@@ -24,7 +25,7 @@
     <div class="cv-fallback">
         <p>The inline preview isn't available right now.</p>
         <a class="cv-download" href="{{ gh_blob }}" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-file-pdf"></i> View CV on GitHub
+            {{ macros::icon(name="file-pdf") }} View CV on GitHub
         </a>
     </div>
     {% endif %}
@@ -33,11 +34,11 @@
 <div class="cv-actions">
     {% if cv_available %}
     <a class="cv-download" href="{{ get_url(path="cv/" ~ cv_file) }}" download>
-        <i class="fas fa-download"></i> Download PDF
+        {{ macros::icon(name="download") }} Download PDF
     </a>
     {% endif %}
     <a class="cv-download" href="{{ gh_blob }}" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-github"></i> Source on GitHub
+        {{ macros::icon(name="github") }} Source on GitHub
     </a>
 </div>
 {% endblock %}

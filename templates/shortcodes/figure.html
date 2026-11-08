@@ -24,7 +24,10 @@ Optional parameters:
     </div>
     {% endif %}
     <div class="blog-figure-media">
-        <img src="{{ src }}" alt="{{ alt | default(value='') }}" loading="lazy" />
+        {#- A site image gets its intrinsic size, so the page reserves its space before it loads. -#}
+        {% set image_size = "" %}
+        {% if src is starting_with("/") and not src is starting_with("//") %}{% set image_size = get_image_metadata(path=src | trim_start_matches(pat="/"), allow_missing=true) %}{% endif %}
+        <img src="{{ src }}" alt="{{ alt | default(value='') }}" loading="lazy"{% if image_size %} width="{{ image_size.width }}" height="{{ image_size.height }}"{% endif %} />
     </div>
     {% if caption %}
     <figcaption>{{ caption | markdown | safe }}</figcaption>

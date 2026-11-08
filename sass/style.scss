@@ -1,12 +1,32 @@
 @import "_main";
 @import "_blog";
 
+// Inter 4.001, Latin subset with the weight axis (static/vendor/inter). The
+// italic file loads only on pages that set italic text.
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("vendor/inter/inter-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("vendor/inter/inter-latin-wght-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 // ─── Light theme CSS variables ──────────────────────────
 
 :root {
     color-scheme: light dark;
     --c-link: #006b7b;
-    --c-link-hover-bg: #0093a8;
+    --c-link-hover-bg: #007f91;
     --bg-color: #fbfbf8;
     --bg-page-top: #f3efe4;
     --bg-nav-menu: rgba(244, 242, 235, 0.94);
@@ -16,15 +36,7 @@
     --border-color: #e0dcd3;
     --border-nav: rgba(224, 220, 211, 0.88);
     --shadow-nav-menu: 0 10px 24px rgba(31, 41, 51, 0.12);
-    --c-star: #d97706;
-    --c-planning: #8b5cf6;
-    --c-data-collection: #3b82f6;
-    --c-writing: #f59e0b;
-    --c-editing: #10b981;
-    --c-under-review: #ef4444;
-    --c-active: #2a7a5a;
     --c-wip: #b45309;
-    --c-blog-wild: #2a7a5a;
     --c-blog-paper: #7d3c98;
     --c-blog-project: #b45309;
     // Derived tokens: theme-aware rgba values
@@ -32,11 +44,6 @@
     --glow-link: 0 0 10px rgba(0, 107, 123, 0.4);
     --c-link-subtle: rgba(0, 107, 123, 0.3);
     --c-link-surface: rgba(0, 107, 123, 0.04);
-    --border-c-planning: rgba(139, 92, 246, 0.3);
-    --border-c-data-collection: rgba(59, 130, 246, 0.3);
-    --border-c-writing: rgba(245, 158, 11, 0.3);
-    --border-c-editing: rgba(16, 185, 129, 0.3);
-    --border-c-under-review: rgba(239, 68, 68, 0.3);
 }
 
 :root.dark {
@@ -52,26 +59,13 @@
     --border-color: #334155;
     --border-nav: rgba(71, 85, 105, 0.82);
     --shadow-nav-menu: 0 10px 24px rgba(2, 6, 23, 0.34);
-    --c-star: #fbbf24;
-    --c-planning: #a78bfa;
-    --c-data-collection: #60a5fa;
-    --c-writing: #fbbf24;
-    --c-editing: #34d399;
-    --c-under-review: #f87171;
-    --c-active: #34d399;
     --c-wip: #fbbf24;
-    --c-blog-wild: #6ee7b7;
     --c-blog-paper: #c4b5fd;
     --c-blog-project: #fbbf24;
     // Derived tokens: theme-aware rgba values
     --glow-link: 0 0 10px rgba(45, 212, 191, 0.45);
     --c-link-subtle: rgba(45, 212, 191, 0.3);
     --c-link-surface: rgba(45, 212, 191, 0.04);
-    --border-c-planning: rgba(167, 139, 250, 0.3);
-    --border-c-data-collection: rgba(96, 165, 250, 0.3);
-    --border-c-writing: rgba(251, 191, 36, 0.3);
-    --border-c-editing: rgba(52, 211, 153, 0.3);
-    --border-c-under-review: rgba(248, 113, 113, 0.3);
 }
 
 :root.theme-light {
@@ -88,8 +82,7 @@ body {
 }
 
 html.dark #content p,
-html.dark #content,
-html.dark .talk-title {
+html.dark #content {
     color: var(--text-muted);
 }
 
@@ -199,7 +192,24 @@ html.dark .toggle-thumb {
 
 html.dark .toggle-icon {
     color: #ffee88;
-    text-shadow: 0 0 8px rgba(255, 238, 136, 0.7);
+}
+
+html.dark .toggle-icon .icon {
+    filter: drop-shadow(0 0 8px rgba(255, 238, 136, 0.7));
+}
+
+// The toggle holds all three icons; the preference picks one: the half circle
+// for "system", the moon or the sun for an explicit choice (static/js/theme.js).
+.toggle-icon .toggle-icon-dark,
+.toggle-icon .toggle-icon-light,
+html.theme-dark .toggle-icon .toggle-icon-system,
+html.theme-light .toggle-icon .toggle-icon-system {
+    display: none;
+}
+
+html.theme-dark .toggle-icon .toggle-icon-dark,
+html.theme-light .toggle-icon .toggle-icon-light {
+    display: inline-block;
 }
 
 .theme-toggle:hover .toggle-thumb {
@@ -280,20 +290,20 @@ html.dark .version-badge {
     white-space: nowrap;
 }
 
-.access-badge i {
+.access-badge .icon {
     margin-right: 2px;
     font-size: 7pt;
 }
 
 .access-public {
     background: rgba(16, 185, 129, 0.1);
-    color: #059669;
+    color: #047857;
     border-color: rgba(16, 185, 129, 0.2);
 }
 
 .access-private {
     background: rgba(245, 158, 11, 0.1);
-    color: #d97706;
+    color: #a05804;
     border-color: rgba(245, 158, 11, 0.2);
 }
 
@@ -309,6 +319,8 @@ html.dark .access-private {
     border-color: rgba(251, 191, 36, 0.25);
 }
 
+// Star badges: one readable text color; the level (1 to 5, from
+// tools/star-levels.py) sets the fill and border strength.
 .star-badge {
     font-size: 7.5pt;
     font-weight: 600;
@@ -316,24 +328,39 @@ html.dark .access-private {
     border-radius: 999px;
     border: 1px solid;
     white-space: nowrap;
-    color: var(--clr);
-    border-color: var(--bdr);
-    background: var(--bg);
+    color: #991b1b;
 }
 
+.star-level-1 { background: rgba(220, 38, 38, 0.06); border-color: rgba(220, 38, 38, 0.22); }
+.star-level-2 { background: rgba(220, 38, 38, 0.10); border-color: rgba(220, 38, 38, 0.32); }
+.star-level-3 { background: rgba(220, 38, 38, 0.15); border-color: rgba(220, 38, 38, 0.42); }
+.star-level-4 { background: rgba(220, 38, 38, 0.21); border-color: rgba(220, 38, 38, 0.52); }
+.star-level-5 { background: rgba(220, 38, 38, 0.28); border-color: rgba(220, 38, 38, 0.62); }
+
 html.dark .star-badge {
-    color: var(--clr-d);
-    border-color: var(--bdr-d);
-    background: var(--bg-d);
+    color: #fca5a5;
+}
+
+html.dark .star-level-1 { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.25); }
+html.dark .star-level-2 { background: rgba(239, 68, 68, 0.13); border-color: rgba(239, 68, 68, 0.35); }
+html.dark .star-level-3 { background: rgba(239, 68, 68, 0.19); border-color: rgba(239, 68, 68, 0.45); }
+html.dark .star-level-4 { background: rgba(239, 68, 68, 0.26); border-color: rgba(239, 68, 68, 0.55); }
+html.dark .star-level-5 { background: rgba(239, 68, 68, 0.34); border-color: rgba(239, 68, 68, 0.65); }
+
+// Text for screen readers only.
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 // ─── Projects page ──────────────────────────────────────
-
-.projects-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
 .project-item {
     padding: 16px 0;
@@ -357,7 +384,8 @@ html.dark .star-badge {
     margin-bottom: 8px;
 }
 
-.project-tag, .tag, .paper-tag, .blog-tag {
+.project-tag,
+.tag {
     display: inline-block;
     font-size: 8pt;
     font-weight: 500;
@@ -425,12 +453,12 @@ html.dark .project-tag:hover {
     padding: 1px 6px;
 }
 
-.project-lock i {
+.project-lock .icon {
     font-size: 7.5pt;
-    color: #d97706;
+    color: #a05804;
 }
 
-html.dark .project-lock i {
+html.dark .project-lock .icon {
     color: #fbbf24;
 }
 
@@ -511,13 +539,11 @@ html.js .research-panel.active {
 
 // ─── Generic page / post + section listing ──────────────
 
-.page-header,
-.section-header {
+.page-header {
     margin-bottom: 2em;
 }
 
-.page-header h1,
-.section-header h1 {
+.page-header h1 {
     font-size: 20pt;
     font-weight: 500;
     margin: 0;
@@ -529,42 +555,6 @@ html.js .research-panel.active {
     font-size: 10pt;
     color: var(--text-muted);
     margin-top: 0.5em;
-}
-
-.list-item {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.list-item:last-child {
-    border-bottom: none;
-}
-
-.list-item h2 {
-    font-size: 11pt;
-    font-weight: 500;
-    margin: 0 0 4px 0;
-}
-
-.list-item h2 a {
-    color: var(--text-main);
-}
-
-.list-item h2 a:hover {
-    color: var(--c-link);
-    text-shadow: var(--glow-link);
-}
-
-.list-meta {
-    font-size: 9pt;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-}
-
-.list-desc {
-    font-size: 9.5pt;
-    color: var(--text-muted);
-    margin: 0;
 }
 
 // ─── Project timeline card layout ───────────────────────
@@ -679,27 +669,27 @@ html.dark .project-thumbnail:has(img) {
     white-space: nowrap;
 }
 
-.lang-badge i,
-.pub-badge i {
+.lang-badge .icon,
+.pub-badge .icon {
     margin-right: 2px;
     font-size: 7pt;
 }
 
 .lang-Python {
     background: rgba(55, 118, 171, 0.1);
-    color: #3776AB;
+    color: #306998;
     border-color: rgba(55, 118, 171, 0.25);
 }
 
 .lang-R {
     background: rgba(39, 109, 194, 0.1);
-    color: #276DC2;
+    color: #2669bc;
     border-color: rgba(39, 109, 194, 0.25);
 }
 
 .lang-Zig {
     background: rgba(247, 164, 29, 0.1);
-    color: #d98e0d;
+    color: #966209;
     border-color: rgba(247, 164, 29, 0.25);
 }
 
@@ -723,7 +713,7 @@ html.dark .lang-Zig {
 
 .lang-Rust {
     background: rgba(222, 165, 132, 0.1);
-    color: #c67a4e;
+    color: #a15c34;
     border-color: rgba(222, 165, 132, 0.25);
 }
 
@@ -765,7 +755,7 @@ html.dark .lang-C\2b\2b {
 
 html.dark .lang-C\23 {
     background: rgba(150, 60, 180, 0.15);
-    color: #9b59b6;
+    color: #ac75c2;
     border-color: rgba(150, 60, 180, 0.3);
 }
 
@@ -777,13 +767,13 @@ html.dark .lang-C\23 {
 
 html.dark .lang-LaTeX {
     background: rgba(0, 170, 170, 0.15);
-    color: #1a9e9e;
+    color: #1ba2a2;
     border-color: rgba(0, 170, 170, 0.3);
 }
 
 .lang-Go {
     background: rgba(0, 173, 216, 0.1);
-    color: #0096b8;
+    color: #00758f;
     border-color: rgba(0, 173, 216, 0.25);
 }
 
@@ -795,58 +785,10 @@ html.dark .lang-Go {
 
 // ─── Publication badge ──────────────────────────────────
 
-.pub-published {
-    background: rgba(16, 185, 129, 0.1);
-    color: #059669;
-    border-color: rgba(16, 185, 129, 0.2);
-}
-
-.pub-preprint {
-    background: rgba(245, 158, 11, 0.1);
-    color: #d97706;
-    border-color: rgba(245, 158, 11, 0.2);
-}
-
-.pub-upcoming {
-    background: rgba(59, 130, 246, 0.1);
-    color: #2563eb;
-    border-color: rgba(59, 130, 246, 0.2);
-}
-
-.pub-planned {
-    background: rgba(139, 92, 246, 0.1);
-    color: #7c3aed;
-    border-color: rgba(139, 92, 246, 0.2);
-}
-
 .pub-badge.pub-badge--status-na {
     background: rgba(100, 116, 139, 0.1);
     color: var(--text-muted);
     border-color: rgba(100, 116, 139, 0.2);
-}
-
-html.dark .pub-published {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    border-color: rgba(52, 211, 153, 0.25);
-}
-
-html.dark .pub-preprint {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    border-color: rgba(251, 191, 36, 0.25);
-}
-
-html.dark .pub-upcoming {
-    background: rgba(96, 165, 250, 0.15);
-    color: #60a5fa;
-    border-color: rgba(96, 165, 250, 0.25);
-}
-
-html.dark .pub-planned {
-    background: rgba(167, 139, 250, 0.15);
-    color: #a78bfa;
-    border-color: rgba(167, 139, 250, 0.25);
 }
 
 html.dark .pub-badge.pub-badge--status-na {
@@ -881,19 +823,6 @@ html.dark .pub-badge.pub-badge--status-na {
 }
 
 // ─── Pagination ──────────────────────────────────────────
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    margin-top: 2em;
-    font-size: 10pt;
-}
-
-.pagination-current {
-    color: var(--text-muted);
-}
 
 .empty {
     color: var(--text-muted);

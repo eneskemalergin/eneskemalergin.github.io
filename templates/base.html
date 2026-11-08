@@ -4,6 +4,10 @@
 
 <head>
     <meta charset="utf-8" />
+    {#- Content Security Policy: every script, font, image, and frame comes from this
+        site, and no inline script runs. style-src allows inline styles for Markdown
+        table alignment and the figure shortcode's width option. -#}
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {#- Title and description for this page, also used by the sharing metadata. -#}
@@ -46,8 +50,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
-    <link rel="stylesheet" href="{{ get_url(path="vendor/fontawesome/css/all.min.css") }}" />
-    <link rel="stylesheet" href="{{ get_url(path="vendor/academicons/css/academicons.min.css") }}" />
+    <link rel="preload" href="{{ get_url(path="vendor/inter/inter-latin-wght-normal.woff2") }}" as="font" type="font/woff2" crossorigin />
     {% if (page is defined and page.content is containing("<pre")) or (section is defined and section.content is containing("<pre")) %}
     <link rel="stylesheet" href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}" id="hljs-theme"
         data-light-href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}"
@@ -84,7 +87,7 @@
             <li class="nav-toggle">
                 <button type="button" class="theme-toggle" aria-label="Theme: system. Current mode follows the browser preference.">
                     <span class="toggle-track">
-                        <span class="toggle-thumb"><span class="toggle-icon"><i class="fas fa-circle-half-stroke" aria-hidden="true"></i></span></span>
+                        <span class="toggle-thumb"><span class="toggle-icon">{{ macros::icon(name="circle-half-stroke", class="toggle-icon-system") }}{{ macros::icon(name="moon", class="toggle-icon-dark") }}{{ macros::icon(name="sun", class="toggle-icon-light") }}</span></span>
                     </span>
                 </button>
             </li>

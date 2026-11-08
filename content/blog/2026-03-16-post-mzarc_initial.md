@@ -57,7 +57,7 @@ One dataset: 15HCD_1{% sidenote() %}From PXD075509. 9001 spectra, 2,668,458 tota
 ### Size
 
 {{ figure(
-  src="https://raw.githubusercontent.com/eneskemalergin/mzarc/93459bd50137b2fad1862e010712ac0466c29187/benchmark/plots/size_comparison.png",
+  src="/blog/images/mzarc/size_comparison.png",
   alt="Bar chart comparing file sizes: mzML 75.55 MiB, dump 30.78 MiB, mzv1 lossless 27.89 MiB, mzv1 lossy 13.17 MiB, gzip 19.82 MiB, zstd 17.85 MiB, mzMLb 16.25 MiB, MScompress 21.63 MiB",
   alt_badge="size",
   caption="File size comparison on 15HCD_1. Lossless mzv1 (27.89 MiB) beats gzip (19.82 MiB) and the dump itself (30.78 MiB). Lossy at q=4096 (13.17 MiB) is smaller than mzMLb (16.25 MiB).",
@@ -93,7 +93,7 @@ The m/z stream is 17.50 MiB in lossless mode. That is 62.8% of the total file. T
 ### Throughput
 
 {{ figure(
-  src="https://raw.githubusercontent.com/eneskemalergin/mzarc/93459bd50137b2fad1862e010712ac0466c29187/benchmark/plots/performance_overview.png",
+  src="/blog/images/mzarc/performance_overview.png",
   alt="Horizontal bar chart of throughput in MiB/s: mzMLb 3-6, MScompress 4-105, gzip 19-153, zstd 165-580, mzv1 124-168",
   alt_badge="throughput",
   caption="Throughput in MiB/s. mzv1 encode and decode both exceed 120 MiB/s. mzMLb decode (6.2 MiB/s) is 27x slower.",
@@ -134,7 +134,7 @@ Output goes to `benchmark/report.json` and `benchmark/report.md`. Plots land in 
 ### Fidelity
 
 {{ figure(
-  src="https://raw.githubusercontent.com/eneskemalergin/mzarc/93459bd50137b2fad1862e010712ac0466c29187/benchmark/plots/fidelity_overview.png",
+  src="/blog/images/mzarc/fidelity_overview.png",
   alt="Multi-panel fidelity plot: m/z error near zero for all, intensity error visible only for lossy mzv1",
   alt_badge="fidelity",
   caption="Fidelity overview. Lossless paths are exact. Lossy q=4096 shows controlled intensity error with m/z error at the ppm level.",
@@ -146,7 +146,7 @@ Lossless mzv1 round-trips exactly. Every m/z value and every intensity survives 
 Lossy at q=4096: max absolute m/z error is 1.0e-06 Da. Mean absolute intensity error is 695 (raw counts). P95 relative intensity error is 0.218%. P99 is 0.238%. These are controlled errors within the quantization bounds. The lossy tradeoff sweep makes this explicit:
 
 {{ figure(
-  src="https://raw.githubusercontent.com/eneskemalergin/mzarc/93459bd50137b2fad1862e010712ac0466c29187/benchmark/plots/lossy_tradeoff.png",
+  src="/blog/images/mzarc/lossy_tradeoff.png",
   alt="Line chart: as q increases from 256 to 16384, file size increases from 11.90 to 13.81 MiB, p95 error drops from 3.5% to 0.055%",
   alt_badge="tradeoff",
   caption="Lossy tradeoff. Higher q preserves more precision at modest size cost. q=16384 gives p95 error of 0.055% at only 0.64 MiB more than q=4096.",

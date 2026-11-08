@@ -63,16 +63,8 @@
 
         var actual = isDarkMode(preference) ? "dark" : "light";
         var next = nextPreference();
-        var icon = button.querySelector(".toggle-icon i");
-        var iconClass = preference === "system"
-            ? "fa-circle-half-stroke"
-            : actual === "dark" ? "fa-moon" : "fa-sun";
         var label = "Theme: " + preference + " (" + actual + "). Switch to " + next + ".";
 
-        if (icon) {
-            icon.classList.remove("fa-circle-half-stroke", "fa-moon", "fa-sun");
-            icon.classList.add(iconClass);
-        }
         button.setAttribute("aria-label", label);
         button.setAttribute("title", label);
         updateCodeTheme();
@@ -100,7 +92,10 @@
     function applyPreference(value, persist) {
         preference = isValidPreference(value) ? value : "system";
         html.classList.toggle("dark", isDarkMode(preference));
+        // An explicit choice: CSS shows the sun or the moon instead of the
+        // half-circle that stands for "system".
         html.classList.toggle("theme-light", preference === "light");
+        html.classList.toggle("theme-dark", preference === "dark");
 
         if (persist) {
             try {

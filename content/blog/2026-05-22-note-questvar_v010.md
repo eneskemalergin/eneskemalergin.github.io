@@ -35,7 +35,7 @@ Power analysis is included from the start because sample size planning under equ
 The `.plot()` call on any results object produces an eight-panel figure. Panel G is the exclusion breakdown.
 
 {{ figure(
-  src="https://raw.githubusercontent.com/eneskemalergin/QuEStVar/main/assets/summary_plot.png",
+  src="/blog/images/questvar/summary_plot.png",
   alt="Eight-panel summary figure from QuEStVar",
   alt_badge="QuEStVar v0.1.0",
   caption="**Figure 1.** Summary plot from a single comparison."
