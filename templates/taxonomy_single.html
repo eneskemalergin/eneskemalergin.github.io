@@ -1,11 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
+{#- Projects and publications join a tag page when one of their tags, or their
+    blog `tag`, has the page's slug. -#}
+{% set project_data = load_data(path="data/projects.toml") %}
+{% set pub_data = load_data(path="data/publications.toml") %}
+{% set_global related_projects = [] %}
+{% for p in project_data.projects %}
+{% set_global hit = p.tag is defined and p.tag != "NA" and p.tag | slugify == term.slug %}
+{% for t in p.tags | default(value=[]) %}{% if t | slugify == term.slug %}{% set_global hit = true %}{% endif %}{% endfor %}
+{% if hit %}{% set_global related_projects = related_projects | concat(with=p) %}{% endif %}
+{% endfor %}
+{% set_global related_pubs = [] %}
+{% for paper in pub_data.publications %}
+{% set_global hit = paper.tag is defined and paper.tag != "NA" and paper.tag | slugify == term.slug %}
+{% for t in paper.tags | default(value=[]) %}{% if t | slugify == term.slug %}{% set_global hit = true %}{% endif %}{% endfor %}
+{% if hit %}{% set_global related_pubs = related_pubs | concat(with=paper) %}{% endif %}
+{% endfor %}
+{% set n_posts = term.pages | length %}
+{% set n_projects = related_projects | length %}
+{% set n_pubs = related_pubs | length %}
 
 <div class="tag-page-header">
     <div class="tag-page-title">
         <h2><span class="tag-page-label">tag:</span> {{ term.name }}</h2>
-        <span class="tag-page-count">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
+        <span class="tag-page-count">{{ n_posts }} post{{ n_posts | pluralize }}{% if n_projects %}, {{ n_projects }} project{{ n_projects | pluralize }}{% endif %}{% if n_pubs %}, {{ n_pubs }} publication{{ n_pubs | pluralize }}{% endif %}</span>
     </div>
     <a href="{{ get_url(path="/tags/") }}" class="tag-page-back">← all tags</a>
 </div>
@@ -71,6 +90,39 @@
         <div class="blog-pagination" id="blog-pagination"></div>
         {% else %}
         <p class="empty">Nothing tagged with {{ term.name }} yet.</p>
+        {% endif %}
+
+        {% if related_projects %}
+        <section class="tag-related" aria-labelledby="tag-related-projects">
+            <h3 class="tag-related-title" id="tag-related-projects">Projects</h3>
+            <ul class="tag-related-list">
+                {% for p in related_projects %}
+                <li class="tag-related-item">
+                    <div class="tag-related-head">
+                        <a href="{{ get_url(path="@/projects/_index.md") }}#project-{{ p.title | slugify }}" class="tag-related-name">{{ p.title }}</a>
+                        <span class="tag-related-meta">{{ p.language }}{% if p.access == "private" %}, private{% endif %}</span>
+                    </div>
+                    <p class="tag-related-desc">{{ p.desc }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if related_pubs %}
+        <section class="tag-related" aria-labelledby="tag-related-publications">
+            <h3 class="tag-related-title" id="tag-related-publications">Publications</h3>
+            <ul class="tag-related-list">
+                {% for paper in related_pubs %}
+                <li class="tag-related-item">
+                    <div class="tag-related-head">
+                        <a href="{{ get_url(path="@/research/_index.md") }}#pub-{{ paper.title | striptags | slugify }}" class="tag-related-name">{{ paper.title | safe }}</a>
+                    </div>
+                    <span class="tag-related-meta">{% if paper.status == "published" %}{{ paper.venue }}, {{ paper.year }}{% elif paper.status == "upcoming" %}In press{% elif paper.status == "preprint" %}Preprint{% elif paper.status == "under-review" %}Under review{% else %}In preparation{% endif %}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
         {% endif %}
     </div>
 

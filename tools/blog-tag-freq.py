@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Count blog tag frequencies, including tags of linked projects and publications.
+"""Count how many blog posts carry each tag, for the tag bar on the blog page.
 
-A project or publication counts toward the blog tag bar when its `tag` field
-matches a blog tag. Tags are matched by slug, the way Zola builds tag URLs, so
-`mzML` and `mzml` count as one tag and keep the spelling used in blog posts.
+Tags are counted by slug, the way Zola builds tag URLs, so `mzML` and `mzml`
+count as one tag under the first spelling seen.
 
 Usage:
     python3 tools/blog-tag-freq.py [OUTPUT]
 
     OUTPUT - Path to output JSON (default: data/generated/blog_tag_frequencies.json)
 
-Reads content/blog/*.md, data/projects.toml, and data/publications.toml.
+Reads the front matter of content/blog/*.md.
 
 Output format (sorted descending by count, then by name):
     [
@@ -59,16 +58,6 @@ def main() -> None:
             continue
         for tag in post_tags(path):
             add(tag)
-    blog_slugs = set(counts)
-
-    for data_file, table in (("data/projects.toml", "projects"),
-                             ("data/publications.toml", "publications")):
-        with open(data_file, "rb") as f:
-            entries = tomllib.load(f).get(table, [])
-        for entry in entries:
-            if slugify(entry.get("tag", "NA")) in blog_slugs:
-                for tag in entry.get("tags", []):
-                    add(tag)
 
     freqs = sorted(({"name": names[s], "count": c} for s, c in counts.items()),
                    key=lambda x: (-x["count"], x["name"]))

@@ -1643,6 +1643,77 @@ details[open].archive-month > summary::before {
     line-height: 1.5;
 }
 
+/* Projects and publications that share the tag */
+.tag-related {
+    margin-top: 36px;
+}
+
+.tag-related-title {
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin: 0 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tag-related-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-related-item:last-child {
+    border-bottom: none;
+}
+
+.tag-related-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+}
+
+.tag-related-name {
+    font-size: 11pt;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+.tag-related-name:hover {
+    color: var(--c-link);
+}
+
+.tag-related-meta {
+    font-size: 8pt;
+    color: var(--text-muted);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    opacity: 0.75;
+}
+
+.tag-related-item > .tag-related-meta {
+    display: block;
+    margin-top: 4px;
+}
+
+#content .tag-related-desc {
+    margin: 4px 0 0;
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* A project or publication reached from a tag page */
+.project-item:target,
+.paper-card:target {
+    background-color: var(--c-link-surface);
+}
+
 /* Tag index stats */
 .tag-index-stats {
     margin-top: 10px;

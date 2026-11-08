@@ -23,7 +23,7 @@
     <div class="timeline-stage">{{ stage }}</div>
     <div class="timeline-papers">
         {% for p in items %}
-        <div class="project-item project-item-timeline">
+        <div class="project-item project-item-timeline" id="project-{{ p.title | slugify }}">
             <div class="project-left">
                 <div class="project-thumbnail">
                     {% if p.image %}

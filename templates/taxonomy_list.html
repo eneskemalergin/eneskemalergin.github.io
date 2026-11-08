@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>{{ taxonomy.name | title }}</h2>
-<p class="section-desc">{{ terms | length }} topics across blog posts. Project and publication tags link here when a post shares the topic.</p>
+<p class="section-desc">{{ terms | length }} topics from blog posts; the numbers count posts. A topic page also lists the projects and publications that share it.</p>
 
 <div class="tag-cloud">
     {% for term in terms %}

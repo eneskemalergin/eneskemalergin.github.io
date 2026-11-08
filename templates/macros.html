@@ -30,7 +30,7 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
 {%- endmacro blog_link %}
 
 {% macro render_paper(paper, terms) %}
-<div class="paper-card paper-card-detailed">
+<div class="paper-card paper-card-detailed" id="pub-{{ paper.title | striptags | slugify }}">
     <div class="paper-main">
         <div class="paper-left">
             <div class="paper-thumbnail">
