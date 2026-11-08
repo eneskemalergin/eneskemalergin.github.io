@@ -211,6 +211,7 @@ footer p {
 }
 
 .navbar li.nav-toggle {
+    margin-left: auto;
     padding-left: 8px;
     border-left: 1px solid var(--border-nav);
 }
@@ -1285,7 +1286,6 @@ html.js .blog-tabs {
 }
 
 html.dark .kind-note {
-    color: var(--c-blog-paper);
     border-color: rgba(196, 181, 253, 0.3);
     background: rgba(196, 181, 253, 0.05);
 }
@@ -1683,7 +1683,7 @@ details[open].archive-month > summary::before {
 }
 
 /* =============================================================
-   CV page — inline PDF viewer mirrored from My_CV
+   CV page: inline PDF viewer for the CV mirrored from My_CV
    ============================================================= */
 .cv-intro {
     font-size: 10pt;
@@ -1751,7 +1751,7 @@ details[open].archive-month > summary::before {
 }
 
 /* =============================================================
-   Search page — elasticlunr over Zola's built-in index
+   Search page: the index embedded by templates/search.html
    ============================================================= */
 .search-box {
     display: flex;

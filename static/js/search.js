@@ -8,7 +8,7 @@
     var results = document.getElementById('search-results');
     var hint = document.getElementById('search-hint');
     var data = document.getElementById('search-data');
-    if (!form || !input || !results || !data) return;
+    if (!form || !input || !results || !data || !window.HtmlSafe) return;
 
     var MAX_RESULTS = 50;
     var records;
@@ -18,27 +18,9 @@
         return;
     }
 
-    function escape(s) {
-        return String(s).replace(/[&<>"']/g, function (c) {
-            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-        });
-    }
-
-    // Record text comes from data files and may hold HTML entities such as &amp;.
-    function decodeHtml(text) {
-        var ta = document.createElement('textarea');
-        ta.innerHTML = String(text || '');
-        return ta.value;
-    }
-
-    // Allow only site-relative and http(s) URLs into href.
-    function safeUrl(ref) {
-        var c = ref.charAt(0);
-        if (c === '/' || c === '#' || c === '?') return ref;
-        var m = /^([a-z][a-z0-9+.\-]*):/i.exec(ref);
-        if (m && (m[1].toLowerCase() === 'http' || m[1].toLowerCase() === 'https')) return ref;
-        return '';
-    }
+    // Escaping and URL checks: js/html-safe.js. Record text comes from data
+    // files and may hold HTML entities such as &amp;, so it is decoded first.
+    var escape = HtmlSafe.escape, safeUrl = HtmlSafe.safeUrl, decodeHtml = HtmlSafe.decodeHtml;
 
     function normalize(text) {
         return decodeHtml(text).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();

@@ -5,7 +5,8 @@ set -e
 cd "$(dirname "$0")"
 
 PYTHON="${PYTHON:-python3.12}"
-ZOLA_VERSION="0.22.1"
+# mise.toml pins the Zola version; the build refuses any other.
+ZOLA_VERSION="$(sed -n 's/^zola = "\(.*\)"$/\1/p' mise.toml)"
 
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
     echo "Python 3.12 is required. Set PYTHON to its executable if needed." >&2
@@ -27,7 +28,7 @@ else
     exit 1
 fi
 
-ZOLA_ACTUAL_VERSION="$("${ZOLA[@]}" --version 2>/dev/null)"
+ZOLA_ACTUAL_VERSION="$("${ZOLA[@]}" --version 2>/dev/null || true)"
 case "$ZOLA_ACTUAL_VERSION" in
     "zola $ZOLA_VERSION"*) ;;
     *)
@@ -89,7 +90,7 @@ else
 fi
 
 # Sentinel consumed by templates/cv.html to decide iframe vs. fallback link.
-printf 'available = %s\nsrc_url = "%s"\ncommit = "%s"\n' "$cv_ok" "$CV_SRC" "$CV_COMMIT" > "$CV_META"
+printf 'available = %s\ncommit = "%s"\n' "$cv_ok" "$CV_COMMIT" > "$CV_META"
 
 "$PYTHON" tools/tag-freq.py
 "$PYTHON" tools/tag-freq.py data/publications.toml data/generated/pub_tag_frequencies.json --table publications

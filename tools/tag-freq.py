@@ -19,16 +19,10 @@ Output format (sorted descending by count):
     ]
 """
 
-import json
 import sys
-from pathlib import Path
+import tomllib
 
-from slug import slugify
-
-try:
-    import tomllib
-except ImportError:
-    import tomli as tomllib
+from common import slugify, write_json
 
 
 def parse_tags(path: str, table: str) -> list[str]:
@@ -55,13 +49,6 @@ def count_frequencies(tags: list[str]) -> list[dict]:
     )
 
 
-def write_json(data: list[dict], path: str) -> None:
-    """Write data as pretty-printed JSON, creating the output directory."""
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
-    Path(path).write_text(json.dumps(data, indent=2), encoding="utf-8")
-    print(f"Wrote {path} ({len(data)} tags)")
-
-
 def main() -> None:
     args = sys.argv[1:]
     inp = "data/projects.toml"
@@ -80,7 +67,7 @@ def main() -> None:
 
     tags = parse_tags(inp, table)
     freqs = count_frequencies(tags)
-    write_json(freqs, out)
+    write_json(freqs, out, "tags")
 
 
 if __name__ == "__main__":

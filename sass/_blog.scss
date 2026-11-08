@@ -161,7 +161,6 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-muted);
-    border-bottom: 1px solid var(--border-color);
 }
 
 .page-body td {
@@ -224,7 +223,6 @@ html.dark .page-body tbody tr:nth-child(even) td {
     --figure-image-max-height: min(64vh, 760px);
 }
 
-.code-block-header,
 .blog-figure-label,
 .blog-figure-alt {
     font-size: 8pt;
@@ -544,16 +542,21 @@ html.dark .callout-danger {
     font-size: 1.05em !important;
 }
 
-/* -- Code block with filename header ----------------------- */
+/* -- Code block language label ----------------------------- */
 
 .code-block-header {
-    padding: 4px 12px;
+    font-family: "SFMono-Regular", Consolas, monospace;
     font-size: 7.5pt;
     font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.8;
+    padding: 4px 12px;
     color: var(--text-muted);
     background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-color);
-    font-family: "SFMono-Regular", Consolas, monospace;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    z-index: 1;
 }
 
 /* -- Inline highlights ------------------------------------- */

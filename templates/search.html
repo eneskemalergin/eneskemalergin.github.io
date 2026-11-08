@@ -43,13 +43,13 @@
 ,{"t":{{ macros::json(value=p.extra.kind | default(value="post") | title) }},"n":{{ macros::json(value=p.title) }},"u":{{ macros::json(value=p.permalink) }},"s":{{ macros::json(value=p.description | default(value="")) }},"k":{{ macros::json(value=p.taxonomies.tags | default(value=[])) }},"h":{{ macros::json(value=heads) }},"d":{{ macros::json(value=p.date | default(value="")) }}}
 {%- endfor %}
 {%- for p in project_data.projects %}
-{%- set anchor = p.title | slugify %}
-,{"t":"Project","n":{{ macros::json(value=p.title) }},"u":{{ macros::json(value=projects_url ~ "#project-" ~ anchor) }},"s":{{ macros::json(value=p.desc) }},"k":{{ macros::json(value=p.tags | default(value=[])) }},"x":{{ macros::json(value=p.language ~ " " ~ p.status ~ " " ~ p.access) }}}
+{%- set anchor = macros::project_id(title=p.title) | trim %}
+,{"t":"Project","n":{{ macros::json(value=p.title) }},"u":{{ macros::json(value=projects_url ~ "#" ~ anchor) }},"s":{{ macros::json(value=p.desc) }},"k":{{ macros::json(value=p.tags | default(value=[])) }},"x":{{ macros::json(value=p.language ~ " " ~ p.status ~ " " ~ p.access) }}}
 {%- endfor %}
 {%- for paper in pub_data.publications %}
-{%- if paper.status == "published" %}{% set when = paper.venue ~ ", " ~ paper.year %}{% elif paper.status == "upcoming" %}{% set when = "In press" %}{% elif paper.status == "preprint" %}{% set when = "Preprint" %}{% elif paper.status == "under-review" %}{% set when = "Under review" %}{% else %}{% set when = "In preparation" %}{% endif %}
-{%- set name = paper.title | striptags %}{% set anchor = name | slugify %}{% set authors = paper.authors | striptags %}{% set venue = paper.venue | default(value="") %}
-,{"t":"Publication","n":{{ macros::json(value=name) }},"u":{{ macros::json(value=research_url ~ "#pub-" ~ anchor) }},"s":{{ macros::json(value=when) }},"k":{{ macros::json(value=paper.tags | default(value=[])) }},"x":{{ macros::json(value=authors ~ " " ~ venue) }},"d":{{ macros::json(value=paper.year | default(value=0) | as_str) }}}
+{%- set when = macros::pub_when(paper=paper) | trim %}
+{%- set name = paper.title | striptags %}{% set anchor = macros::pub_id(title=paper.title) | trim %}{% set authors = paper.authors | striptags %}{% set venue = paper.venue | default(value="") %}
+,{"t":"Publication","n":{{ macros::json(value=name) }},"u":{{ macros::json(value=research_url ~ "#" ~ anchor) }},"s":{{ macros::json(value=when) }},"k":{{ macros::json(value=paper.tags | default(value=[])) }},"x":{{ macros::json(value=authors ~ " " ~ venue) }},"d":{{ macros::json(value=paper.year | default(value=0) | as_str) }}}
 {%- endfor %}
 {%- for talk in talk_data.presentations %}
 {%- set location = talk.location | default(value="") %}{% set event = talk.event | default(value="") %}
@@ -62,5 +62,6 @@
 ,{"t":"News","n":{{ macros::json(value=item.content | striptags) }},"u":{{ macros::json(value=get_url(path="@/news/_index.md")) }},"s":{{ macros::json(value=item.date) }},"x":{{ macros::json(value=item.type) }}}
 {%- endfor %}
 ]</script>
+<script src="{{ get_url(path="js/html-safe.js") }}"></script>
 <script src="{{ get_url(path="js/search.js") }}"></script>
 {% endblock %}

@@ -14,20 +14,16 @@ Usage:
 
 Output format:
     {
-      "SQuAPP": {"count": 10, "level": 4},
+      "SQuAPP": 4,
       ...
     }
 """
 
-import json
 import math
 import sys
-from pathlib import Path
+import tomllib
 
-try:
-    import tomllib
-except ImportError:
-    import tomli as tomllib
+from common import write_json
 
 LEVELS = 5
 
@@ -59,32 +55,22 @@ def log_intensity(count: int, min_s: int, max_s: int) -> float:
 
 
 def compute_levels(projects: list[dict]) -> dict:
-    """Build a title -> {count, level} map for projects with stars."""
+    """Build a title -> level map for projects with stars."""
     counts = [p["stars"] for p in projects if p["stars"] > 0]
     if not counts:
         return {}
     min_s, max_s = min(counts), max(counts)
     return {
-        p["title"]: {
-            "count": p["stars"],
-            "level": 1 + round(log_intensity(p["stars"], min_s, max_s) * (LEVELS - 1)),
-        }
+        p["title"]: 1 + round(log_intensity(p["stars"], min_s, max_s) * (LEVELS - 1))
         for p in projects
         if p["stars"] > 0
     }
 
 
-def write_json(data: dict, path: str) -> None:
-    """Write data as pretty-printed JSON, creating the output directory."""
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
-    Path(path).write_text(json.dumps(data, indent=2), encoding="utf-8")
-    print(f"Wrote {path} ({len(data)} projects)")
-
-
 def main() -> None:
     inp = sys.argv[1] if len(sys.argv) > 1 else "data/projects.toml"
     out = sys.argv[2] if len(sys.argv) > 2 else "data/generated/project_stars.json"
-    write_json(compute_levels(parse_projects(inp)), out)
+    write_json(compute_levels(parse_projects(inp)), out, "projects")
 
 
 if __name__ == "__main__":

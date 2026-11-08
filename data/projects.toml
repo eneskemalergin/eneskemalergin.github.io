@@ -43,36 +43,16 @@
 #
 # -- Head Badges (right-aligned, in order) -------------------------------------
 #
-#   1. Language badge     .lang-badge.lang-{Python|R|Zig|Rust|C|C++|C#|LaTeX|Go}
-#        Python: #3776AB blue,         fa-python icon
-#        R:      #276DC2 blue,         fa-r-project icon
-#        Zig:    #d98e0d amber,        fa-code icon
-#        Rust:   #c67a4e rust-orange,  fa-rust icon
-#        C:      #555555 gray,         fa-code icon
-#        C++:    #00599C blue,         fa-code icon
-#        C#:     #68217A purple,       fa-code icon
-#        LaTeX:  #006666 teal,         fa-file-lines icon
-#        Go:     #0096b8 light-blue,   fa-golang icon
+#   1. Language     from `language`; a known language has its own color and icon
+#   2. Stars        from `stars`, only when stars > 0; tools/star-levels.py sets
+#                   the badge's fill level (1 to 5) by log normalization over
+#                   the star counts in this file
+#   3. Version      from `version`, when set
+#   4. Access       from `access`
+#   5. Publication  from `pub`
 #
-#   2. Stars badge        .star-badge (log-normalized colour, only when stars > 0)
-#        Colour computed by tools/star-colors.py using log normalisation
-#        over the actual star-count range in this file.  Values inlined
-#        as CSS custom properties (--clr, --clr-d, --bdr, --bdr-d, --bg, --bg-d).
-#        Lowest count -> lightest red (#fca5a5), highest -> darkest (#b91c1c).
-#
-#   3. Version badge      .version-badge
-#        Muted gray pill, no variant.
-#
-#   4. Access badge       .access-badge.access-{public|private}
-#        public:  #059669 green,       fa-lock-open icon
-#        private: #d97706 amber,       fa-lock icon
-#
-#   5. Publication badge  .pub-badge.pub-badge--status-{published|preprint|upcoming|planned|na}
-#        published: #059669 green,     fa-book icon
-#        preprint:  #d97706 amber,     fa-file-lines icon
-#        upcoming:  #2563eb blue,      fa-pen-fancy icon
-#        planned:   #7c3aed purple,    fa-calendar icon
-#        na:        #64748b gray,      fa-minus icon
+#   Badge colors live in sass/style.scss and sass/_main.scss; icons are keys
+#   of data/icons.toml, chosen in templates/projects.html.
 #
 # -- Left Column (under thumbnail) ---------------------------------------------
 #
@@ -81,9 +61,6 @@
 #   .project-source    - Uppercase muted label ("LANGELAB", "ZENTEOMICS",
 #                        "PERSONAL")
 #
-# -- Dark Mode -----------------------------------------------------------------
-#   All coloured badges have brighter/saturated dark-mode variants (see CSS).
-#
 # -- Notes ---------------------------------------------------------------------
 #   - Language "Jupyter Notebook" is normalised to "Python" in the data.
 #   - Every project should have pub and access set explicitly.
@@ -91,17 +68,15 @@
 #     projects.
 #   - Timeline order in templates/projects.html: mature -> stable -> active ->
 #     wip -> early -> private -> archived.
-#   - Star badge colour is computed by tools/star-colors.py with log
-#     normalisation over the actual star count range in this file.
 #   - Thumbnail is square 130 px (80 px on mobile), border-radius 8px,
 #     1px border, with initial letter placeholder when no image.
 #   - tag = "NA" means blog tag slug not yet assigned (fill later).
 #   - Tag frequency cloud is generated into data/generated/tag_frequencies.json by
 #     tools/tag-freq.py.  Run ./build.sh instead of bare zola build/serve
 #     to regenerate it.
-#   - Star colours and tag frequencies are pre-processed in build.sh:
+#   - Star levels and tag frequencies are pre-processed in build.sh:
 #       tools/tag-freq.py     -> data/generated/tag_frequencies.json
-#       tools/star-colors.py  -> data/generated/project_stars.json
+#       tools/star-levels.py  -> data/generated/project_stars.json
 #   - The full badge rendering lives in sass/style.scss, sass/_main.scss,
 #     and templates/projects.html.
 
@@ -340,7 +315,7 @@ access = "public"
 image = "projects/zmz.svg"
 tag = "zmz"
 tags = ["mass-spectrometry", "mzml", "parser", "library"]
-desc = "Mass Spectrometry Open Data Format Library for Zig. Fast and Light as Lightning!"
+desc = "Mass spectrometry open data format library for Zig. Fast and light as lightning."
 github = "https://github.com/eneskemalergin/zmz"
 
 [[projects]]
@@ -435,7 +410,7 @@ access = "private"
 image = "projects/Maskomancy.svg"
 tag = "maskomancy"
 tags = ["unsupervised-learning", "pca", "nipals", "missing-data", "proteomics"]
-desc = "Missing-value-tolerant PCA for omics-scale matrices"
+desc = "Missing-value-tolerant PCA for omics-scale matrices."
 github = "https://github.com/eneskemalergin/Maskomancy"
 
 [[projects]]

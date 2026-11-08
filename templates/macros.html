@@ -9,11 +9,9 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
   missing: "label" (default) renders a plain label; "hide" renders nothing
 -#}
 {% macro tag(name, terms, class="tag", count=0, missing="label") -%}
-{%- set slug = name | slugify -%}
-{%- set_global tag_href = "" -%}
-{%- for term in terms -%}{%- if term.slug == slug -%}{%- set_global tag_href = term.permalink -%}{%- endif -%}{%- endfor -%}
-{%- if tag_href -%}
-<a href="{{ tag_href }}" class="{{ class }}">{{ name }}{% if count %}<sup>{{ count }}</sup>{% endif %}</a>
+{%- set href = self::tag_href(name=name, terms=terms) | trim -%}
+{%- if href -%}
+<a href="{{ href }}" class="{{ class }}">{{ name }}{% if count %}<sup>{{ count }}</sup>{% endif %}</a>
 {%- elif missing == "label" -%}
 <span class="{{ class }} tag-label">{{ name }}{% if count %}<sup>{{ count }}</sup>{% endif %}</span>
 {%- endif -%}
@@ -21,13 +19,32 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
 
 {#- "Blog" button for a project or publication; rendered only when its tag page exists. -#}
 {% macro blog_link(name, terms, class="project-link") -%}
+{%- set href = self::tag_href(name=name, terms=terms) | trim -%}
+{%- if href -%}<a href="{{ href }}" class="{{ class }}">Blog</a>{%- endif -%}
+{%- endmacro blog_link %}
+
+{#- The permalink of a tag's page, matched by slug; nothing when the tag is
+    unset ("NA") or has no page. The output is raw, for the caller to escape. -#}
+{% macro tag_href(name, terms) -%}
 {%- if name and name != "NA" -%}
 {%- set slug = name | slugify -%}
-{%- set_global tag_href = "" -%}
-{%- for term in terms -%}{%- if term.slug == slug -%}{%- set_global tag_href = term.permalink -%}{%- endif -%}{%- endfor -%}
-{%- if tag_href -%}<a href="{{ tag_href }}" class="{{ class }}">Blog</a>{%- endif -%}
+{%- for term in terms -%}{%- if term.slug == slug -%}{{ term.permalink | safe }}{%- endif -%}{%- endfor -%}
 {%- endif -%}
-{%- endmacro blog_link %}
+{%- endmacro tag_href %}
+
+{#- Fragment ids of project and publication cards. Tag pages and search link
+    to them, so they are part of the page's URL contract. -#}
+{% macro project_id(title) -%}project-{{ title | slugify }}{%- endmacro project_id %}
+{% macro pub_id(title) -%}pub-{{ title | striptags | slugify }}{%- endmacro pub_id %}
+
+{#- A publication's venue and year, or its lifecycle stage before publication. -#}
+{% macro pub_when(paper) -%}
+{%- if paper.status == "published" -%}{{ paper.venue }}, {{ paper.year }}
+{%- elif paper.status == "upcoming" -%}In press
+{%- elif paper.status == "preprint" -%}Preprint
+{%- elif paper.status == "under-review" -%}Under review
+{%- else -%}In preparation{%- endif -%}
+{%- endmacro pub_when %}
 
 {#- The projects and publications that carry a tag: by a `tags` entry or by
     their blog `tag`, matched by slug. Output: their positions in `items`,
@@ -70,7 +87,7 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
 {%- endmacro json %}
 
 {% macro render_paper(paper, terms) %}
-<div class="paper-card paper-card-detailed" id="pub-{{ paper.title | striptags | slugify }}">
+<div class="paper-card paper-card-detailed" id="{{ self::pub_id(title=paper.title) }}">
     <div class="paper-main">
         <div class="paper-left">
             <div class="paper-thumbnail">
@@ -116,8 +133,7 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
             <p class="tldr">{{ paper.tldr }}</p>
             {% endif %}
             {#- The links row renders only when it holds a link or a Blog button. -#}
-            {% set_global paper_blog_href = "" %}
-            {% if paper.tag and paper.tag != "NA" %}{% set slug = paper.tag | slugify %}{% for term in terms %}{% if term.slug == slug %}{% set_global paper_blog_href = term.permalink %}{% endif %}{% endfor %}{% endif %}
+            {% set paper_blog_href = self::tag_href(name=paper.tag | default(value=""), terms=terms) | trim %}
             {% if paper.links or paper_blog_href %}
             <div class="paper-links">
                 {% if paper.links %}
@@ -132,3 +148,71 @@ otherwise renders as a plain label. Matching uses the slug, so `mzML` and
     </div>
 </div>
 {% endmacro render_paper %}
+
+{#- A timeline group of publications under one label: a year or a lifecycle stage. -#}
+{% macro paper_group(label, papers, terms) %}
+<div class="timeline-group">
+    <div class="timeline-year">{{ label }}</div>
+    <div class="timeline-papers">
+    {% for paper in papers %}
+        {{ self::render_paper(paper=paper, terms=terms) }}
+    {% endfor %}
+    </div>
+</div>
+{% endmacro paper_group %}
+
+{#- One news entry, on the home page and the news page. -#}
+{% macro news_item(item) %}
+<div class="news-item">
+    <span class="news-date">{{ item.date }}</span>
+    <span class="news-type news-type-{{ item.type }}">{{ item.type }}</span>
+    <span class="news-content">{{ item.content | safe }}</span>
+</div>
+{% endmacro news_item %}
+
+{#- The post list on the blog page and tag pages. Each item carries the data
+    js/blog-list.js uses to page, filter, and fill the archive sidebar. -#}
+{% macro post_list(pages) %}
+<ul class="blog-list" id="blog-list">
+            {% for page in pages %}
+            {% set kind = page.extra.kind | default(value="post") %}
+            {% set yr = page.date | date(format="%Y") %}
+            {% set mo = page.date | date(format="%B") %}
+            <li class="blog-item"
+                data-kind="{{ kind }}"
+                data-year="{{ yr }}"
+                data-month="{{ mo }}"
+                data-title="{{ page.title }}"
+                data-href="{{ page.permalink }}">
+                <div class="blog-item-content">
+                    <div class="blog-title-row">
+                        <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
+                        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
+                    </div>
+                    <div class="blog-meta">
+                        {% if page.date %}
+                        <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time and page.date %}
+                        <span class="blog-meta-sep" aria-hidden="true">·</span>
+                        {% endif %}
+                        {% if kind == "post" and page.reading_time %}
+                        <span class="blog-reading-time">{{ page.reading_time }} min</span>
+                        {% endif %}
+                    </div>
+                    {% if page.description %}
+                    <p class="blog-description">{{ page.description }}</p>
+                    {% endif %}
+                    {% if page.taxonomies.tags %}
+                    <div class="blog-topics">
+                        {% for tag in page.taxonomies.tags | slice(end=3) %}
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="topic-pill">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <nav class="blog-pagination" id="blog-pagination" aria-label="Pages" hidden></nav>
+{% endmacro post_list %}

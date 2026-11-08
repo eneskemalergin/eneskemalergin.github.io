@@ -47,48 +47,7 @@
 <div class="blog-layout">
     <div class="blog-main">
         {% if term.pages %}
-        <ul class="blog-list" id="blog-list">
-            {% for page in term.pages %}
-            {% set kind = page.extra.kind | default(value="post") %}
-            {% set yr = page.date | date(format="%Y") %}
-            {% set mo = page.date | date(format="%B") %}
-            <li class="blog-item"
-                data-kind="{{ kind }}"
-                data-year="{{ yr }}"
-                data-month="{{ mo }}"
-                data-title="{{ page.title }}"
-                data-href="{{ page.permalink }}">
-                <div class="blog-item-content">
-                    <div class="blog-title-row">
-                        <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
-                        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
-                    </div>
-                    <div class="blog-meta">
-                        {% if page.date %}
-                        <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
-                        {% endif %}
-                        {% if kind == "post" and page.reading_time and page.date %}
-                        <span class="blog-meta-sep" aria-hidden="true">·</span>
-                        {% endif %}
-                        {% if kind == "post" and page.reading_time %}
-                        <span class="blog-reading-time">{{ page.reading_time }} min</span>
-                        {% endif %}
-                    </div>
-                    {% if page.description %}
-                    <p class="blog-description">{{ page.description }}</p>
-                    {% endif %}
-                    {% if page.taxonomies.tags %}
-                    <div class="blog-topics">
-                        {% for tag in page.taxonomies.tags | slice(end=3) %}
-                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="topic-pill">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <nav class="blog-pagination" id="blog-pagination" aria-label="Pages" hidden></nav>
+        {{ macros::post_list(pages=term.pages) }}
         {% else %}
         <p class="empty">Nothing tagged with {{ term.name }} yet.</p>
         {% endif %}
@@ -100,7 +59,7 @@
                 {% for p in related_projects %}
                 <li class="tag-related-item">
                     <div class="tag-related-head">
-                        <a href="{{ get_url(path="@/projects/_index.md") }}#project-{{ p.title | slugify }}" class="tag-related-name">{{ p.title }}</a>
+                        <a href="{{ get_url(path="@/projects/_index.md") }}#{{ macros::project_id(title=p.title) }}" class="tag-related-name">{{ p.title }}</a>
                         <span class="tag-related-meta">{{ p.language }}{% if p.access == "private" %}, private{% endif %}</span>
                     </div>
                     <p class="tag-related-desc">{{ p.desc }}</p>
@@ -117,9 +76,9 @@
                 {% for paper in related_pubs %}
                 <li class="tag-related-item">
                     <div class="tag-related-head">
-                        <a href="{{ get_url(path="@/research/_index.md") }}#pub-{{ paper.title | striptags | slugify }}" class="tag-related-name">{{ paper.title | safe }}</a>
+                        <a href="{{ get_url(path="@/research/_index.md") }}#{{ macros::pub_id(title=paper.title) }}" class="tag-related-name">{{ paper.title | safe }}</a>
                     </div>
-                    <span class="tag-related-meta">{% if paper.status == "published" %}{{ paper.venue }}, {{ paper.year }}{% elif paper.status == "upcoming" %}In press{% elif paper.status == "preprint" %}Preprint{% elif paper.status == "under-review" %}Under review{% else %}In preparation{% endif %}</span>
+                    <span class="tag-related-meta">{{ macros::pub_when(paper=paper) }}</span>
                 </li>
                 {% endfor %}
             </ul>
@@ -132,5 +91,6 @@
     </aside>
 </div>
 
+<script src="{{ get_url(path="js/html-safe.js") }}"></script>
 <script src="{{ get_url(path="js/blog-list.js") }}"></script>
 {% endblock %}

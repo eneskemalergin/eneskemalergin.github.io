@@ -9,27 +9,8 @@
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
-    function escape(s) {
-        return String(s).replace(/[&<>"']/g, function (c) {
-            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-        });
-    }
-
-    function decodeHtml(text) {
-        var ta = document.createElement('textarea');
-        ta.innerHTML = String(text || '');
-        return ta.value;
-    }
-
-    // Whitelist schemes for href values read from data attributes.
-    // Anything else (e.g. "javascript:") is dropped before injection.
-    function safeUrl(ref) {
-        var c = ref.charAt(0);
-        if (c === '/' || c === '#' || c === '?') return ref;
-        var m = /^([a-z][a-z0-9+.\-]*):/i.exec(ref);
-        if (m && (m[1].toLowerCase() === 'http' || m[1].toLowerCase() === 'https')) return ref;
-        return '';
-    }
+    // Escaping and URL checks for the archive markup: js/html-safe.js.
+    var escape = HtmlSafe.escape, safeUrl = HtmlSafe.safeUrl;
 
     function renderPagination(currentPage, totalPages, onPageChange) {
         var container = document.getElementById('blog-pagination');
@@ -59,7 +40,7 @@
         items.forEach(function (item) {
             var yr = item.dataset.year;
             var mo = item.dataset.month;
-            var title = decodeHtml(item.dataset.title);
+            var title = item.dataset.title;
             var href = item.dataset.href;
             if (!tree[yr]) tree[yr] = {};
             if (!tree[yr][mo]) tree[yr][mo] = [];

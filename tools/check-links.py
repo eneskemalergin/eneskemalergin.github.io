@@ -24,10 +24,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
-try:
-    import tomllib
-except ImportError:
-    import tomli as tomllib
+from common import page_path, read_site, site_args
 
 # Paths on this domain that other repositories publish (their own GitHub Pages
 # sites), so they are absent from this build by design.
@@ -62,16 +59,6 @@ class PageParser(HTMLParser):
             self.refs.append(attrs[attr])
 
 
-def page_url(site: Path, file: Path) -> str:
-    """Return the root-relative URL path that serves a built file."""
-    rel = file.relative_to(site).as_posix()
-    if rel == "index.html":
-        return "/"
-    if rel.endswith("/index.html"):
-        return "/" + rel[: -len("index.html")]
-    return "/" + rel
-
-
 def resolve(site: Path, path: str) -> Path | None:
     """Map a URL path to the built file that serves it, if any."""
     candidate = site / unquote(path).lstrip("/")
@@ -85,33 +72,15 @@ def resolve(site: Path, path: str) -> Path | None:
 
 
 def main() -> None:
-    args = sys.argv[1:]
-    site = Path("public")
-    base_url = None
-    if args and not args[0].startswith("--"):
-        site = Path(args.pop(0))
-    if "--base-url" in args:
-        base_url = args[args.index("--base-url") + 1]
-    if base_url is None:
-        with open("zola.toml", "rb") as f:
-            base_url = tomllib.load(f)["base_url"]
+    site, base_url = site_args(sys.argv[1:])
     base = urlsplit(base_url)
-
-    if not site.is_dir():
-        sys.exit(f"Site directory not found: {site}")
-    pages: dict[Path, PageParser] = {}
-    for file in sorted(site.rglob("*.html")):
-        parser = PageParser()
-        parser.feed(file.read_text(encoding="utf-8"))
-        pages[file] = parser
-    if not pages:
-        sys.exit(f"No HTML pages in {site}; build the site first.")
+    pages = read_site(site, PageParser)
 
     problems: set[str] = set()
     checked = 0
     for file, parser in pages.items():
         source = file.relative_to(site).as_posix()
-        here = page_url(site, file)
+        here = page_path(site, file)
         for ref in parser.refs:
             target = urlsplit(urljoin(base_url.rstrip("/") + here, ref))
             if target.scheme not in ("http", "https") or target.netloc != base.netloc:

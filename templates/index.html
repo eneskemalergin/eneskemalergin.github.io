@@ -61,11 +61,7 @@
 <div class="news-list">
     {% for item in all_news.news %}
             {% if item["main-page"] == 1 %}
-    <div class="news-item">
-        <span class="news-date">{{ item.date }}</span>
-        <span class="news-type news-type-{{ item.type }}">{{ item.type }}</span>
-        <span class="news-content">{{ item.content | safe }}</span>
-    </div>
+    {{ macros::news_item(item=item) }}
       {% endif %}
     {% endfor %}
 </div>

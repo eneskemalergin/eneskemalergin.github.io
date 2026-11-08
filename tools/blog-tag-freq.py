@@ -19,17 +19,12 @@ Output format (sorted descending by count, then by name):
     ]
 """
 
-import json
 import re
 import sys
+import tomllib
 from pathlib import Path
 
-from slug import slugify
-
-try:
-    import tomllib
-except ImportError:
-    import tomli as tomllib
+from common import slugify, write_json
 
 
 def post_tags(path: Path) -> list[str]:
@@ -43,7 +38,7 @@ def post_tags(path: Path) -> list[str]:
 
 
 def main() -> None:
-    out = Path(sys.argv[1] if len(sys.argv) > 1 else "data/generated/blog_tag_frequencies.json")
+    out = sys.argv[1] if len(sys.argv) > 1 else "data/generated/blog_tag_frequencies.json"
 
     counts: dict[str, int] = {}
     names: dict[str, str] = {}
@@ -61,9 +56,7 @@ def main() -> None:
 
     freqs = sorted(({"name": names[s], "count": c} for s, c in counts.items()),
                    key=lambda x: (-x["count"], x["name"]))
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(freqs, indent=2), encoding="utf-8")
-    print(f"Wrote {out} ({len(freqs)} tags)")
+    write_json(freqs, out, "tags")
 
 
 if __name__ == "__main__":

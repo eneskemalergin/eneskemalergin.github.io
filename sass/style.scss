@@ -114,23 +114,15 @@ html.dark .page-body img {
 }
 
 html.dark .talk-type--oral,
-html.dark .talk-type--workshop {
-    background: var(--bg-surface);
-    color: var(--c-link);
-}
-
+html.dark .talk-type--invited,
+html.dark .talk-type--workshop,
 html.dark .talk-type--poster,
 html.dark .talk-type--teaching,
 html.dark .talk-type--ta {
     background: var(--bg-surface);
-    color: var(--text-muted);
 }
 
 // ─── Theme toggle switch ────────────────────────────────
-
-.navbar li.nav-toggle {
-    margin-left: auto;
-}
 
 .theme-toggle {
     background: none;
@@ -278,7 +270,6 @@ html.dark .theme-toggle:active .toggle-thumb {
 
 html.dark .version-badge {
     background: rgba(148, 163, 184, 0.12);
-    color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
 }
 
@@ -372,12 +363,6 @@ html.dark .star-level-5 { background: rgba(239, 68, 68, 0.34); border-color: rgb
     border-bottom: none;
 }
 
-.project-meta {
-    font-size: 9pt;
-    color: var(--text-muted);
-    font-family: 'SFMono-Regular', Consolas, monospace;
-}
-
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -395,12 +380,8 @@ html.dark .star-level-5 { background: rgba(239, 68, 68, 0.34); border-color: rgb
     letter-spacing: 0.03em;
     white-space: nowrap;
     color: var(--c-link);
-    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
-}
-
-.project-tag,
-.tag {
     border: 1px solid var(--c-link-subtle);
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 .project-tag:hover {
@@ -429,7 +410,6 @@ html.dark .star-level-5 { background: rgba(239, 68, 68, 0.34); border-color: rgb
 
 html.dark .project-tag:hover {
     background-color: rgba(45, 212, 191, 0.1);
-    border-color: var(--c-link);
     color: var(--c-link);
 }
 
@@ -508,7 +488,6 @@ html.js .research-tabs {
 }
 
 .research-tab {
-    font-size: 10.5pt;
     font-weight: 500;
     padding: 12px 18px 14px;
     cursor: pointer;
@@ -623,6 +602,9 @@ html.dark .project-thumbnail:has(img) {
     gap: 3px;
     margin-top: 8px;
     width: 100%;
+    font-size: 9pt;
+    color: var(--text-muted);
+    font-family: 'SFMono-Regular', Consolas, monospace;
 }
 
 .project-body {
@@ -794,7 +776,6 @@ html.dark .lang-Go {
 
 html.dark .pub-badge.pub-badge--status-na {
     background: rgba(148, 163, 184, 0.15);
-    color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);
 }
 

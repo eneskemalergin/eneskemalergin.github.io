@@ -30,48 +30,7 @@
 <div class="blog-layout">
     <div class="blog-main">
         {% if section.pages %}
-        <ul class="blog-list" id="blog-list">
-            {% for page in section.pages %}
-            {% set kind = page.extra.kind | default(value="post") %}
-            {% set yr = page.date | date(format="%Y") %}
-            {% set mo = page.date | date(format="%B") %}
-            <li class="blog-item"
-                data-kind="{{ kind }}"
-                data-year="{{ yr }}"
-                data-month="{{ mo }}"
-                data-title="{{ page.title }}"
-                data-href="{{ page.permalink }}">
-                <div class="blog-item-content">
-                    <div class="blog-title-row">
-                        <span class="kind-badge kind-{{ kind }}">{{ kind }}</span>
-                        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
-                    </div>
-                    <div class="blog-meta">
-                        {% if page.date %}
-                        <span class="blog-date">{{ page.date | date(format="%b. %d, %Y") }}</span>
-                        {% endif %}
-                        {% if kind == "post" and page.reading_time and page.date %}
-                        <span class="blog-meta-sep" aria-hidden="true">·</span>
-                        {% endif %}
-                        {% if kind == "post" and page.reading_time %}
-                        <span class="blog-reading-time">{{ page.reading_time }} min</span>
-                        {% endif %}
-                    </div>
-                    {% if page.description %}
-                    <p class="blog-description">{{ page.description }}</p>
-                    {% endif %}
-                    {% if page.taxonomies.tags %}
-                    <div class="blog-topics">
-                        {% for tag in page.taxonomies.tags | slice(end=3) %}
-                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="topic-pill">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <nav class="blog-pagination" id="blog-pagination" aria-label="Pages" hidden></nav>
+        {{ macros::post_list(pages=section.pages) }}
         {% else %}
         <p class="empty">Nothing here yet.</p>
         {% endif %}
@@ -82,5 +41,6 @@
     </aside>
 </div>
 
+<script src="{{ get_url(path="js/html-safe.js") }}"></script>
 <script src="{{ get_url(path="js/blog-list.js") }}"></script>
 {% endblock %}

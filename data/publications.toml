@@ -39,27 +39,12 @@
 #   thesis            PhD dissertation / graduate thesis
 #   virology          Viral proteases, pathogen biology, antiviral discovery
 #
-# --- Card badge colours ---------------------------------------------------------
+# --- Card badges -----------------------------------------------------------------
 #
-#   Type badges  (.pub-badge.pub-badge--type-*)
-#     journal:    #2563eb blue      bg: rgba(37,99,235,0.10)     icon: fa-book-open
-#     conference: #7c3aed purple    bg: rgba(139,92,246,0.10)    icon: fa-microphone
-#     thesis:     #059669 green     bg: rgba(5,150,105,0.10)     icon: fa-graduation-cap
-#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.10)     icon: fa-file-lines
-#
-#   Status badges  (.pub-badge.pub-badge--status-*)
-#     published:     #059669 green  bg: rgba(5,150,105,0.10)     icon: fa-check-circle
-#     under-review:  #d97706 amber  bg: rgba(245,158,11,0.10)    icon: fa-hourglass-half
-#     upcoming:      #2563eb blue   bg: rgba(37,99,235,0.10)     icon: fa-file-lines
-#     planned:       #7c3aed purple bg: rgba(139,92,246,0.10)    icon: fa-file-lines
-#
-#   Venue badges  (.venue-*  - color-coded by paper type)
-#     journal:    #2563eb blue      bg: rgba(37,99,235,0.08)
-#     conference: #7c3aed purple    bg: rgba(139,92,246,0.08)
-#     thesis:     #059669 green     bg: rgba(5,150,105,0.08)
-#     preprint:   #d97706 amber     bg: rgba(217,119,6,0.08)
-#
-#   Dark mode: all colours shift to more saturated/bright variants (see CSS).
+#   Type badges (.pub-badge--type-*) come from `type`, status badges
+#   (.pub-badge--status-*) from `status`, and the venue pill (.venue-*) from
+#   `type`. Their colors live in sass/_main.scss; icons are keys of
+#   data/icons.toml, chosen in templates/macros.html (render_paper).
 #
 # --- Card layout ----------------------------------------------------------------
 #

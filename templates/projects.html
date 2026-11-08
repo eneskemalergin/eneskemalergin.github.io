@@ -23,7 +23,7 @@
     <div class="timeline-stage">{{ stage }}</div>
     <div class="timeline-papers">
         {% for p in items %}
-        <div class="project-item project-item-timeline" id="project-{{ p.title | slugify }}">
+        <div class="project-item project-item-timeline" id="{{ macros::project_id(title=p.title) }}">
             <div class="project-left">
                 <div class="project-thumbnail">
                     {% if p.image %}
@@ -56,7 +56,7 @@
                             {{ p.language }}
                         </span>
                         {% if p.stars and p.stars > 0 %}
-                        <span class="star-badge star-level-{{ star_data[p.title].level }}"><span aria-hidden="true">&#9733;</span> {{ p.stars }}<span class="visually-hidden"> GitHub stars</span></span>
+                        <span class="star-badge star-level-{{ star_data[p.title] }}"><span aria-hidden="true">&#9733;</span> {{ p.stars }}<span class="visually-hidden"> GitHub stars</span></span>
                         {% endif %}
                         {% if p.version %}
                         <span class="version-badge">v{{ p.version }}</span>

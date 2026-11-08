@@ -38,74 +38,25 @@
     {% endfor %}
 
     {% set in_press = pubs.publications | filter(attribute="status", value="upcoming") %}
-    {% if in_press %}
-    <div class="timeline-group">
-        <div class="timeline-year">In press</div>
-        <div class="timeline-papers">
-        {% for paper in in_press %}
-            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
-        {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+    {% if in_press %}{{ macros::paper_group(label="In press", papers=in_press, terms=tag_terms) }}{% endif %}
 
-    {% set preprints = pubs.publications | filter(attribute="status", value="preprint") %}
     {% set under_review = pubs.publications | filter(attribute="status", value="under-review") %}
-    {% if preprints or under_review %}
-    <div class="timeline-group">
-        <div class="timeline-year">Preprints and under review</div>
-        <div class="timeline-papers">
-        {% for paper in preprints %}
-            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
-        {% endfor %}
-        {% for paper in under_review %}
-            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
-        {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+    {% set preprints = pubs.publications | filter(attribute="status", value="preprint") | concat(with=under_review) %}
+    {% if preprints %}{{ macros::paper_group(label="Preprints and under review", papers=preprints, terms=tag_terms) }}{% endif %}
 
     {% set planned = pubs.publications | filter(attribute="status", value="planned") %}
-    {% if planned %}
-    <div class="timeline-group">
-        <div class="timeline-year">In preparation</div>
-        <div class="timeline-papers">
-        {% for paper in planned %}
-            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
-        {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+    {% if planned %}{{ macros::paper_group(label="In preparation", papers=planned, terms=tag_terms) }}{% endif %}
 
     {% set published = pubs.publications | filter(attribute="status", value="published") %}
-    {% set_global pub_years = [] %}
-    {% for paper in published %}
-      {% if paper.year not in pub_years %}
-        {% set_global pub_years = pub_years | concat(with=paper.year) %}
-      {% endif %}
-    {% endfor %}
-    {% for y in pub_years | sort | reverse %}
-    <div class="timeline-group">
-        <div class="timeline-year">{{ y }}</div>
-        <div class="timeline-papers">
-        {% for paper in published | filter(attribute="year", value=y) %}
-            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
-        {% endfor %}
-        </div>
-    </div>
+    {% for y in published | map(attribute="year") | unique | sort | reverse %}
+    {{ macros::paper_group(label=y, papers=published | filter(attribute="year", value=y), terms=tag_terms) }}
     {% endfor %}
 
 </section>
 
 <section id="presentations" class="research-panel">
     <h3 class="research-panel-title">Presentations</h3>
-    {% set_global pres_years = [] %}
-    {% for item in presentations.presentations %}
-      {% if item.year not in pres_years %}
-        {% set_global pres_years = pres_years | concat(with=item.year) %}
-      {% endif %}
-    {% endfor %}
-    {% for y in pres_years | sort | reverse %}
+    {% for y in presentations.presentations | map(attribute="year") | unique | sort | reverse %}
     <div class="timeline-group">
         <div class="timeline-year">{{ y }}</div>
         <div class="timeline-papers">
@@ -131,13 +82,7 @@
 
 <section id="teaching" class="research-panel">
     <h3 class="research-panel-title">Teaching</h3>
-    {% set_global teach_years = [] %}
-    {% for item in teaching.experiences %}
-      {% if item.year not in teach_years %}
-        {% set_global teach_years = teach_years | concat(with=item.year) %}
-      {% endif %}
-    {% endfor %}
-    {% for y in teach_years | sort | reverse %}
+    {% for y in teaching.experiences | map(attribute="year") | unique | sort | reverse %}
     <div class="timeline-group">
         <div class="timeline-year">{{ y }}</div>
         <div class="timeline-papers">
