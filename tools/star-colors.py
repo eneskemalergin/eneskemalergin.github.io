@@ -9,7 +9,7 @@ Usage:
     python3 tools/star-colors.py [INPUT] [OUTPUT]
 
     INPUT   - Path to projects.toml   (default: data/projects.toml)
-    OUTPUT  - Path to output JSON     (default: data/project_stars.json)
+    OUTPUT  - Path to output JSON     (default: data/generated/project_stars.json)
 
 Output format:
     {
@@ -118,14 +118,15 @@ def compute_colors(projects: list[dict]) -> dict:
 
 
 def write_json(data: dict, path: str) -> None:
-    """Write data as pretty-printed JSON."""
+    """Write data as pretty-printed JSON, creating the output directory."""
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps(data, indent=2), encoding="utf-8")
     print(f"Wrote {path} ({len(data)} projects)")
 
 
 def main() -> None:
     inp = sys.argv[1] if len(sys.argv) > 1 else "data/projects.toml"
-    out = sys.argv[2] if len(sys.argv) > 2 else "data/project_stars.json"
+    out = sys.argv[2] if len(sys.argv) > 2 else "data/generated/project_stars.json"
     projects = parse_projects(inp)
     colors = compute_colors(projects)
     write_json(colors, out)

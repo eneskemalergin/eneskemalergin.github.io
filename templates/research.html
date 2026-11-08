@@ -5,16 +5,21 @@
 {% set pubs = load_data(path="data/publications.toml") %}
 {% set presentations = load_data(path="data/presentations.toml") %}
 {% set teaching = load_data(path="data/teaching.toml") %}
+{% set tag_taxonomy = get_taxonomy(kind="tags") %}
+{% set tag_terms = tag_taxonomy.items %}
 
 <h2>Research</h2>
 
-<div class="research-tabs">
-    <span class="research-tab active" data-tab="publications">Publications</span>
-    <span class="research-tab" data-tab="presentations">Presentations</span>
-    <span class="research-tab" data-tab="teaching">Teaching</span>
+{#- js/research-tabs.js turns these sections into tabs. Without JavaScript the
+    tab row stays hidden and all three sections render in order. -#}
+<div class="research-tabs" role="tablist" aria-label="Research sections">
+    <button type="button" class="research-tab active" role="tab" id="tab-publications" aria-selected="true" aria-controls="publications">Publications</button>
+    <button type="button" class="research-tab" role="tab" id="tab-presentations" aria-selected="false" aria-controls="presentations" tabindex="-1">Presentations</button>
+    <button type="button" class="research-tab" role="tab" id="tab-teaching" aria-selected="false" aria-controls="teaching" tabindex="-1">Teaching</button>
 </div>
 
-<div id="publications" class="research-panel active">
+<section id="publications" class="research-panel active">
+    <h3 class="research-panel-title">Publications</h3>
 
     <div class="pub-legend">
         <span class="pub-legend-item"><i class="fas fa-book-open"></i> journal</span>
@@ -25,29 +30,48 @@
         <span class="pub-legend-item">&#42; corresponding author</span>
     </div>
 
-    {% set under_review = pubs.publications | filter(attribute="status", value="under-review") %}
-    {% if under_review %}
+    {#- Lifecycle groups first, then published papers by year. A status outside
+        this list fails the build instead of hiding the entry. -#}
+    {% set known_statuses = ["upcoming", "preprint", "under-review", "planned", "published"] %}
+    {% for paper in pubs.publications %}
+    {% if paper.status not in known_statuses %}{{ throw(message="data/publications.toml: unknown status '" ~ paper.status ~ "' on '" ~ paper.title ~ "'") }}{% endif %}
+    {% endfor %}
+
+    {% set in_press = pubs.publications | filter(attribute="status", value="upcoming") %}
+    {% if in_press %}
     <div class="timeline-group">
-        <div class="timeline-year">Preprint</div>
+        <div class="timeline-year">In press</div>
         <div class="timeline-papers">
-        {% for paper in under_review %}
-            {{ macros::render_paper(paper=paper) }}
+        {% for paper in in_press %}
+            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
         {% endfor %}
         </div>
     </div>
     {% endif %}
 
-    {% set upcoming_planned = pubs.publications | filter(attribute="status", value="upcoming") %}
-    {% set planned = pubs.publications | filter(attribute="status", value="planned") %}
-    {% if upcoming_planned or planned %}
+    {% set preprints = pubs.publications | filter(attribute="status", value="preprint") %}
+    {% set under_review = pubs.publications | filter(attribute="status", value="under-review") %}
+    {% if preprints or under_review %}
     <div class="timeline-group">
-        <div class="timeline-year">Upcoming</div>
+        <div class="timeline-year">Preprints and under review</div>
         <div class="timeline-papers">
-        {% for paper in upcoming_planned %}
-            {{ macros::render_paper(paper=paper) }}
+        {% for paper in preprints %}
+            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
         {% endfor %}
+        {% for paper in under_review %}
+            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% set planned = pubs.publications | filter(attribute="status", value="planned") %}
+    {% if planned %}
+    <div class="timeline-group">
+        <div class="timeline-year">In preparation</div>
+        <div class="timeline-papers">
         {% for paper in planned %}
-            {{ macros::render_paper(paper=paper) }}
+            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
         {% endfor %}
         </div>
     </div>
@@ -65,15 +89,16 @@
         <div class="timeline-year">{{ y }}</div>
         <div class="timeline-papers">
         {% for paper in published | filter(attribute="year", value=y) %}
-            {{ macros::render_paper(paper=paper) }}
+            {{ macros::render_paper(paper=paper, terms=tag_terms) }}
         {% endfor %}
         </div>
     </div>
     {% endfor %}
 
-</div>
+</section>
 
-<div id="presentations" class="research-panel">
+<section id="presentations" class="research-panel">
+    <h3 class="research-panel-title">Presentations</h3>
     {% set_global pres_years = [] %}
     {% for item in presentations.presentations %}
       {% if item.year not in pres_years %}
@@ -102,9 +127,10 @@
         </div>
     </div>
     {% endfor %}
-</div>
+</section>
 
-<div id="teaching" class="research-panel">
+<section id="teaching" class="research-panel">
+    <h3 class="research-panel-title">Teaching</h3>
     {% set_global teach_years = [] %}
     {% for item in teaching.experiences %}
       {% if item.year not in teach_years %}
@@ -128,31 +154,17 @@
         </div>
     </div>
     {% endfor %}
-</div>
+</section>
 
-{% set pub_tag_freq = load_data(path="data/pub_tag_frequencies.json") %}
+{% set pub_tag_freq = load_data(path="data/generated/pub_tag_frequencies.json") %}
 
 <hr>
 <div class="tag-legend">
     <span class="tag-legend-label">Tags by appearance:</span>
     {% for entry in pub_tag_freq %}
-    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {{ macros::tag(name=entry.name, terms=tag_terms, count=entry.count) }}
     {% endfor %}
 </div>
 
-<script>
-(function() {
-    var tabs = document.querySelectorAll('.research-tab');
-    var panels = document.querySelectorAll('.research-panel');
-    tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-            var name = this.getAttribute('data-tab');
-            tabs.forEach(function(t) { t.classList.remove('active'); });
-            panels.forEach(function(p) { p.classList.remove('active'); });
-            this.classList.add('active');
-            document.getElementById(name).classList.add('active');
-        });
-    });
-})();
-</script>
+<script defer src="{{ get_url(path="js/research-tabs.js") }}"></script>
 {% endblock %}

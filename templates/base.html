@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
     <link rel="stylesheet" href="{{ get_url(path="vendor/fontawesome/css/all.min.css") }}" />
     <link rel="stylesheet" href="{{ get_url(path="vendor/academicons/css/academicons.min.css") }}" />
+    {% if (page is defined and page.content is containing("<pre")) or (section is defined and section.content is containing("<pre")) %}
     <link rel="stylesheet" href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}" id="hljs-theme"
         data-light-href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}"
         data-dark-href="{{ get_url(path="vendor/highlightjs/styles/github-dark.min.css") }}" />
     <script defer src="{{ get_url(path="vendor/highlightjs/highlight.min.js") }}"></script>
     <script defer src="{{ get_url(path="js/highlight-init.js") }}"></script>
+    {% endif %}
     {% if page.extra.katex %}
     <link rel="stylesheet" href="{{ get_url(path="vendor/katex/katex.min.css") }}" />
     <script defer src="{{ get_url(path="vendor/katex/katex.min.js") }}"></script>

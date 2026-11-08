@@ -239,9 +239,12 @@ html.dark .page-body tbody tr:nth-child(even) td {
     border: 1px solid var(--border-color);
 }
 
+// The figure element carries the frame itself, so <figcaption> stays a direct
+// child of <figure> as HTML requires.
 .blog-figure {
     margin: 1.8em auto;
     max-width: 760px;
+    box-sizing: border-box;
     --figure-frame-padding-top: 20px;
     --figure-frame-padding-inline: 10px;
     --figure-frame-padding-bottom: 0;

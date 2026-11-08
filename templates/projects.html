@@ -1,9 +1,18 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 {% set data = load_data(path="data/projects.toml") %}
-{% set star_data = load_data(path="data/project_stars.json") %}
+{% set tag_taxonomy = get_taxonomy(kind="tags") %}
+{% set tag_terms = tag_taxonomy.items %}
+{% set star_data = load_data(path="data/generated/project_stars.json") %}
 {% set order = ["mature", "stable", "active", "wip", "early", "private", "archived"] %}
+{% set private_reasons = ["in-development", "pending-publication", "proprietary", "internal"] %}
+{#- A status or private reason outside its list fails the build instead of hiding the project or its reason. -#}
+{% for p in data.projects %}
+{% if p.status not in order %}{{ throw(message="data/projects.toml: unknown status '" ~ p.status ~ "' on '" ~ p.title ~ "'") }}{% endif %}
+{% if p.private_reason and p.private_reason not in private_reasons %}{{ throw(message="data/projects.toml: unknown private_reason '" ~ p.private_reason ~ "' on '" ~ p.title ~ "'") }}{% endif %}
+{% endfor %}
 
 <h2>Projects</h2>
 
@@ -34,7 +43,8 @@
             </div>
             <div class="project-body">
                 <div class="project-head">
-                    {% set gh = p | get(key="github", default="") %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
+                    {#- Private repositories are never linked; the card explains why instead. -#}
+                    {% set gh = p | get(key="github", default="") %}{% if p.access == "private" %}{% set gh = "" %}{% endif %}<span class="project-name">{% if gh %}<a href="{{ gh }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
                     <div class="project-head-badges">
                         <span class="lang-badge lang-{{ p.language }}">
                             {% if p.language == "Python" %}<i class="fa-brands fa-python"></i>
@@ -70,8 +80,15 @@
                 {% endif %}
                 <div class="project-desc">{{ p.desc }}</div>
                 <div class="project-links">
-                    {% set gh = p | get(key="github", default="") %}{% if gh %}<a href="{{ gh }}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
-                    {% if p.analysis %}<a href="{{ p.analysis }}" class="project-link" target="_blank" rel="noopener noreferrer">Analysis</a>{% endif %}
+                    {% if p.access == "private" %}
+                    {#- A private row shows a lock chip with its reason where the GitHub button would be. -#}
+                    {% set reason = p.private_reason | default(value="") %}
+                    {% set plan = p.public_plan | default(value="") %}
+                    {% if reason == "in-development" %}{% set lead = "In development" %}{% elif reason == "pending-publication" %}{% set lead = "Waiting on the paper" %}{% elif reason == "proprietary" %}{% set lead = "Proprietary" %}{% elif reason == "internal" %}{% set lead = "Lab internal" %}{% else %}{% set lead = "" %}{% endif %}
+                    {% if lead and plan %}{% set chip = lead ~ ", public " ~ plan %}{% elif lead %}{% set chip = lead %}{% elif plan %}{% set chip = "Public " ~ plan %}{% elif p | get(key="github", default="") %}{% set chip = "Source private" %}{% else %}{% set chip = "Not released yet" %}{% endif %}
+                    <span class="project-lock"><i class="fas fa-lock" aria-hidden="true"></i>{{ chip }}</span>
+                    {% elif gh %}<a href="{{ gh }}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
+                    {% if p.analysis and p.access != "private" %}<a href="{{ p.analysis }}" class="project-link" target="_blank" rel="noopener noreferrer">Analysis</a>{% endif %}
                     {% if p.pkg %}
                     <a href="{{ p.pkg }}" class="project-link" target="_blank" rel="noopener noreferrer">
                         {%- if "pypi.org" in p.pkg %}PyPI
@@ -85,7 +102,7 @@
                     {% if p.app %}<a href="{{ p.app }}" class="project-link" target="_blank" rel="noopener noreferrer">App</a>{% endif %}
                     {% if p.paper %}<a href="{{ p.paper }}" class="project-link" target="_blank" rel="noopener noreferrer">Paper</a>{% endif %}
                     {% if p.preprint %}<a href="{{ p.preprint }}" class="project-link" target="_blank" rel="noopener noreferrer">Preprint</a>{% endif %}
-                    {% if p.tag and p.tag != "NA" %}<a href="{{ get_url(path="/tags/" ~ p.tag ~ "/") }}" class="project-link">Blog</a>{% endif %}
+                    {{ macros::blog_link(name=p.tag | default(value=""), terms=tag_terms) }}
                 </div>
             </div>
         </div>
@@ -95,13 +112,13 @@
 {% endif %}
 {% endfor %}
 
-{% set tag_freq = load_data(path="data/tag_frequencies.json") %}
+{% set tag_freq = load_data(path="data/generated/tag_frequencies.json") %}
 
 <hr>
 <div class="tag-legend">
     <span class="tag-legend-label">Tags by appearance:</span>
     {% for entry in tag_freq %}
-    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {{ macros::tag(name=entry.name, terms=tag_terms, count=entry.count) }}
     {% endfor %}
 </div>
 {% endblock %}

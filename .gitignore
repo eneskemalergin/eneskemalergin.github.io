@@ -3,6 +3,7 @@
 ref/
 plan/
 public/
+__pycache__/
 
-data/cv_meta.toml
-static/cv/Full_CV_Resonance.pdf
+data/generated/
+static/cv/

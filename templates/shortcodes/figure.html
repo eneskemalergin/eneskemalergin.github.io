@@ -12,23 +12,21 @@ Optional parameters:
 #}
 {% set figure_label = label | default(value="Figure") %}
 {% set figure_alt_badge = alt_badge | default(value=alt | default(value="")) %}
-<figure class="blog-figure{% if class %} {{ class }}{% endif %}"{% if width %} style="max-width: {{ width }};"{% endif %}>
-    <div class="blog-figure-frame">
-        {% if figure_alt_badge or figure_label %}
-        <div class="blog-figure-meta" aria-hidden="true">
-            {% if figure_alt_badge %}
-            <div class="blog-figure-alt" title="{{ alt | default(value=figure_alt_badge) }}">{{ figure_alt_badge }}</div>
-            {% endif %}
-            {% if figure_label %}
-            <div class="blog-figure-label">{{ figure_label }}</div>
-            {% endif %}
-        </div>
+<figure class="blog-figure blog-figure-frame{% if class %} {{ class }}{% endif %}"{% if width %} style="max-width: {{ width }};"{% endif %}>
+    {% if figure_alt_badge or figure_label %}
+    <div class="blog-figure-meta" aria-hidden="true">
+        {% if figure_alt_badge %}
+        <div class="blog-figure-alt" title="{{ alt | default(value=figure_alt_badge) }}">{{ figure_alt_badge }}</div>
         {% endif %}
-        <div class="blog-figure-media">
-            <img src="{{ src }}" alt="{{ alt | default(value='') }}" loading="lazy" />
-        </div>
-        {% if caption %}
-        <figcaption>{{ caption | markdown | safe }}</figcaption>
+        {% if figure_label %}
+        <div class="blog-figure-label">{{ figure_label }}</div>
         {% endif %}
     </div>
+    {% endif %}
+    <div class="blog-figure-media">
+        <img src="{{ src }}" alt="{{ alt | default(value='') }}" loading="lazy" />
+    </div>
+    {% if caption %}
+    <figcaption>{{ caption | markdown | safe }}</figcaption>
+    {% endif %}
 </figure>

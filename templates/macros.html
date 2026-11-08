@@ -1,4 +1,35 @@
-{% macro render_paper(paper) %}
+{#-
+Tag pills for tags that come from data files. Zola creates a tag page only for
+tags used in blog posts, so a data tag links only when that page exists and
+otherwise renders as a plain label. Matching uses the slug, so `mzML` and
+`mzml` both find /tags/mzml/.
+
+  terms:   get_taxonomy(kind="tags").items, loaded once by the caller
+  count:   optional number shown as a superscript
+  missing: "label" (default) renders a plain label; "hide" renders nothing
+-#}
+{% macro tag(name, terms, class="tag", count=0, missing="label") -%}
+{%- set slug = name | slugify -%}
+{%- set_global tag_href = "" -%}
+{%- for term in terms -%}{%- if term.slug == slug -%}{%- set_global tag_href = term.permalink -%}{%- endif -%}{%- endfor -%}
+{%- if tag_href -%}
+<a href="{{ tag_href }}" class="{{ class }}">{{ name }}{% if count %}<sup>{{ count }}</sup>{% endif %}</a>
+{%- elif missing == "label" -%}
+<span class="{{ class }} tag-label">{{ name }}{% if count %}<sup>{{ count }}</sup>{% endif %}</span>
+{%- endif -%}
+{%- endmacro tag %}
+
+{#- "Blog" button for a project or publication; rendered only when its tag page exists. -#}
+{% macro blog_link(name, terms, class="project-link") -%}
+{%- if name and name != "NA" -%}
+{%- set slug = name | slugify -%}
+{%- set_global tag_href = "" -%}
+{%- for term in terms -%}{%- if term.slug == slug -%}{%- set_global tag_href = term.permalink -%}{%- endif -%}{%- endfor -%}
+{%- if tag_href -%}<a href="{{ tag_href }}" class="{{ class }}">Blog</a>{%- endif -%}
+{%- endif -%}
+{%- endmacro blog_link %}
+
+{% macro render_paper(paper, terms) %}
 <div class="paper-card paper-card-detailed">
     <div class="paper-main">
         <div class="paper-left">
@@ -44,16 +75,17 @@
             {% if paper.tldr %}
             <p class="tldr">{{ paper.tldr }}</p>
             {% endif %}
-            {% if paper.links or (paper.tag and paper.tag != "NA") %}
+            {#- The links row renders only when it holds a link or a Blog button. -#}
+            {% set_global paper_blog_href = "" %}
+            {% if paper.tag and paper.tag != "NA" %}{% set slug = paper.tag | slugify %}{% for term in terms %}{% if term.slug == slug %}{% set_global paper_blog_href = term.permalink %}{% endif %}{% endfor %}{% endif %}
+            {% if paper.links or paper_blog_href %}
             <div class="paper-links">
                 {% if paper.links %}
                 {% for link in paper.links %}
                 <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" class="paper-link">{{ link.label }}</a>
                 {% endfor %}
                 {% endif %}
-                {% if paper.tag and paper.tag != "NA" %}
-                <a href="{{ get_url(path="/tags/" ~ paper.tag ~ "/") }}" class="paper-link">Blog</a>
-                {% endif %}
+                {% if paper_blog_href %}<a href="{{ paper_blog_href }}" class="paper-link">Blog</a>{% endif %}
             </div>
             {% endif %}
         </div>

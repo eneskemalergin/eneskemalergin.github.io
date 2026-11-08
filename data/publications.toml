@@ -12,16 +12,21 @@
 #   year      - Publication year (integer)
 #   type      - "journal" | "conference" | "thesis" | "preprint"
 #   status    - "published" | "preprint" | "under-review" | "upcoming" | "planned"
-#                published    → paper is out, peer-reviewed
-#                under-review → submitted for peer review (shown in Preprint section)
-#                upcoming     → accepted/forthcoming (not yet out)
+#                published    → paper is out, peer-reviewed (grouped by year)
+#                preprint     → posted preprint, not submitted to a venue
+#                under-review → submitted for peer review
+#                upcoming     → accepted/forthcoming, not yet out
 #                planned      → in preparation
+#              Research groups them as "In press" (upcoming), "Preprints and
+#              under review" (preprint, under-review), "In preparation"
+#              (planned), then published papers by year. Any other value
+#              fails the build.
 #   access    - "open-access" | "closed"
 #   doi       - DOI string (optional).  Use bare identifier, not full URL.
-#   image     - Thumbnail path relative to static/  (optional, e.g. "papers/fig1.jpg")
+#   image     - Thumbnail path relative to static/  (optional, e.g. "publications/fig1.jpg")
 #   tag       - Blog tag slug for cross-linking.  "NA" means unassigned.
 #   tags      - Array of up to 8 topic tag strings describing the paper's domain,
-#               methods, and biological context.  First tag used as domain fallback.
+#               methods, and biological context.
 #               Use the harmonized vocabulary below for consistency across papers.
 #   links     - Array of { label, url } objects for Paper, Code, Preprint, etc.
 #   tldr      - Full-paragraph summary.  3-5 sentences explaining the problem,
@@ -36,17 +41,17 @@
 #
 # --- Card badge colours ---------------------------------------------------------
 #
-#   Type badges  (.pub-badge.pub-type-*)
+#   Type badges  (.pub-badge.pub-badge--type-*)
 #     journal:    #2563eb blue      bg: rgba(37,99,235,0.10)     icon: fa-book-open
 #     conference: #7c3aed purple    bg: rgba(139,92,246,0.10)    icon: fa-microphone
 #     thesis:     #059669 green     bg: rgba(5,150,105,0.10)     icon: fa-graduation-cap
 #     preprint:   #d97706 amber     bg: rgba(217,119,6,0.10)     icon: fa-file-lines
 #
-#   Status badges  (.pub-badge.pub-status-*)
+#   Status badges  (.pub-badge.pub-badge--status-*)
 #     published:     #059669 green  bg: rgba(5,150,105,0.10)     icon: fa-check-circle
 #     under-review:  #d97706 amber  bg: rgba(245,158,11,0.10)    icon: fa-hourglass-half
-#     upcoming:      #2563eb blue   bg: rgba(37,99,235,0.10)     icon: fa-clock
-#     planned:       #8b5cf6 purple bg: rgba(139,92,246,0.10)    icon: fa-calendar-plus
+#     upcoming:      #2563eb blue   bg: rgba(37,99,235,0.10)     icon: fa-file-lines
+#     planned:       #7c3aed purple bg: rgba(139,92,246,0.10)    icon: fa-file-lines
 #
 #   Venue badges  (.venue-*  - color-coded by paper type)
 #     journal:    #2563eb blue      bg: rgba(37,99,235,0.08)
@@ -72,7 +77,7 @@
 #   | |----------|                                                     |
 #   |------------------------------------------------------------------|
 #
-#   Left column:    thumbnail (130x130, or initial letter + border-radius 6px),
+#   Left column:    thumbnail (130x130, or initial letter + border-radius 8px),
 #                   domain label (uppercase, muted), topic tags (cyan ghost pills)
 #   Badge row:      venue pill (left), type + status pills (right)
 #   Body:           title (bold, 11pt), authors, links, TLDR (stylised box)
@@ -98,12 +103,12 @@
 #
 # --- Tag frequency --------------------------------------------------------------
 #   Tags are tallied across all publications by build.sh into
-#   data/pub_tag_frequencies.json, which is loaded by research.html to render
+#   data/generated/pub_tag_frequencies.json, which is loaded by research.html to render
 #   a "Tags by appearance" frequency cloud below the publication list.
 #
 # --- Rendering ------------------------------------------------------------------
 #   templates/research.html   - publications tab, legend, year grouping, tag cloud
-#   templates/macros.html     - render_paper() macro shared across templates
+#   templates/macros.html     - render_paper() macro used by research.html
 #   sass/_main.scss           - publication card layout (".paper-card-detailed" etc.)
 
 # --- Pending publication -------------------------------------------------------

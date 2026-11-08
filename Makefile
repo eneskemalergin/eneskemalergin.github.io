@@ -1,4 +1,6 @@
-.PHONY: build serve clean
+.PHONY: build serve check clean
+
+PYTHON ?= python3.12
 
 build:
 	./build.sh build
@@ -6,8 +8,11 @@ build:
 serve:
 	./build.sh serve
 
+check: build
+	$(PYTHON) tools/check-links.py public
+
 clean:
 	rm -rf public/
 
-# Prevent running zola directly so tag frequencies stay in sync.
+# Do not run zola directly: build.sh regenerates the data files first.
 # Always use `make build` or `make serve`.

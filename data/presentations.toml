@@ -23,8 +23,9 @@
 #   url         - External page for more details                   (optional)
 #   tag         - Blog tag slug for cross-linking; "NA" unassigned
 #
-# Rendering note: templates/research.html currently uses title, type, date,
-# venue, and location only. Workshop and Poster have distinct visual treatments.
+# Rendering note: templates/research.html currently uses title, type, role,
+# date, venue, and location. Poster has a muted treatment; Oral, Invited Talk,
+# and Workshop use the accent colour.
 
 [[presentations]]
 title = "Proteomics Workshop: Common Downstream Analysis Pipeline"

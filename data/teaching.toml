@@ -6,7 +6,7 @@
 #                 "Workshop Leader" | "Mentor" | "Supervisor"
 #   course      - Course name, number, or program title
 #   institution - University or organization
-#   date        - Date range string, e.g. "Sep 2022 - Apr 2022"
+#   date        - Date range string, e.g. "Sep 2022 - Apr 2023"
 #   year        - Year (integer), used for sorting
 #   department  - Department or faculty                         (optional)
 #   level       - "Undergraduate" | "Graduate" | "Professional" (optional)

@@ -233,6 +233,7 @@ html.dark .theme-toggle:active .toggle-thumb {
     width: 100%;
 }
 
+.project-head .project-name,
 .project-head .project-name a {
     font-size: 11pt;
     font-weight: 600;
@@ -384,6 +385,19 @@ html.dark .star-badge {
     color: white;
 }
 
+// A tag without a tag page: same pill shape, muted, no link affordance.
+.tag.tag-label,
+.tag.tag-label:hover {
+    color: var(--text-muted);
+    background-color: transparent;
+    border-color: var(--border-color);
+    cursor: default;
+}
+
+.tag-legend .tag-label:hover sup {
+    color: var(--text-muted);
+}
+
 html.dark .project-tag:hover {
     background-color: rgba(45, 212, 191, 0.1);
     border-color: var(--c-link);
@@ -397,6 +411,29 @@ html.dark .project-tag:hover {
     margin-top: 6px;
 }
 
+// Private projects show a lock chip in the GitHub button's place. The dashed
+// border marks it as status text, not a link; the lock takes the private
+// access badge's amber.
+.project-lock {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--text-muted);
+    border: 1px dashed var(--border-color);
+    border-radius: 3px;
+    padding: 1px 6px;
+}
+
+.project-lock i {
+    font-size: 7.5pt;
+    color: #d97706;
+}
+
+html.dark .project-lock i {
+    color: #fbbf24;
+}
+
 // ─── Research tabs ──────────────────────────────────────
 
 .research-desc {
@@ -406,8 +443,15 @@ html.dark .project-tag:hover {
     line-height: 1.5;
 }
 
+// Without JavaScript the tab row stays hidden and every panel shows with its
+// heading; html.js (set by theme.js) switches to tabs before first paint.
 .research-tabs {
+    display: none;
+}
+
+html.js .research-tabs {
     display: flex;
+    flex-wrap: wrap;
     margin: 1em 0 2em 0;
     border-bottom: 1px solid var(--border-nav);
 }
@@ -441,13 +485,27 @@ html.dark .project-tag:hover {
     cursor: pointer;
     border-radius: 8px 8px 0 0;
     user-select: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    line-height: inherit;
 }
 
-.research-panel {
+.research-tab:focus-visible {
+    outline: 1px solid var(--c-link);
+    outline-offset: -2px;
+}
+
+.research-panel-title {
+    margin: 1.5em 0 0.5em;
+}
+
+html.js .research-panel,
+html.js .research-panel-title {
     display: none;
 }
 
-.research-panel.active {
+html.js .research-panel.active {
     display: block;
 }
 
@@ -534,11 +592,21 @@ html.dark .project-tag:hover {
     background: var(--bg-surface);
 }
 
+// Logos come in many shapes, so show each one whole inside a padded frame.
+// Multiply blends white logo backgrounds into the frame color. Most logos are
+// drawn for light backgrounds, so the frame stays light in dark mode too.
 .project-thumbnail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    padding: 10px;
+    box-sizing: border-box;
+    object-fit: contain;
     display: block;
+    mix-blend-mode: multiply;
+}
+
+html.dark .project-thumbnail:has(img) {
+    background: #e2e8f0;
 }
 
 .project-thumb-placeholder {
@@ -587,6 +655,10 @@ html.dark .project-tag:hover {
     .project-thumbnail {
         width: 80px;
         flex-shrink: 0;
+    }
+
+    .project-thumbnail img {
+        padding: 6px;
     }
 
     .project-meta {
@@ -747,7 +819,7 @@ html.dark .lang-Go {
     border-color: rgba(139, 92, 246, 0.2);
 }
 
-.pub-na {
+.pub-badge.pub-badge--status-na {
     background: rgba(100, 116, 139, 0.1);
     color: var(--text-muted);
     border-color: rgba(100, 116, 139, 0.2);
@@ -777,7 +849,7 @@ html.dark .pub-planned {
     border-color: rgba(167, 139, 250, 0.25);
 }
 
-html.dark .pub-na {
+html.dark .pub-badge.pub-badge--status-na {
     background: rgba(148, 163, 184, 0.15);
     color: var(--text-muted);
     border-color: rgba(148, 163, 184, 0.25);

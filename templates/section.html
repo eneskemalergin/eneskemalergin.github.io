@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
-{% set blog_tag_freq = load_data(path="data/blog_tag_frequencies.json") %}
+{% set blog_tag_freq = load_data(path="data/generated/blog_tag_frequencies.json") %}
+{% set tag_taxonomy = get_taxonomy(kind="tags") %}
+{% set tag_terms = tag_taxonomy.items %}
 
 <h2>{{ section.title }}</h2>
 {% if section.description %}<p class="section-desc">{{ section.description }}</p>{% endif %}
@@ -9,7 +12,7 @@
 <div class="blog-tags-bar">
     {% for entry in blog_tag_freq %}
     {% if entry.count >= 2 %}
-    <a href="{{ get_url(path="/tags/" ~ entry.name ~ "/") }}" class="tag">{{ entry.name }}<sup>{{ entry.count }}</sup></a>
+    {{ macros::tag(name=entry.name, terms=tag_terms, count=entry.count, missing="hide") }}
     {% endif %}
     {% endfor %}
     <a href="{{ get_url(path="/tags/") }}" class="tag">all tags →</a>
@@ -59,7 +62,7 @@
                     {% if page.taxonomies.tags %}
                     <div class="blog-topics">
                         {% for tag in page.taxonomies.tags | slice(end=3) %}
-                        <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="topic-pill">{{ tag }}</a>
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="topic-pill">{{ tag }}</a>
                         {% endfor %}
                     </div>
                     {% endif %}

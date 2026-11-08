@@ -60,7 +60,7 @@
                     {% if page.taxonomies.tags %}
                     <div class="blog-topics">
                         {% for tag in page.taxonomies.tags | slice(end=3) %}
-                        <a href="{{ get_url(path="/tags/" ~ tag ~ "/") }}" class="topic-pill">{{ tag }}</a>
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="topic-pill">{{ tag }}</a>
                         {% endfor %}
                     </div>
                     {% endif %}

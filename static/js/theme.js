@@ -1,6 +1,10 @@
 (function () {
     "use strict";
 
+    // This script runs in <head> before first paint, so it also marks that
+    // scripts run; CSS uses the class to show script-enhanced components.
+    document.documentElement.classList.add("js");
+
     var storageKey = "eneskemalergin-theme";
     var preferences = ["system", "dark", "light"];
     var html = document.documentElement;

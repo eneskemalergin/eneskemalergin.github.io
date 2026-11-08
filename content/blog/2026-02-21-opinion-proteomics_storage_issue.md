@@ -83,7 +83,7 @@ wine msconvert experiment.raw --mzML \
 
 {% end %}
 
-This is not an argument against open formats. It is an argument that open formats need to be compact by default. mzMLb{% sidenote() %}<a href="https://doi.org/10.1021/acs.jproteome.0c01006" target="_blank" rel="noopener noreferrer">Bhamber et al., JPR (2021)</a>. HDF5-based format storing spectra as compressed datasets with XML metadata. Achieves file sizes comparable to vendor formats. Published, standardized, included in ProteoWizard. Rarely used.{% end %} solves the compression problem while keeping metadata accessible. MS-Numpress reduces mzML size by roughly 61% alone, up to 87% with zlib, and improves read speed by 21% in some configurations.
+This is not an argument against open formats. It is an argument that open formats need to be compact by default. mzMLb{% sidenote() %}<a href="https://doi.org/10.1021/acs.jproteome.0c00192" target="_blank" rel="noopener noreferrer">Bhamber et al., JPR (2021)</a>. HDF5-based format storing spectra as compressed datasets with XML metadata. Achieves file sizes comparable to vendor formats. Published, standardized, included in ProteoWizard. Rarely used.{% end %} solves the compression problem while keeping metadata accessible. MS-Numpress reduces mzML size by roughly 61% alone, up to 87% with zlib, and improves read speed by 21% in some configurations.
 
 The tools exist. They are not the default.
 

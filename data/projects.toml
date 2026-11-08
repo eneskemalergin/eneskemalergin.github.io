@@ -6,8 +6,9 @@
 #   domain    - Functional area: "data-analysis" | "metadata" | "core-tooling" |
 #               "language-dev" | "standards"
 #   source    - Project origin: "langelab" | "zenteomics" | "personal"
-#   status    - "mature" | "stable" | "active" | "wip" | "early" | "archived"
-#               (also determines timeline stage grouping order)
+#   status    - "mature" | "stable" | "active" | "wip" | "early" | "private" |
+#               "archived" (also determines timeline stage grouping order;
+#               any other value fails the build)
 #   stars     - GitHub star count (integer, 0 to hide)
 #   version   - Semver string, e.g. "0.3.0".  Badge is hidden if omitted.
 #   language  - "Python" | "R" | "Zig" | "Rust" | "C" | "C++" | "C#" |
@@ -18,7 +19,7 @@
 #   image     - Thumbnail path relative to static/  (optional)
 #   tag       - Blog tag slug for cross-linking; "NA" means not yet assigned
 #   tags      - Array of category tag strings        (optional)
-#   desc      - Markdown description string          (optional)
+#   desc      - Plain-text description, HTML-escaped (optional)
 #   github    - GitHub URL (primary/package repo; used in title link)
 #   analysis  - Separate analysis/reproducibility repo URL (optional)
 #   pkg       - Package registry URL: PyPI | Crates.io | CRAN | Bioconductor (optional)
@@ -28,33 +29,45 @@
 #   paper     - Published paper DOI / URL            (optional)
 #   preprint  - Preprint URL                         (optional)
 #
+#   Private rows (access = "private") never link to a repository or an
+#   analysis repo. A lock chip takes the GitHub button's place, built from
+#   two optional fields:
+#   private_reason - "in-development" | "pending-publication" | "proprietary" |
+#                    "internal", shown as "In development", "Waiting on the
+#                    paper", "Proprietary", or "Lab internal". Any other value
+#                    fails the build.
+#   public_plan    - Short phrase that completes "public ...", e.g.
+#                    "with v0.1.0" or "after the preprint"
+#   With neither field the chip says "Source private", or "Not released yet"
+#   for a row without github.
+#
 # -- Head Badges (right-aligned, in order) -------------------------------------
 #
 #   1. Language badge     .lang-badge.lang-{Python|R|Zig|Rust|C|C++|C#|LaTeX|Go}
 #        Python: #3776AB blue,         fa-python icon
 #        R:      #276DC2 blue,         fa-r-project icon
 #        Zig:    #d98e0d amber,        fa-code icon
-#        Rust:   #DEA584 rust-orange,  fa-rust icon
+#        Rust:   #c67a4e rust-orange,  fa-rust icon
 #        C:      #555555 gray,         fa-code icon
 #        C++:    #00599C blue,         fa-code icon
 #        C#:     #68217A purple,       fa-code icon
-#        LaTeX:  #008080 teal,         fa-file-lines icon
-#        Go:     #00ADD8 light-blue,   fa-golang icon
+#        LaTeX:  #006666 teal,         fa-file-lines icon
+#        Go:     #0096b8 light-blue,   fa-golang icon
 #
-#   2. Access badge       .access-badge.access-{public|private}
-#        public:  #059669 green,       fa-lock-open icon
-#        private: #d97706 amber,       fa-lock icon
-#
-#   3. Stars badge        .star-badge (log-normalized colour)
+#   2. Stars badge        .star-badge (log-normalized colour, only when stars > 0)
 #        Colour computed by tools/star-colors.py using log normalisation
 #        over the actual star-count range in this file.  Values inlined
 #        as CSS custom properties (--clr, --clr-d, --bdr, --bdr-d, --bg, --bg-d).
 #        Lowest count -> lightest red (#fca5a5), highest -> darkest (#b91c1c).
 #
-#   4. Version badge      .version-badge
+#   3. Version badge      .version-badge
 #        Muted gray pill, no variant.
 #
-#   5. Publication badge  .pub-badge.pub-{published|preprint|upcoming|planned|na}
+#   4. Access badge       .access-badge.access-{public|private}
+#        public:  #059669 green,       fa-lock-open icon
+#        private: #d97706 amber,       fa-lock icon
+#
+#   5. Publication badge  .pub-badge.pub-badge--status-{published|preprint|upcoming|planned|na}
 #        published: #059669 green,     fa-book icon
 #        preprint:  #d97706 amber,     fa-file-lines icon
 #        upcoming:  #2563eb blue,      fa-pen-fancy icon
@@ -80,17 +93,17 @@
 #     wip -> early -> private -> archived.
 #   - Star badge colour is computed by tools/star-colors.py with log
 #     normalisation over the actual star count range in this file.
-#   - Thumbnail is square 130 px (80 px on mobile), border-radius 6px,
+#   - Thumbnail is square 130 px (80 px on mobile), border-radius 8px,
 #     1px border, with initial letter placeholder when no image.
 #   - tag = "NA" means blog tag slug not yet assigned (fill later).
-#   - Tag frequency cloud is generated into data/tag_frequencies.json by
+#   - Tag frequency cloud is generated into data/generated/tag_frequencies.json by
 #     tools/tag-freq.py.  Run ./build.sh instead of bare zola build/serve
 #     to regenerate it.
 #   - Star colours and tag frequencies are pre-processed in build.sh:
-#       tools/tag-freq.py     -> data/tag_frequencies.json
-#       tools/star-colors.py  -> data/project_stars.json
-#   - The full badge rendering lives in sass/style.scss and
-#     templates/projects.html.
+#       tools/tag-freq.py     -> data/generated/tag_frequencies.json
+#       tools/star-colors.py  -> data/generated/project_stars.json
+#   - The full badge rendering lives in sass/style.scss, sass/_main.scss,
+#     and templates/projects.html.
 
 [[projects]]
 title = "z-fasta"
@@ -140,7 +153,7 @@ access = "public"
 image = "projects/proteoforge.jpg"
 tag = "proteoforge"
 tags = ["proteomics", "proteoforms", "statistics"]
-desc = "ProteoForge enables exploration of differential proteoforms from peptide-leve bottom-up proteomics data. Python package and Analysis pipeline for ProteoForge. Published in J. Proteome Res. (2026)."
+desc = "ProteoForge enables exploration of differential proteoforms from peptide-level bottom-up proteomics data. Python package and analysis pipeline for ProteoForge. Published in J. Proteome Res. (2026)."
 github = "https://github.com/eneskemalergin/ProteoForge"
 analysis = "https://github.com/LangeLab/ProteoForge_Analysis"
 paper = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235"
@@ -294,7 +307,7 @@ pub = "planned"
 access = "public"
 image = "projects/loqculate.svg"
 tag = "loqculate"
-tags = ["proteomics", "calibration", "lod/loq", "cli", "library"]
+tags = ["proteomics", "calibration", "lod-loq", "cli", "library"]
 desc = "Python package for LOD and LOQ estimation from mass-spectrometry calibration curves."
 github = "https://github.com/eneskemalergin/loqculate"
 
@@ -402,28 +415,12 @@ stars = 1
 version = "0.2.0"
 language = "Zig"
 pub = "na"
-access = "private"
+access = "public"
 # image = "projects/z-xml.svg"
 tag = "NA"
 tags = ["xml", "parser", "standards", "library"]
 desc = "Benchmark-led XML library for Zig 0.16, currently qualifying XML 1.0 UTF-8 readers with raw-name and namespace-aware profiles."
 github = "https://github.com/eneskemalergin/z-xml"
-
-[[projects]]
-title = "XICGuard"
-domain = "data-analysis"
-source = "langelab"
-status = "wip"
-stars = 0
-version = "0.0.5"
-language = "Python"
-pub = "na"
-access = "private"
-image = "projects/XICGuard.svg"
-tag = "xicguard"
-tags = ["proteomics", "xic", "quality-control", "validation", "plotting"]
-desc = "CLI tool for validating extracted ion chromatograms (XICs), filtering reliable proteins, and interactive plot-based exploration."
-github = "https://github.com/LangeLab/XICGuard"
 
 [[projects]]
 title = "Maskomancy"
@@ -437,7 +434,7 @@ pub = "na"
 access = "private"
 image = "projects/Maskomancy.svg"
 tag = "maskomancy"
-tags = ["unsupervised-learning", "PCA", "Nipals", "missing-data", "proteomics"]
+tags = ["unsupervised-learning", "pca", "nipals", "missing-data", "proteomics"]
 desc = "Missing-value-tolerant PCA for omics-scale matrices"
 github = "https://github.com/eneskemalergin/Maskomancy"
 
@@ -454,7 +451,6 @@ access = "private"
 tag = "NA"
 tags = ["proteomics", "peptides", "digestion", "decoy", "fasta"]
 desc = "Planned Zig CLI and library for exact peptide provenance across user-supplied protein databases; no production artifact is implemented yet."
-github = "https://github.com/eneskemalergin/z-peptide"
 
 [[projects]]
 title = "zigR"

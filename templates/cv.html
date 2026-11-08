@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% set meta = load_data(path="data/cv_meta.toml", required=false) %}
+{% set meta = load_data(path="data/generated/cv_meta.toml", required=false) %}
+{% set cv = load_data(path="data/cv.toml") %}
 {% set cv_available = meta and meta.available %}
-{% set gh_blob = "https://github.com/eneskemalergin/My_CV/blob/master/Full_CV_Resonance.pdf" %}
+{% set cv_file = cv.path | split(pat="/") | last %}
+{% set gh_blob = "https://github.com/" ~ cv.repo ~ "/blob/" ~ cv.commit ~ "/" ~ cv.path %}
 
 <h2>CV</h2>
 <p class="cv-intro">
-    Mirrored from <a href="{{ gh_blob }}" target="_blank" rel="noopener noreferrer">eneskemalergin/My_CV</a>
+    Mirrored from <a href="{{ gh_blob }}" target="_blank" rel="noopener noreferrer">{{ cv.repo }}</a>
     so the canonical source stays in one place.
 </p>
 
 <div class="cv-viewer">
     {% if cv_available %}
     <iframe
-        src="{{ get_url(path="cv/Full_CV_Resonance.pdf") }}"
+        src="{{ get_url(path="cv/" ~ cv_file) }}"
         title="Enes K. Ergin — Curriculum Vitae"
         class="cv-frame"
         loading="lazy"></iframe>
@@ -30,7 +32,7 @@
 
 <div class="cv-actions">
     {% if cv_available %}
-    <a class="cv-download" href="{{ get_url(path="cv/Full_CV_Resonance.pdf") }}" download>
+    <a class="cv-download" href="{{ get_url(path="cv/" ~ cv_file) }}" download>
         <i class="fas fa-download"></i> Download PDF
     </a>
     {% endif %}

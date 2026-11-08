@@ -1,0 +1,6 @@
+# The CV PDF the site embeds at /cv/, pinned to a commit of its source
+# repository so every build publishes the same file. To publish a new CV, set
+# `commit` to the My_CV commit that contains it.
+repo = "eneskemalergin/My_CV"
+commit = "45541a37bb507d25c22bbf956fd20fb5265688a8"
+path = "Full_CV_Resonance.pdf"

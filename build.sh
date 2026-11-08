@@ -36,86 +36,65 @@ case "$ZOLA_ACTUAL_VERSION" in
         ;;
 esac
 
-# ─── Mirror CV PDF from My_CV repo (single source of truth) ───
-# The site renders the CV inline via an <iframe> pointing at this local copy,
-# which GitHub Pages serves as application/pdf (same-origin, frameable).
-# raw.githubusercontent.com can't be framed (X-Frame-Options: deny), so the
-# PDF is mirrored at build time instead. Skipped silently offline/CI network
-# blips keep any previously fetched copy.
-CV_SRC="https://raw.githubusercontent.com/eneskemalergin/My_CV/master/Full_CV_Resonance.pdf"
+# Derived data goes to data/generated/, which Git ignores.
+mkdir -p data/generated
+
+# CV PDF, pinned to a commit of its source repository.
+# data/cv.toml names the repository, commit, and file. The site renders the
+# CV inline via an <iframe> pointing at a local copy, which GitHub Pages serves
+# same-origin; raw.githubusercontent.com can't be framed (X-Frame-Options:
+# deny). A download is used only if it is a PDF under CV_MAX_BYTES. A local
+# copy of the pinned commit is reused, so offline rebuilds keep working.
+# In CI a failed or invalid download stops the build; locally the /cv/ page
+# falls back to a GitHub link and the build prints a warning.
+CV_FIELDS="$("$PYTHON" -c '
+import re, tomllib
+cv = tomllib.load(open("data/cv.toml", "rb"))
+assert re.fullmatch(r"[\w.-]+/[\w.-]+", cv["repo"]), "data/cv.toml: repo must be OWNER/NAME"
+assert re.fullmatch(r"[0-9a-f]{40}", cv["commit"]), "data/cv.toml: commit must be a full SHA"
+assert re.fullmatch(r"[\w./-]+", cv["path"]) and ".." not in cv["path"], "data/cv.toml: bad path"
+print(cv["repo"], cv["commit"], cv["path"])')"
+read -r CV_REPO CV_COMMIT CV_PATH <<< "$CV_FIELDS"
+CV_SRC="https://raw.githubusercontent.com/$CV_REPO/$CV_COMMIT/$CV_PATH"
 CV_DIR="static/cv"
-CV_DST="$CV_DIR/Full_CV_Resonance.pdf"
+CV_DST="$CV_DIR/$(basename "$CV_PATH")"
+CV_META="data/generated/cv_meta.toml"
+CV_MAX_BYTES=10000000
 mkdir -p "$CV_DIR"
-if command -v curl >/dev/null 2>&1; then
-    if curl -fsSL --retry 2 "$CV_SRC" -o "$CV_DST.tmp"; then
-        mv "$CV_DST.tmp" "$CV_DST"
-        echo "Synced CV: $CV_DST"
-    else
-        rm -f "$CV_DST.tmp"
-        if [ -f "$CV_DST" ]; then
-            echo "CV sync failed; keeping previous copy at $CV_DST"
-        else
-            echo "CV sync failed and no local copy exists; /cv/ will show the fallback link"
-        fi
+
+cv_valid() {
+    [ -s "$1" ] && [ "$(head -c 5 "$1")" = "%PDF-" ] && [ "$(wc -c < "$1")" -le "$CV_MAX_BYTES" ]
+}
+
+cv_ok=false
+if [ -f "$CV_DST" ] && [ -f "$CV_META" ] \
+    && grep -qx 'available = true' "$CV_META" \
+    && grep -qx "commit = \"$CV_COMMIT\"" "$CV_META" \
+    && cv_valid "$CV_DST"; then
+    cv_ok=true
+    echo "CV: using local copy of $CV_COMMIT"
+elif command -v curl >/dev/null 2>&1 \
+    && curl -fsSL --retry 2 "$CV_SRC" -o "$CV_DST.tmp" \
+    && cv_valid "$CV_DST.tmp"; then
+    mv "$CV_DST.tmp" "$CV_DST"
+    cv_ok=true
+    echo "CV: downloaded $CV_COMMIT"
+else
+    rm -f "$CV_DST.tmp"
+    if [ "${CI:-}" = "true" ]; then
+        echo "CV download failed or is not a PDF under $CV_MAX_BYTES bytes: $CV_SRC" >&2
+        exit 1
     fi
+    echo "WARNING: CV download failed or invalid; /cv/ will show the GitHub link fallback" >&2
 fi
 
 # Sentinel consumed by templates/cv.html to decide iframe vs. fallback link.
-if [ -f "$CV_DST" ]; then
-    printf 'available = true\nsrc_url = "%s"\n' "$CV_SRC" > data/cv_meta.toml
-else
-    printf 'available = false\nsrc_url = "%s"\n' "$CV_SRC" > data/cv_meta.toml
-fi
+printf 'available = %s\nsrc_url = "%s"\ncommit = "%s"\n' "$cv_ok" "$CV_SRC" "$CV_COMMIT" > "$CV_META"
 
 "$PYTHON" tools/tag-freq.py
-"$PYTHON" tools/tag-freq.py data/publications.toml data/pub_tag_frequencies.json --table publications
+"$PYTHON" tools/tag-freq.py data/publications.toml data/generated/pub_tag_frequencies.json --table publications
 "$PYTHON" tools/star-colors.py
-
-"$PYTHON" << 'PYEOF'
-import json, re, os, tomllib
-from collections import Counter
-
-counts = Counter()
-
-# Collect all blog post tags into a set for matching
-blog_tags_set = set()
-blog_dir = "content/blog"
-for fname in os.listdir(blog_dir):
-    if not fname.endswith(".md"):
-        continue
-    with open(os.path.join(blog_dir, fname)) as f:
-        content = f.read()
-    m = re.search(r'\[taxonomies\]\s*\n(.*?)\n\+\+\+', content, re.DOTALL)
-    if m:
-        tags = re.findall(r'tags\s*=\s*\[(.*?)\]', m.group(1), re.DOTALL)
-        for t in tags:
-            for tag in re.findall(r'"([^"]+)"', t):
-                blog_tags_set.add(tag)
-                counts[tag] += 1
-
-# For each linked project (its "tag" field matches a blog tag), count its "tags"
-if os.path.exists("data/projects.toml"):
-    with open("data/projects.toml", "rb") as f:
-        data = tomllib.load(f)
-    for entry in data.get("projects", []):
-        if entry.get("tag") and entry["tag"] in blog_tags_set:
-            for tag in entry.get("tags", []):
-                counts[tag] += 1
-
-# For each linked publication, count its "tags"
-if os.path.exists("data/publications.toml"):
-    with open("data/publications.toml", "rb") as f:
-        data = tomllib.load(f)
-    for entry in data.get("publications", []):
-        if entry.get("tag") and entry["tag"] in blog_tags_set:
-            for tag in entry.get("tags", []):
-                counts[tag] += 1
-
-freqs = sorted([{"name": n, "count": c} for n, c in counts.items()], key=lambda x: -x["count"])
-with open("data/blog_tag_frequencies.json", "w") as f:
-    json.dump(freqs, f, indent=2)
-print(f"Generated data/blog_tag_frequencies.json ({len(freqs)} tags)")
-PYEOF
+"$PYTHON" tools/blog-tag-freq.py
 
 cmd="${1:-build}"
 if [ "$cmd" = "serve" ]; then

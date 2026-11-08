@@ -21,10 +21,9 @@ Requires Python 3.12 for preprocessing and Zola 0.22.1. The repository's `mise.t
 | `static/`    | Site assets, local browser scripts, and pinned third-party assets          |
 | `templates/` | Jinja2-style Zola templates + 5 shortcodes                                 |
 | `sass/`      | SCSS: design tokens, layout, component styles                              |
-| `tools/`     | Python scripts: tag frequency aggregation, GitHub star color normalization |
-| `plan/`      | Design system, writing rules, markdown reference (private)                 |
+| `tools/`     | Python scripts: tag frequencies, star colors, internal link check          |
 
-At build time, `build.sh` also mirrors the latest CV PDF from `eneskemalergin/My_CV` into `static/cv/` (single source of truth — see `content/cv/` and `templates/cv.html`) and writes a `data/cv_meta.toml` sentinel so the `/cv/` page can fall back to a GitHub link when offline. Zola's built-in search index (`build_search_index`) powers the `/search/` page via `templates/search.html` + `static/js/search.js`.
+At build time, `build.sh` also downloads the CV PDF from `eneskemalergin/My_CV` at the commit pinned in `data/cv.toml` into `static/cv/` (single source of truth; see `content/cv/` and `templates/cv.html`), checks that it is a PDF, and writes a `data/generated/cv_meta.toml` sentinel. Without network access a local build falls back to a GitHub link on `/cv/`, while CI fails instead. To publish a new CV, update the commit in `data/cv.toml`. All derived data (tag frequencies, star colors, CV status) goes to `data/generated/`, which is not committed; `make check` builds the site and checks its internal links. Zola's built-in search index (`build_search_index`) powers the `/search/` page via `templates/search.html` + `static/js/search.js`.
 
 ## Shortcodes
 
