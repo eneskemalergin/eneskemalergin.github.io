@@ -62,6 +62,6 @@
 ,{"t":"News","n":{{ macros::json(value=item.content | striptags) }},"u":{{ macros::json(value=get_url(path="@/news/_index.md")) }},"s":{{ macros::json(value=item.date) }},"x":{{ macros::json(value=item.type) }}}
 {%- endfor %}
 ]</script>
-<script src="{{ get_url(path="js/html-safe.js") }}"></script>
-<script src="{{ get_url(path="js/search.js") }}"></script>
+<script src="{{ get_url(path="js/html-safe.js", cachebust=true) }}"></script>
+<script src="{{ get_url(path="js/search.js", cachebust=true) }}"></script>
 {% endblock %}

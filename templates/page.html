@@ -76,6 +76,6 @@
 </article>
 
 {% if show_toc %}
-<script src="{{ get_url(path="js/toc.js") }}"></script>
+<script src="{{ get_url(path="js/toc.js", cachebust=true) }}"></script>
 {% endif %}
 {% endblock %}

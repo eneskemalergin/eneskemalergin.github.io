@@ -46,23 +46,23 @@
     {% elif page is defined and page.date %}
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ macros::json(value=page.title) }}{% if page.description %},"description":{{ macros::json(value=page.description) }}{% endif %},"datePublished":{{ macros::json(value=page.date) }},"dateModified":{{ macros::json(value=page.updated | default(value=page.date)) }},"url":{{ macros::json(value=page.permalink) }},"mainEntityOfPage":{{ macros::json(value=page.permalink) }},"author":{"@type":"Person","name":{{ macros::json(value=config.title) }},"url":{{ macros::json(value=get_url(path="/")) }}},"keywords":{{ macros::json(value=page.taxonomies.tags | default(value=[]) | join(sep=", ")) }}}</script>
     {% endif %}
-    <script src="{{ get_url(path="js/theme.js") }}"></script>
+    <script src="{{ get_url(path="js/theme.js", cachebust=true) }}"></script>
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />
-    <link rel="stylesheet" href="{{ get_url(path="style.css") }}" />
+    <link rel="stylesheet" href="{{ get_url(path="style.css", cachebust=true) }}" />
     <link rel="preload" href="{{ get_url(path="vendor/inter/inter-latin-wght-normal.woff2") }}" as="font" type="font/woff2" crossorigin />
     {% if (page is defined and page.content is containing("<pre")) or (section is defined and section.content is containing("<pre")) %}
-    <link rel="stylesheet" href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}" id="hljs-theme"
-        data-light-href="{{ get_url(path="vendor/highlightjs/styles/github.min.css") }}"
-        data-dark-href="{{ get_url(path="vendor/highlightjs/styles/github-dark.min.css") }}" />
-    <script defer src="{{ get_url(path="vendor/highlightjs/highlight.min.js") }}"></script>
-    <script defer src="{{ get_url(path="js/highlight-init.js") }}"></script>
+    <link rel="stylesheet" href="{{ get_url(path="vendor/highlightjs/styles/github.min.css", cachebust=true) }}" id="hljs-theme"
+        data-light-href="{{ get_url(path="vendor/highlightjs/styles/github.min.css", cachebust=true) }}"
+        data-dark-href="{{ get_url(path="vendor/highlightjs/styles/github-dark.min.css", cachebust=true) }}" />
+    <script defer src="{{ get_url(path="vendor/highlightjs/highlight.min.js", cachebust=true) }}"></script>
+    <script defer src="{{ get_url(path="js/highlight-init.js", cachebust=true) }}"></script>
     {% endif %}
     {% if page.extra.katex %}
-    <link rel="stylesheet" href="{{ get_url(path="vendor/katex/katex.min.css") }}" />
-    <script defer src="{{ get_url(path="vendor/katex/katex.min.js") }}"></script>
-    <script defer src="{{ get_url(path="vendor/katex/contrib/auto-render.min.js") }}"></script>
-    <script defer src="{{ get_url(path="js/katex-init.js") }}"></script>
+    <link rel="stylesheet" href="{{ get_url(path="vendor/katex/katex.min.css", cachebust=true) }}" />
+    <script defer src="{{ get_url(path="vendor/katex/katex.min.js", cachebust=true) }}"></script>
+    <script defer src="{{ get_url(path="vendor/katex/contrib/auto-render.min.js", cachebust=true) }}"></script>
+    <script defer src="{{ get_url(path="js/katex-init.js", cachebust=true) }}"></script>
     {% endif %}
 </head>
 
@@ -102,9 +102,9 @@
         <p class="footer-built">Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener noreferrer">Zola</a></p>
     </footer>
 
-    <script src="{{ get_url(path="js/nav.js") }}"></script>
+    <script src="{{ get_url(path="js/nav.js", cachebust=true) }}"></script>
     {% if (page is defined and page.content is containing("sidenote-ref")) %}
-    <script src="{{ get_url(path="js/sidenotes.js") }}"></script>
+    <script src="{{ get_url(path="js/sidenotes.js", cachebust=true) }}"></script>
     {% endif %}
 </body>
 
