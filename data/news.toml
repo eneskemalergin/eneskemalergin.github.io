@@ -39,6 +39,12 @@
 date = "08/2026"
 type = "release"
 main-page = 0
+content = "<a href='https://bioconductor.org/packages/pepVet/'>pepVet</a> (v0.99.1) accepted into Bioconductor: proteolytic digest simulation, peptide scoring, and enzyme comparison for bottom-up proteomics, installable from the development branch. <a href='https://github.com/LangeLab/pepVet'>GitHub</a>."
+
+[[news]]
+date = "08/2026"
+type = "release"
+main-page = 0
 content = "Submitted <a href='https://pypi.org/project/pxaudit/'>PXAudit</a> (v0.6.0) to PyPI: PRIDE metadata auditing with FAIR and quantification-readiness scoring. <a href='https://github.com/LangeLab/PXAudit'>GitHub</a>."
 
 [[news]]

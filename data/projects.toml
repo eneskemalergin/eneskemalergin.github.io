@@ -221,6 +221,7 @@ tag = "pepvet"
 tags = ["proteomics", "digestion-simulation", "peptides", "enzyme-selection", "bottom-up"]
 desc = "R package for proteolytic digest simulation, peptide scoring, enzyme comparison, and prep workflow presets for bottom-up proteomics."
 github = "https://github.com/LangeLab/pepVet"
+pkg = "https://bioconductor.org/packages/pepVet/"
 
 [[projects]]
 title = "zebrac"
