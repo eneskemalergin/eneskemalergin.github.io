@@ -1,3 +1,3 @@
 +++
-description = "Enes K. Ergin, bioinformatician: quantitative proteomics, proteoform analysis, and open-source tools for mass spectrometry data."
+description = "Enes K. Ergin, bioinformatician in Vancouver: quantitative proteomics, gene fusions from RNA-seq, and fast, low-memory tools for large analyses on small hardware."
 +++

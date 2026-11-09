@@ -599,23 +599,15 @@ html.dark .news-type-mentoring {
     margin: 0 0 6px;
 }
 
+// Plain inline text, so a long item wraps like a sentence on a narrow screen.
 .research-papers {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 4px 0;
     margin-top: 2px;
     font-size: 10pt;
+    line-height: 1.7;
 }
 
-.research-paper-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.research-venue {
-    font-size: 10pt;
+.research-label {
+    color: var(--text-muted);
 }
 
 /* =============================================================

@@ -1,51 +1,64 @@
+# -- Homepage Schema Reference ---------------------------------------------------
+#
+#   avatar    - Portrait path relative to static/
+#   titles    - Lines under the name, one role each. Trusted HTML: links and
+#               entities are rendered as written.
+#   bio       - Plain-text paragraphs below the titles
+#
+# Each [[research]] entry is one topic under "Research interests":
+#
+#   topic     - Heading
+#   desc      - Plain-text paragraph
+#   papers    - Array of { name, venue, url }: the work's short name, then the
+#               journal and year as the link text (optional)
+#   software  - Array of project titles from data/projects.toml, linked to
+#               their cards on the projects page (optional)
+
 avatar = "portrait.jpg"
 
 titles = [
     """Bioinformatician &amp; Systems Engineer""",
     """Founder at <a href="https://zenteomics.com/">Zenteomics</a> - <a href="https://github.com/Zenteomics">GitHub</a>""",
-    """Bioinformatician at the <a href="https://langelab.med.ubc.ca/">Lange Lab</a>, <a href="https://bcchr.ca/">BC Children's Hospital Research Institute</a>""",
+    """Consulting Bioinformatician for labs at <a href="https://bcchr.ca/">BCCHR</a>, VGH, and more""",
     """PhD, Bioinformatics. <a href="https://www.bioinformatics.ubc.ca/">University of British Columbia</a>""",
 ]
 
 bio = [
-    "I work on quantitative proteomics, proteoform analysis, multi-omics integration, and machine learning for pediatric cancer research. I build software and reproducible analysis workflows when existing tools do not match the biological question. I am the founder of Zenteomics, focused on proteomics data infrastructure and open-source tooling for mass spectrometry.",
+    "I'm a bioinformatician in Vancouver. Most of my work is quantitative proteomics, often at the proteoform level and with pediatric cancer data. Zenteomics, my one-person practice, has added gene fusion calling from RNA-seq. What ties it together is resource use: large-scale analysis on smaller hardware, personal laptops included.",
 ]
 
 [[research]]
 topic = "Quantitative proteomics & proteoform biology"
-desc = "Developing methods for differential proteoform discovery, protein equivalence testing, and PTM-aware quantitative analysis. My work here includes ProteoForge, QuEStVar, and SQuAPP."
-items = [
-    { venue = "ProteoForge", label = "J. Proteome Res., 2026", url = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235" },
-    { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
-    { venue = "SQuAPP", label = "Bioinformatics, 2022", url = "https://doi.org/10.1093/bioinformatics/btac628" },
-    { venue = "N-termini proteoforms (Weng et al.)", label = "Mol. Cell. Proteomics, 2019", url = "https://www.mcponline.org/content/18/11/2335.abstract" },
+desc = "Methods for finding proteoforms, the cleaved and modified forms of a protein that a protein-level average hides."
+papers = [
+    { name = "ProteoForge", venue = "J. Proteome Res., 2026", url = "https://pubs.acs.org/doi/10.1021/acs.jproteome.5c01235" },
+    { name = "SQuAPP", venue = "Bioinformatics, 2022", url = "https://doi.org/10.1093/bioinformatics/btac628" },
+    { name = "N-termini proteoforms (Weng et al.)", venue = "Mol. Cell. Proteomics, 2019", url = "https://www.mcponline.org/content/18/11/2335.abstract" },
+    { name = "PhD thesis", venue = "UBC, 2025", url = "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0448334" },
 ]
 
 [[research]]
-topic = "Statistical methods & equivalence testing"
-desc = "Designing statistical frameworks for proteomics that go beyond differential expression. QuEStVar introduced equivalence-based testing for identifying conserved functional modules across biological systems."
-items = [
-    { venue = "QuEStVar", label = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
-    { venue = "QuEStVar Analysis", label = "GitHub", url = "https://github.com/LangeLab/Analysis_of_QuEStVar_Manuscript" },
+topic = "Statistical methods"
+desc = "Statistics that hold up when values are missing, and equivalence tests that can show a protein did not change."
+papers = [
+    { name = "QuEStVar", venue = "J. Proteome Res., 2024", url = "https://doi.org/10.1021/acs.jproteome.4c00131" },
 ]
+software = ["HarmonizePy", "loqculate"]
 
 [[research]]
 topic = "Pediatric cancer multi-omics"
-desc = "Applying proteomics, phosphoproteomics, and integrative analysis to pediatric acute lymphoblastic leukemia and other childhood cancers. Translational work through the PROFYLE initiative and PDX model characterization."
-items = [
-    { venue = "PROFYLE (Barnabas et al.)", label = "EMBO Mol. Med., 2025", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
-    { venue = "ALL proteomics (Lorentzian et al.)", label = "Nature Comms., 2023", url = "https://www.nature.com/articles/s41467-023-42701-9" },
-    { venue = "PDX models (Uzozie et al.)", label = "J. Exp. Clin. Cancer Res., 2021", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
+desc = "Proteomics and phosphoproteomics of childhood leukemia, xenograft models, and the PROFYLE precision oncology program."
+papers = [
+    { name = "PROFYLE (Barnabas et al.)", venue = "EMBO Mol. Med., 2025", url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11982353/" },
+    { name = "ALL proteomics (Lorentzian et al.)", venue = "Nature Comms., 2023", url = "https://www.nature.com/articles/s41467-023-42701-9" },
+    { name = "PDX models (Uzozie et al.)", venue = "J. Exp. Clin. Cancer Res., 2021", url = "https://link.springer.com/article/10.1186/s13046-021-01835-8" },
 ]
 
 [[research]]
-topic = "Mass spectrometry data infrastructure"
-desc = "Building fast, dependency-free tools in Zig and Python for spectral compression, format validation, dataset discovery, calibration curves, and FAIR metadata auditing."
-items = [
-    { venue = "pxseek", label = "ProteomeXchange querying, 2026", url = "https://github.com/LangeLab/pxseek" },
-    { venue = "z-fasta", label = "SIMD indexer, 2026", url = "https://github.com/eneskemalergin/z-fasta" },
-    { venue = "mzarc", label = "Spectral compression, 2026", url = "https://github.com/eneskemalergin/mzarc" },
-    { venue = "loqculate", label = "LOD/LOQ estimation, 2026", url = "https://github.com/eneskemalergin/loqculate" },
-    { venue = "PXAudit", label = "FAIR metadata audit, 2026", url = "https://github.com/LangeLab/PXAudit" },
-    { venue = "mzValidate", label = "mzML validator, 2026", url = "https://github.com/eneskemalergin/mzValidate" },
-]
+topic = "Transcriptomics & gene fusions"
+desc = "Gene fusion calling from RNA-seq for clinical labs, through Zenteomics. FRAMEFusion, a pipeline for FFPE tissue, is in development."
+
+[[research]]
+topic = "Fast tools with a small memory footprint"
+desc = "Mostly Zig. zmz reads mzML in 2.8 MiB of memory where OpenMS peaks at 597 MiB, mzDiff compares a 5.3 GiB Astral run in 17.1 s with 20.5 MB, and HarmonizePy runs batch correction 54 to 266 times faster than single-core HarmonizR."
+software = ["z-fasta", "z-fastq", "zmz", "mzArc", "mzDiff", "mzValidate", "PXAudit"]

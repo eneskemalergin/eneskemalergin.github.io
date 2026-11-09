@@ -30,6 +30,7 @@
 </div>
 
 {% if home.research %}
+{% set projects_url = get_url(path="@/projects/_index.md") %}
 <hr>
 <h2>Research interests</h2>
 <ul class="research-list">
@@ -39,13 +40,18 @@
         {% if topic.desc %}
         <p class="research-desc">{{ topic.desc }}</p>
         {% endif %}
-        {% if topic.items %}
+        {% if topic.papers %}
         <div class="research-papers">
-            {% for item in topic.items %}
-            <span class="research-paper-item">
-                {% if item.venue %}<span class="research-venue">{{ item.venue }}</span>{% endif %}
-                {% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{% endif %}{{ item.label }}{% if item.url %}</a>{% endif %}
-            </span>{% if not loop.last %}&thinsp;&middot;&thinsp;{% endif %}
+            {% for paper in topic.papers %}
+            {{ paper.name }} <a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.venue }}</a>{% if not loop.last %}&nbsp;&middot;{% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if topic.software %}
+        <div class="research-papers">
+            <span class="research-label">Software</span>
+            {% for title in topic.software %}
+            <a href="{{ projects_url }}#{{ macros::project_id(title=title) }}">{{ title }}</a>{% if not loop.last %}&nbsp;&middot;{% endif %}
             {% endfor %}
         </div>
         {% endif %}
