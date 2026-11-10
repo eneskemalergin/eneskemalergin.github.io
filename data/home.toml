@@ -61,4 +61,4 @@ desc = "Gene fusion calling from RNA-seq for clinical labs, through Zenteomics. 
 [[research]]
 topic = "Fast tools with a small memory footprint"
 desc = "Mostly Zig. zmz reads mzML in 2.8 MiB of memory where OpenMS peaks at 597 MiB, mzDiff compares a 5.3 GiB Astral run in 17.1 s with 20.5 MB, and HarmonizePy runs batch correction 54 to 266 times faster than single-core HarmonizR."
-software = ["z-fasta", "z-fastq", "zmz", "mzArc", "mzDiff", "mzValidate", "PXAudit"]
+software = ["kanit", "z-fasta", "z-fastq", "zmz", "mzArc", "mzDiff", "mzValidate", "PXAudit"]

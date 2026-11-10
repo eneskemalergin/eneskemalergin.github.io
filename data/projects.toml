@@ -381,6 +381,23 @@ github = "https://github.com/eneskemalergin/z-fastq"
 docs = "https://github.com/eneskemalergin/z-fastq/wiki"
 
 [[projects]]
+title = "kanit"
+domain = "core-tooling"
+source = "zenteomics"
+status = "active"
+stars = 1
+version = "0.7.0"
+language = "Zig"
+pub = "na"
+access = "public"
+image = "projects/kanit.svg"
+tag = "kanit"
+tags = ["workflow-engines", "bioinformatics", "performance", "linux", "cli"]
+desc = "Workflow engine for one Linux workstation: runs each step within its CPU and memory request, reruns only what changed, and keeps every attempt on record."
+github = "https://github.com/Zenteomics/kanit"
+docs = "https://github.com/Zenteomics/kanit/wiki"
+
+[[projects]]
 title = "zipir"
 domain = "core-tooling"
 source = "personal"
@@ -428,6 +445,23 @@ tag = "maskomancy"
 tags = ["unsupervised-learning", "pca", "missing-data", "proteomics"]
 desc = "NIPALS PCA on matrices with missing values, without imputing them, checked against four reference implementations."
 github = "https://github.com/eneskemalergin/Maskomancy"
+
+[[projects]]
+title = "zamf"
+domain = "core-tooling"
+source = "personal"
+status = "wip"
+stars = 0
+version = "0.3.0"
+language = "Zig"
+pub = "na"
+access = "private"
+private_reason = "in-development"
+image = "projects/zamf.svg"
+tag = "zamf"
+tags = ["bioinformatics", "bam", "performance", "cli"]
+desc = "Reads, checks, filters, sorts, and repairs SAM and BAM files in about 1 MiB of working memory, from one static binary."
+github = "https://github.com/eneskemalergin/zamf"
 
 [[projects]]
 title = "mzBridge"

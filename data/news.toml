@@ -36,6 +36,12 @@
 # /news page renders all entries, newest first.
 
 [[news]]
+date = "11/2026"
+type = "release"
+main-page = 0
+content = "Open-sourced <a href='https://github.com/Zenteomics/kanit'>kanit</a> (v0.7.0), the first public tool from <a href='https://zenteomics.com/'>Zenteomics</a>: a workflow engine for one Linux workstation that runs each step within its CPU and memory request and keeps every attempt on record."
+
+[[news]]
 date = "08/2026"
 type = "release"
 main-page = 0

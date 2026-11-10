@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="152" viewBox="0 0 200 152" role="img" aria-labelledby="title description">
+  <title id="title">kanit</title>
+  <desc id="description">A small task graph in three layers, finished tasks in white, running tasks in teal and a waiting task outlined, above the word kanit, inside a dark navy rounded tile with a teal outline.</desc>
+  <rect x="3" y="3" width="194" height="146" rx="32" fill="#0B1929" stroke="#47BAB8" stroke-width="3"/>
+  <g fill="none" stroke="#47BAB8" stroke-width="3" stroke-linecap="round" opacity="0.75">
+    <path d="M56 36 H90"/>
+    <path d="M56 36 L90 76"/>
+    <path d="M56 76 H90"/>
+    <path d="M110 36 L144 56"/>
+    <path d="M110 76 L144 56"/>
+  </g>
+  <circle cx="46" cy="36" r="10" fill="#FFFFFF"/>
+  <circle cx="46" cy="76" r="10" fill="#FFFFFF"/>
+  <circle cx="100" cy="36" r="10" fill="#47BAB8"/>
+  <circle cx="100" cy="76" r="10" fill="#47BAB8"/>
+  <circle cx="154" cy="56" r="9" fill="#0B1929" stroke="#47BAB8" stroke-width="3"/>
+  <text x="100" y="132" text-anchor="middle" font-family="ui-monospace, 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="38" font-weight="700" fill="#FFFFFF">kanit</text>
+</svg>
