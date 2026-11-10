@@ -25,8 +25,12 @@
 #   event       - A talk, workshop, conference, or other attended event.
 #   mentoring   - A teaching, supervision, or mentoring activity.
 #
-# `type` categorizes the update; it does not indicate importance. Use
-# `main-page = 1` selectively for updates that deserve homepage visibility.
+# `type` categorizes the update; it does not indicate importance. The homepage
+# shows only career-level events: peer-reviewed papers, degrees, new roles, and
+# founding Zenteomics. Software releases, project progress, submissions,
+# preprints, talks, and other events stay at `main-page = 0`; the projects page
+# and /news carry them. Keep the homepage to the five or so most recent
+# career-level events, and unflag the oldest when a new one is added.
 # Keep entries newest first. Use concise, factual content and link the relevant
 # public project, publication, or organization when a stable URL exists.
 # For software updates, include a confirmed event-time version inline as
@@ -40,6 +44,12 @@ date = "11/2026"
 type = "release"
 main-page = 0
 content = "Open-sourced <a href='https://github.com/Zenteomics/kanit'>kanit</a> (v0.7.0), the first public tool from <a href='https://zenteomics.com/'>Zenteomics</a>: a workflow engine for one Linux workstation that runs each step within its CPU and memory request and keeps every attempt on record."
+
+[[news]]
+date = "11/2026"
+type = "project"
+main-page = 0
+content = "<a href='/projects/#project-zamf'>zamf</a> (v0.3.0) now reads, checks, filters, sorts, and repairs SAM and BAM files in about 1 MiB of working memory. The source stays private while it is in development."
 
 [[news]]
 date = "08/2026"
