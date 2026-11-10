@@ -47,7 +47,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ macros::json(value=page.title) }}{% if page.description %},"description":{{ macros::json(value=page.description) }}{% endif %},"datePublished":{{ macros::json(value=page.date) }},"dateModified":{{ macros::json(value=page.updated | default(value=page.date)) }},"url":{{ macros::json(value=page.permalink) }},"mainEntityOfPage":{{ macros::json(value=page.permalink) }},"author":{"@type":"Person","name":{{ macros::json(value=config.title) }},"url":{{ macros::json(value=get_url(path="/")) }}},"keywords":{{ macros::json(value=page.taxonomies.tags | default(value=[]) | join(sep=", ")) }}}</script>
     {% endif %}
     <script src="{{ get_url(path="js/theme.js", cachebust=true) }}"></script>
-    <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg") }}" />
+    <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png", cachebust=true) }}" />
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") }}" />
     <link rel="stylesheet" href="{{ get_url(path="style.css", cachebust=true) }}" />
     <link rel="preload" href="{{ get_url(path="vendor/inter/inter-latin-wght-normal.woff2") }}" as="font" type="font/woff2" crossorigin />

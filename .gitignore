@@ -7,3 +7,6 @@ __pycache__/
 
 data/generated/
 static/cv/
+
+# Vector sources stay local; the site serves PNG renders of them.
+*.svg

@@ -62,7 +62,7 @@ The runner summary first. Lower geomean is better. The `Geomean vs R` column is 
 | `C .Call` |         2 |       0.935x |
 | `R`       |         2 |       1.000x |
 
-{{ figure(src="/blog/images/zigr-benchmark/geomean-chart.svg", alt="Horizontal bar chart showing geomean vs R baseline for six backends. zigr scores 0.475x, Savvy 0.648x, extendr 0.695x, Rcpp 0.891x, C .Call 0.935x, R 1.000x.", alt_badge="Benchmark summary", caption="Figure 1. Geometric mean of mean_ms / R_baseline_mean_ms across 23 tasks. Values below 1.0x are faster than the R baseline. zigr leads at 0.475x.", label="Figure 1", width="92%") }}
+{{ figure(src="/blog/images/zigr-benchmark/geomean-chart.png", alt="Horizontal bar chart showing geomean vs R baseline for six backends. zigr scores 0.475x, Savvy 0.648x, extendr 0.695x, Rcpp 0.891x, C .Call 0.935x, R 1.000x.", alt_badge="Benchmark summary", caption="Figure 1. Geometric mean of mean_ms / R_baseline_mean_ms across 23 tasks. Values below 1.0x are faster than the R baseline. zigr leads at 0.475x.", label="Figure 1", width="92%") }}
 
 zigr leads overall and wins the most tasks. The geomean hides the actual story though, so here is the breakdown by category.
 
